@@ -3,6 +3,39 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import InputAdornment from "@mui/material/InputAdornment";
+import { styled } from "@mui/material/styles";
+
+const InputTextField = styled(TextField)({
+  "& label": {
+    color: "white",
+  },
+  "& label.Mui-focused": {
+    color: "yellow",
+  },
+  "& input:valid + fieldset": {
+    borderColor: "white",
+    borderWidth: 2,
+  },
+  "& input:valid:focus + fieldset": {
+    borderColor: "yellow",
+    borderLeftWidth: 6,
+    padding: "4px !important", // override inline-style
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "white",
+    },
+    "&:hover fieldset": {
+      borderColor: "white",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "yellow",
+    },
+  },
+  "& .MuiTypography-root": {
+    color: "white",
+  },
+});
 
 const dateNow = new Date();
 const year = dateNow.getFullYear();
@@ -69,20 +102,27 @@ export const Form = (props) => {
         justify="center"
         direction="column"
         spacing={2}
+        sx={{
+          input: {
+            color: "white",
+          },
+        }}
       >
         <Grid item>
-          <TextField
+          <InputTextField
             id="date-input"
             name="date"
             label="Date"
             type="date"
             value={formValues.date}
             onChange={handleInputChange}
-            color="primary"
+            sx={{
+              svg: { color: "white" },
+            }}
           />
         </Grid>
         <Grid item>
-          <TextField
+          <InputTextField
             id="fuel-input"
             name="fuel"
             label="Fuel"
@@ -95,7 +135,7 @@ export const Form = (props) => {
           />
         </Grid>
         <Grid item>
-          <TextField
+          <InputTextField
             id="trip-input"
             name="trip"
             label="Tripmeter"
