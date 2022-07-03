@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const dateNow = new Date();
 const year = dateNow.getFullYear();
@@ -77,6 +78,7 @@ export const Form = (props) => {
             type="date"
             value={formValues.date}
             onChange={handleInputChange}
+            color="primary"
           />
         </Grid>
         <Grid item>
@@ -87,6 +89,9 @@ export const Form = (props) => {
             type="number"
             value={formValues.fuel}
             onChange={handleInputChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">L</InputAdornment>,
+            }}
           />
         </Grid>
         <Grid item>
@@ -97,6 +102,9 @@ export const Form = (props) => {
             type="number"
             value={formValues.trip}
             onChange={handleInputChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">Km</InputAdornment>,
+            }}
           />
         </Grid>
         <Grid item>
