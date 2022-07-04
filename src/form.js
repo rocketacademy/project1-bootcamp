@@ -4,6 +4,15 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import InputAdornment from "@mui/material/InputAdornment";
 import { styled } from "@mui/material/styles";
+import { yellow } from "@mui/material/colors";
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText(yellow[500]),
+  backgroundColor: yellow[500],
+  "&:hover": {
+    backgroundColor: yellow[700],
+  },
+}));
 
 const InputTextField = styled(TextField)({
   "& label": {
@@ -148,9 +157,9 @@ export const Form = (props) => {
           />
         </Grid>
         <Grid item>
-          <Button variant="contained" color="primary" type="submit">
-            Submit
-          </Button>
+          <ColorButton variant="contained" color="primary" type="submit">
+            Calculate!
+          </ColorButton>
         </Grid>
       </Grid>
     </form>
