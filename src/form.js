@@ -93,6 +93,9 @@ export const Form = (props) => {
       formValues.fuel,
       formValues.trip
     );
+    if (isNaN(consumption)) {
+      consumption = 0;
+    }
     let submittedRecord = {
       date,
       fuel,
