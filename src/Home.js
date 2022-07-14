@@ -11,7 +11,7 @@ import {
 } from "./Home.styles";
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: "a2be003ef624499594b9bb757c703dd5",
+  clientId: "85e387f164e94bd6b9b5baf2e1f9d3dd",
 });
 
 export default function Home({ code }) {
