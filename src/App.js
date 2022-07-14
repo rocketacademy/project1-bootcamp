@@ -1,20 +1,12 @@
-import React from "react";
-import logo from "./logo.png";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./Login";
+import Home from "./Home";
+import { Container } from "./App.styles";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
+const code = new URLSearchParams(window.location.search).get("code");
+
+function App() {
+  return <Container>{code ? <Home code={code} /> : <Login />}</Container>;
 }
 
 export default App;
