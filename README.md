@@ -2,7 +2,7 @@
 
 # Please read below in order to properly initialise the app
 
-* note that a burner account was created to allow for spotify functionality *
+* note that a burner account was created to allow for spotify functionality 
 
 Step 1: Run "npm start" to initialize application.
 
