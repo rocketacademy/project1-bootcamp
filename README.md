@@ -1,4 +1,4 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# Project 1: Simple Music player using Spotify API
 
 # Please read below in order to properly initialise the app
 
@@ -6,9 +6,10 @@
 
 Step 1: Run "npm start" to initialize application.
 
-Step 2: cd into the server folder and run "npm run devStart" to get the server up and running for authentication. 
+Step 2: cd into the server folder and run "npm run devStart" to get the server up and running for authentication.
 
 Step 3: Will be prompted to log in when app is started. Please use the log in details below. 
 
 username: Fabiankhoo517@outlook.com
 password: RocketTest123
+
