@@ -1,15 +1,24 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# Project 1: Simple Music player using Spotify API
 
-https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
+# Please read below in order to properly initialise the app
 
-## Available Scripts
+* note that a burner account was created to allow for spotify functionality 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
+Step 1: Run "npm start" to initialize application.
 
-### `npm start`
+Step 2: cd into the server folder and run "npm run devStart" to get the server up and running for authentication.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Step 3: Will be prompted to log in when app is started. Please use the log in details below. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+username: Fabiankhoo517@outlook.com
+<br>
+password: RocketTest123
+
+# Why use a Burner account?
+The reason being that spotify assigns a unique client ID and secret client ID for any app that is created using its development tools that is specific to individual accounts.
+
+![image](https://user-images.githubusercontent.com/98201503/179015681-76ea79b0-9793-44d3-aaa4-9a834a2c455d.png)
+
+Any attempt to log in using your account will result in an  authentication error and being pushed out to the log in page due to a mismatch of the client ID and account.
+
+That is the reason why a burner account was created for any user to test out the functions of the app.
