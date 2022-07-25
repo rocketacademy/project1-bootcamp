@@ -15,7 +15,7 @@ export default class Menu extends React.Component{
       <div>
 <h5>{this.props.item.name}, ${this.props.item.price}</h5>
 <p>{this.props.item.description}</p>
-<button name={this.props.item.name} value={this.props.item} onClick={(e)=>this.props.addItemHandle(e)}>Add to Cart</button>
+<button name={this.props.item} onClick={(e)=>{this.props.addItemHandle(this.props.item)}}>Add to Cart</button>
 </div>
 
     )
