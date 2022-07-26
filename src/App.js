@@ -5,8 +5,23 @@ import {items} from "./items.js"
 import Menu from "./Menu.js"
 import Cart from "./Cart.js"
 import Checkout from "./Checkout.js"
-import { Typography } from '@mui/material';
+import { Typography , AppBar , Toolbar, Button } from '@mui/material';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import useStyles from './muistyles.js'
 //const {name,price,description}=items;
+import {ThemeProvider, createTheme} from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#f381a7',
+    },
+    secondary:{
+      main:'#fce4ec'
+    }
+  },
+});
 class App extends React.Component {
   constructor(props){
     super(props)
@@ -83,15 +98,26 @@ console.log("cart items after setState:", this.state.cartItems)}
   render() {
 // const listItems = items.map(item=>(<div> <div key={item}>Name: {item.name}, ${item.price}</div>
 // <button value={item} onClick={(e)=>this.handleSubmit(e)}>Add</button></div>))
-
-    return (
+    return (<ThemeProvider theme={theme}>
       <div className="App">
-<div className="Navbar">
-  <Typography variant="h5"> POS System </Typography>
-  <span> <button onClick={()=>{this.setState({showCart:!this.state.showCart})}}>Cart</button>
-  <button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}}>Overview</button></span>
-</div>
 
+  <AppBar color="secondary" position="relative">
+    <Toolbar sx={{ justifyContent: "space-between" }}>
+    <div><span>
+<Typography variant="h5"> POS System </Typography>
+<LocalGroceryStoreIcon></LocalGroceryStoreIcon> </span>
+</div>
+ <div>
+      <Button  edge="end" onClick={()=>{this.setState({showCart:!this.state.showCart})}} variant="outlined" startIcon={<LocalGroceryStoreIcon color="primary" />}>
+ Cart
+</Button>
+<Button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}} variant="outlined" startIcon={<LocalGroceryStoreIcon color="primary" />}>
+Overview
+</Button></div>
+    {/* <button onClick={()=>{this.setState({showCart:!this.state.showCart})}}>Cart</button>
+  <button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}}>Overview</button></span> */}
+    </Toolbar>
+  </AppBar>
 
 <div className="interface">
 
@@ -103,12 +129,13 @@ console.log("cart items after setState:", this.state.cartItems)}
 </div> : null}
 
 </div>
-<p>Total Price: ${this.state.totalPrice}</p>
+<Typography color="primary" mt={5} variant="h5">Total Price: ${this.state.totalPrice}</Typography>
 
 <Checkout addTotalMoney={this.addTotalMoney} paymentMethodShow={this.state.paymentMethodShow} changePaymentMethodShow={this.changePaymentMethodShow}/>
-{this.state.showOverview ? <h3>Overview<br></br>Cash: {this.state.cashTotal}, Grab: {this.state.grabTotal},PayNow: {this.state.paynowTotal}</h3>
+{this.state.showOverview ? <Typography>Overview<br></br>Cash: ${this.state.cashTotal}<br></br>Grab: ${this.state.grabTotal}<br></br>PayNow: ${this.state.paynowTotal}</Typography> 
 : null}
 </div>
+ </ThemeProvider>
         );
     } 
 }

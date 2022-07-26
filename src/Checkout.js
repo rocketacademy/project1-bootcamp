@@ -1,4 +1,16 @@
 import React from 'react'
+import {ThemeProvider, createTheme} from '@mui/material/styles';
+import { Typography , Button } from '@mui/material';
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#f381a7',
+    },
+    secondary:{
+      main:'#fce4ec'
+    }
+  },
+});
 
 export default class Checkout extends React.Component{
   constructor(props){
@@ -22,21 +34,17 @@ export default class Checkout extends React.Component{
 
   render(){
     return(
-      <div>
-
-<button onClick={(e)=>{
-  this.props.changePaymentMethodShow()
-  
-}}>Checkout</button>
-
-{ this.props.paymentMethodShow ? <div><h5>Payment method:</h5>
-<button value="cash" onClick={this.props.addTotalMoney}>Cash</button>
-<button value= "paynow" onClick={this.props.addTotalMoney}>PayNow</button>
-<button value="grab" onClick={this.props.addTotalMoney}>Grab</button> </div> : null }
- <div>
-</div> 
+    
+<ThemeProvider theme={theme}>
+  <div>
+<Button color="secondary" mt={3} variant="contained" onClick={(e)=>{this.props.changePaymentMethodShow()}}>Checkout</Button>
+{ this.props.paymentMethodShow ? <div> <Typography mt={5} variant="h6" color="primary">Payment method:</Typography>
+<Button color="secondary" variant="contained"  value="cash" onClick={this.props.addTotalMoney}>Cash</Button>
+<Button color="secondary" variant="contained" value= "paynow" onClick={this.props.addTotalMoney}>PayNow</Button>
+<Button color="secondary" variant="contained" value="grab" onClick={this.props.addTotalMoney}>Grab</Button></div> : null }
 </div>
 
+</ThemeProvider>
     )
 }
 
