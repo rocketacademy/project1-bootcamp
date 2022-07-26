@@ -5,7 +5,7 @@ import {items} from "./items.js"
 import Menu from "./Menu.js"
 import Cart from "./Cart.js"
 import Checkout from "./Checkout.js"
-
+import { Typography } from '@mui/material';
 //const {name,price,description}=items;
 class App extends React.Component {
   constructor(props){
@@ -13,16 +13,50 @@ class App extends React.Component {
     this.state={
     cartItems:[],
     showCart:false,
-    totalPrice:0
+    showOverview:false,
+    totalPrice:0,
+     cashTotal:0,
+      grabTotal:0,
+      paynowTotal:0,
+      paymentMethodShow:false,
+  
     }}
 
-    // checkoutShow = (e)=>
+changePaymentMethodShow = ()=>{
+this.setState({
+  paymentMethodShow:true
+})}
+
+ addTotalMoney = (e)=>{
+if(e.target.value === "cash"){
+ this.setState({cashTotal:this.state.cashTotal+this.state.totalPrice,
+   cartItems:[],
+        totalPrice:0,
+        paymentMethodShow:false
+}) 
+} else if(e.target.value === "paynow"){
+ this.setState({paynowTotal:this.state.paynowTotal+this.state.totalPrice,
+   cartItems:[],
+        totalPrice:0,
+        paymentMethodShow:false
+}) 
+}
+else if(e.target.value === "grab"){
+ this.setState({grabTotal:this.state.grabTotal+this.state.totalPrice,
+   cartItems:[],
+        totalPrice:0,
+        paymentMethodShow:false
+}) 
+}
+console.log(this.state.cashTotal,this.state.grabTotal,this.state.paynowTotal)
+  }
 
     addItemHandle=(item)=>{
       if (this.state.cartItems.includes(item)){
         this.setState({ cartItems:[...this.state.cartItems],
 item:item.qty+=1,
-totalPrice:this.state.totalPrice+=item.price
+totalPrice: this.state.totalPrice+=item.price,
+
         }) 
         console.log("qty+=1" , item)
       } else {
@@ -53,8 +87,9 @@ console.log("cart items after setState:", this.state.cartItems)}
     return (
       <div className="App">
 <div className="Navbar">
-  Navbar
-  <button onClick={()=>{this.setState({showCart:!this.state.showCart})}}>Cart</button>
+  <Typography variant="h5"> POS System </Typography>
+  <span> <button onClick={()=>{this.setState({showCart:!this.state.showCart})}}>Cart</button>
+  <button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}}>Overview</button></span>
 </div>
 
 
@@ -64,17 +99,15 @@ console.log("cart items after setState:", this.state.cartItems)}
   {items.map(item=>(<Menu key={item.id} item={item} addItemHandle={this.addItemHandle}/>))};
 </div>
 
-{this.state.showCart ? <div className="cart">
-
-{/*  Uncaught TypeError: Cannot read properties of null (reading 'cartItems') */}
-{/* {this.state.cartItems} */}
-  {this.state.cartItems.length===0 ? " Cart is empty" : this.state.cartItems.map(cartItem=>(<Cart key={cartItem.id} cartItem={cartItem}/>))  }
-{/* {Object.keys(this.state.cartItems).map((keyName,i)=>(<Cart key={i} cartItem={this.state.cartItems[keyName]}/>))} */}
+{this.state.showCart ? <div className="cart">{this.state.cartItems.length===0 ? " Cart is empty" : this.state.cartItems.map(cartItem=>(<Cart key={cartItem.id} cartItem={cartItem}/>))  }
 </div> : null}
 
 </div>
 <p>Total Price: ${this.state.totalPrice}</p>
-<Checkout  totalPrice={this.state.totalPrice} />
+
+<Checkout addTotalMoney={this.addTotalMoney} paymentMethodShow={this.state.paymentMethodShow} changePaymentMethodShow={this.changePaymentMethodShow}/>
+{this.state.showOverview ? <h3>Overview<br></br>Cash: {this.state.cashTotal}, Grab: {this.state.grabTotal},PayNow: {this.state.paynowTotal}</h3>
+: null}
 </div>
         );
     } 
