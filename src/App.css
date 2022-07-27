@@ -1,28 +1,32 @@
-
+.img {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
 
 .App {
   text-align: center;
 }
 
 .interface{
+   max-height: 50vh;
   display:flex;
   flex-direction: row;
 }
 
-.item{
-  max-height: 50vh;
+/* .item{
   display:flex;
   flex-grow:2;
   flex-direction: column;
-  border: black 2px solid;
   row-gap: 3.5vh;
-  flex-wrap: wrap;
-}
+  flex-wrap: nowrap;
+  margin-bottom: 3vh;
+} */
 
-.cart{
-  flex-grow:1;
-   border: black 2px solid;
-}
+/* .cart{
+  height:100vh
+} */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
