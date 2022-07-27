@@ -2,10 +2,11 @@ import React from "react";
 import logo from "./logo.png";
 import "./App.css";
 import {items} from "./items.js"
+import OverviewPopup from "./OverviewPopup.js"
 import Menu from "./Menu.js"
 import Cart from "./Cart.js"
 import Checkout from "./Checkout.js"
-import { Typography , AppBar , Toolbar, Button, Alert} from '@mui/material';
+import { Typography , AppBar , Toolbar, Button, Alert, ButtonGroup} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,6 +21,7 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 //const {name,price,description}=items;
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -30,6 +32,8 @@ const theme = createTheme({
     }
   },
 });
+
+
 class App extends React.Component {
   constructor(props){
     super(props)
@@ -131,6 +135,12 @@ console.log("cart items after setState:", this.state.cartItems)}
 //() jsx
 //{}functions
 //for map 
+
+changeShowOverview = ()=>{
+  this.setState({
+    showOverview:!this.state.showOverview
+  })
+}
   
   render() {
 // const listItems = items.map(item=>(<div> <div key={item}>Name: {item.name}, ${item.price}</div>
@@ -144,13 +154,11 @@ console.log("cart items after setState:", this.state.cartItems)}
 <Typography variant="h5"> POS System </Typography>
 <LocalGroceryStoreIcon></LocalGroceryStoreIcon> </span>
 </div>
- <div>
-      <Button  edge="end" onClick={()=>{this.setState({showCart:!this.state.showCart})}} variant="outlined" startIcon={<LocalGroceryStoreIcon color="primary" />}>
- Cart
-</Button>
-<Button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}} variant="outlined" startIcon={<SummarizeIcon color="primary" />}>
-Overview
-</Button></div>
+<div>
+  <ButtonGroup disableElevation>
+  <Button   onClick={()=>{this.setState({showCart:!this.state.showCart})}} variant="outlined" startIcon={<LocalGroceryStoreIcon color="primary" />}>Cart</Button> 
+<OverviewPopup cashTotal={this.state.cashTotal} grabTotal={this.state.grabTotal} paynowTotal={this.state.paynowTotal} changeShowOverview={this.changeShowOverview} showOverview={this.state.showOverview} />
+</ButtonGroup></div>
     {/* <button onClick={()=>{this.setState({showCart:!this.state.showCart})}}>Cart</button>
   <button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}}>Overview</button></span> */}
     </Toolbar>
@@ -263,8 +271,6 @@ this.state.cartItems.map(cartItem=>(<Cart key={cartItem.id} cartItem={cartItem}/
 
 </div>
 
-{this.state.showOverview ? <Typography>Overview<br></br>Cash: ${this.state.cashTotal}<br></br>Grab: ${this.state.grabTotal}<br></br>PayNow: ${this.state.paynowTotal}</Typography> 
-: null}
 </div>
  </ThemeProvider>
         );

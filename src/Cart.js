@@ -21,9 +21,8 @@ export default class Cart extends React.Component{
     return(
       <div>
           
-<Grid container spacing={3} columns={16} justifyContent="space-evenly">
+
   <Grid item xs={4}>
-  
     {this.props.cartItem.name}
   </Grid>
   
@@ -35,7 +34,7 @@ export default class Cart extends React.Component{
   {this.props.cartItem.qty}
   </Grid>
 
-</Grid>
+
 
 {/* <h5>  {this.props.cartItem.qty}</h5> */}
 {/* <h6>TotalPrice: {this.state.sum} </h6> */}

@@ -42,6 +42,9 @@ export default class Checkout extends React.Component{
 <Button color="secondary" variant="contained"  value="cash" onClick={this.props.addTotalMoney}>Cash</Button>
 <Button color="secondary" variant="contained" value= "paynow" onClick={this.props.addTotalMoney}>PayNow</Button>
 <Button color="secondary" variant="contained" value="grab" onClick={this.props.addTotalMoney}>Grab</Button></div> : null }
+
+
+
 </div>
 
 </ThemeProvider>
