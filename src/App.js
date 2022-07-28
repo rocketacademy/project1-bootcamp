@@ -21,8 +21,10 @@ class App extends React.Component {
   }
 
   //handleChange
+  handleChange = (event) => {
+    this.setState({ tasks: event.target.value });
 
-  //handleSubmit which will move input into the table
+  //handleSubmit which will move input into the table through setstate
 
   render() {
     // function that will map the input into table modelled on the following sample
