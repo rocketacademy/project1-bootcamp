@@ -38,7 +38,7 @@ class App extends React.Component {
     this.setState((prevState) => {
       return {
         ...prevState,
-        dateEntry: [...prevState.dateEntry, this.state.currDateEntry],
+        dateEntry: [...prevState.dateEntry, prevState.currDateEntry],
         tasks: [...prevState.tasks, this.state.currUserInputTask],
         currUserInputTask: "",
         currDateEntry: "",
@@ -60,11 +60,15 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
 
           {/* <div>{TableContainer}</div> */}
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div>
               <p>
                 <label>Date and Time: </label>
-                <input type="text" value={currDateEntry} />
+                <input
+                  type="text"
+                  value={currDateEntry}
+                  onChange={this.handleCHange}
+                />
               </p>
               <p>
                 <label>Task: </label>
