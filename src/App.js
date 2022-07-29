@@ -18,42 +18,40 @@ class App extends React.Component {
       dateEntry: "",
       tasks: [],
       currUserInputTask: "",
-      currDateEntry:"",
+      currDateEntry: "",
     };
   }
-
-  
 
   //handleChange
   handleChange = (event) => {
     this.setState({ currUserInputTask: event.target.value });
+  };
 
   //handleSubmit which will move input into the table through setState
   handleSubmit = (event) => {
     event.preventDefault();
 
-  if (!this.state.currUserInputTask) {
+    if (!this.state.currUserInputTask) {
       return;
     }
 
-this.setState((prevState) => {
+    this.setState((prevState) => {
       return {
         ...prevState,
-        dateEntry: [...prevState.dateEntry, prevState.currDateEntry], 
-        tasks: [...prevState.tasks, prevState.currUserInputTask],
+        dateEntry: [...prevState.dateEntry, this.state.currDateEntry],
+        tasks: [...prevState.tasks, this.state.currUserInputTask],
         currUserInputTask: "",
-        currDateEntry:"",
+        currDateEntry: "",
       };
     });
-  }
+  };
 
   render() {
-  
-      // function that will map the input into table modelled on the following sample
+    // function that will map the input into table modelled on the following sample
     // let messageListItems = this.state.messages.map((message) => (
     //   <li key={message.key}>{message.val}</li>
     // ));
-  
+
     const currDateEntry = new Date().toLocaleString() + "";
 
     return (
@@ -66,11 +64,15 @@ this.setState((prevState) => {
             <div>
               <p>
                 <label>Date and Time: </label>
-                <input type="text" value={this.state.currDateEntry} />
+                <input type="text" value={currDateEntry} />
               </p>
               <p>
                 <label>Task: </label>
-                <input type="text" onChange={this.handleChange} value={this.state.currUserInputTask}/>
+                <input
+                  type="text"
+                  onChange={this.handleChange}
+                  value={this.state.currUserInputTask}
+                />
                 <input type="submit" value="Submit" />
               </p>
             </div>
