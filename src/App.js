@@ -15,22 +15,46 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      datetime: "",
+      dateEntry: "",
       tasks: [],
+      currUserInputTask: "",
+      currDateEntry:"",
     };
   }
 
+  
+
   //handleChange
   handleChange = (event) => {
-    this.setState({ tasks: event.target.value });
+    this.setState({ currUserInputTask: event.target.value });
 
-  //handleSubmit which will move input into the table through setstate
+  //handleSubmit which will move input into the table through setState
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+  if (!this.state.currUserInputTask) {
+      return;
+    }
+
+this.setState((prevState) => {
+      return {
+        ...prevState,
+        dateEntry: [...prevState.dateEntry, prevState.currDateEntry], 
+        tasks: [...prevState.tasks, prevState.currUserInputTask],
+        currUserInputTask: "",
+        currDateEntry:"",
+      };
+    });
+  }
 
   render() {
-    // function that will map the input into table modelled on the following sample
+  
+      // function that will map the input into table modelled on the following sample
     // let messageListItems = this.state.messages.map((message) => (
     //   <li key={message.key}>{message.val}</li>
     // ));
+  
+    const currDateEntry = new Date().toLocaleString() + "";
 
     return (
       <div className="App">
@@ -42,11 +66,11 @@ class App extends React.Component {
             <div>
               <p>
                 <label>Date and Time: </label>
-                <input type="text" value={new Date().toLocaleString() + ""} />
+                <input type="text" value={this.state.currDateEntry} />
               </p>
               <p>
                 <label>Task: </label>
-                <input type="text" />
+                <input type="text" onChange={this.handleChange} value={this.state.currUserInputTask}/>
                 <input type="submit" value="Submit" />
               </p>
             </div>
