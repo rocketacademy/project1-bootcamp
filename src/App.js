@@ -15,7 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dateEntry: "",
+      dateEntry: [],
       tasks: [],
       currUserInputTask: "",
       currDateEntry: "",
@@ -24,7 +24,9 @@ class App extends React.Component {
 
   //handleChange
   handleChange = (event) => {
-    this.setState({ currUserInputTask: event.target.value });
+    this.setState({
+      currUserInputTask: event.target.value,
+    });
   };
 
   //handleSubmit which will move input into the table through setState
@@ -36,9 +38,10 @@ class App extends React.Component {
     }
 
     this.setState((prevState) => {
+      const currDateEntry = new Date().toLocaleString() + "";
       return {
         ...prevState,
-        dateEntry: [...prevState.dateEntry, prevState.currDateEntry],
+        dateEntry: [...prevState.dateEntry, this.state.currDateEntry],
         tasks: [...prevState.tasks, this.state.currUserInputTask],
         currUserInputTask: "",
         currDateEntry: "",
@@ -67,7 +70,7 @@ class App extends React.Component {
                 <input
                   type="text"
                   value={currDateEntry}
-                  onChange={this.handleCHange}
+                  onChange={this.handleChange}
                 />
               </p>
               <p>
