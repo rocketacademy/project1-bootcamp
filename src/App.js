@@ -1,94 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.png";
 import "./App.css";
 
-// import Table from "@mui/material/Table";
-// import TableBody from "@mui/material/TableBody";
-// import TableCell from "@mui/material/TableCell";
-// import TableContainer from "@mui/material/TableContainer";
-// import TableHead from "@mui/material/TableHead";
-// import TableRow from "@mui/material/TableRow";
-// import Paper from "@mui/material/Paper";
+const App = () => {
+  // Initialise empty messages array in state to keep local state in sync with Firebase
+  // When Firebase changes, update local state, which will update local UI
+  const [task, setTask] = useState([]);
+  const [date, setDate] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-class App extends React.Component {
-  //constructor
-  constructor(props) {
-    super(props);
-    this.state = {
-      dateEntry: [],
-      tasks: [],
-      currUserInputTask: "",
-      currDateEntry: "",
-    };
-  }
+  // date constant
+  const currDateEntry = new Date().toLocaleString() + "";
 
-  //handleChange
-  handleChange = (event) => {
-    this.setState({
-      currUserInputTask: event.target.value,
-    });
+  // write timer function
+  function timer() {}
+
+  // use useEffect to call the timer every 1 second
+  useEffect(() => {}, []);
+
+  // use handleChange
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
   };
 
-  //handleSubmit which will move input into the table through setState
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!this.state.currUserInputTask) {
-      return;
-    }
-
-    this.setState((prevState) => {
-      const currDateEntry = new Date().toLocaleString() + "";
-      return {
-        ...prevState,
-        dateEntry: [...prevState.dateEntry, this.state.currDateEntry],
-        tasks: [...prevState.tasks, this.state.currUserInputTask],
-        currUserInputTask: "",
-        currDateEntry: "",
-      };
-    });
+  // use handleSubmit to submit the task
+  const handleSubmit = () => {
+    setInputValue("");
   };
 
-  render() {
-    // function that will map the input into table modelled on the following sample
-    // let messageListItems = this.state.messages.map((message) => (
-    //   <li key={message.key}>{message.val}</li>
-    // ));
+  // Convert task items in state to task JSX elements to render
+  let taskListItems = task.map((task) => <li>{currDateEntry}</li>);
 
-    const currDateEntry = new Date().toLocaleString() + "";
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-
-          {/* <div>{TableContainer}</div> */}
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <p>
-                <label>Date and Time: </label>
-                <input
-                  type="text"
-                  value={currDateEntry}
-                  onChange={this.handleChange}
-                />
-              </p>
-              <p>
-                <label>Task: </label>
-                <input
-                  type="text"
-                  onChange={this.handleChange}
-                  value={this.state.currUserInputTask}
-                />
-                <input type="submit" value="Submit" />
-              </p>
-            </div>
-          </form>
-          {/* call function here <ol>{messageListItems}</ol> */}
-        </header>
-      </div>
-    );
-  }
-}
+        {/* <div>{TableContainer}</div> */}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <p>
+              <label>Date and Time: {currDateEntry}</label>
+            </p>
+            <p>
+              <label>Task: </label>
+              <input type="text" onChange={handleChange} value={inputValue} />
+              <input type="submit" value="Submit" />
+            </p>
+          </div>
+        </form>
+        {/* call function here <ol>{messageListItems}</ol> */}
+      </header>
+    </div>
+  );
+};
 
 export default App;
