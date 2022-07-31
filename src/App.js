@@ -8,7 +8,7 @@ const App = () => {
   // When Firebase changes, update local state, which will update local UI
   var [task, setTask] = useState({
     date: [],
-    inputValue: "",
+    inputValue: [""],
     task: [],
   });
   // var [date, setDate] = useState([]);
@@ -52,8 +52,8 @@ const App = () => {
     // var setTask = useRef([]);
 
     event.preventDefault();
-    setTask((prevTasks) => ({
-      ...prevTasks,
+    setTask((state) => ({
+      ...state,
       task: inputValue,
       date: currDateEntry,
       // inputValue: "",
