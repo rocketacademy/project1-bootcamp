@@ -6,8 +6,12 @@ import "./App.css";
 const App = () => {
   // Initialise empty messages array in state to keep local state in sync with Firebase
   // When Firebase changes, update local state, which will update local UI
-  var [task, setTask] = useState([]);
-  var [date, setDate] = useState([]);
+  var [task, setTask] = useState({
+    date: [],
+    inputValue: "",
+    task: [],
+  });
+  // var [date, setDate] = useState([]);
   var [inputValue, setInputValue] = useState("");
 
   // date constant
@@ -16,7 +20,7 @@ const App = () => {
   // write timer function
   function timer() {}
 
-  // testing if it can hold another function and return here
+  // testing if it can hold another function and return here - yes this works
   // function Car(props) {
   //   return <h2>I am a {props.brand.model}!</h2>;
   // }
@@ -36,22 +40,29 @@ const App = () => {
 
   // use handleChange
   const HandleChange = (event) => {
+    event.preventDefault();
     setInputValue(event.target.value);
   };
 
-  //handleSubmit
+  //handleSubmit will need to submit the task, the date and time, and the timer component
+  //so the props need to be the task prop, the date and time prop, and the timer component prop
 
   // use handleSubmit to submit the task
   const HandleSubmit = (event) => {
     // var setTask = useRef([]);
 
     event.preventDefault();
-    setTask((prevTasks) => ({ ...prevTasks, task }));
+    setTask((prevTasks) => ({
+      ...prevTasks,
+      task: inputValue,
+      date: currDateEntry,
+      // inputValue: "",
+    }));
     setInputValue("");
   };
 
   // Convert task items in state to task JSX elements to render
-  let taskListItems = task.map((task) => <li>{currDateEntry}</li>);
+  // let taskListItems = task.map((task) => <li>{currDateEntry}</li>);
 
   return (
     <div className="App">
