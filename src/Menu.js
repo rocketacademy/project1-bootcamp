@@ -27,12 +27,12 @@ export default class Menu extends React.Component{
     return(
      
        <ThemeProvider theme={theme}>
-         <Grid item xs={4}>
+         <Grid item xs={4} mb={3}>
    
     <img className="img" alt={this.props.item.name} src={this.props.item.image}/>
   <Typography variant="h6">{this.props.item.name}, ${this.props.item.price}</Typography>
 <Typography variant="subtitle1"> {this.props.item.description}</Typography>
-<Button color="primary" size="small" variant="outlined" name={this.props.item} onClick={(e)=>{this.props.addItemHandle(this.props.item)}} >Add</Button>
+<Button color="primary" size="small" disabled={!this.props.addEnable} variant="outlined" name={this.props.item} onClick={(e)=>{this.props.addItemHandle(this.props.item)}} mb={2}>Add</Button>
 
 </Grid>
 </ThemeProvider>

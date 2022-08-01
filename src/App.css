@@ -1,8 +1,11 @@
 .img {
-  border: 1px solid #ddd; /* Gray border */
-  border-radius: 4px;  /* Rounded border */
-  padding: 5px; /* Some padding */
-  width: 150px; /* Set a small width */
+  border: 0.4vh solid #fce4ec; 
+  border-radius: 1vh;  /* Rounded border */
+  padding: 0.5vh; /* Some padding */
+  width: 15.220700152207002vh; /* Set a small width */
+height:15.220700152207002vh;
+  background-size: cover;
+  overflow:none
 }
 
 .App {

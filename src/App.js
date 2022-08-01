@@ -3,6 +3,7 @@ import logo from "./logo.png";
 import "./App.css";
 import {items} from "./items.js"
 import OverviewPopup from "./OverviewPopup.js"
+import TransactionPopup from "./TransactionPopup.js"
 import Menu from "./Menu.js"
 import Cart from "./Cart.js"
 import Checkout from "./Checkout.js"
@@ -46,25 +47,44 @@ class App extends React.Component {
       grabTotal:0,
       paynowTotal:0,
       paymentMethodShow:false,
+      addEnable:true,
       displayMsg:"",
-      displayMsgShow:false
+      displayMsgShow:false,
+      transactionItems:[],
+      paymentMethod:[]
   
     }}
 
 changePaymentMethodShow = ()=>{
+  // let divider = "--------"
+  // let transaction = [...this.state.cartItems]
+//button checkout is here 
+console.log(this.state.cartItems)
 this.setState({
-  paymentMethodShow:true
+  addEnable:false,
+  paymentMethodShow:true,
+  transactionItems:[this.state.cartItems, ...this.state.transactionItems]
+//an array of items , embedded array
 })}
 
+
  addTotalMoney = (e)=>{
+  
+  
+  // let data= this.state.cartItems;
+
 if(e.target.value === "cash"){
- this.setState({cashTotal:this.state.cashTotal+this.state.totalPrice,
+ this.setState(
+  
+  {cashTotal:this.state.cashTotal+this.state.totalPrice,
    cartItems:[],
         totalPrice:0,
         paymentMethodShow:false,
         displayMsgShow:true,
-        displayMsg:"You have successfully checked out!"
-
+        displayMsg:"You have successfully checked out!",
+        addEnable:true,
+        paymentMethod:[this.state.paymentMethod, e.target.value]
+        
 }) 
 } else if(e.target.value === "paynow"){
  this.setState({paynowTotal:this.state.paynowTotal+this.state.totalPrice,
@@ -72,7 +92,9 @@ if(e.target.value === "cash"){
         totalPrice:0,
         paymentMethodShow:false,
          displayMsgShow:true,
-        displayMsg:"You have successfully checked out!"
+        displayMsg:"You have successfully checked out!",
+         addEnable:true,
+         paymentMethod:[...this.state.paymentMethod,e.target.value]
 }) 
 }
 else if(e.target.value === "grab"){
@@ -81,11 +103,12 @@ else if(e.target.value === "grab"){
         totalPrice:0,
         paymentMethodShow:false,
          displayMsgShow:true,
-        displayMsg:"You have successfully checked out!"
-}) 
+        displayMsg:"You have successfully checked out!",
+         addEnable:true,
+         paymentMethod:[...this.state.paymentMethod,e.target.value]
+}) }
+console.log(this.state.paymentMethod, this.state.totalPrice)
 }
-console.log(this.state.cashTotal,this.state.grabTotal,this.state.paynowTotal)
-  }
 
 removeItemHandle =(item)=>{
   if (item.qty===1){
@@ -108,6 +131,7 @@ console.log("cart items after remove:", this.state.cartItems)}
       this.setState({
         displayMsgShow:false
       })
+
       if (this.state.cartItems.includes(item)){
         this.setState({ cartItems:[...this.state.cartItems],
 item:item.qty+=1,
@@ -158,22 +182,23 @@ changeShowOverview = ()=>{
   <ButtonGroup disableElevation>
   <Button   onClick={()=>{this.setState({showCart:!this.state.showCart})}} variant="outlined" startIcon={<LocalGroceryStoreIcon color="primary" />}>Cart</Button> 
 <OverviewPopup cashTotal={this.state.cashTotal} grabTotal={this.state.grabTotal} paynowTotal={this.state.paynowTotal} changeShowOverview={this.changeShowOverview} showOverview={this.state.showOverview} />
+<TransactionPopup transactionItems={this.state.transactionItems} paymentMethod={this.state.paymentMethod} totalPrice={this.state.totalPrice}/>
 </ButtonGroup></div>
     {/* <button onClick={()=>{this.setState({showCart:!this.state.showCart})}}>Cart</button>
   <button onClick={()=>{this.setState({showOverview:!this.state.showOverview})}}>Overview</button></span> */}
     </Toolbar>
   </AppBar>
 
-<Grid container spacing={2} mt={4} mb={4}>
+<Grid container spacing={2} mt={4}>
 
-  <Grid item xs={8}>
+  <Grid item xs={8} >
 <Paper elevation={5}>
     <Grid container display="flex"
   direction="row"
   justifyContent="space-evenly"
   alignItems="centre" spacing ={2}>
      
-  {items.map(item=>(<Menu key={item.id} item={item} addItemHandle={this.addItemHandle}/>))}
+  {items.map(item=>(<Menu key={item.id} item={item} addItemHandle={this.addItemHandle} addEnable={this.state.addEnable}/>))}
 
 </Grid>
 </Paper>
@@ -182,6 +207,7 @@ changeShowOverview = ()=>{
   <Grid item xs={4}>
 
 <Grid container spacing={2} mt={1} justifyContent="space-evenly">
+  <Grid item xs={12}>
 <div>
     {this.state.showCart ? <div> {this.state.cartItems.length===0 ? " Cart is empty" : 
  <TableContainer>
@@ -189,10 +215,10 @@ changeShowOverview = ()=>{
         <TableHead >
           <TableRow >
             <TableCell color="primary" >Name</TableCell>
-            <TableCell align="right" color="primary" >Price</TableCell>
-            <TableCell align="right" color="primary" >Quantity</TableCell>
-            <TableCell align="right" color="primary" >Add</TableCell>
-            <TableCell align="right" color="primary" >Remove</TableCell>
+            <TableCell align="center" color="primary" >Price</TableCell>
+            <TableCell align="center" color="primary" >Quantity</TableCell>
+            <TableCell align="center" color="primary" >Add</TableCell>
+            <TableCell align="center" color="primary" >Remove</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -204,10 +230,10 @@ changeShowOverview = ()=>{
               <TableCell component="th" scope="row">
                 {cartItem.name}
               </TableCell>
-              <TableCell align="right">{cartItem.price}</TableCell>
-              <TableCell align="right">{cartItem.qty}</TableCell>
-              <TableCell align="right"><Button color="primary" size="small" variant="outlined" name={cartItem.name} onClick={(e)=>{this.addItemHandle(cartItem)}} >Add</Button></TableCell>
-              <TableCell align="right"><Button color="primary" size="small" variant="outlined" name={cartItem.name} onClick={(e)=>{this.removeItemHandle(cartItem)}} >Remove</Button></TableCell>
+              <TableCell align="center">{cartItem.price}</TableCell>
+              <TableCell align="center">{cartItem.qty}</TableCell>
+              <TableCell align="center"><Button color="primary" size="small" variant="outlined" name={cartItem.name} onClick={(e)=>{this.addItemHandle(cartItem)}} disabled={!this.state.addEnable} >Add</Button></TableCell>
+              <TableCell align="center"><Button color="primary" size="small" variant="outlined" name={cartItem.name} onClick={(e)=>{this.removeItemHandle(cartItem)}} disabled={!this.state.addEnable} >Remove</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -217,10 +243,12 @@ changeShowOverview = ()=>{
      { this.state.totalPrice>0 ? <Checkout addTotalMoney={this.addTotalMoney} paymentMethodShow={this.state.paymentMethodShow} changePaymentMethodShow={this.changePaymentMethodShow} /> 
      : null } 
 
-     { this.state.displayMsgShow ? <Alert severity="success" color="primary">{this.state.displayMsg}</Alert> : null}
+     { this.state.displayMsgShow ? <Alert severity="success" color="primary" mt={3}>{this.state.displayMsg}</Alert> : null}
      </div>
 
-: null} </div></Grid>
+: null} </div>
+</Grid>
+</Grid>
 
 
   </Grid>
