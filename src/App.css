@@ -1,19 +1,48 @@
+.img {
+  border: 0.4vh solid #fce4ec; 
+  border-radius: 1vh;  /* Rounded border */
+  padding: 0.5vh; /* Some padding */
+  width: 15.220700152207002vh; /* Set a small width */
+height:15.220700152207002vh;
+  background-size: cover;
+  overflow:none
+}
+
 .App {
   text-align: center;
 }
 
+.interface{
+   max-height: 50vh;
+  display:flex;
+  flex-direction: row;
+}
+
+/* .item{
+  display:flex;
+  flex-grow:2;
+  flex-direction: column;
+  row-gap: 3.5vh;
+  flex-wrap: nowrap;
+  margin-bottom: 3vh;
+} */
+
+/* .cart{
+  height:100vh
+} */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 
+.Navbar {
+  min-height: 10vh;
+  padding:10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+   border: black 2px solid;
+} */
