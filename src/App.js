@@ -8,7 +8,6 @@ const App = () => {
   // When Firebase changes, update local state, which will update local UI
   var [task, setTask] = useState({
     date: [],
-    inputValue: [""],
     task: [],
   });
   // var [date, setDate] = useState([]);
@@ -16,6 +15,13 @@ const App = () => {
 
   // date constant
   const currDateEntry = new Date().toLocaleString() + "";
+
+  // // update task constant
+
+  // const updateTask = (prevTask) => setTask(prevTask => {
+  //     task: inputValue,
+  //     date: currDateEntry,
+  // });
 
   // write timer function
   function timer() {}
@@ -39,8 +45,10 @@ const App = () => {
   useEffect(() => {}, []);
 
   // use handleChange
+
   const HandleChange = (event) => {
     event.preventDefault();
+    const value = event.target.value;
     setInputValue(event.target.value);
   };
 
@@ -52,8 +60,9 @@ const App = () => {
     // var setTask = useRef([]);
 
     event.preventDefault();
-    setTask((state) => ({
-      ...state,
+
+    setTask((prevState) => ({
+      ...prevState,
       task: inputValue,
       date: currDateEntry,
       // inputValue: "",
