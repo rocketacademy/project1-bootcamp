@@ -8,28 +8,23 @@ const App = () => {
   const currDateEntry = new Date().toLocaleString() + "";
 
   //inputvalue for the textbox
-  const [inputValue, setInputValue] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
   //newTask, setNewTask (from input)
-  const [newTask, setNewTask] = useState({});
+  const [newTask, setNewTask] = useState([]);
 
   // use handleChange
   const handleChange = (event) => {
     setInputValue(event.target.value);
-    setNewTask((prev) => ({
-      ...prev,
-      id: currDateEntry,
-      value: inputValue,
-    }));
+    setNewTask((prev) => ({ ...prev, id: currDateEntry, inputValue }));
   };
 
   //allTasks, setAllTasks
-  const [allTasks, setAllTasks] = useState({});
-
+  const [allTasks, setAllTasks] = useState([]);
   //usehandleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAllTasks((prev) => ({ newTask, ...prev }));
+    setAllTasks((prev) => [...prev, newTask]);
     console.log(
       `inputValue is ${inputValue}, and newtask is ${newTask} and alltasks is ${allTasks}.`
     );
