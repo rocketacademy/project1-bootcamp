@@ -11,7 +11,7 @@ const App = () => {
   const [newTask, setNewTask] = useState({});
   // use handleChange
   const handleChange = ({ target }) => {
-    const { name, value } = target; //why need to destructure target?
+    const { name, value } = target; //why need to destructure target for this to work?
     setNewTask((prev) => ({ ...prev, id: currDateEntry, [name]: value }));
   };
 
