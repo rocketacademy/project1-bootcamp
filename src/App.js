@@ -7,20 +7,24 @@ const App = () => {
   // date constant
   const currDateEntry = new Date().toLocaleString() + "";
 
-  //newTask, setNewTask
-  const [newTask, setNewTask] = useState({});
+  //inputvalue for the textbox
+  const [inputValue, setInputValue] = useState("");
+
+  //newTask, setNewTask (from input)
+  const [newTask, setNewTask] = useState([]);
   // use handleChange
-  const handleChange = ({ target }) => {
-    const { name, value } = target; //why need to destructure target for this to work?
-    setNewTask((prev) => ({ ...prev, id: currDateEntry, [name]: value }));
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+    setNewTask((prev) => ({ ...prev, id: currDateEntry, inputValue }));
   };
 
   //allTasks, setAllTasks
   const [allTasks, setAllTasks] = useState([]);
+  //usehandleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
     setAllTasks((prev) => [newTask, ...prev]);
-    setNewTask({}); // what does this do?
+    setInputValue("");
   };
 
   //setTimer
@@ -33,12 +37,11 @@ const App = () => {
           <input
             name="task"
             placeholder="New task"
-            value={newTask.value}
-            // value={newTask.title || ""}
+            value={inputValue}
             onChange={handleChange}
           />
+          <input type="submit" value="Submit" />
         </form>
-        <input type="submit" value="Submit" />
       </header>
     </div>
   );
