@@ -10,24 +10,22 @@ const App = () => {
   //inputvalue for the textbox
   const [inputValue, setInputValue] = useState("");
 
-  //newTask, setNewTask (from input)
-  const [newTask, setNewTask] = useState([]);
+  // //newTask, setNewTask (from input)
+  // const [newTask, setNewTask] = useState([]);
+
+  //allTasks, setAllTasks
+  const [allTasks, setAllTasks] = useState([]);
 
   // use handleChange
   const handleChange = (event) => {
     setInputValue(event.target.value);
-    setNewTask((prev) => ({ ...prev, id: currDateEntry, inputValue }));
   };
 
-  //allTasks, setAllTasks
-  const [allTasks, setAllTasks] = useState([]);
   //usehandleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAllTasks((prev) => [...prev, newTask]);
-    console.log(
-      `inputValue is ${inputValue}, and newtask is ${newTask} and alltasks is ${allTasks}.`
-    );
+    setAllTasks((prev) => [...prev, inputValue]);
+    console.log(`inputValue is ${inputValue}, and alltasks is ${allTasks}.`);
     setInputValue("");
   };
 
@@ -45,6 +43,7 @@ const App = () => {
           />
           <input type="submit" value="Submit" />
         </form>
+        {allTasks}
       </header>
     </div>
   );
