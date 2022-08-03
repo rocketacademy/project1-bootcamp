@@ -42,7 +42,17 @@ const App = () => {
   // let messageListItems = this.state.messages.map((message) => (
   //       <li key={message.key}>{message.val}</li>
 
-  let taskItems = this.state.allTasks.map();
+  let taskItems = allTasks.map((allTasks) => (
+    <table>
+      <tr>
+        <th>Date and Time</th>
+        <th>Task</th>
+        <th>Timer</th>
+      </tr>
+      <tr></tr>
+      <li key={allTasks.currDateEntry}>{allTasks.text}</li>
+    </table>
+  ));
 
   return (
     <div className="App">
@@ -57,7 +67,8 @@ const App = () => {
           />
           <input type="submit" value="Submit" />
         </form>
-        <li>{JSON.stringify(allTasks)}</li>
+        {/* <li>{JSON.stringify(allTasks)}</li> */}
+        <div>{taskItems}</div>
       </header>
     </div>
   );
