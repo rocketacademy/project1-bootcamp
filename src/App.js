@@ -5,31 +5,44 @@ import "./App.css";
 
 const App = () => {
   // date constant
-  const currDateEntry = new Date().toLocaleString() + "";
+  // const currDateEntry = new Date().toLocaleString() + "";
 
   //inputvalue for the textbox
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
 
-  // //newTask, setNewTask (from input)
-  // const [newTask, setNewTask] = useState([]);
+  const [task, setTask] = useState({
+    currDateEntry: new Date().toLocaleString() + "",
+    text: "",
+  });
 
   //allTasks, setAllTasks
   const [allTasks, setAllTasks] = useState([]);
 
   // use handleChange
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    // setInputValue(event.target.value);
+    setTask((prev) => ({ ...prev, text: event.target.value }));
   };
 
   //usehandleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAllTasks((prev) => [...prev, inputValue]);
-    console.log(`inputValue is ${inputValue}, and alltasks is ${allTasks}.`);
-    setInputValue("");
+    // setAllTasks((prev) => [...prev, currDateEntry + " " + inputValue]);
+    setAllTasks((prev) => [...prev, task]);
+    // console.log(`inputValue is ${inputValue}, and alltasks is ${allTasks}.`);
+    // setInputValue("");
+    setTask({ currDateEntry: new Date().toLocaleString() + "", text: "" });
   };
 
   //setTimer
+
+  // rendering message
+
+  //massage allTasks
+  // let messageListItems = this.state.messages.map((message) => (
+  //       <li key={message.key}>{message.val}</li>
+
+  let taskItems = this.state.allTasks.map();
 
   return (
     <div className="App">
@@ -38,12 +51,13 @@ const App = () => {
         <form onSubmit={handleSubmit}>
           <input
             placeholder="New task"
-            value={inputValue}
+            // value={inputValue}
+            value={task.text}
             onChange={handleChange}
           />
           <input type="submit" value="Submit" />
         </form>
-        {allTasks}
+        <li>{JSON.stringify(allTasks)}</li>
       </header>
     </div>
   );
