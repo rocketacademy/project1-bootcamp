@@ -49,8 +49,11 @@ const App = () => {
         <th>Task</th>
         <th>Timer</th>
       </tr>
-      <tr></tr>
-      <li key={allTasks.currDateEntry}>{allTasks.text}</li>
+      <tr>
+        <td>{allTasks.currDateEntry}</td>
+        <td>{allTasks.text}</td>
+        <td>Timer placeholder</td>
+      </tr>
     </table>
   ));
 
