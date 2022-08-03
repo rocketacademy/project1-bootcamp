@@ -34,13 +34,39 @@ const App = () => {
     setTask({ currDateEntry: new Date().toLocaleString() + "", text: "" });
   };
 
-  //setTimer
+  //completedTasks, setCompletedTasks - setCompletedTasks is triggered when the timer runs out
 
-  // rendering message
+  const [completedTasks, setCompletedTasks] = useState([]);
+  const [secondsBalance, setSecondsBalance] = useState([25 * 60]);
+  const [isTaskCompleted, setIsTaskCompleted] = useState(false);
 
-  //massage allTasks
-  // let messageListItems = this.state.messages.map((message) => (
-  //       <li key={message.key}>{message.val}</li>
+  //completed Task pop
+
+  // function timer
+  const timer = () => {
+    if (secondsBalance === 0) {
+      //insert toggleTester wording
+    }
+    setSecondsBalance(secondsBalance - 1);
+  };
+
+  // task completed toggle tester
+
+  const toggleTester = () => {
+    setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+
+    if (isTaskCompleted === true) {
+      var popped = allTasks.pop();
+      setCompletedTasks((prev) => [...prev, popped]);
+    }
+  };
+
+  // useEffect for timer
+  useEffect(() => {}, []);
+
+  // function to push completed tasks to task list
+
+  //massage the tasksLIst rendering function
 
   let taskItems = allTasks.map((allTasks) => (
     <table>
@@ -52,7 +78,13 @@ const App = () => {
       <tr>
         <td>{allTasks.currDateEntry}</td>
         <td>{allTasks.text}</td>
-        <td>Timer placeholder</td>
+        <td>
+          <input
+            type="submit"
+            value="Timer placeholder"
+            onClick={toggleTester}
+          />
+        </td>
       </tr>
     </table>
   ));
@@ -61,6 +93,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <header>Ongoing Tasks</header>
         <form onSubmit={handleSubmit}>
           <input
             placeholder="New task"
@@ -72,6 +105,8 @@ const App = () => {
         </form>
         {/* <li>{JSON.stringify(allTasks)}</li> */}
         <div>{taskItems}</div>
+        <header>Completed Tasks</header>
+        <li>{JSON.stringify(completedTasks)}</li>
       </header>
     </div>
   );
