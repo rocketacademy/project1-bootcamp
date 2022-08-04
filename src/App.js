@@ -56,8 +56,8 @@ const App = () => {
     setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
 
     if (isTaskCompleted === true) {
-      var popped = allTasks.pop();
-      setCompletedTasks((prev) => [...prev, popped]);
+      var shifted = allTasks.shift();
+      setCompletedTasks((prev) => [...prev, shifted]);
     }
   };
 
@@ -70,11 +70,11 @@ const App = () => {
 
   let taskItems = allTasks.map((allTasks) => (
     <table>
-      <tr>
+      {/* <tr>
         <th>Date and Time</th>
         <th>Task</th>
         <th>Timer</th>
-      </tr>
+      </tr> */}
       <tr>
         <td>{allTasks.currDateEntry}</td>
         <td>{allTasks.text}</td>
@@ -89,11 +89,31 @@ const App = () => {
     </table>
   ));
 
+  // massage the completed tasks rendering function
+
+  let completedTaskItems = completedTasks.map((completedTasks) => (
+    <table>
+      {/* <tr>
+        <th>Date and Time</th>
+        <th>Task</th>
+        <th>Timer</th>
+      </tr> */}
+      <tr>
+        <td>{completedTasks.currDateEntry}</td>
+        <td>{completedTasks.text}</td>
+        <td>Number of minutes placeholder</td>
+      </tr>
+    </table>
+  ));
+
+  // return render function
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <header>Ongoing Tasks</header>
+        <header>
+          <h3>Ongoing Tasks</h3>
+        </header>
         <form onSubmit={handleSubmit}>
           <input
             placeholder="New task"
@@ -104,9 +124,22 @@ const App = () => {
           <input type="submit" value="Submit" />
         </form>
         {/* <li>{JSON.stringify(allTasks)}</li> */}
+        <tr>
+          <th>Date and Time </th>
+          <th>Task </th>
+          <th>Timer </th>
+        </tr>
         <div>{taskItems}</div>
-        <header>Completed Tasks</header>
-        <li>{JSON.stringify(completedTasks)}</li>
+        <p></p>
+        <header>
+          <h3>Completed Tasks</h3>
+        </header>
+        <tr>
+          <th>Date and Time </th>
+          <th>Task </th>
+          <th>Time spent </th>
+        </tr>
+        <div> {completedTaskItems}</div>
       </header>
     </div>
   );
