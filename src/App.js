@@ -37,32 +37,54 @@ const App = () => {
   //completedTasks, setCompletedTasks - setCompletedTasks is triggered when the timer runs out
 
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [secondsBalance, setSecondsBalance] = useState([25 * 60]);
+  const [secondsBalance, setSecondsBalance] = useState([5]);
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
-
-  //completed Task pop
 
   // function timer
   const timer = () => {
     if (secondsBalance === 0) {
-      //insert toggleTester wording
+      setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+
+      if (isTaskCompleted === true) {
+        var shifted = allTasks.shift();
+        setCompletedTasks((prev) => [...prev, shifted]);
+      }
     }
     setSecondsBalance(secondsBalance - 1);
   };
 
-  // useEffect for timer
-  useEffect(() => {}, []);
+  // //clearInterval
+  // function myStopFunction() {
+  //   clearInterval(myInterval);
+  // }
+
+  // useEffect for timer which will call setSecondsBalance
+  useEffect(() => {
+    //setInterval
+    const myInterval = setInterval(timer, 1000);
+    return () => {
+      if (secondsBalance === 0) {
+        clearInterval(myInterval);
+        setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+
+        if (isTaskCompleted === true) {
+          var shifted = allTasks.shift();
+          setCompletedTasks((prev) => [...prev, shifted]);
+        }
+      }
+    };
+  }, [secondsBalance]);
 
   // task completed toggle tester
 
-  const toggleTester = () => {
-    setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+  // const toggleTester = () => {
+  //   setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
 
-    if (isTaskCompleted === true) {
-      var shifted = allTasks.shift();
-      setCompletedTasks((prev) => [...prev, shifted]);
-    }
-  };
+  //   if (isTaskCompleted === true) {
+  //     var shifted = allTasks.shift();
+  //     setCompletedTasks((prev) => [...prev, shifted]);
+  //   }
+  // };
 
   //massage the tasksLIst rendering function
 
@@ -77,11 +99,14 @@ const App = () => {
         <td>{allTasks.currDateEntry}</td>
         <td>{allTasks.text}</td>
         <td>
-          <input
+          {secondsBalance}
+          <input type="submit" value="Timer start" onClick={timer} />
+          {/* <input
             type="submit"
             value="Timer placeholder"
-            onClick={toggleTester}
-          />
+            onClick={toggleTester}/> */}
+
+          {/* <input type="submit" value="Timer stop" onClick={useEffect()} /> */}
         </td>
       </tr>
     </table>
