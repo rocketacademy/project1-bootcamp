@@ -50,6 +50,9 @@ const App = () => {
     setSecondsBalance(secondsBalance - 1);
   };
 
+  // useEffect for timer
+  useEffect(() => {}, []);
+
   // task completed toggle tester
 
   const toggleTester = () => {
@@ -60,11 +63,6 @@ const App = () => {
       setCompletedTasks((prev) => [...prev, shifted]);
     }
   };
-
-  // useEffect for timer
-  useEffect(() => {}, []);
-
-  // function to push completed tasks to task list
 
   //massage the tasksLIst rendering function
 
