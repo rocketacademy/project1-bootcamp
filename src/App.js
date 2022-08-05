@@ -42,35 +42,33 @@ const App = () => {
 
   // function timer
   const timer = () => {
-    if (secondsBalance === 0) {
-      setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
-
-      if (isTaskCompleted === true) {
-        var shifted = allTasks.shift();
-        setCompletedTasks((prev) => [...prev, shifted]);
-      }
-    }
     setSecondsBalance(secondsBalance - 1);
   };
 
+  //myInterval
+
+  const myInterval = setInterval(timer, 1000);
+
   // //clearInterval
-  // function myStopFunction() {
-  //   clearInterval(myInterval);
-  // }
+  function myStopFunction() {
+    clearInterval(myInterval);
+    setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+
+    if (isTaskCompleted === true) {
+      var shifted = allTasks.shift();
+      setCompletedTasks((prev) => [...prev, shifted]);
+    }
+  }
 
   // useEffect for timer which will call setSecondsBalance
   useEffect(() => {
     //setInterval
-    const myInterval = setInterval(timer, 1000);
+
     return () => {
       if (secondsBalance === 0) {
+        myStopFunction();
+      } else {
         clearInterval(myInterval);
-        setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
-
-        if (isTaskCompleted === true) {
-          var shifted = allTasks.shift();
-          setCompletedTasks((prev) => [...prev, shifted]);
-        }
       }
     };
   }, [secondsBalance]);
