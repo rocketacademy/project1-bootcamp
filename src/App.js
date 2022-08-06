@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
+// import { CountdownApp } from "./Timer.js";
 import ReactDOM from "react-dom/client";
 import logo from "./logo.png";
 import "./App.css";
 
 const App = () => {
-  // date constant
-  // const currDateEntry = new Date().toLocaleString() + "";
+  //props for timer
 
-  //inputvalue for the textbox
-  // const [inputValue, setInputValue] = useState("");
+  const INITIAL_COUNT = 5;
+
+  const [secondsRemaining, setSecondsRemaining] = useState(INITIAL_COUNT);
+
+  //task related drafting
 
   const [task, setTask] = useState({
     currDateEntry: new Date().toLocaleString() + "",
@@ -37,52 +40,21 @@ const App = () => {
   //completedTasks, setCompletedTasks - setCompletedTasks is triggered when the timer runs out
 
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [secondsBalance, setSecondsBalance] = useState([5]);
+  // const [secondsBalance, setSecondsBalance] = useState([100]);
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);
 
-  // function timer
-  const timer = () => {
-    setSecondsBalance(secondsBalance - 1);
-  };
+  //task toggler
 
-  //myInterval
-
-  const myInterval = setInterval(timer, 1000);
-
-  // //clearInterval
-  function myStopFunction() {
-    clearInterval(myInterval);
-    setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+  var toggler = () => {
+    if (secondsRemaining === 0) {
+      setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
+    }
 
     if (isTaskCompleted === true) {
       var shifted = allTasks.shift();
       setCompletedTasks((prev) => [...prev, shifted]);
     }
-  }
-
-  // useEffect for timer which will call setSecondsBalance
-  useEffect(() => {
-    //setInterval
-
-    return () => {
-      if (secondsBalance === 0) {
-        myStopFunction();
-      } else {
-        clearInterval(myInterval);
-      }
-    };
-  }, [secondsBalance]);
-
-  // task completed toggle tester
-
-  // const toggleTester = () => {
-  //   setIsTaskCompleted((isTaskCompleted) => !isTaskCompleted);
-
-  //   if (isTaskCompleted === true) {
-  //     var shifted = allTasks.shift();
-  //     setCompletedTasks((prev) => [...prev, shifted]);
-  //   }
-  // };
+  };
 
   //massage the tasksLIst rendering function
 
@@ -97,8 +69,14 @@ const App = () => {
         <td>{allTasks.currDateEntry}</td>
         <td>{allTasks.text}</td>
         <td>
-          {secondsBalance}
-          <input type="submit" value="Timer start" onClick={timer} />
+          <div>
+            <CountdownApp
+              secondsRemaining={secondsRemaining}
+              setSecondsRemaining={setSecondsRemaining}
+            />
+          </div>
+          {/* {secondsBalance} */}
+          {/* <input type="submit" value="Timer start" onClick={timer} /> */}
           {/* <input
             type="submit"
             value="Timer placeholder"
@@ -167,3 +145,93 @@ const App = () => {
 };
 
 export default App;
+
+const CountdownApp = ({
+  secondsRemaining,
+  setSecondsRemaining,
+  INITIAL_COUNT,
+}) => {
+  // source: https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+  const useInterval = (callback, delay) => {
+    const savedCallback = useRef();
+
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  };
+
+  // https://stackoverflow.com/a/2998874/1673761
+  const twoDigits = (num) => String(num).padStart(2, "0");
+
+  const STATUS = {
+    STARTED: "Started",
+    STOPPED: "Stopped",
+  };
+
+  // const INITIAL_COUNT = 120;
+
+  // const [secondsRemaining, setSecondsRemaining] = useState(INITIAL_COUNT);
+  const [status, setStatus] = useState(STATUS.STOPPED);
+
+  const secondsToDisplay = secondsRemaining % 60;
+  const minutesRemaining = (secondsRemaining - secondsToDisplay) / 60;
+  const minutesToDisplay = minutesRemaining % 60;
+  const hoursToDisplay = (minutesRemaining - minutesToDisplay) / 60;
+
+  const handleStart = () => {
+    setStatus(STATUS.STARTED);
+  };
+  const handleStop = () => {
+    setStatus(STATUS.STOPPED);
+  };
+  const handleReset = () => {
+    setStatus(STATUS.STOPPED);
+    setSecondsRemaining(INITIAL_COUNT);
+  };
+  useInterval(
+    () => {
+      if (secondsRemaining > 0) {
+        setSecondsRemaining(secondsRemaining - 1);
+      } else {
+        setStatus(STATUS.STOPPED);
+      }
+    },
+    status === STATUS.STARTED ? 1000 : null
+    // passing null stops the interval
+  );
+  return (
+    <div className="App">
+      {/* <h1>React Countdown Demo</h1> */}
+      <button onClick={handleStart} type="button">
+        Start
+      </button>
+      <button onClick={handleStop} type="button">
+        Stop
+      </button>
+      <button onClick={handleReset} type="button">
+        Reset
+      </button>
+      <div
+        style={{
+          padding: 20,
+        }}
+      >
+        {twoDigits(hoursToDisplay)}:{twoDigits(minutesToDisplay)}:
+        {twoDigits(secondsToDisplay)}
+      </div>
+      <div>Status: {status}</div>
+    </div>
+  );
+};
