@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import logo from "./logo.png";
 import CountdownTimer from "./CountdownTimer";
+import Table from "react-bootstrap/Table";
 import "./App.css";
 
 const App = () => {
+  const INITIAL_COUNT = 2;
+
   //task related drafting
   const [task, setTask] = useState({
     id: new Date().toLocaleString() + "",
@@ -42,22 +45,84 @@ const App = () => {
   };
 
   //massage the tasksLIst rendering function
-  let taskItems = allTasks.map((allTasks) => (
-    <table>
-      <tr>
-        <td>{allTasks.id}</td>
-        <td>{allTasks.text}</td>
-        <td>
-          <div>
-            <CountdownTimer updateCompletedTasks={updateCompletedTasks} />
-          </div>
-        </td>
-      </tr>
-    </table>
-  ));
+  // let taskItems = allTasks.map((allTasks) => (
+  //   <Table striped bordered hover size="sm">
+  //     {/* <thead>
+  //       <tr>
+  //         <th>Date and Time </th>
+  //         <th>Task </th>
+  //         <th>Timer </th>
+  //       </tr>
+  //     </thead> */}
+  //     <tbody>
+  //       <tr>
+  //         <td>{allTasks.id}</td>
+  //         <td>{allTasks.text}</td>
+  //         <td>
+  //           <CountdownTimer
+  //             updateCompletedTasks={updateCompletedTasks}
+  //             INITIAL_COUNT={INITIAL_COUNT}
+  //           />
+  //         </td>
+  //       </tr>
+  //     </tbody>
+  //   </Table>
+  // ));
+
+  //rewriting taskItems
+
+  let taskItems = (allTasks) => {
+    return (
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>Date and Time </th>
+            <th>Task </th>
+            <th>Timer </th>
+          </tr>
+        </thead>
+        <tbody>
+          {allTasks.map((allTasks) => {
+            return (
+              <tr>
+                <td>{allTasks.id}</td>
+                <td>{allTasks.text}</td>
+                <td>
+                  <CountdownTimer
+                    updateCompletedTasks={updateCompletedTasks}
+                    INITIAL_COUNT={INITIAL_COUNT}
+                  />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    );
+  };
+
   // massage the completed tasks rendering function
 
-  let completedTaskItems = JSON.stringify(completedTasks);
+  // let completedTaskItems = JSON.stringify(completedTasks);
+
+  let completedTaskItems = completedTasks.map((completedTasks) => (
+    <Table striped bordered hover size="sm">
+      {/* <thead>
+        <tr>
+          <th>Date/time task commenced</th>
+          <th>Task </th>
+          <th>Time spent on task </th>
+        </tr>
+      </thead> */}
+      <tbody>
+        <tr>
+          <td>{completedTasks.id}</td>
+          <td>{completedTasks.text}</td>
+          <td>{INITIAL_COUNT} minutes</td>
+        </tr>
+      </tbody>
+    </Table>
+  ));
 
   return (
     <div className="App">
@@ -74,21 +139,13 @@ const App = () => {
           />
           <input type="submit" value="Submit" />
         </form>
-        <tr>
-          <th>Date and Time </th>
-          <th>Task </th>
-          <th>Timer </th>
-        </tr>
-        <div>{taskItems}</div>
-        <p></p>
+        <div>
+          <p>{taskItems(allTasks)}</p>
+        </div>
+
         <header>
           <h3>Completed Tasks</h3>
         </header>
-        <tr>
-          <th>Date and Time </th>
-          <th>Task </th>
-          <th>Time spent </th>
-        </tr>
         <div> {completedTaskItems}</div>
       </header>
     </div>

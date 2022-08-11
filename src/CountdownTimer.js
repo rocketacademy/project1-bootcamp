@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
+import Table from "react-bootstrap/Table";
 
 const STATUS = {
   STARTED: "Started",
   STOPPED: "Stopped",
 };
 
-const INITIAL_COUNT = 2;
+// const INITIAL_COUNT = 2;
 
-export default function CountdownTimer({ updateCompletedTasks, task }) {
+export default function CountdownTimer({
+  updateCompletedTasks,
+  task,
+  INITIAL_COUNT,
+}) {
   const [secondsRemaining, setSecondsRemaining] = useState(INITIAL_COUNT);
   const [status, setStatus] = useState(STATUS.STOPPED);
 
@@ -44,7 +49,7 @@ export default function CountdownTimer({ updateCompletedTasks, task }) {
   );
   return (
     <div className="App">
-      <h4>Countdown Timer</h4>
+      {/* <h4>Countdown Timer</h4> */}
       <button onClick={handleStart} type="button">
         Start
       </button>
