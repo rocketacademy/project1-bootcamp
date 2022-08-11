@@ -26,7 +26,7 @@ const App = () => {
     console.log(
       `Task is ${task} and task text is ${task.text} and task id is ${
         task.id
-      }. allTasks is ${JSON.stringify(allTasks)}.`
+      }. allTasks is ${JSON.stringify(allTasks.map)}.`
     );
     // setTask({ id: new Date().toLocaleString() + "", text: "" });
   };
@@ -37,7 +37,7 @@ const App = () => {
   const updateCompletedTasks = () => {
     setCompletedTasks((prev) => [...prev, { id: task.id, text: task.text }]);
     console.log(
-      `Task is ${task} and task text is ${task.text} and task id is ${task.id}. AllTask is ${allTasks} and allTask text is ${allTasks.text} and task id is ${allTasks.id}.`
+      `Task is ${task} and task text is ${task.text} and task id is ${task.id}. AllTask is ${allTasks} and allTask text is ${allTasks.text} and allTasks id is ${allTasks.id}.`
     );
   };
 
