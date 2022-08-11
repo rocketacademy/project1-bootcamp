@@ -17,7 +17,11 @@ export default function CountdownTimer({ updateCompletedTasks, task }) {
   const hoursToDisplay = (minutesRemaining - minutesToDisplay) / 60;
 
   const handleStart = () => {
-    setStatus(STATUS.STARTED);
+    if (secondsRemaining === 0) {
+      setStatus(STATUS.STOPPED);
+    } else {
+      setStatus(STATUS.STARTED);
+    }
   };
   const handleStop = () => {
     setStatus(STATUS.STOPPED);
