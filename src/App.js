@@ -78,26 +78,30 @@ const App = () => {
 
   // massage the completed tasks rendering function
 
-  // let completedTaskItems = JSON.stringify(completedTasks);
-
-  let completedTaskItems = completedTasks.map((completedTasks) => (
-    <Table striped bordered hover size="sm">
-      {/* <thead>
-        <tr>
-          <th>Date/time task commenced</th>
-          <th>Task </th>
-          <th>Time spent on task </th>
-        </tr>
-      </thead> */}
-      <tbody>
-        <tr>
-          <td>{completedTasks.id}</td>
-          <td>{completedTasks.text}</td>
-          <td>{INITIAL_COUNT} minutes</td>
-        </tr>
-      </tbody>
-    </Table>
-  ));
+  let completedTaskItems = (completedTasks) => {
+    return (
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>Time started </th>
+            <th>Task </th>
+            <th>Time spent </th>
+          </tr>
+        </thead>
+        <tbody>
+          {completedTasks.map((completedTasks) => {
+            return (
+              <tr>
+                <td>{completedTasks.id}</td>
+                <td>{completedTasks.text}</td>
+                <td>{INITIAL_COUNT} minutes</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    );
+  };
 
   return (
     <div className="App">
@@ -122,7 +126,10 @@ const App = () => {
         <header>
           <h3>Completed Tasks</h3>
         </header>
-        <div> {completedTaskItems}</div>
+        <div>
+          {" "}
+          <p>{completedTaskItems(completedTasks)}</p>
+        </div>
       </header>
     </div>
   );
