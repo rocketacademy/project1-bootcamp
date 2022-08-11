@@ -13,20 +13,32 @@ const App = () => {
   const [allTasks, setAllTasks] = useState([]);
   // use handleChange
   const handleChange = (event) => {
-    setTask((prev) => ({ ...prev, text: event.target.value }));
+    setTask((prev) => ({
+      ...prev,
+      id: new Date().toLocaleString() + "",
+      text: event.target.value,
+    }));
   };
   //usehandleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
     setAllTasks((prev) => [...prev, task]);
-    setTask({ id: new Date().toLocaleString() + "", text: "" });
+    console.log(
+      `Task is ${task} and task text is ${task.text} and task id is ${
+        task.id
+      }. allTasks is ${JSON.stringify(allTasks)}.`
+    );
+    // setTask({ id: new Date().toLocaleString() + "", text: "" });
   };
 
   //completedTasks, setCompletedTasks - setCompletedTasks is triggered when the timer runs out
   const [completedTasks, setCompletedTasks] = useState([]);
 
-  const updateCompletedTasks = (currTask) => {
-    setCompletedTasks((prev) => [...prev, { text: task }]);
+  const updateCompletedTasks = () => {
+    setCompletedTasks((prev) => [...prev, { id: task.id, text: task.text }]);
+    console.log(
+      `Task is ${task} and task text is ${task.text} and task id is ${task.id}. AllTask is ${allTasks} and allTask text is ${allTasks.text} and task id is ${allTasks.id}.`
+    );
   };
 
   //massage the tasksLIst rendering function
