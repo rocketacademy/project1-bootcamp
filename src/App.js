@@ -44,31 +44,6 @@ const App = () => {
     );
   };
 
-  //massage the tasksLIst rendering function
-  // let taskItems = allTasks.map((allTasks) => (
-  //   <Table striped bordered hover size="sm">
-  //     {/* <thead>
-  //       <tr>
-  //         <th>Date and Time </th>
-  //         <th>Task </th>
-  //         <th>Timer </th>
-  //       </tr>
-  //     </thead> */}
-  //     <tbody>
-  //       <tr>
-  //         <td>{allTasks.id}</td>
-  //         <td>{allTasks.text}</td>
-  //         <td>
-  //           <CountdownTimer
-  //             updateCompletedTasks={updateCompletedTasks}
-  //             INITIAL_COUNT={INITIAL_COUNT}
-  //           />
-  //         </td>
-  //       </tr>
-  //     </tbody>
-  //   </Table>
-  // ));
-
   //rewriting taskItems
 
   let taskItems = (allTasks) => {
@@ -76,7 +51,7 @@ const App = () => {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>Date and Time </th>
+            <th>Time started </th>
             <th>Task </th>
             <th>Timer </th>
           </tr>
@@ -129,6 +104,7 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <header>
+          <h1>Don't run down rabbitholes</h1>
           <h3>Ongoing Tasks</h3>
         </header>
         <form onSubmit={handleSubmit}>
