@@ -29,7 +29,7 @@ const App = () => {
     console.log(
       `Task is ${task} and task text is ${task.text} and task id is ${task.id}. allTasks is ${allTasks[0]}.`
     );
-    setTask({ id: new Date().toLocaleString() + "", text: "" });
+    // setTask({ id: new Date().toLocaleString() + "", text: "" });
   };
 
   //completedTasks, setCompletedTasks - setCompletedTasks is triggered when the timer runs out
