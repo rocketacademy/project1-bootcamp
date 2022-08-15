@@ -12,6 +12,8 @@ export default function CountdownTimer({
   updateCompletedTasks,
   task,
   INITIAL_COUNT,
+  audio,
+  alarm,
 }) {
   const [secondsRemaining, setSecondsRemaining] = useState(INITIAL_COUNT);
   const [status, setStatus] = useState(STATUS.STOPPED);
@@ -41,6 +43,7 @@ export default function CountdownTimer({
         setSecondsRemaining(secondsRemaining - 1);
       } else {
         updateCompletedTasks(task);
+        alarm();
         setStatus(STATUS.STOPPED);
       }
     },

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "./logo.png";
 import CountdownTimer from "./CountdownTimer";
 import Table from "react-bootstrap/Table";
+import audio from "./cell-ring.mp3";
 import "./App.css";
 
 const App = () => {
@@ -42,6 +43,12 @@ const App = () => {
     );
   };
 
+  // sound coding
+
+  const alarm = () => {
+    return new Audio(audio).play();
+  };
+
   //rewriting taskItems
 
   let taskItems = (allTasks) => {
@@ -64,6 +71,8 @@ const App = () => {
                   <CountdownTimer
                     updateCompletedTasks={updateCompletedTasks}
                     INITIAL_COUNT={INITIAL_COUNT}
+                    alarm={alarm}
+                    audio={audio}
                   />
                 </td>
               </tr>
