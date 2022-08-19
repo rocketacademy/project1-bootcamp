@@ -9,7 +9,7 @@ const App = () => {
   const INITIAL_COUNT = 2;
 
   //task related drafting
-  const [task, setTask] = useState({
+  const [inputTask, setInputTask] = useState({
     id: new Date().toLocaleString() + "",
     text: "",
   });
@@ -17,7 +17,7 @@ const App = () => {
   const [allTasks, setAllTasks] = useState([]);
   // use handleChange
   const handleChange = (event) => {
-    setTask((prev) => ({
+    setInputTask((prev) => ({
       ...prev,
       id: new Date().toLocaleString() + "",
       text: event.target.value,
@@ -26,20 +26,23 @@ const App = () => {
   //usehandleSubmit
   const handleSubmit = (event) => {
     event.preventDefault();
-    setAllTasks((prev) => [...prev, { id: task.id, text: task.text }]);
+    setAllTasks((prev) => [
+      ...prev,
+      { id: inputTask.id, text: inputTask.text },
+    ]);
     console.log(
-      `Task is ${task} and task text is ${task.text} and task id is ${task.id}. allTasks is ${allTasks[0]}.`
+      `Task is ${inputTask} and task text is ${inputTask.text} and task id is ${inputTask.id}. allTasks is ${allTasks}.`
     );
-    // setTask({ id: new Date().toLocaleString() + "", text: "" });
+    setInputTask({ id: new Date().toLocaleString() + "", text: "" });
   };
 
   //completedTasks, setCompletedTasks - setCompletedTasks is triggered when the timer runs out
   const [completedTasks, setCompletedTasks] = useState([]);
 
-  const updateCompletedTasks = () => {
+  const updateCompletedTasks = (task) => {
     setCompletedTasks((prev) => [...prev, { id: task.id, text: task.text }]);
     console.log(
-      `Task is ${task} and task text is ${task.text} and task id is ${task.id}. AllTask is ${allTasks} and allTask text is ${allTasks.text} and allTasks id is ${allTasks.id}.`
+      `updatedCompletedTask Task is ${task} and task text is ${task.text} and task id is ${task.id}. AllTask is ${allTasks} and allTask text is ${allTasks.text} and allTasks id is ${allTasks.id}.`
     );
   };
 
@@ -62,14 +65,15 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {allTasks.map((allTasks) => {
+          {allTasks.map((task) => {
             return (
               <tr>
-                <td>{allTasks.id}</td>
-                <td>{allTasks.text}</td>
+                <td>{task.id}</td>
+                <td>{task.text}</td>
                 <td>
                   <CountdownTimer
                     updateCompletedTasks={updateCompletedTasks}
+                    task={task}
                     INITIAL_COUNT={INITIAL_COUNT}
                     alarm={alarm}
                     audio={audio}
@@ -121,7 +125,7 @@ const App = () => {
         <form onSubmit={handleSubmit}>
           <input
             placeholder="New task"
-            value={task.text}
+            value={inputTask.text}
             onChange={handleChange}
           />
           <input type="submit" value="Submit" />
