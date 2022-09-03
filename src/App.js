@@ -6,13 +6,18 @@ import audio from "./cell-ring.mp3";
 import "./App.css";
 
 const App = () => {
-  const INITIAL_COUNT = 2;
+  const INITIAL_COUNT = 10;
+  let INITIAL_COUNT_IN_MINUTES = Number(INITIAL_COUNT) / 60;
+  let INITIAL_COUNT_IN_MINUTES_ROUNDED = INITIAL_COUNT_IN_MINUTES.toFixed(2);
+
+  // set initial time related drafting
 
   //task related drafting
   const [inputTask, setInputTask] = useState({
     id: new Date().toLocaleString() + "",
     text: "",
   });
+
   //allTasks, setAllTasks
   const [allTasks, setAllTasks] = useState([]);
   // use handleChange
@@ -61,7 +66,7 @@ const App = () => {
           <tr>
             <th>Time started </th>
             <th>Task </th>
-            <th>Timer </th>
+            <th> Pomodoro timer </th>
           </tr>
         </thead>
         <tbody>
@@ -96,7 +101,7 @@ const App = () => {
           <tr>
             <th>Time started </th>
             <th>Task </th>
-            <th>Time spent </th>
+            <th>Timers used </th>
           </tr>
         </thead>
         <tbody>
@@ -105,7 +110,7 @@ const App = () => {
               <tr>
                 <td>{completedTasks.id}</td>
                 <td>{completedTasks.text}</td>
-                <td>{INITIAL_COUNT} minutes</td>
+                <td>{INITIAL_COUNT_IN_MINUTES_ROUNDED} minutes</td>
               </tr>
             );
           })}
@@ -119,7 +124,8 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <header>
-          <h1>Don't run down rabbitholes</h1>
+          <h1>Rabbithole Prevention!</h1>
+          <h2>Pomodoro Timer</h2>
           <h3>Ongoing Tasks</h3>
         </header>
         <form onSubmit={handleSubmit}>
