@@ -1,0 +1,12 @@
+.navBar {
+  position: sticky;
+  
+}
+
+.navBar-centered p{
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

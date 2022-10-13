@@ -3,7 +3,7 @@ import logo from "./logo.png";
 import "./App.css";
 
 import Hero from "../src/Components/Hero"
-import Menu from "../src/Components/Navbar"
+import Menu from "./Components/Navbar/Navbar"
 import Education from "../src/Components/Education"
 import Project from "../src/Components/Project"
 import Contact  from "./Components/Contact"; 
