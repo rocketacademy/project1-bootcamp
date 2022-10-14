@@ -8,7 +8,7 @@ class Hero extends React.Component{
 
   render(){
     return (
-      <Container className="container">
+      <Container className="container" fluid>
         <img src={picture} alt="" />
         <p className="test">
           <code>

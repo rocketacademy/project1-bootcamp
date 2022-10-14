@@ -9,7 +9,7 @@ import Project from "../src/Components/Project"
 import Contact  from "./Components/Contact"; 
 import Skills from "./Components/Skills";
 import Work from "./Components/WorkExpereince";
-import About from "./Components/About";
+import About from "./Components/About/About";
 
 
 
