@@ -1,26 +1,30 @@
 import React from "react";
-import logo from "../../src/logo.png"
-import "./Hero.css"
-import picture from "../../src/hero.jpg"
-import { Container } from "react-bootstrap";
 
 class Hero extends React.Component{
 
   render(){
     return (
-      <Container className="container" fluid>
-        <img src={picture} alt="" />
-        <p className="test">
-          <code>
-            <h4 style={{ marginBottom: "40px", marginTop: "0px" }}>
-              Hello World!
-            </h4>
-          </code>
-          <h3 style={{ margin: "4px" }}>My name is</h3>
-          <h1 style={{ margin: "4px" }}>Loy Chai Ee</h1>
-          <h3 style={{ margin: "4px" }}>An Aspiring Software Engineer</h3>
+      <div id="home">
+        <h2>Hero</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
         </p>
-      </Container>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
     );
   }
 }

@@ -1,31 +1,43 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import Hero from "../src/Components/Hero"
-import Menu from "./Components/Navbar/Navbar"
-import Education from "../src/Components/Education"
-import Project from "../src/Components/Project"
-import Contact  from "./Components/Contact"; 
+import Contact from "./Components/Contact";
+import About from "./Components/About";
+import Education from "./Components/Education"
+import Menu from "./Components/Navbar";
+import Hero from "./Components/Hero";
 import Skills from "./Components/Skills";
-import Work from "./Components/WorkExpereince";
-import About from "./Components/About/About";
-
-
+import Project from "./Components/Project";
+import Work from "./Components/WorkExpereince"
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      currentPage: 1
+    }
+    this.update = this.update.bind(this)
+  }
+
+  update = (num) => {
+    this.setState({
+      currentPage: num
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Menu />
-          <Hero />
-          <About />
-          <Education />
-          <Skills />
-          <Project />
-          <Work />
-          <Contact />
+          <Menu/>
+          <Hero id="Home" />
+          <About id="about" />
+          <Education id="education" />
+          <Skills id="Skills" />
+          <Project id="Projects" />
+          <Work id="Work" />
+          <Contact id="contact" />
         </header>
       </div>
     );

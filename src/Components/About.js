@@ -1,11 +1,11 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
-class Education extends React.Component{
-
-  render(){
+class About extends React.Component {
+  render() {
     return (
-      <div id="education">
-        <h2>Education</h2>
+      <div>
+        <h2>About</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -29,4 +29,4 @@ class Education extends React.Component{
   }
 }
 
-export default Education
+export default About;
