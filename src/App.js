@@ -7,7 +7,6 @@ import About from "./Components/About";
 import Education from "./Components/Education"
 import Menu from "./Components/Navbar";
 import Hero from "./Components/Hero";
-import Skills from "./Components/Skills";
 import Project from "./Components/Project";
 import Work from "./Components/WorkExpereince"
 
@@ -31,12 +30,11 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <Menu/>
-          <Hero id="Home" />
+          <Hero id="home" />
           <About id="about" />
           <Education id="education" />
-          <Skills id="Skills" />
-          <Project id="Projects" />
-          <Work id="Work" />
+          <Project id="project" />
+          <Work id="work" />
           <Contact id="contact" />
         </header>
       </div>

@@ -6,17 +6,35 @@ body {
   margin: 0;
 }
 
-@media screen and (max-width: 480px) {
-  #home {
-  background-image: url("./hero.jpg");
-  height: 100vh;
-  width: 100vw;
- } 
+.App {
+  /*(background-color: black;*/
 }
 
-#home {
-  background-image: url("./hero.jpg");
-  object-fit: contain;
-  height: 100vh;
-  width: 100vw;
+@media screen and (max-width: 480px) {
+  #about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+}
+
+#about{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+}
+
+#education {
+   max-width: 800px;
+   margin-top: 60px;
+
+}
+
+#work {
+  max-width: 800px;
+  margin-top: 60px;
+}
+
