@@ -6,3 +6,17 @@ body {
   margin: 0;
 }
 
+@media screen and (max-width: 480px) {
+  #home {
+  background-image: url("./hero.jpg");
+  height: 100vh;
+  width: 100vw;
+ } 
+}
+
+#home {
+  background-image: url("./hero.jpg");
+  object-fit: contain;
+  height: 100vh;
+  width: 100vw;
+}
