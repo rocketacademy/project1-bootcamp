@@ -13,7 +13,7 @@ import facebook from "../facebook.svg"
 class About extends React.Component {
   render() {
     return (
-      <div id="about">
+      <Container id="about">
         <Row>
           <Container>
             <Col>
@@ -80,7 +80,7 @@ class About extends React.Component {
             </Col>
           </Container>
         </Row>
-      </div>
+      </Container>
     );
   }
 }

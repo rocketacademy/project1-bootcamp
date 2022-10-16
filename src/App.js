@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Contact from "./Components/Contact";
 import About from "./Components/About";
 import Education from "./Components/Education"
 import Menu from "./Components/Navbar";
@@ -35,7 +34,6 @@ class App extends React.Component {
           <Education id="education" />
           <Project id="project" />
           <Work id="work" />
-          <Contact id="contact" />
         </header>
       </div>
     );
