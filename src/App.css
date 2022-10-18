@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0px;
 }
 
 .App {
@@ -15,23 +15,49 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10vh;
 }
-@media screen and (max-width: 480px) {
+
+@media (max-width: 480px) {
   #about{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 10vh;
  }
+
  #skills-row{
+  width: 90vw;
   display: flex;
   align-items: center; 
   justify-content: center; 
-  flex-direction: row;
+  flex-direction: column;
 }
 }
 
+.center{
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#home{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  padding-top: 5vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0px 0px;
+}
+
 #project{
+  width: 100vw;
   padding-top: 15vh;
   height: 100vh;
   max-width: 700px;
@@ -59,6 +85,10 @@ body {
 }
 
 #work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
   padding-top: 15vh;
   max-width: 800px;
@@ -70,7 +100,7 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  padding-top: 15vh;
+  padding-top: 0vh;
   max-width: 800px;
 }
 
@@ -79,7 +109,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 4vh;
 }
 
 .form-text{
@@ -87,12 +117,12 @@ body {
 }
 
 #form-email{
-  width: 80vw;
+  width: 70vw;
   max-width: 500px;
 }
 
 #form-message{
-  width: 80vw;
+  width: 70vw;
   max-width: 500px;
   height: 30vh;
   max-height: 200px;
@@ -103,15 +133,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   max-width: 1200px;
 }
 
 #skills-row{
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .fixed-top{

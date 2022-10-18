@@ -24,12 +24,13 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <Menu />
+          <Hero />
           <About />
           <Education />
-          <Project />
-          <Work />
-          <Contact />
           <Skills />
+          <Work />
+          <Project />
+          <Contact />
         </header>
       </div>
     );

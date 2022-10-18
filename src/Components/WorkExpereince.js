@@ -12,10 +12,8 @@ function Work() {
   let element;
   if (isMobile) {
     element = <Mobile />;
-    console.log("this is mobile");
   } else {
     element = <PC />;
-    console.log("this is PC");
   }
   return element;
 }
@@ -23,6 +21,9 @@ function Work() {
 function Mobile() {
   return (
     <Container id="work">
+      <h1 style={{ textAlign: "center", marginBottom: "4vh" }}>
+        Professional Work Experience
+      </h1>
       <Tabs
         defaultActiveKey="profile"
         id="justify-tab-example"

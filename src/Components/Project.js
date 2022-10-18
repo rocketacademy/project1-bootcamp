@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import logo from "../logo.png"
+import logo from "../logo.png";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
@@ -14,13 +14,17 @@ function Project() {
 
   return (
     <Container id="project">
-      <h1 style={{ textAlign: "center", marginBottom: "4vh" }}>My Projects</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "2vh" }}>My Projects</h1>
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
         variant="dark"
         style={{
-          paddingBottom: "10vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          paddingBottom: "10vh"
         }}
       >
         <Carousel.Item>
@@ -74,5 +78,3 @@ function Project() {
 }
 
 export default Project;
-
-
