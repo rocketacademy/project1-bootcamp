@@ -14,28 +14,17 @@ function Project() {
 
   return (
     <Container id="project">
-      <h1 style={{textAlign: "center"}}>My Projects</h1>
+      <h1 style={{ textAlign: "center", marginBottom: "4vh" }}>My Projects</h1>
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
-        variant="light"
+        variant="dark"
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          maxWidth: "600px",
-          margin: "auto",
-          paddingBottom: "60px",
+          paddingBottom: "10vh",
         }}
       >
         <Carousel.Item>
-          <Container
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <Container className="cardContainer">
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={logo} />
               <Card.Body>
@@ -50,13 +39,7 @@ function Project() {
           </Container>
         </Carousel.Item>
         <Carousel.Item style={{ alignItems: "center" }}>
-          <Container
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <Container className="cardContainer">
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={logo} />
               <Card.Body>
@@ -71,13 +54,7 @@ function Project() {
           </Container>
         </Carousel.Item>
         <Carousel.Item>
-          <Container
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <Container className="cardContainer">
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={logo} />
               <Card.Body>

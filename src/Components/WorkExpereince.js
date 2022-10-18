@@ -1,13 +1,102 @@
-import { Container } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
-import Row from 'react-bootstrap/Row';
-import Tab from 'react-bootstrap/Tab';
+import React from "react";
+import { Container } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import { useMediaQuery } from "react-responsive";
 
+function Work() {
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+  let element;
+  if (isMobile) {
+    element = <Mobile />;
+    console.log("this is mobile");
+  } else {
+    element = <PC />;
+    console.log("this is PC");
+  }
+  return element;
+}
 
-function Work(){
+function Mobile() {
   return (
-    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+    <Container id="work">
+      <Tabs
+        defaultActiveKey="profile"
+        id="justify-tab-example"
+        className="mb-3"
+        justify
+      >
+        <Tab eventKey="home" title="Cisco">
+          <h2>Cisco Certified Network Associate @ Cisco</h2>
+          <p>
+            <ul>
+              <li>
+                Learnt how to install, operate, configure, and verify basic IPv4
+                and IPv6 networks.
+              </li>
+              <li>
+                Covered configuring network components such as switches,routers,
+                and wireless LAN controllers; managing network devices; and
+                identifying basic security threats.
+              </li>
+              <li>
+                Established a foundation in network programmability, automation,
+                and software-defined networking.
+              </li>
+            </ul>
+          </p>
+        </Tab>
+        <Tab eventKey="profile" title="Profile">
+          <h2>Cisco Certified Network Associate @ Cisco</h2>
+          <p>
+            <ul>
+              <li>
+                Learnt how to install, operate, configure, and verify basic IPv4
+                and IPv6 networks.
+              </li>
+              <li>
+                Covered configuring network components such as switches,routers,
+                and wireless LAN controllers; managing network devices; and
+                identifying basic security threats.
+              </li>
+              <li>
+                Established a foundation in network programmability, automation,
+                and software-defined networking.
+              </li>
+            </ul>
+          </p>
+        </Tab>
+        <Tab eventKey="longer-tab" title="Loooonger Tab">
+          <h2>Cisco Certified Network Associate @ Cisco</h2>
+          <p>
+            <ul>
+              <li>
+                Learnt how to install, operate, configure, and verify basic IPv4
+                and IPv6 networks.
+              </li>
+              <li>
+                Covered configuring network components such as switches,routers,
+                and wireless LAN controllers; managing network devices; and
+                identifying basic security threats.
+              </li>
+              <li>
+                Established a foundation in network programmability, automation,
+                and software-defined networking.
+              </li>
+            </ul>
+          </p>
+        </Tab>
+      </Tabs>
+    </Container>
+  );
+}
+
+function PC() {
+  return (
+    <Tab.Container defaultActiveKey="first">
       <Container id="work">
         <h1>Professional Work Experience</h1>
         <Row>
@@ -17,7 +106,7 @@ function Work(){
                 <Nav.Link eventKey="first">Cisco</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                <Nav.Link eventKey="second">Apple</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
@@ -70,4 +159,4 @@ function Work(){
     </Tab.Container>
   );
 }
-export default Work
+export default Work;

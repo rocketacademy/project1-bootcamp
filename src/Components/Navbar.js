@@ -13,7 +13,7 @@ function Menu() {
       bg="dark"
       variant={"dark"}
       expand="lg"
-      sticky="top"
+      className="fixed-top"
       expanded={expanded}
     >
       <Container>
@@ -26,12 +26,42 @@ function Menu() {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#about">About Me</Nav.Link>
-            <Nav.Link href="#education">Education</Nav.Link>
-            <Nav.Link href="#skills">Skills</Nav.Link>
-            <Nav.Link href="#project">Project</Nav.Link>
-            <Nav.Link href="#work">Work Experince</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
+            <Nav.Link
+              href="#about"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+            >
+              About Me
+            </Nav.Link>
+            <Nav.Link
+              href="#education"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+            >
+              Education
+            </Nav.Link>
+            <Nav.Link
+              href="#skills"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+            >
+              Skills
+            </Nav.Link>
+            <Nav.Link
+              href="#project"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+            >
+              Project
+            </Nav.Link>
+            <Nav.Link
+              href="#work"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+            >
+              Work Experince
+            </Nav.Link>
+            <Nav.Link
+              href="#contact"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+            >
+              Contact
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

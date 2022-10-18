@@ -7,34 +7,114 @@ body {
 }
 
 .App {
-  /*(background-color: black;*/
+  /*background-color: black;*/
 }
 
+.App-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 480px) {
   #about{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+ }
+ #skills-row{
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  flex-direction: row;
 }
 }
 
+#project{
+  padding-top: 15vh;
+  height: 100vh;
+  max-width: 700px;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #about{
+  height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 #education {
+   height: 100vh;
    max-width: 800px;
-   margin-top: 60px;
-
+   padding-top: 15vh;
 }
 
 #work {
+  height: 100vh;
+  padding-top: 15vh;
   max-width: 800px;
-  margin-top: 60px;
 }
 
+#contact{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 15vh;
+  max-width: 800px;
+}
+
+#contact-form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-text{
+  text-align: center;
+}
+
+#form-email{
+  width: 80vw;
+  max-width: 500px;
+}
+
+#form-message{
+  width: 80vw;
+  max-width: 500px;
+  height: 30vh;
+  max-height: 200px;
+}
+
+#skills{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  max-width: 1200px;
+}
+
+#skills-row{
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  flex-direction: column;
+}
+
+.fixed-top{
+  position: sticky;
+  top: 0;
+}
