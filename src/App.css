@@ -1,54 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
-  color: black;
-  font-size: 1rem;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.Nav-bar {
-  background-color: #dddddd;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
 }
 
-.Home-container {
-  background-color: antiquewhite;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-.Home-hero {
-  background-color: bisque;
-  margin-top: 20vh;
-  font-size: 1.5rem;
-}
-
-.About-container {
+.button-container {
   position: relative;
-  margin-top: 100%;
-}
-
-.Whole-step-wrapper {
-  background-color: antiquewhite;
+  inset: auto 0% 5%;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
   display: flex;
   flex-direction: row;
-  max-width: 100vw;
+  align-items: center;
+  justify-content: space-between;
 }
 
-table {
-  vertical-align: top;
-  border-color: black;
-  border: 1px;
+.left-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: none;
+  font-size: 3rem;
+}
+
+.right-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: none;
+  font-size: 3rem;
+}
+
+.scales-table {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  border-collapse: collapse;
-  background-color: blanchedalmond;
+  margin: auto;
+  align-items: stretch;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.scales-table-main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.scales-table-title {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 0.5px solid #dddddd;
+}
+
+.flex-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.flex-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+  border-right: 0.5px solid #dddddd;
+}
+
+.flex-accidentals {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 20%;
 }
