@@ -5,11 +5,12 @@
 }
 
 .App {
+  font-family: "Heebo";
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  background-color: #81b29a;
+  background-color: #f5d6ba;
   color: white;
 }
 
@@ -20,7 +21,6 @@
   padding-left: 10%;
   padding-right: 10%;
   height: 100vh;
-  margin-bottom: 10vh;
 }
 
 .wrapper {
@@ -46,18 +46,23 @@
 }
 
 .button-1 {
-  background-color: transparent;
-  color: white;
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a9caba;
+  color: #4c6a5e;
+  border: solid;
+  padding: 5px;
+  border-radius: 100%;
   font-size: 1.5rem;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .button-1:active {
-  color: #172121;
-}
-
-.button-1:active::after {
-  color: #172121;
+  background-color: #4c6a5e;
+  color: white;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 .about-button-wrapper {
@@ -70,16 +75,17 @@
 .about-button {
   background-color: transparent;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: white;
   border-radius: 20px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: white;
   padding: 9px 15px;
 }
 
 .about-button:active {
+  background-color: white;
   color: #172121;
   border-color: #172121;
 }
@@ -95,15 +101,18 @@
   margin-bottom: 10vh;
 }
 
-.container-flex-left {
+.container-flex {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2vh;
 }
 
 #text-align-left {
@@ -111,4 +120,14 @@
   margin-right: auto;
   padding-left: 5%;
   text-align: left;
+}
+
+.homepage-section {
+  background-color: #81b29a;
+  box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10vh;
+}
+
+.basics-section {
+  color: #202124;
 }

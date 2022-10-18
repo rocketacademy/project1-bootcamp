@@ -17,48 +17,150 @@ const MinorScales = (props) => {
               <h6>Accidentals</h6>
             </div>
           </div>
+
           <div className="scales-table-main">
-            <div className="flex-left">
-              <h4>Am:</h4>
-              <h4>Bm:</h4>
-              <h4>Cm:</h4>
-              <h4>Dm:</h4>
-              <h4>Em:</h4>
-              <h4>Fm:</h4>
-              <h4>Gm:</h4>
-              <h4>C#m:</h4>
-              <h4>D#m:</h4>
-              <h4>F#m:</h4>
-              <h4>G#m:</h4>
-              <h4>Bbm:</h4>
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Am:</button>
+              </div>
+              <div className="flex-text">
+                <p>A B C D E F G A</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>nil</p>
+              </div>
             </div>
-            <div className="flex-text">
-              <p>A B C D E F G A</p>
-              <p>B C# D E F# G A B</p>
-              <p>C D Eb F G Ab Bb C</p>
-              <p>D E F G A Bb C D</p>
-              <p>E F# G A B C D E</p>
-              <p>F G Ab Bb C Db Eb F</p>
-              <p>G A Bb C D Eb F G</p>
-              <p>C# D# E F# G# A B C#</p>
-              <p>D# F F# G# A# B C# D#</p>
-              <p>F# G# A B C# D E F#</p>
-              <p>G# A# B C# D# E F# G#</p>
-              <p>Bb C Db Eb F Gb Ab Bb</p>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Bm:</button>
+              </div>
+              <div className="flex-text">
+                <p>B C# D E F# G A B</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>2 Sharps</p>
+              </div>
             </div>
-            <div className="flex-accidentals">
-              <p>nil</p>
-              <p>2 Sharps</p>
-              <p>3 Flats</p>
-              <p>1 Flat</p>
-              <p>1 Sharp</p>
-              <p>4 Flats</p>
-              <p>2 Flats</p>
-              <p>5 Sharps</p>
-              <p>6 Sharps</p>
-              <p>4 Sharps</p>
-              <p>6 Sharps</p>
-              <p>5 Flats</p>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Cm:</button>
+              </div>
+              <div className="flex-text">
+                <p>C D Eb F G Ab Bb C</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>3 Flats</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Dm:</button>
+              </div>
+              <div className="flex-text">
+                <p>D E F G A Bb C D</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>1 Flat</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Em:</button>
+              </div>
+              <div className="flex-text">
+                <p>E F# G A B C D E</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>1 Sharp</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Fm:</button>
+              </div>
+              <div className="flex-text">
+                <p>F G Ab Bb C Db Eb F</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>4 Flats</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Gm:</button>
+              </div>
+              <div className="flex-text">
+                <p>G A Bb C D Eb F G</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>2 Flats</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">C#m:</button>
+              </div>
+              <div className="flex-text">
+                <p>C# D# E F# G# A B C#</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>5 Sharps</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">D#m:</button>
+              </div>
+              <div className="flex-text">
+                <p>D# F F# G# A# B C# D#</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>6 Sharps</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">F#m:</button>
+              </div>
+              <div className="flex-text">
+                <p>F# G# A B C# D E F#</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>4 Sharps</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">G#m:</button>
+              </div>
+              <div className="flex-text">
+                <p>G# A# B C# D# E F# G#</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>6 Sharps</p>
+              </div>
+            </div>
+
+            <div className="flex-row">
+              <div className="flex-left">
+                <button className="note-button">Bb:</button>
+              </div>
+              <div className="flex-text">
+                <p>Bb C Db Eb F Gb Ab Bb</p>
+              </div>
+              <div className="flex-accidentals">
+                <p>5 Flats</p>
+              </div>
             </div>
           </div>
         </div>

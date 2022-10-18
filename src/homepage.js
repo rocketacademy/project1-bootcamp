@@ -16,7 +16,7 @@ const FirstPage = (props) => {
             className="about-button"
             onClick={() => eventHandler(!showAbout)}
           >
-            About
+            about
           </button>
         </div>
       </div>

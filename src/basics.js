@@ -1,10 +1,14 @@
 import "./App.css";
 
-const Basics = (props) => {
+const Basics = () => {
   return (
     <>
-      <div className="basics-section" id="padding-container">
-        <div className="container-flex-left">
+      <div
+        className="basics-section"
+        id="padding-container"
+        ref={basicsSection}
+      >
+        <div className="container-flex">
           <div className="title">What are Scales?</div>
           <p id="text-align-left">
             In music theory, a scale is any set of musical notes ordered by
