@@ -1,20 +1,25 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import Homepage from "./homepage";
+import Basics from "./basics";
+import Intervals from "./intervals";
+import MajorScales from "./major-scales";
+import MinorScales from "./minor-scales";
+import CircleOfFifths from "./circle-of-fifths";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  // const [pageNumber, setPageNumber] = useState(1);
+
+  return (
+    <div className="App">
+      <Homepage />
+      <Basics />
+      <Intervals />
+      <MajorScales />
+      <MinorScales />
+      <CircleOfFifths />
+    </div>
+  );
 }
 
 export default App;

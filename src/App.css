@@ -1,19 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
+  background-color: #81b29a;
+  color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  height: 100vh;
+  margin-bottom: 10vh;
+}
+
+.wrapper {
+  margin-top: 20vh;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.home-title-1 {
+  font-size: 1.5rem;
+  margin-bottom: 2vh;
+}
+
+.home-title-2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.button-1-wrapper {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 30%;
+}
+
+.button-1 {
+  background-color: transparent;
   color: white;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.button-1:active {
+  color: #172121;
+}
+
+.button-1:active::after {
+  color: #172121;
+}
+
+.about-button-wrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  inset: auto 0% 5%;
+}
+
+.about-button {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  padding: 9px 15px;
+}
+
+.about-button:active {
+  color: #172121;
+  border-color: #172121;
+}
+
+.about-button:active::after {
+  color: #172121;
+  border-color: #172121;
+}
+
+#padding-container {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-bottom: 10vh;
+}
+
+.container-flex-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#text-align-left {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  text-align: left;
 }

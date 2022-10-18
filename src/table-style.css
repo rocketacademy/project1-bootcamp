@@ -1,0 +1,53 @@
+.scales-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  align-items: stretch;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.scales-table-main {
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.scales-table-title {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 0.5px solid #dddddd;
+  margin-bottom: 2vh;
+}
+
+.flex-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
+  text-align: left;
+}
+
+.flex-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+  border-right: 0.5px solid #dddddd;
+}
+
+.flex-accidentals {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 20%;
+}
