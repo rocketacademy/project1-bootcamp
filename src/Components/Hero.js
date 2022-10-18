@@ -37,7 +37,20 @@ function PCHero(){
 function MobileHero(){
   return (
     <Container id="home" fluid>
-      <p></p>
+      <div style={{textAlign: "center"}}>
+        <h6>
+          <code>Hello world! My name is </code>
+        </h6>
+        <h1>Loy Chai Ee</h1>
+        <h3>An Aspiring Software Engineer</h3>
+        <p>
+          Undergraduate at Nanyang Technological University<br/>
+          Loves tinkering around with software and electronics!
+        </p>
+        <Button href="../resume-sample.pdf" download>
+          Download Resume
+        </Button>
+      </div>
     </Container>
   );;
 }
