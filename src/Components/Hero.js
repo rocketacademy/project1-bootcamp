@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 import Button from "react-bootstrap/Button";
+import aos from "aos";
+import "aos/dist/aos.css";
 
 function Hero() {
+  useEffect(() => {
+    aos.init({ duration: 1500 });
+  }, []);
   const isMobile = useMediaQuery({ query: "(max-width: 720px)" });
   let element;
   if (isMobile) {

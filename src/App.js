@@ -18,16 +18,16 @@ class App extends React.Component {
       currentPage: 1,
     };
   }
-
+  
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Menu />
+          <Menu/>
           <Hero />
           <About />
           <Education />
-          <Skills />
+          <Skills data-aos="fade-up" />
           <Work />
           <Project />
           <Contact />

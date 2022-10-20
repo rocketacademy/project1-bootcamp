@@ -1,18 +1,26 @@
 // Make sure to run npm install @formspree/react
 // For more help visit https://formspr.ee/react-help
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { Container } from "react-bootstrap";
+import aos from "aos";
+import "aos/dist/aos.css";
+
+
 function Contact() {
   const [state, handleSubmit] = useForm("meqdlqak");
   const [message, updateMessage] = useState("Message");
   const [email, updateEmail] = useState("Your email");
 
+  useEffect(() => {
+    aos.init({ duration: 1500 });
+  }, []);
+
   if (state.succeeded) {
     return <p>Thanks for joining!</p>;
   }
   return (
-    <Container id="contact">
+    <Container data-aos="fade-up" id="contact">
       <h1>Get in Touch</h1>
       <p className="form-text">
         I’m currently looking for any new opportunities to get more professional

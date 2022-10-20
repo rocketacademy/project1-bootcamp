@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
@@ -6,8 +6,14 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useMediaQuery } from "react-responsive";
+import aos from "aos";
+import "aos/dist/aos.css";
+
 
 function Work() {
+  useEffect(() => {
+    aos.init({ duration: 1500 });
+  }, []);
   const isMobile = useMediaQuery({ query: "(max-width: 720px)" });
   let element;
   if (isMobile) {

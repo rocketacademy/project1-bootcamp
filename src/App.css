@@ -15,14 +15,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10vh;
+  gap: 5vh;
 }
 
-@media ( min-width: 720px ) {
- .idk_test{
-  flex-direction: row;
- }
-}
 
 @media only screen and (min-width: 1150px){
   body #home{
@@ -30,6 +25,10 @@ body {
   background-image: url(../src/hero1.jpg);
   background-repeat: no-repeat;
   align-items: flex-start;
+  }
+  body #skillswrap{
+  gap: 5vw;
+  flex-direction: row;
   }
 }
 
@@ -39,6 +38,10 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   align-items: flex-start;
+  }
+  body #skillswrap{
+  gap: 5vw;
+  flex-direction: row;
   }
 }
 
@@ -133,11 +136,11 @@ body {
 
 #skills{
   width: 80vw;
-  gap: 3vh;
   flex-direction: column; 
 }
 
-.idk_test{
+#skillswrap{
+  gap: 0vh;
   flex-direction: column;
 }
 
@@ -154,4 +157,8 @@ body {
 
 .cardSize{
   width: clamp(100px, 65vw, 18rem);
+}
+
+.col label{
+  padding: 1vh
 }
