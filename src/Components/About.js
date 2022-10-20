@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import aos from "aos";
+import "aos/dist/aos.css";
+
 import whatsapp from "../whatsapp.svg";
 import calender from "../calendar.svg";
 import email from "../envelope.svg";
@@ -7,10 +10,8 @@ import telegram from "../telegram.svg";
 import location from "../location.svg";
 import linkedIn from "../linkedin.svg";
 import github from "../github.svg";
-import google from "../google.svg";
 import facebook from "../facebook.svg";
-import aos from "aos";
-import "aos/dist/aos.css";
+import leetcode from "../leetcode.svg"
 
 function About() {
   useEffect(() => {
@@ -80,24 +81,44 @@ function About() {
         }}
       >
         <a href="https://github.com/LoyChaiEe" target="_blank" rel="noreferrer">
-          <img src={github} style={{ padding: "6px" }} alt="github" />
+          <img
+            src={github}
+            className="logo"
+            style={{ padding: "6px" }}
+            alt="github"
+          />
         </a>
         <a
           href="https://www.linkedin.com/in/loy-chai-889711235/"
           target="_blank"
           rel="noreferrer"
         >
-          <img src={linkedIn} style={{ padding: "6px" }} alt="linkedIn" />
+          <img
+            src={linkedIn}
+            className="logo"
+            style={{ padding: "6px" }}
+            alt="linkedIn"
+          />
         </a>
         <a
           href="https://www.facebook.com/chaiee.loy"
           target="_blank"
           rel="noreferrer"
         >
-          <img src={facebook} style={{ padding: "6px" }} alt="facebook" />
+          <img
+            src={facebook}
+            className="logo"
+            style={{ padding: "6px" }}
+            alt="facebook"
+          />
         </a>
         <a href="google" target="_blank">
-          <img src={google} style={{ padding: "6px" }} alt="google" />
+          <img
+            src={leetcode}
+            className="logo"
+            style={{ padding: "6px" }}
+            alt="leetcode"
+          />
         </a>
       </div>
     </Container>

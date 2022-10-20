@@ -7,7 +7,7 @@ body {
 }
 
 .App {
-  /*background-color: black;*/
+  background-color: 		#112240;
 }
 
 .App-header{
@@ -45,6 +45,11 @@ body {
   }
 }
 
+.logo{
+  width: 100px;
+  height: 100px;
+  object-fit:cover
+}
 
 .center{
   position: absolute;
@@ -57,6 +62,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: black;
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -161,4 +167,18 @@ body {
 
 .col label{
   padding: 1vh
+}
+
+.tab-pane{
+  border-left: 5px solid aquamarine;
+  padding-left: 10px
+}
+
+.nav-pills{
+      --bs-nav-pills-border-radius: 0px !important;
+}
+
+.nav-pills .nav-link.active {
+    background-color: aqua !important;
+    color: navy !important
 }

@@ -35,6 +35,7 @@ function Mobile() {
         id="justify-tab-example"
         className="mb-3"
         justify
+        
       >
         <Tab eventKey="home" title="Cisco">
           <h2>Cisco Certified Network Associate @ Cisco</h2>
@@ -105,21 +106,26 @@ function PC() {
   return (
     <Tab.Container defaultActiveKey="first">
       <Container id="work">
-        <h1>Professional Work Experience</h1>
-        <Row>
-          <Col sm={3}>
+        <h1 style={{borderColor: "aquamarine !important", border: "solid"}}>Professional Work Experience</h1>
+        <Row style={{borderTop: "solid 5px aquamarine"}}>
+          <Col
+            sm={3}
+            style={{ borderColor: "aquamarine", borderWidth: "10px", padding: "0px" }}
+          >
             <Nav variant="pills" className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="first">Cisco</Nav.Link>
+              <Nav.Item >
+                <Nav.Link eventKey="first" style={{ color: "aquamarine" }} >
+                  Cisco
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="second">Apple</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
-          <Col sm={9}>
-            <Tab.Content>
-              <Tab.Pane eventKey="first">
+          <Col sm={9} style={{padding: "0px"}}>
+            <Tab.Content >
+              <Tab.Pane eventKey="first" style={{ color: "#20C20E" }}>
                 <h2>Cisco Certified Network Associate @ Cisco</h2>
                 <p>
                   <ul>
@@ -139,7 +145,7 @@ function PC() {
                   </ul>
                 </p>
               </Tab.Pane>
-              <Tab.Pane eventKey="second">
+              <Tab.Pane eventKey="second" style={{ color: "aquamarine" }}>
                 <h2>Cisco Certified Network Associate @ Cisco</h2>
                 <p>
                   <ul>

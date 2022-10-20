@@ -8,7 +8,8 @@ function Skills() {
   useEffect(() => {
     aos.init({ duration: 1500 });
   }, []);
-  const expert = 85,
+  const 
+    expert = 85,
     basics = 33,
     intermediate = 50,
     advanced = 70;
