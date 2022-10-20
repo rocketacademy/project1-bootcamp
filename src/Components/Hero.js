@@ -1,10 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import pic from "../hero1.jpg"
 import { useMediaQuery } from "react-responsive";
 import Button from "react-bootstrap/Button";
 
-function Hero(){
+function Hero() {
   const isMobile = useMediaQuery({ query: "(max-width: 720px)" });
   let element;
   if (isMobile) {
@@ -15,12 +14,10 @@ function Hero(){
   return element;
 }
 
-
-function PCHero(){
+function PCHero() {
   return (
     <Container id="home" fluid>
-      <img src={pic} alt="test" />
-      <div className="center">
+      <div className="HeroLeft">
         <h6>
           <code>Hello world! My name is </code>
         </h6>
@@ -34,17 +31,18 @@ function PCHero(){
   );
 }
 
-function MobileHero(){
+function MobileHero() {
   return (
     <Container id="home" fluid>
-      <div style={{textAlign: "center"}}>
+      <div style={{ textAlign: "center" }}>
         <h6>
           <code>Hello world! My name is </code>
         </h6>
         <h1>Loy Chai Ee</h1>
         <h3>An Aspiring Software Engineer</h3>
         <p>
-          Undergraduate at Nanyang Technological University<br/>
+          Undergraduate at Nanyang Technological University
+          <br />
           Loves tinkering around with software and electronics!
         </p>
         <Button href="../resume-sample.pdf" download>
@@ -52,7 +50,7 @@ function MobileHero(){
         </Button>
       </div>
     </Container>
-  );;
+  );
 }
 
-export default Hero
+export default Hero;

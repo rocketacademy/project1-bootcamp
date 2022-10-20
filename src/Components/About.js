@@ -19,15 +19,11 @@ class About extends React.Component {
             <Col>
               <h2>About me</h2>
               <p>
-                Hello! I'm Chai Ee. I'm usually that chill down-to-earth guy and
-                once you get to know me, you will find that I'm an extrovert who
-                communicates well and builds positive relationships with people
-                I work with. I am a creative and quick-thinking individual who
-                is always game for a challenge. I like coding, especially
-                frontend, and am passionate about designing eye-catching and
-                secured websites. Fresh out of university, I'm looking for
-                exciting opportunities to jumpstart my career journey in the IT
-                and Cyber Security field.
+                Hello! I'm Chai Ee. I enjoy tinkering around with electronics/software and finding out how things work.
+                I like coding, especially backend, and am passionate about secured websites and optimizing algorithms.
+                I always seek to look for ways that we can improve our products.
+                Currently, I am an undergraduate at Nanyang Technological University, studying Electrical and Electronic Engineering. 
+                I'm looking for exciting opportunities to gain professional exposure in the Software/IT Industry to jumpstart my career!
               </p>
             </Col>
           </Container>
@@ -46,7 +42,7 @@ class About extends React.Component {
                   </div>
                   <div>
                     <img src={telegram} alt="telegram" />
-                    <span style={{ marginLeft: "6px" }}>Telegram hanle</span>
+                    <span style={{ marginLeft: "6px" }}>Telegram handle</span>
                   </div>
                   <div>
                     <img src={email} alt="email" />
@@ -65,21 +61,41 @@ class About extends React.Component {
                   <div>Singapore, Singapore</div>
                 </Col>
               </Row>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <a href="https://github.com/LoyChaiEe" target="_blank" rel="noreferrer"><img src={github} style={{ padding: "6px" }} alt="github" /></a>
-                <a href="https://www.linkedin.com/in/loy-chai-889711235/" target="_blank" rel="noreferrer"><img src={linkedIn} style={{ padding: "6px" }} alt="linkedIn" /></a>
-                <a href="https://www.facebook.com/chaiee.loy" target="_blank" rel="noreferrer"><img src={facebook} style={{ padding: "6px" }} alt="facebook" /></a>
-                <a href="google" target="_blank"><img src={google} style={{ padding: "6px" }} alt="google" /></a>
-              </div>
             </Col>
           </Container>
         </Row>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <a
+            href="https://github.com/LoyChaiEe"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={github} style={{ padding: "6px" }} alt="github" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/loy-chai-889711235/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={linkedIn} style={{ padding: "6px" }} alt="linkedIn" />
+          </a>
+          <a
+            href="https://www.facebook.com/chaiee.loy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={facebook} style={{ padding: "6px" }} alt="facebook" />
+          </a>
+          <a href="google" target="_blank">
+            <img src={google} style={{ padding: "6px" }} alt="google" />
+          </a>
+        </div>
       </Container>
     );
   }

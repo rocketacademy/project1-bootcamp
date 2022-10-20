@@ -19,23 +19,21 @@ function Project() {
         activeIndex={index}
         onSelect={handleSelect}
         variant="dark"
+        className="centerDiv"
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           flexDirection: "column",
-          paddingBottom: "10vh"
+          paddingBottom: "10vh",
         }}
       >
         <Carousel.Item>
-          <Container className="cardContainer">
-            <Card style={{ width: "18rem" }}>
+          <Container className="centerDiv">
+            <Card className="cardSize">
               <Card.Img variant="top" src={logo} />
               <Card.Body>
                 <Card.Title>Card Title 1</Card.Title>
                 <Card.Text>
                   Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  the bulk of the card's content.daDAFsagdasdgasdfdsagffawgohionaviniowdno
                 </Card.Text>
                 <Button variant="primary">Go somewhere</Button>
               </Card.Body>
@@ -43,8 +41,8 @@ function Project() {
           </Container>
         </Carousel.Item>
         <Carousel.Item style={{ alignItems: "center" }}>
-          <Container className="cardContainer">
-            <Card style={{ width: "18rem" }}>
+          <Container className="centerDiv">
+            <Card className="cardSize">
               <Card.Img variant="top" src={logo} />
               <Card.Body>
                 <Card.Title>Card Title 2</Card.Title>
@@ -58,8 +56,8 @@ function Project() {
           </Container>
         </Carousel.Item>
         <Carousel.Item>
-          <Container className="cardContainer">
-            <Card style={{ width: "18rem" }}>
+          <Container className="centerDiv">
+            <Card className="cardSize">
               <Card.Img variant="top" src={logo} />
               <Card.Body>
                 <Card.Title>Card Title 3</Card.Title>
@@ -76,5 +74,6 @@ function Project() {
     </Container>
   );
 }
+
 
 export default Project;

@@ -8,7 +8,7 @@ import Tabs from "react-bootstrap/Tabs";
 import { useMediaQuery } from "react-responsive";
 
 function Education() {
-  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 720px)" });
   let element;
   if (isMobile) {
     element = <Mobile />;
