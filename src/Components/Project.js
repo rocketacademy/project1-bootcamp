@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import logo from "../logo.png";
+import logo from "../assets/logos/logo.png";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";

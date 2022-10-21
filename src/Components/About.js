@@ -4,15 +4,16 @@ import aos from "aos";
 import "aos/dist/aos.css";
 import { useMediaQuery } from "react-responsive";
 
-import whatsapp from "../whatsapp.svg";
-import calender from "../calendar.svg";
-import email from "../envelope.svg";
-import telegram from "../telegram.svg";
-import location from "../location.svg";
-import linkedIn from "../linkedin.svg";
-import github from "../github.svg";
-import facebook from "../facebook.svg";
-import leetcode from "../leetcode.svg";
+//import pictures nightmare
+import whatsapp from "../assets/logos/whatsapp.svg";
+import calender from "../assets/logos//calendar.svg";
+import email from "../assets/logos//envelope.svg";
+import telegram from "../assets/logos//telegram.svg";
+import location from "../assets/logos//location.svg";
+import linkedIn from "../assets/logos//linkedin.svg";
+import github from "../assets/logos//github.svg";
+import facebook from "../assets/logos//facebook.svg";
+import leetcode from "../assets/logos//leetcode.svg";
 
 function About() {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 359px)" });

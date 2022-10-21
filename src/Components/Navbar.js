@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../test-logo.png"
+import logo from "../assets/logos/logo.png"; // placeholder till fil a better logo
 import { useState } from "react";
 
 function Menu() {
@@ -50,18 +50,18 @@ function Menu() {
               3. Skills
             </Nav.Link>
             <Nav.Link
-              href="#project"
-              onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
-            >
-              4. Project
-            </Nav.Link>
-            <Nav.Link
               href="#work"
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              5. Work Experince
+              4. Work Expereince
+            </Nav.Link>
+            <Nav.Link
+              href="#project"
+              onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+            >
+              5. Projects
             </Nav.Link>
             <Nav.Link
               href="#contact"

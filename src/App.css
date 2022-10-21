@@ -22,7 +22,7 @@ body {
 @media only screen and (min-width: 1150px){
   body #home{
   background-size: cover;
-  background-image: url(../src/hero1.jpg);
+  background-image: url(../src/assets/images/hero1.jpg);
   background-repeat: no-repeat;
   align-items: flex-start;
   }
@@ -34,7 +34,7 @@ body {
 
 @media only screen and (min-width: 720px) and (max-width: 1150px){
   body #home {
-  background-image: url(../src/hero1.jpg);
+  background-image: url(../src/assets/images/hero1.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   align-items: flex-start;
@@ -144,7 +144,7 @@ body {
 /* Education Tab CSS */
 
 #education {
-   max-width: 800px;
+   flex-direction: column;
    padding-top: 15vh;
 }
 
@@ -170,7 +170,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4vh;
+  gap: 1vh;
 }
 
 #form-email{
@@ -197,6 +197,26 @@ body {
   padding-left: 0.5vw;
 }
 
+.submit-button{
+  width: 20vw;
+  max-width: 200px;
+  height: 5vw;
+  max-height: 40px;
+  margin-bottom: 5vh;
+  border: solid;
+  border-color: #028A0F;
+  border-radius: 1vw;
+  background-color: transparent;
+  color: #028A0F;
+  font-size: clamp(16px, 1.5vh, 32px);
+  font-weight: bold;
+}
+
+.submit-button:hover{
+  color: black;
+  background-color: #028A0F
+}
+
 /* Misc CSS */
 
 .centerDiv{
@@ -208,15 +228,6 @@ body {
 
 .col label{
   padding: 1vh
-}
-
-.tab-pane{
-  border-left: 5px solid aquamarine;
-  padding-left: 10px
-}
-
-.nav-pills{
-      --bs-nav-pills-border-radius: 0px !important;
 }
 
 .nav-pills .nav-link.active {
