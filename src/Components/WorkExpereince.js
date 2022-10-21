@@ -27,7 +27,7 @@ function Work() {
 function Mobile() {
   return (
     <Container id="work">
-      <h1 style={{ textAlign: "center", marginBottom: "4vh" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "4vh"}}>
         Professional Work Experience
       </h1>
       <Tabs
@@ -106,15 +106,27 @@ function PC() {
   return (
     <Tab.Container defaultActiveKey="first">
       <Container id="work">
-        <h1 style={{borderColor: "aquamarine !important", border: "solid"}}>Professional Work Experience</h1>
-        <Row style={{borderTop: "solid 5px aquamarine"}}>
+        <h1
+          style={{
+            borderColor: "aquamarine !important",
+            border: "solid",
+            fontSize: "3vw",
+          }}
+        >
+          Professional Work Experience
+        </h1>
+        <Row style={{ borderTop: "solid 5px aquamarine" }}>
           <Col
             sm={3}
-            style={{ borderColor: "aquamarine", borderWidth: "10px", padding: "0px" }}
+            style={{
+              borderColor: "aquamarine",
+              borderWidth: "10px",
+              padding: "0px",
+            }}
           >
             <Nav variant="pills" className="flex-column">
-              <Nav.Item >
-                <Nav.Link eventKey="first" style={{ color: "aquamarine" }} >
+              <Nav.Item>
+                <Nav.Link eventKey="first" style={{ color: "aquamarine" }}>
                   Cisco
                 </Nav.Link>
               </Nav.Item>
@@ -123,9 +135,12 @@ function PC() {
               </Nav.Item>
             </Nav>
           </Col>
-          <Col sm={9} style={{padding: "0px"}}>
-            <Tab.Content >
-              <Tab.Pane eventKey="first" style={{ color: "#20C20E" }}>
+          <Col sm={9} style={{ padding: "0px" }}>
+            <Tab.Content>
+              <Tab.Pane
+                eventKey="first"
+                style={{ color: "#20C20E", fontSize: "1.2vw" }}
+              >
                 <h2>Cisco Certified Network Associate @ Cisco</h2>
                 <p>
                   <ul>

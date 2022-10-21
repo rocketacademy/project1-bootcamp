@@ -9,7 +9,7 @@ function Hero() {
   useEffect(() => {
     aos.init({ duration: 1500 });
   }, []);
-  const isMobile = useMediaQuery({ query: "(max-width: 720px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 719px)" });
   let element;
   if (isMobile) {
     element = <MobileHero />;
@@ -21,14 +21,34 @@ function Hero() {
 
 function PCHero() {
   return (
-    <Container id="home" fluid>
-      <div className="HeroLeft">
-        <h6>
-          <code>Hello world! My name is </code>
-        </h6>
-        <h1>Loy Chai Ee</h1>
-        <h3>An Aspiring Software Engineer</h3>
-        <Button href="../resume-sample.pdf" download>
+    <Container id="home" className="centerDiv" fluid>
+      <div
+        className="HeroLeft"
+        style={{
+          color: "#20C20E",
+          fontFamily: "Share Tech Mono",
+        }}
+      >
+        <h6 style={{ fontSize: "1.2vw" }}>Hello world! My name is</h6>
+        <h1 style={{ fontSize: "5.5vw", fontWeight: "bolder" }}>Loy Chai Ee</h1>
+        <h3 style={{ fontSize: "2.4vw" }}>An Aspiring Software Engineer</h3>
+        <p style={{ fontSize: "1.2vw" }}>
+          Undergraduate at Nanyang Technological University
+          <br />
+          Loves tinkering around with software and electronics!
+        </p>
+        <Button
+          href="../resume-sample.pdf"
+          download
+          style={{
+            fontSize: "1.8vw",
+            paddingLeft: "16px",
+            backgroundColor: "transparent",
+            borderColor: "#20C20E",
+            fontWeight: "bolder",
+            color: "#20C20E",
+          }}
+        >
           Download Resume
         </Button>
       </div>
@@ -38,11 +58,15 @@ function PCHero() {
 
 function MobileHero() {
   return (
-    <Container id="home" fluid>
-      <div style={{ textAlign: "center" }}>
-        <h6>
-          <code>Hello world! My name is </code>
-        </h6>
+    <Container id="home" className="centerDiv" fluid>
+      <div
+        style={{
+          textAlign: "center",
+          color: "#20C20E",
+          fontFamily: "Share Tech Mono",
+        }}
+      >
+        <h6>Hello world! My name is</h6>
         <h1>Loy Chai Ee</h1>
         <h3>An Aspiring Software Engineer</h3>
         <p>

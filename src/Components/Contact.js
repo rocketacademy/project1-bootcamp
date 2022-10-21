@@ -17,21 +17,42 @@ function Contact() {
   }, []);
 
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    return (
+      <p
+        style={{
+          color: "#20C20E",
+          fontFamily: 'Monoton',
+          fontSize: "5.5vw"
+        }}
+      >
+        Thanks for joining!
+      </p>
+    );
   }
   return (
-    <Container data-aos="fade-up" id="contact">
+    <Container
+      data-aos="fade-up"
+      id="contact"
+      style={{
+        color: "#20C20E",
+        fontFamily: "Share Tech Mono",
+        justifyContent: "flex-start",
+      }}
+    >
       <h1>Get in Touch</h1>
-      <p className="form-text">
+      <p style={{ textAlign: "center", fontSize: "max(1vw, 20px)" }}>
         I’m currently looking for any new opportunities to get more professional
-        experience in the software development industry.<br></br> I like to find
-        new oppurtunities to improve myself.<br></br> My inbox is always open,
-        so just hit me up and say Hello!<br></br>Even if it is not
-        software-related, it is nice to have a chat :&#41; <br></br>
+        experience in the software development industry.
+      </p>
+      <p style={{ textAlign: "center", fontSize: "max(1vw, 20px)" }}>
+        My inbox is always open, so just hit me up and say Hello! Even if it is
+        not software-related, it is nice to have a chat
+      </p>
+      <p style={{ textAlign: "center", fontSize: "max(1vw, 20px)" }}>
         Just leave a message and your email and you are good to go!
       </p>
       <form onSubmit={handleSubmit} id="contact-form">
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email" style={{textAlign: "left"}}></label>
         <input
           id="form-email"
           type="email"

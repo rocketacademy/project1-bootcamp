@@ -7,7 +7,7 @@ body {
 }
 
 .App {
-  background-color: 		#112240;
+  background-color: #112240;
 }
 
 .App-header{
@@ -27,7 +27,7 @@ body {
   align-items: flex-start;
   }
   body #skillswrap{
-  gap: 5vw;
+  gap: 2vw;
   flex-direction: row;
   }
 }
@@ -38,29 +38,29 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   align-items: flex-start;
+  height: clamp(30vh, 100vw, 50vh);
   }
   body #skillswrap{
   gap: 5vw;
   flex-direction: row;
   }
-}
-
-.logo{
-  width: 100px;
-  height: 100px;
-  object-fit:cover
-}
-
-.center{
+  body .HeroLeft{
   position: absolute;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(15%, -65%);
+}
+}
+/* NavBar CSS */
+
+.fixed-top{
+  position: sticky;
+  top: 0;
+  background-color: black !important
 }
 
+/*Hero CSS  */
+
 #home{
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   background-color: black;
   width: 100vw;
@@ -78,16 +78,10 @@ body {
   transform: translate(15%, -65%);
 }
 
-#project{
-  width: 100vw;
-  padding-top: 15vh;
-  flex-direction: column;
-  max-width: 700px;
-}
+/* About Me CSS  */
 
 #about{
   width: 80vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,18 +89,73 @@ body {
   padding-top: 15vh;
 }
 
+.logo{
+  width: 5vh;
+  height: 5vh;
+  object-fit:cover
+}
+
+.logo-small{
+  width: max(16px, 1.5vw);
+  height: max(16px, 1.5vw);
+}
+
+/* Skills CSS  */
+
+#skills{  
+  width: 100vw;
+  flex-direction: column;
+}
+
+#skillswrap{
+  gap: 0vh;
+  flex-direction: column;
+}
+
+.expert{
+  background-color: #900603 !important
+}
+
+.intermediate{
+  background-color: aqua !important
+}
+
+.advanced{
+  background-color: #51087E !important
+}
+
+.basics{
+  background-color: #028A0F !important
+}
+
+/* Project CSS*/
+
+#project{
+  width: 100vw;
+  padding-top: 15vh;
+  flex-direction: column;
+  max-width: 700px;
+}
+
+.cardSize{
+  width: clamp(100px, 65vw, 18rem);
+}
+
+/* Education Tab CSS */
 
 #education {
    max-width: 800px;
    padding-top: 15vh;
 }
 
+/* Work Tab CSS */
+
 #work {
   flex-direction: column;
   padding-top: 10%;
-  max-width: 800px;
 }
 
+/* Contact CSS  */
 #contact{
   display: flex;
   align-items: center;
@@ -124,13 +173,15 @@ body {
   gap: 4vh;
 }
 
-.form-text{
-  text-align: center;
-}
-
 #form-email{
   width: 70vw;
   max-width: 500px;
+  background-color: transparent;
+  border: solid;
+  border-color: #028A0F;
+  color: #028A0F;
+  border-radius: 1vh;
+  padding-left: 0.5vw;
 }
 
 #form-message{
@@ -138,22 +189,15 @@ body {
   max-width: 500px;
   height: 30vh;
   max-height: 200px;
+  background-color: transparent;
+  border: solid;
+  border-color: #028A0F;
+  color: #028A0F;
+  border-radius: 1vh;
+  padding-left: 0.5vw;
 }
 
-#skills{
-  width: 80vw;
-  flex-direction: column; 
-}
-
-#skillswrap{
-  gap: 0vh;
-  flex-direction: column;
-}
-
-.fixed-top{
-  position: sticky;
-  top: 0;
-}
+/* Misc CSS */
 
 .centerDiv{
   display: flex;
@@ -161,9 +205,6 @@ body {
   justify-content: center;
 }
 
-.cardSize{
-  width: clamp(100px, 65vw, 18rem);
-}
 
 .col label{
   padding: 1vh

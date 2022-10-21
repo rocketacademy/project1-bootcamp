@@ -10,11 +10,13 @@ function Menu() {
 
   return (
     <Navbar
-      bg="dark"
       variant={"dark"}
       expand="lg"
       className="fixed-top"
       expanded={expanded}
+      style={{
+        fontFamily: "Share Tech Mono",
+      }}
     >
       <Container>
         <Navbar.Brand href="#home">
@@ -25,42 +27,48 @@ function Menu() {
           onClick={() => setExpanded(expanded ? false : "expanded")}
         />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ml-auto" style={{ gap: "16px" }}>
             <Nav.Link
               href="#about"
               onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              About Me
+              1. About Me
             </Nav.Link>
             <Nav.Link
               href="#education"
               onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              Education
+              2. Education
             </Nav.Link>
             <Nav.Link
               href="#skills"
               onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              Skills
+              3. Skills
             </Nav.Link>
             <Nav.Link
               href="#project"
               onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              Project
+              4. Project
             </Nav.Link>
             <Nav.Link
               href="#work"
               onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              Work Experince
+              5. Work Experince
             </Nav.Link>
             <Nav.Link
               href="#contact"
               onClick={() => setExpanded(expanded ? false : "expanded")}
+              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
             >
-              Contact
+              6. Contact
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
