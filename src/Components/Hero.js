@@ -6,9 +6,6 @@ import aos from "aos";
 import "aos/dist/aos.css";
 
 function Hero() {
-  useEffect(() => {
-    aos.init({ duration: 1500 });
-  }, []);
   const isMobile = useMediaQuery({ query: "(max-width: 719px)" });
   let element;
   if (isMobile) {
@@ -20,6 +17,9 @@ function Hero() {
 }
 
 function PCHero() {
+  useEffect(() => {
+    aos.init({ duration: 1500 });
+  }, []);
   return (
     <Container id="home" className="centerDiv" fluid>
       <div
@@ -29,10 +29,19 @@ function PCHero() {
           fontFamily: "Share Tech Mono",
         }}
       >
-        <h6 style={{ fontSize: "1.2vw" }}>Hello world! My name is</h6>
-        <h1 style={{ fontSize: "5.5vw", fontWeight: "bolder" }}>Loy Chai Ee</h1>
-        <h3 style={{ fontSize: "2.4vw" }}>An Aspiring Software Engineer</h3>
-        <p style={{ fontSize: "1.2vw" }}>
+        <h6 data-aos="fade-right" style={{ fontSize: "1.2vw" }}>
+          Hello world! My name is
+        </h6>
+        <h1
+          data-aos="fade-right"
+          style={{ fontSize: "5.5vw", fontWeight: "bolder" }}
+        >
+          Loy Chai Ee
+        </h1>
+        <h3 data-aos="fade-right" style={{ fontSize: "2.4vw" }}>
+          An Aspiring Software Engineer
+        </h3>
+        <p data-aos="fade-right" style={{ fontSize: "1.2vw" }}>
           Undergraduate at Nanyang Technological University
           <br />
           Loves tinkering around with software and electronics!
@@ -47,8 +56,9 @@ function PCHero() {
             borderColor: "#20C20E",
             fontWeight: "bolder",
             color: "#20C20E",
-            borderWidth: "5px"
+            borderWidth: "5px",
           }}
+          data-aos="fade-right"
         >
           Download Resume
         </Button>

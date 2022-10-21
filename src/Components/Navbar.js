@@ -47,6 +47,7 @@ function Menu() {
                 fontSize: "max(1vw, 24px)",
                 fontWeight: "bold",
               }}
+              data-transition="none"
             >
               2. Education
             </Nav.Link>

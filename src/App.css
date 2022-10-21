@@ -124,6 +124,7 @@ a {
 #skills {
   width: 100vw;
   flex-direction: column;
+  padding-top: 15vh
 }
 
 #skillswrap {
@@ -184,7 +185,7 @@ a {
 
 #work {
   flex-direction: column;
-  padding-top: 10%;
+  padding-top: 15vh;
 }
 
 /* Contact CSS  */
@@ -283,7 +284,6 @@ a {
   background-color: #028a0f !important;
 }
 
-.nav-link.active {
-  background-color: aqua !important;
-  border-color: aqua !important;
+.navbar-collapse {
+        height: auto !important;
 }
