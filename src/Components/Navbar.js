@@ -31,42 +31,66 @@ function Menu() {
             <Nav.Link
               href="#about"
               onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+              style={{
+                color: "#20C20E",
+                fontSize: "max(1vw, 24px)",
+                fontWeight: "bold",
+              }}
             >
               1. About Me
             </Nav.Link>
             <Nav.Link
               href="#education"
               onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+              style={{
+                color: "#20C20E",
+                fontSize: "max(1vw, 24px)",
+                fontWeight: "bold",
+              }}
             >
               2. Education
             </Nav.Link>
             <Nav.Link
               href="#skills"
               onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+              style={{
+                color: "#20C20E",
+                fontSize: "max(1vw, 24px)",
+                fontWeight: "bold",
+              }}
             >
               3. Skills
             </Nav.Link>
             <Nav.Link
               href="#work"
               onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+              style={{
+                color: "#20C20E",
+                fontSize: "max(1vw, 28px)",
+                fontWeight: "bold",
+              }}
             >
               4. Work Expereince
             </Nav.Link>
             <Nav.Link
               href="#project"
               onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+              style={{
+                color: "#20C20E",
+                fontSize: "max(1vw, 24px)",
+                fontWeight: "bold",
+              }}
             >
               5. Projects
             </Nav.Link>
             <Nav.Link
               href="#contact"
               onClick={() => setExpanded(expanded ? false : "expanded")}
-              style={{ color: "#20C20E", fontSize: "1vw", fontWeight: "bold" }}
+              style={{
+                color: "#20C20E",
+                fontSize: "max(1vw, 24px)",
+                fontWeight: "bold",
+              }}
             >
               6. Contact
             </Nav.Link>

@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -10,7 +10,7 @@ body {
   background-color: #112240;
 }
 
-.App-header{
+.App-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,60 +18,59 @@ body {
   gap: 5vh;
 }
 
-a{
+a {
   text-decoration: none !important;
 }
 
-
-@media only screen and (min-width: 1150px){
-  body #home{
-  background-size: cover;
-  background-image: url(../src/assets/images/hero1.jpg);
-  background-repeat: no-repeat;
-  align-items: flex-start;
-  }
-  body #skillswrap{
-  gap: 2vw;
-  flex-direction: row;
-  }
-
-  body .contact-text-align{
-  text-align: center;
-  }
-}
-
-@media only screen and (min-width: 720px) and (max-width: 1150px){
+@media only screen and (min-width: 1150px) {
   body #home {
-  background-image: url(../src/assets/images/hero1.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  align-items: flex-start;
-  height: clamp(30vh, 100vw, 50vh);
+    background-size: cover;
+    background-image: url(../src/assets/images/hero1.jpg);
+    background-repeat: no-repeat;
+    align-items: flex-start;
   }
-  body #skillswrap{
-  gap: 5vw;
-  flex-direction: row;
+  body #skillswrap {
+    gap: 2vw;
+    flex-direction: row;
   }
-  body .HeroLeft{
-  position: absolute;
-  top: 50%;
-  transform: translate(15%, -65%);
+
+  body .contact-text-align {
+    text-align: center;
+  }
 }
-body .contact-text-align{
-  text-align: center;
+
+@media only screen and (min-width: 720px) and (max-width: 1150px) {
+  body #home {
+    background-image: url(../src/assets/images/hero1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: flex-start;
+    height: clamp(30vh, 100vw, 50vh);
+  }
+  body #skillswrap {
+    gap: 5vw;
+    flex-direction: row;
+  }
+  body .HeroLeft {
+    position: absolute;
+    top: 50%;
+    transform: translate(15%, -65%);
+  }
+  body .contact-text-align {
+    text-align: center;
   }
 }
 /* NavBar CSS */
 
-.fixed-top{
+.fixed-top {
   position: sticky;
   top: 0;
-  background-color: black !important
+  background-color: black !important;
 }
 
 /*Hero CSS  */
 
-#home{
+#home {
   flex-direction: column;
   background-color: black;
   width: 100vw;
@@ -83,7 +82,16 @@ body .contact-text-align{
   margin: 0px 0px;
 }
 
-.HeroLeft{
+.hero-button {
+  font-size: 1.8vw;
+  padding-left: 16px;
+  background-color: transparent;
+  border-color: #20c20e;
+  font-weight: bolder;
+  color: #20c20e;
+}
+
+.HeroLeft {
   position: absolute;
   top: 50%;
   transform: translate(15%, -65%);
@@ -91,7 +99,7 @@ body .contact-text-align{
 
 /* About Me CSS  */
 
-#about{
+#about {
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -100,76 +108,76 @@ body .contact-text-align{
   padding-top: 15vh;
 }
 
-.logo{
+.logo {
   width: 5vh;
   height: 5vh;
-  object-fit:cover
+  object-fit: cover;
 }
 
-.logo-small{
+.logo-small {
   width: max(16px, 1.5vw);
   height: max(16px, 1.5vw);
 }
 
 /* Skills CSS  */
 
-#skills{  
+#skills {
   width: 100vw;
   flex-direction: column;
 }
 
-#skillswrap{
+#skillswrap {
   gap: 0vh;
   flex-direction: column;
 }
 
-.expert{
-  background-color: #900603 !important
+.expert {
+  background-color: #900603 !important;
 }
 
-.intermediate{
-  background-color: aqua !important
+.intermediate {
+  background-color: aqua !important;
 }
 
-.advanced{
-  background-color: #51087E !important
+.advanced {
+  background-color: #51087e !important;
 }
 
-.basics{
-  background-color: #028A0F !important
+.basics {
+  background-color: #028a0f !important;
 }
 
 /* Project CSS*/
 
-#project{
+#project {
   width: 100vw;
   padding-top: 15vh;
   flex-direction: column;
   max-width: 700px;
 }
 
-.cardSize{
+.cardSize {
   width: max(240px, 20vw);
   border-radius: 1vw !important;
 }
 
-.link-button{
+.link-button {
   background-color: transparent !important;
-  color: #028A0F !important;
+  color: #028a0f !important;
   border-width: 3px !important;
-  border-color: #028A0F !important;
+  border-color: #028a0f !important;
 }
 
-.link-button:hover{
-  background-color: #028A0F !important;
+.link-button:hover {
+  background-color: #028a0f !important;
   color: black !important;
 }
 
 /* Education Tab CSS */
 
 #education {
-   flex-direction: column;
-   padding-top: 15vh;
+  flex-direction: column;
+  padding-top: 15vh;
 }
 
 /* Work Tab CSS */
@@ -180,7 +188,7 @@ body .contact-text-align{
 }
 
 /* Contact CSS  */
-#contact{
+#contact {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,7 +197,7 @@ body .contact-text-align{
   max-width: 800px;
 }
 
-#contact-form{
+#contact-form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,74 +205,73 @@ body .contact-text-align{
   gap: 1vh;
 }
 
-#form-email{
+#form-email {
   width: 70vw;
   max-width: 500px;
   background-color: transparent;
   border: solid;
-  border-color: #028A0F;
-  color: #028A0F;
+  border-color: #028a0f;
+  color: #028a0f;
   border-radius: 1vh;
   padding-left: 0.5vw;
 }
 
-#form-message{
+#form-message {
   width: 70vw;
   max-width: 500px;
   height: 30vh;
   max-height: 200px;
   background-color: transparent;
   border: solid;
-  border-color: #028A0F;
-  color: #028A0F;
+  border-color: #028a0f;
+  color: #028a0f;
   border-radius: 1vh;
   padding-left: 0.5vw;
 }
 
-.contact-text-align{
+.contact-text-align {
   text-align: left;
   font-size: max(1.2vw, 20px);
 }
 
-.submit-button{
+.submit-button {
   width: 100px;
   height: 40px;
   margin-bottom: 5vh;
   border: solid;
-  border-color: #028A0F;
+  border-color: #028a0f;
   border-radius: 1vw;
   background-color: transparent;
-  color: #028A0F;
+  color: #028a0f;
   font-size: clamp(16px, 1.5vh, 32px);
   font-weight: bold;
 }
 
-.submit-button:hover{
+.submit-button:hover {
   color: black;
-  background-color: #028A0F
+  background-color: #028a0f;
 }
 
 /* Misc CSS */
 
-.centerDiv{
+.centerDiv {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
-.col label{
-  padding: 1vh
+.col label {
+  padding: 1vh;
 }
 
 .nav-pills .nav-link.active {
-    background-color: aqua !important;
-    color: navy !important
+  background-color: aqua !important;
+  color: navy !important;
 }
 
 .carousel-indicators button {
-  width: min(5vw,2rem) !important;
-  height: min(5vw,2rem) !important;
+  width: min(5vw, 2rem) !important;
+  height: min(5vw, 2rem) !important;
   border-radius: 50%;
 }
 
@@ -273,8 +280,10 @@ body .contact-text-align{
 }
 
 .carousel-indicators .active {
-  background-color: #028A0F !important;
+  background-color: #028a0f !important;
 }
 
-
-
+.nav-link.active {
+  background-color: aqua !important;
+  border-color: aqua !important;
+}

@@ -47,6 +47,7 @@ function PCHero() {
             borderColor: "#20C20E",
             fontWeight: "bolder",
             color: "#20C20E",
+            borderWidth: "5px"
           }}
         >
           Download Resume
@@ -74,7 +75,19 @@ function MobileHero() {
           <br />
           Loves tinkering around with software and electronics!
         </p>
-        <Button href="../resume-sample.pdf" download>
+        <Button
+          href="../resume-sample.pdf"
+          download
+          style={{
+            fontSize: "20px",
+            paddingLeft: "16px",
+            backgroundColor: "transparent",
+            borderColor: "#20C20E",
+            fontWeight: "bolder",
+            color: "#20C20E",
+            borderWidth: "2px",
+          }}
+        >
           Download Resume
         </Button>
       </div>

@@ -25,18 +25,31 @@ function Work() {
 
 function Mobile() {
   return (
-    <Container id="work">
+    <Container
+      id="work"
+      style={{
+        color: "#20C20E",
+        fontFamily: "Share Tech Mono",
+      }}
+    >
       <h1 style={{ textAlign: "center", marginBottom: "4vh" }}>
         Professional Work Experience
       </h1>
       <Tabs
-        defaultActiveKey="profile"
+        defaultActiveKey="cisco"
         id="justify-tab-example"
         className="mb-3"
-        justify
+        fill
       >
-        <Tab eventKey="home" title="Cisco">
-          <h2>Cisco Certified Network Associate @ Cisco</h2>
+        <Tab eventKey="cisco" title="Cisco">
+          <h2 style={{ color: "#0047AB", fontWeight: "bold" }}>
+            Cisco Certified Network Associate{" "}
+            <span style={{ color: "red", fontWeight: "bold" }}>@</span>{" "}
+            <span style={{ color: "magenta", fontWeight: "bold" }}>Cisco</span>
+          </h2>
+          <span style={{ fontSize: "max(1.2vw, 16px)", color: "aquamarine" }}>
+            From Mar 2017 to May 2017
+          </span>
           <p>
             <ul>
               <li>
@@ -55,42 +68,59 @@ function Mobile() {
             </ul>
           </p>
         </Tab>
-        <Tab eventKey="profile" title="Profile">
-          <h2>Cisco Certified Network Associate @ Cisco</h2>
+        <Tab eventKey="st-electronic" title="ST Electronics">
+          <h2 style={{ color: "#0047AB", fontWeight: "bold" }}>
+            Software Development Intern{" "}
+            <span style={{ color: "red", fontWeight: "bold" }}>@</span>{" "}
+            <span style={{ color: "magenta", fontWeight: "bold" }}>
+              ST Electronics
+            </span>
+          </h2>
+          <span style={{ fontSize: "max(1.2vw, 16px)", color: "aquamarine" }}>
+            From Mar 2017 to May 2017
+          </span>
           <p>
             <ul>
               <li>
-                Learnt how to install, operate, configure, and verify basic IPv4
-                and IPv6 networks.
+                Provided cybersecurity professionals with a conducive
+                environment to enhance their skills through the practical
+                application of knowledge.
               </li>
               <li>
-                Covered configuring network components such as switches,routers,
-                and wireless LAN controllers; managing network devices; and
-                identifying basic security threats.
+                Assisted in STECA's deep domain expertise and operational
+                experience
               </li>
               <li>
-                Established a foundation in network programmability, automation,
-                and software-defined networking.
+                Imparted realistic cybersecurity training to the trainees using
+                real-life use cases to correlate with key concepts of
+                cybersecurity.
               </li>
             </ul>
           </p>
         </Tab>
-        <Tab eventKey="longer-tab" title="Loooonger Tab">
-          <h2>Cisco Certified Network Associate @ Cisco</h2>
+        <Tab eventKey="steca" title="STECA">
+          <h2 style={{ color: "#0047AB", fontWeight: "bold" }}>
+            Certified Cyber Security Operations Specialist{" "}
+            <span style={{ color: "red", fontWeight: "bold" }}>@</span>{" "}
+            <span style={{ color: "magenta", fontWeight: "bold" }}>STECA</span>
+          </h2>
+          <span style={{ fontSize: "max(1.2vw, 16px)", color: "aquamarine" }}>
+            From Mar 2017 to May 2017
+          </span>
           <p>
             <ul>
               <li>
-                Learnt how to install, operate, configure, and verify basic IPv4
-                and IPv6 networks.
+                Applied best practices in cyber defence skills to detect,
+                contain, eradicate and report on successful cyber breaches.
               </li>
               <li>
-                Covered configuring network components such as switches,routers,
-                and wireless LAN controllers; managing network devices; and
-                identifying basic security threats.
+                Understood the team-based, communication and reporting skills
+                required to deliver an effective and efficient response to a
+                cyber breach.
               </li>
               <li>
-                Established a foundation in network programmability, automation,
-                and software-defined networking.
+                Evaluated on explaining the entire kill-chain of various
+                cyber-attacks.
               </li>
             </ul>
           </p>
@@ -134,8 +164,16 @@ function PC() {
                   eventKey="second"
                   style={{ fontSize: "max(1.2vw, 20px)", fontWeight: "bold" }}
                 >
-                 ST Electronics
+                  ST Electronics
                 </Nav.Link>
+                <Nav.Item>
+                  <Nav.Link
+                    eventKey="third"
+                    style={{ fontSize: "max(1.2vw, 20px)", fontWeight: "bold" }}
+                  >
+                    STECA
+                  </Nav.Link>
+                </Nav.Item>
               </Nav.Item>
             </Nav>
           </Col>
@@ -206,6 +244,41 @@ function PC() {
                       Imparted realistic cybersecurity training to the trainees
                       using real-life use cases to correlate with key concepts
                       of cybersecurity.
+                    </li>
+                  </ul>
+                </p>
+              </Tab.Pane>
+              <Tab.Pane
+                eventKey="third"
+                style={{ fontSize: "max(1.2vw, 20px)" }}
+              >
+                <h2 style={{ color: "#0047AB", fontWeight: "bold" }}>
+                  Certified Cyber Security Operations Specialist{" "}
+                  <span style={{ color: "red", fontWeight: "bold" }}>@</span>{" "}
+                  <span style={{ color: "magenta", fontWeight: "bold" }}>
+                    STECA
+                  </span>
+                </h2>
+                <span
+                  style={{ fontSize: "max(1.2vw, 16px)", color: "aquamarine" }}
+                >
+                  From Mar 2017 to May 2017
+                </span>
+                <p>
+                  <ul>
+                    <li>
+                      Applied best practices in cyber defence skills to detect,
+                      contain, eradicate and report on successful cyber
+                      breaches.
+                    </li>
+                    <li>
+                      Understood the team-based, communication and reporting
+                      skills required to deliver an effective and efficient
+                      response to a cyber breach.
+                    </li>
+                    <li>
+                      Evaluated on explaining the entire kill-chain of various
+                      cyber-attacks.
                     </li>
                   </ul>
                 </p>

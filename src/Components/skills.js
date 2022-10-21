@@ -25,7 +25,7 @@ function Skills() {
       <h1
         style={{
           fontFamily: "Rubik Mono One",
-          fontSize: "max(3.0vw, 1.2em)",
+          fontSize: "max(3.0vw, 22pt)",
         }}
       >
         3.Professional Skills
