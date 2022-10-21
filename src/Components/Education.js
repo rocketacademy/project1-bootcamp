@@ -112,7 +112,6 @@ function PC() {
           style={{
             fontFamily: "Rubik Mono One",
             fontSize: "max(3vw, 32pt)",
-            fontWeight: "bold",
           }}
         >
           2.Education/Courses

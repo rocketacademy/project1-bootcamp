@@ -6,7 +6,6 @@ import { Container } from "react-bootstrap";
 import aos from "aos";
 import "aos/dist/aos.css";
 
-
 function Contact() {
   const [state, handleSubmit] = useForm("meqdlqak");
   const [message, updateMessage] = useState("Message");
@@ -21,8 +20,8 @@ function Contact() {
       <p
         style={{
           color: "#20C20E",
-          fontFamily: 'Monoton',
-          fontSize: "5.5vw"
+          fontFamily: "Monoton",
+          fontSize: "5.5vw",
         }}
       >
         Thanks for joining!
@@ -39,20 +38,27 @@ function Contact() {
         justifyContent: "flex-start",
       }}
     >
-      <h1>Get in Touch</h1>
-      <p style={{ textAlign: "center", fontSize: "max(1vw, 20px)" }}>
+      <h1
+        style={{
+          fontFamily: "Rubik Mono One",
+          fontSize: "max(2vw, 22pt)",
+        }}
+      >
+        6.Get in Touch
+      </h1>
+      <p className="contact-text-align">
         I’m currently looking for any new opportunities to get more professional
         experience in the software development industry.
       </p>
-      <p style={{ textAlign: "center", fontSize: "max(1vw, 20px)" }}>
+      <p className="contact-text-align">
         My inbox is always open, so just hit me up and say Hello! Even if it is
         not software-related, it is nice to have a chat
       </p>
-      <p style={{ textAlign: "center", fontSize: "max(1vw, 20px)" }}>
+      <p className="contact-text-align">
         Just leave a message and your email and you are good to go!
       </p>
       <form onSubmit={handleSubmit} id="contact-form">
-        <label htmlFor="email" style={{textAlign: "left"}}></label>
+        <label htmlFor="email" style={{ textAlign: "left" }}></label>
         <input
           id="form-email"
           type="email"
@@ -73,7 +79,11 @@ function Contact() {
           errors={state.errors}
         />
         <br></br>
-        <button className="submit-button" type="submit" disabled={state.submitting}>
+        <button
+          className="submit-button"
+          type="submit"
+          disabled={state.submitting}
+        >
           Submit
         </button>
       </form>
@@ -81,4 +91,4 @@ function Contact() {
   );
 }
 
-export default Contact
+export default Contact;

@@ -114,7 +114,6 @@ function PC() {
           style={{
             fontSize: "max(3vw, 32pt)",
             fontFamily: "Rubik Mono One",
-            fontWeight: "bold",
           }}
         >
           4.Professional Work Experience

@@ -18,6 +18,10 @@ body {
   gap: 5vh;
 }
 
+a{
+  text-decoration: none !important;
+}
+
 
 @media only screen and (min-width: 1150px){
   body #home{
@@ -29,6 +33,10 @@ body {
   body #skillswrap{
   gap: 2vw;
   flex-direction: row;
+  }
+
+  body .contact-text-align{
+  text-align: center;
   }
 }
 
@@ -49,6 +57,9 @@ body {
   top: 50%;
   transform: translate(15%, -65%);
 }
+body .contact-text-align{
+  text-align: center;
+  }
 }
 /* NavBar CSS */
 
@@ -138,7 +149,20 @@ body {
 }
 
 .cardSize{
-  width: clamp(100px, 65vw, 18rem);
+  width: max(240px, 20vw);
+  border-radius: 1vw !important;
+}
+
+.link-button{
+  background-color: transparent !important;
+  color: #028A0F !important;
+  border-width: 3px !important;
+  border-color: #028A0F !important;
+}
+
+.link-button:hover{
+  background-color: #028A0F !important;
+  color: black !important;
 }
 
 /* Education Tab CSS */
@@ -197,11 +221,14 @@ body {
   padding-left: 0.5vw;
 }
 
+.contact-text-align{
+  text-align: left;
+  font-size: max(1.2vw, 20px);
+}
+
 .submit-button{
-  width: 20vw;
-  max-width: 200px;
-  height: 5vw;
-  max-height: 40px;
+  width: 100px;
+  height: 40px;
   margin-bottom: 5vh;
   border: solid;
   border-color: #028A0F;
@@ -234,3 +261,20 @@ body {
     background-color: aqua !important;
     color: navy !important
 }
+
+.carousel-indicators button {
+  width: min(5vw,2rem) !important;
+  height: min(5vw,2rem) !important;
+  border-radius: 50%;
+}
+
+.carousel-indicators button:not(:first-child) {
+  margin-left: 1rem !important;
+}
+
+.carousel-indicators .active {
+  background-color: #028A0F !important;
+}
+
+
+
