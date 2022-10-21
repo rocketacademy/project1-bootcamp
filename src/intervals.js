@@ -11,6 +11,7 @@ const Intervals = () => {
             <p>Half tone - H</p>
           </div>
         </div>
+        <div className="separation-line"></div>
         <div>
           <h2 className="text-color">C: C D E F G A B C</h2>
           <div>
