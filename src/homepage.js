@@ -3,13 +3,13 @@ import "./App.css";
 import About from "./components/about";
 import Welcome from "./homepage-welcome";
 
-const FirstPage = (props) => {
+const HomePage = () => {
   const [showAbout, eventHandler] = useState(false);
 
   return (
     <>
-      <div className="homepage-section" id="container">
-        {!showAbout && <Welcome pageNo={props.setPageNumber} />}
+      <div className="container" id="homepage-section">
+        {!showAbout && <Welcome />}
         {showAbout && <About />}
         <div className="about-button-wrapper">
           <button
@@ -24,4 +24,4 @@ const FirstPage = (props) => {
   );
 };
 
-export default FirstPage;
+export default HomePage;

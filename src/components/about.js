@@ -13,7 +13,7 @@ const About = () => {
           </p>
           <p>
             Currently there are many youtube videos and websites that teach more
-            in depth but i believe that this app could serve a purpose like a
+            in depth but I believe that this app could serve a purpose like a
             reminder or something to refer back to easily without having to look
             for a website.
           </p>

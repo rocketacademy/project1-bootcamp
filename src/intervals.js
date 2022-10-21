@@ -1,14 +1,14 @@
 import "./App.css";
 
-const Intervals = (props) => {
+const Intervals = () => {
   return (
     <>
-      <div className="intervals-section" id="padding-container">
-        <div className="container-flex-left">
+      <div className="padding-container" id="intervals-section">
+        <div className="container-flex">
           <div className="title">Intervals</div>
-          <div className="align-left">
-            <p id="text-align-left">Whole tone- W</p>
-            <p id="text-align-left">Half tone - H</p>
+          <div className="align-center">
+            <p>Whole tone- W</p>
+            <p>Half tone - H</p>
           </div>
         </div>
         <div>

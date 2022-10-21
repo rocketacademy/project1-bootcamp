@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   font-family: "Heebo";
   display: flex;
@@ -11,16 +15,21 @@
   text-align: center;
   justify-content: center;
   background-color: #f5d6ba;
-  color: white;
+  color: black;
 }
 
-#container {
+p {
+  margin-bottom: 20px;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-left: 10%;
   padding-right: 10%;
   height: 100vh;
+  color: white;
 }
 
 .wrapper {
@@ -95,7 +104,7 @@
   border-color: #172121;
 }
 
-#padding-container {
+.padding-container {
   padding-left: 5%;
   padding-right: 5%;
   margin-bottom: 10vh;
@@ -105,6 +114,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.align-center {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .title {
@@ -122,12 +139,83 @@
   text-align: left;
 }
 
-.homepage-section {
+.separation-line {
+  width: 80%;
+  height: 1.2px;
+  background-color: #d7bca3;
+}
+
+.back-to-top-button-wrapper {
+  display: flex;
+  justify-content: center;
+  inset: auto 0% 5%;
+  padding-bottom: 5vh;
+  color: #7b6b5d;
+}
+
+.back-to-top-button {
+  background-color: transparent;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #c8af98;
+  border-radius: 100%;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+}
+
+.back-to-top-button:active {
+  background-color: #b8a18c;
+  color: black;
+  border-color: #d7bca3;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#homepage-section {
   background-color: #81b29a;
   box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.5);
   margin-bottom: 10vh;
 }
 
-.basics-section {
+#basics-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #202124;
+  height: 100vh;
+}
+
+#intervals-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#major-scales-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#minor-scales-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#circle-of-fifths-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

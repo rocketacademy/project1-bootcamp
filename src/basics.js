@@ -3,11 +3,7 @@ import "./App.css";
 const Basics = () => {
   return (
     <>
-      <div
-        className="basics-section"
-        id="padding-container"
-        ref={basicsSection}
-      >
+      <div className="padding-container" id="basics-section">
         <div className="container-flex">
           <div className="title">What are Scales?</div>
           <p id="text-align-left">
