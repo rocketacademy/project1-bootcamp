@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../assets/logos/logo.png"; // placeholder till fil a better logo
+import logo from "../assets/logos/logo.png"; 
 import { useState } from "react";
 
 function Menu() {

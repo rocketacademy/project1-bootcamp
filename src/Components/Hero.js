@@ -83,10 +83,22 @@ function MobileHero() {
           fontFamily: "Share Tech Mono",
         }}
       >
-        <h6>Hello world! My name is</h6>
-        <h1>Loy Chai Ee</h1>
-        <h3>An Aspiring Software Engineer</h3>
-        <p>
+        <h6 data-aos="fade-right" style={{ fontSize: "20px" }}>
+          Hello world! My name is
+        </h6>
+        <h1
+          data-aos="fade-right"
+          style={{ fontWeight: "bolder", fontSize: "40pt" }}
+        >
+          Loy Chai Ee
+        </h1>
+        <h3
+          data-aos="fade-right"
+          style={{ color: "magenta", fontSize: "30pt" }}
+        >
+          An Aspiring Software Engineer
+        </h3>
+        <p data-aos="fade-right" style={{ fontSize: "20px" }}>
           Undergraduate at Nanyang Technological University
           <br />
           Loves tinkering around with software and electronics!
@@ -103,6 +115,7 @@ function MobileHero() {
             color: "#20C20E",
             borderWidth: "2px",
           }}
+          data-aos="fade-right"
         >
           Download Resume
         </Button>
