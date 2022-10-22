@@ -38,10 +38,16 @@ function PCHero() {
         >
           Loy Chai Ee
         </h1>
-        <h3 data-aos="fade-right" style={{ fontSize: "2.4vw" }}>
+        <h3
+          data-aos="fade-right"
+          style={{ color: "magenta", fontSize: "2.4vw" }}
+        >
           An Aspiring Software Engineer
         </h3>
-        <p data-aos="fade-right" style={{ fontSize: "1.2vw" }}>
+        <p
+          data-aos="fade-right"
+          style={{fontSize: "1.2vw" }}
+        >
           Undergraduate at Nanyang Technological University
           <br />
           Loves tinkering around with software and electronics!

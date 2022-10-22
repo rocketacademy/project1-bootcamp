@@ -20,7 +20,7 @@ function Menu() {
     >
       <Container>
         <Navbar.Brand href="#home">
-          <img src={logo} height="50px" width="50px" alt="test" />
+          <img src={logo} alt="test" className="logo" />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
@@ -33,67 +33,67 @@ function Menu() {
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{
                 color: "#20C20E",
-                fontSize: "max(1vw, 24px)",
+                fontSize: "max(1vw, 20px)",
                 fontWeight: "bold",
               }}
             >
-              1. About Me
+              1.About Me
             </Nav.Link>
             <Nav.Link
               href="#education"
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{
                 color: "#20C20E",
-                fontSize: "max(1vw, 24px)",
+                fontSize: "max(1vw, 20px)",
                 fontWeight: "bold",
               }}
               data-transition="none"
             >
-              2. Education
+              2.Education
             </Nav.Link>
             <Nav.Link
               href="#skills"
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{
                 color: "#20C20E",
-                fontSize: "max(1vw, 24px)",
+                fontSize: "max(1vw, 20px)",
                 fontWeight: "bold",
               }}
             >
-              3. Skills
+              3.Skills
             </Nav.Link>
             <Nav.Link
               href="#work"
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{
                 color: "#20C20E",
-                fontSize: "max(1vw, 28px)",
+                fontSize: "max(1vw, 20px)",
                 fontWeight: "bold",
               }}
             >
-              4. Work Expereince
+              4.Work Expereince
             </Nav.Link>
             <Nav.Link
               href="#project"
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{
                 color: "#20C20E",
-                fontSize: "max(1vw, 24px)",
+                fontSize: "max(1vw, 20px)",
                 fontWeight: "bold",
               }}
             >
-              5. Projects
+              5.Projects
             </Nav.Link>
             <Nav.Link
               href="#contact"
               onClick={() => setExpanded(expanded ? false : "expanded")}
               style={{
                 color: "#20C20E",
-                fontSize: "max(1vw, 24px)",
+                fontSize: "max(1vw, 20px)",
                 fontWeight: "bold",
               }}
             >
-              6. Contact
+              6.Contact
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import logo from "../assets/logos/logo.png";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
+
+import logo from "../assets/images/hero1.jpg";
+import eee from "../assets/images/eee.png";
+import blackjack from "../assets/images/blackjack.png";
 
 function Project() {
   const [index, setIndex] = useState(0);
@@ -42,7 +45,7 @@ function Project() {
             <Card className="cardSize" bg={"dark"}>
               <Card.Img
                 variant="top"
-                src={logo}
+                src={blackjack}
                 style={{ borderRadius: "1vw" }}
               />
               <Card.Body>
@@ -130,7 +133,7 @@ function Project() {
             <Card className="cardSize" bg={"dark"}>
               <Card.Img
                 variant="top"
-                src={logo}
+                src={eee}
                 style={{ borderRadius: "1vw" }}
               />
               <Card.Body>
