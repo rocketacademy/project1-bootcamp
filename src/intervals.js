@@ -7,7 +7,7 @@ const Intervals = () => {
         <div className="container-flex">
           <div className="title">Intervals</div>
           <div className="align-center">
-            <p>Whole tone- W</p>
+            <p>Whole tone - W</p>
             <p>Half tone - H</p>
           </div>
         </div>
