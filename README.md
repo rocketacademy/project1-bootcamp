@@ -6,9 +6,9 @@ This memory game aims to allow users to learn new words in a foreign language on
 
 In this 4x3 game, you will have to match words of the same meaning to win. Users can select the category, difficulty level and language (Indonesian & Korean for now!). Difficulty level corresponds to the time given to complete the game, so if you select 'easy', you will be given more time to solve the game.
 
-<img src="/images/project1-homepage.png" alt="home page" title="Home Page">
-<img src="/images/project1-gamepage.png" alt="game page" title="Game Page">
-<img src="/images/project1-gameprogress.png" alt="home page" title="Game Progress Page">
+<img src="/src/images/project1-homepage.png" alt="home page" title="Home Page">
+<img src="/src/images/project1-gamepage.png" alt="game page" title="Game Page">
+<img src="/src/images/project1-gameprogress.png" alt="home page" title="Game Progress Page">
 
 ### Available Scripts
 
