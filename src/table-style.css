@@ -1,0 +1,77 @@
+.scales-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  align-items: stretch;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+  padding-bottom: 1vh;
+  border-bottom: 0.5px solid #d7bca3;
+}
+
+.scales-table-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.scales-table-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  margin-bottom: 1vh;
+}
+
+.fine-text {
+  font-size: 0.8rem;
+  padding-left: 10px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  line-height: 3;
+}
+
+.flex-left {
+  width: 10%;
+}
+
+.flex-text {
+  width: 60%;
+  border-right: 1px solid #d7bca3;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.flex-accidentals {
+  width: 20%;
+  text-align: left;
+}
+
+.note-button {
+  display: flex;
+  align-items: left;
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+}
