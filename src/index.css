@@ -1,13 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Quicksand&display=swap');
+
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin:0 auto;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+  padding: 0;
+  /* background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png"); */
+  background: url("https://images.rawpixel.com/image_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yODMtbnVubnktMDI5LWcuanBn.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+#two {
+  /* height: 100%; */
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  font-family: 'Abril Fatface', cursive;  
+}
+
+.box {
+  display: grid;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+.box::before {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  content: '';
+  height: 10px;
+  position: absolute;
+  /* background: linear-gradient(180deg, #ff8e71, rgba(255, 142, 113, 0)); */
+}
+.box::after {
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  content: '';
+  height: 10px;
+  position: absolute;
+  /* background: linear-gradient(180deg, rgba(255, 142, 113, 0), #ff8e71); */
+}
+
+p {
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 50px;
+}
+
+.scrolling-text {
+  float: right;
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  -webkit-animation: scrollUp 4s ease-in-out infinite normal;
+          animation: scrollUp 4s ease-in-out infinite normal;
+}
+
+.scrolling-text li {
+  opacity: 1;
+  height: 20px;
+  padding: 10px;
+  list-style: none;
+}
+
+@-webkit-keyframes scrollUp {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-80%);
+            transform: translateY(-80%);
+  }
+}
+
+@keyframes scrollUp {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-80%);
+            transform: translateY(-80%);
+  }
+}
+
+/* .header {
+  padding:0;
+  margin: 0 auto;
+  width:100%;
+  text-align:center;
+  display: grid;
+  flex-wrap: wrap;
+  font-size: 80px;
+  font-family: 'Abril Fatface', cursive;  
+} */
+
+
+.container {
+  display: grid;
+  /* height: 700px; */
+  /* width: 700px; */
+  padding: 0;
+  margin: 0 auto;
+  justify-content: center;
+  /* background-color:white; */
+  /* grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr); */
+  gap: 1em;
+  min-height: 100%;
+}
+
+.card {
+  background-color: lavender;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 1rem;
+  height: auto;
+  color: black;
+  box-shadow: 10px 10px 10px #ccc;
+  transform: rotateY(180deg);
+  animation: 2s hideCard linear;
+  transition: transform 0.5s;
+  opacity: 0.6;
+}
+
+.card:hover {
+  /* transform: translateY(-2px); */
+  opacity: 1
+}
+
+@keyframes hideCard{
+  0%, 70%{
+    transform: rotateY(0);
+  }
+  100%{
+    transform: rotateY(180deg);
+  }
+}
+
+/* Screen larger than 300px -> 2 columns */
+@media (min-width: 300px) {
+  .container { grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(4, 1fr) }
+  .form-main-container {grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 1fr) }
+}
+
+/* Screen larger than 600px -> 2 columns */
+@media (min-width: 600px) {
+  .container { grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(4, 1fr)}
+  .form-main-container { grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr)}
+}
+
+.displayText {
+transform: scale(0);
+animation: 2s hideText linear;
+}
+
+@keyframes hideText{
+  0%, 70%{
+    transform: rotateY(0);
+  }
+  100%{
+    transform: rotateY(180deg);
+  }
+}
+
+.card.active-true.flipped-false{
+  transform: rotateY(0);
+  background-color: coral;
+  opacity: 1
+}
+
+.displayText.active-true.flipped-false{
+  transform: rotateY(0);
+}
+
+.card.active-false.flipped-true {
+  background-color: lightgreen;
+  opacity: 1
+}
+
+.displayText.active-false.flipped-true {
+  transform: rotateY(180deg);
+  background-color: lightgreen;
+  opacity: 1
+}
+
+
+.btn {
+  width: 120px;
+  height: 35px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: rgb(187, 162, 151);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  }
+
+.btn:hover {
+  background-color: #aae096;
+      box-shadow: 0px 15px 20px rgba(119, 29, 0, 0.73);
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.divider {
+  padding: 20px;;
+}
+
+.form-main-container {
+  min-height: 100%;
+  display: grid;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+  width: 500px;
+  height: 500px;
+  min-height: 100%;
+}
+
+.form-container {
+  display: grid;
+  padding: 20px;
+  margin: auto;
+  width: 500px;
+  height: 380px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.form-container:before {
+  display: grid;
+  margin: auto;
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(10px);
+  justify-content: center;
+  min-height: 100%;
+}
+
+.settings-header {
+  color:rgb(243, 150, 107);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: large;
+  padding: 0;
+  margin: 10px;
+  font-family: 'Abril Fatface', cursive;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-btn-group {
+  display: grid;
+  font-family: "Raleway", sans-serif;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  width: 500;
+  height: 80;
+  object-fit: contain;
+}
+
+.hidden {
+  display: none;
 }
