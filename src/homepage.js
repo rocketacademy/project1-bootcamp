@@ -16,7 +16,7 @@ const HomePage = () => {
             className="about-button"
             onClick={() => eventHandler(!showAbout)}
           >
-            about
+            ABOUT
           </button>
         </div>
       </div>
