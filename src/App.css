@@ -1,19 +1,289 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0px;
+}
+
+.App {
+  background-color: #112240;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 5vh;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+@media only screen and (min-width: 1150px) {
+  body #home {
+    background-size: cover;
+    background-image: url(../src/assets/images/hero1.jpg);
+    background-repeat: no-repeat;
+    align-items: flex-start;
+  }
+  body #skillswrap {
+    gap: 2vw;
+    flex-direction: row;
+  }
+
+  body .contact-text-align {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 720px) and (max-width: 1150px) {
+  body #home {
+    background-image: url(../src/assets/images/hero1.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: flex-start;
+    height: clamp(30vh, 100vw, 50vh);
+  }
+  body #skillswrap {
+    gap: 5vw;
+    flex-direction: row;
+  }
+  body .HeroLeft {
+    position: absolute;
+    top: 50%;
+    transform: translate(15%, -65%);
+  }
+  body .contact-text-align {
+    text-align: center;
+  }
+}
+/* NavBar CSS */
+
+.fixed-top {
+  position: sticky;
+  top: 0;
+  background-color: black !important;
+}
+
+/*Hero CSS  */
+
+#home {
+  flex-direction: column;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  padding-top: 10vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0px 0px;
+}
+
+.hero-button {
+  font-size: 1.8vw;
+  padding-left: 16px;
+  background-color: transparent;
+  border-color: #20c20e;
+  font-weight: bolder;
+  color: #20c20e;
+}
+
+.HeroLeft {
+  position: absolute;
+  top: 50%;
+  transform: translate(15%, -65%);
+}
+
+/* About Me CSS  */
+
+#about {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15vh;
+}
+
+.logo {
+  width: 5vh;
+  height: 5vh;
+  object-fit: cover;
+}
+
+.logo-small {
+  width: max(16px, 1.5vw);
+  height: max(16px, 1.5vw);
+}
+
+/* Skills CSS  */
+
+#skills {
+  width: 100vw;
+  flex-direction: column;
+  padding-top: 15vh
+}
+
+#skillswrap {
+  gap: 0vh;
+  flex-direction: column;
+}
+
+.expert {
+  background-color: #900603 !important;
+}
+
+.intermediate {
+  background-color: aqua !important;
+}
+
+.advanced {
+  background-color: #51087e !important;
+}
+
+.basics {
+  background-color: #028a0f !important;
+}
+
+/* Project CSS*/
+
+#project {
+  width: 100vw;
+  padding-top: 15vh;
+  flex-direction: column;
+  max-width: 700px;
+}
+
+.cardSize {
+  width: max(240px, 20vw);
+  border-radius: 1vw !important;
+}
+
+.link-button {
+  background-color: transparent !important;
+  color: #028a0f !important;
+  border-width: 3px !important;
+  border-color: #028a0f !important;
+}
+
+.link-button:hover {
+  background-color: #028a0f !important;
+  color: black !important;
+}
+
+/* Education Tab CSS */
+
+#education {
+  flex-direction: column;
+  padding-top: 15vh;
+}
+
+/* Work Tab CSS */
+
+#work {
+  flex-direction: column;
+  padding-top: 15vh;
+}
+
+/* Contact CSS  */
+#contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 0vh;
+  max-width: 800px;
+}
+
+#contact-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+#form-email {
+  width: 70vw;
+  max-width: 500px;
+  background-color: transparent;
+  border: solid;
+  border-color: #028a0f;
+  color: #028a0f;
+  border-radius: 1vh;
+  padding-left: 0.5vw;
+}
+
+#form-message {
+  width: 70vw;
+  max-width: 500px;
+  height: 30vh;
+  max-height: 200px;
+  background-color: transparent;
+  border: solid;
+  border-color: #028a0f;
+  color: #028a0f;
+  border-radius: 1vh;
+  padding-left: 0.5vw;
+}
+
+.contact-text-align {
+  text-align: left;
+  font-size: max(1.2vw, 20px);
+}
+
+.submit-button {
+  width: 100px;
+  height: 40px;
+  margin-bottom: 5vh;
+  border: solid;
+  border-color: #028a0f;
+  border-radius: 1vw;
+  background-color: transparent;
+  color: #028a0f;
+  font-size: clamp(16px, 1.5vh, 32px);
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  color: black;
+  background-color: #028a0f;
+}
+
+/* Misc CSS */
+
+.centerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.col label {
+  padding: 1vh;
+}
+
+.nav-pills .nav-link.active {
+  background-color: aqua !important;
+  color: navy !important;
+}
+
+.carousel-indicators button {
+  width: min(5vw, 2rem) !important;
+  height: min(5vw, 2rem) !important;
+  border-radius: 50%;
+}
+
+.carousel-indicators button:not(:first-child) {
+  margin-left: 1rem !important;
+}
+
+.carousel-indicators .active {
+  background-color: #028a0f !important;
+}
+
+.navbar-collapse {
+        height: auto !important;
 }

@@ -1,16 +1,36 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import About from "./Components/About";
+import Education from "./Components/Education";
+import Menu from "./Components/Navbar";
+import Hero from "./Components/Hero";
+import Project from "./Components/Project";
+import Work from "./Components/WorkExpereince";
+import Contact from "./Components/Contact";
+import Skills from "./Components/skills";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1,
+    };
+  }
+  
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <Menu/>
+          <Hero />
+          <About />
+          <Education />
+          <Skills data-aos="fade-up" />
+          <Work />
+          <Project />
+          <Contact />
         </header>
       </div>
     );
