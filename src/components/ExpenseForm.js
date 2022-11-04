@@ -8,13 +8,26 @@ export default class ExpenseForm extends React.Component {
       amount: "",
       spenders: [],
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     this.setState({
       [name]: value,
     });
+
+    if (checked) {
+      const newSpenderList = [...this.state.spenders, value];
+      this.setState({
+        spenders: newSpenderList,
+      });
+    } else {
+      this.setState({
+        spenders: this.state.spenders.filter((e) => e !== value),
+      });
+    }
   };
 
   handleSubmit = (e) => {
@@ -39,7 +52,7 @@ export default class ExpenseForm extends React.Component {
               type="text"
               name="item"
               value={this.state.item}
-              onChange={this.handleChange}
+              onChange={(e) => this.handleChange(e)}
               placeholder="Insert name of purchase"
             />
           </label>
@@ -50,20 +63,22 @@ export default class ExpenseForm extends React.Component {
               type="text"
               name="amount"
               value={this.state.amount}
-              onChange={this.handleChange}
+              onChange={(e) => this.handleChange(e)}
               placeholder="Insert price"
             />
           </label>
           <br />
-          <h4>Select spenders:</h4>
+          Select spenders:
           <ul>
             {copyOfNameList.map((i) => (
               <li>
-                <label>
-                  {" "}
-                  {i}
-                  <input type="checkbox" value={i} name={i} />
-                </label>
+                <input
+                  type="checkbox"
+                  name={i}
+                  value={i}
+                  onChange={(e) => this.handleChange(e)}
+                />
+                {i}
               </li>
             ))}
           </ul>
