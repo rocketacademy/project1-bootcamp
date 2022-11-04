@@ -38,16 +38,18 @@ class App extends React.Component {
     let listOfExpenses = [...this.state.expenses];
     return (
       <div>
-        <ExpenseForm action={this.addRecord} />
-        <br />
+        <h1>Step 1: Include all who borrowed money</h1>
         <GroupForm nameList={this.state.group} addName={this.addName} />
+        <br />
+        <h1>Step 2: Enter item, amount, and select list of spenders</h1>
+        <ExpenseForm fullNameList={this.state.group} action={this.addRecord} />
+        <br />
         <h2>Display all records of expenses here</h2>
         {listOfExpenses.map((entry) => (
           <DisplayExpense {...entry} />
         ))}
         <h2>Display complete group list</h2>
-        {this.state.group.join(' ')}
-        
+        {this.state.group.join(" ")}
       </div>
     );
   }

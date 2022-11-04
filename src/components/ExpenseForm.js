@@ -29,6 +29,7 @@ export default class ExpenseForm extends React.Component {
   };
 
   render() {
+    let copyOfNameList = [...this.props.fullNameList];
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -50,20 +51,22 @@ export default class ExpenseForm extends React.Component {
               name="amount"
               value={this.state.amount}
               onChange={this.handleChange}
-              placeholder="Insert amount"
+              placeholder="Insert price"
             />
           </label>
           <br />
-          <label>
-            Spenders:{" "}
-            <input
-              type="text"
-              name="spenders"
-              value={this.state.spenders}
-              onChange={this.handleChange}
-              placeholder="Insert name of spenders"
-            />
-          </label>
+          <h4>Select spenders:</h4>
+          <ul>
+            {copyOfNameList.map((i) => (
+              <li>
+                <label>
+                  {" "}
+                  {i}
+                  <input type="checkbox" value={i} name={i} />
+                </label>
+              </li>
+            ))}
+          </ul>
           <br />
           <br />
           <input type="submit" value="Submit to create record" />
