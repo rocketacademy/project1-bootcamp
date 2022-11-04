@@ -1,17 +1,39 @@
 import React from "react";
-import logo from "./logo.png";
+// import logo from "./logo.png";
 import "./App.css";
+import DisplayExpense from "./components/DisplayExpense";
+import ExpenseForm from "./components/ExpenseForm";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expenses: [
+        {
+          item: "Burger",
+          amount: 4.2,
+          spenders: ["patrick", "spongebob"],
+        },
+      ],
+    };
+  }
+
+  addRecord = (record) => {
+    let newArray = [...this.state.expenses, record];
+    this.setState({
+      expenses: newArray,
+    });
+  };
+
   render() {
+    let listOfExpenses = [...this.state.expenses];
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+      <div>
+        <ExpenseForm action={this.addRecord} />
+        <h2>Display all expenses</h2>
+        {listOfExpenses.map((entry) => (
+          <DisplayExpense {...entry} />
+        ))}
       </div>
     );
   }
