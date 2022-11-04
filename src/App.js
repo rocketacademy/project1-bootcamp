@@ -11,11 +11,11 @@ class App extends React.Component {
     this.state = {
       group: [],
       expenses: [
-        {
-          item: "Burger",
-          amount: 4.2,
-          spenders: ["patrick", "spongebob"],
-        },
+        // {
+        //   item: "Burger",
+        //   amount: 4.2,
+        //   spenders: ["patrick", "spongebob"],
+        // },
       ],
     };
   }
@@ -48,6 +48,7 @@ class App extends React.Component {
         {listOfExpenses.map((entry) => (
           <DisplayExpense {...entry} />
         ))}
+        {console.log(this.state.expenses)}
         <h2>Display complete group list</h2>
         {this.state.group.join(" ")}
       </div>
