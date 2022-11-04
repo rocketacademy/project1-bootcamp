@@ -65,6 +65,7 @@ export default class ExpenseForm extends React.Component {
             />
           </label>
           <br />
+          <br />
           <input type="submit" value="Submit to create record" />
         </form>
       </div>

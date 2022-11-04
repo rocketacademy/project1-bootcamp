@@ -1,7 +1,7 @@
 import React from "react";
 
-export default class DisplayExpense extends React.Component{
-  render(){
+export default class DisplayExpense extends React.Component {
+  render() {
     return (
       <div>
         <h3>

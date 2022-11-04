@@ -3,11 +3,13 @@ import React from "react";
 import "./App.css";
 import DisplayExpense from "./components/DisplayExpense";
 import ExpenseForm from "./components/ExpenseForm";
+import GroupForm from "./components/GroupForm";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      group: [],
       expenses: [
         {
           item: "Burger",
@@ -17,6 +19,13 @@ class App extends React.Component {
       ],
     };
   }
+
+  addName = (name) => {
+    let newGroup = [...this.state.group, name];
+    this.setState({
+      group: newGroup,
+    });
+  };
 
   addRecord = (record) => {
     let newArray = [...this.state.expenses, record];
@@ -30,10 +39,15 @@ class App extends React.Component {
     return (
       <div>
         <ExpenseForm action={this.addRecord} />
-        <h2>Display all expenses</h2>
+        <br />
+        <GroupForm nameList={this.state.group} addName={this.addName} />
+        <h2>Display all records of expenses here</h2>
         {listOfExpenses.map((entry) => (
           <DisplayExpense {...entry} />
         ))}
+        <h2>Display complete group list</h2>
+        {this.state.group.join(' ')}
+        
       </div>
     );
   }
