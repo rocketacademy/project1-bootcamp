@@ -4,6 +4,7 @@ import "./App.css";
 import DisplayExpense from "./components/DisplayExpense";
 import ExpenseForm from "./components/ExpenseForm";
 import GroupForm from "./components/GroupForm";
+import SplitBill from "./components/SplitBill";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,23 +35,29 @@ class App extends React.Component {
     });
   };
 
+  splitBill = () => {
+    console.log("this.state.expenses", this.state.expenses);
+  };
+
   render() {
     let listOfExpenses = [...this.state.expenses];
     return (
       <div>
-        <h1>Step 1: Include all who borrowed money</h1>
+        <h1>Step 1: Include all who owes you money</h1>
         <GroupForm nameList={this.state.group} addName={this.addName} />
         <br />
         <h1>Step 2: Enter item, amount, and select list of spenders</h1>
         <ExpenseForm fullNameList={this.state.group} action={this.addRecord} />
         <br />
         <h2>Display all records of expenses here</h2>
-        {listOfExpenses.map((entry) => (
-          <DisplayExpense {...entry} />
+        {listOfExpenses.map((entry, i) => (
+          <DisplayExpense {...entry} key={i} />
         ))}
         {console.log(this.state.expenses)}
         <h2>Display complete group list</h2>
         {this.state.group.join(" ")}
+        <h1>Step 3: Split the Bill</h1>
+        <SplitBill action={this.splitBill} />
       </div>
     );
   }
