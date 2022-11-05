@@ -10,7 +10,7 @@ export default class GroupForm extends React.Component {
     this.setState({
       name: e.target.value,
     });
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -25,12 +25,12 @@ export default class GroupForm extends React.Component {
         name: "",
       });
     } else {
-      this.props.addName(this.state.name)
+      this.props.addName(this.state.name);
       this.setState({
         name: "",
       });
     }
-  }
+  };
 
   render() {
     return (

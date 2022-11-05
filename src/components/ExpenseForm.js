@@ -13,10 +13,14 @@ export default class ExpenseForm extends React.Component {
   }
 
   handleChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
+  };
+
+  handleChangeCheckBox = (e) => {
+    const { checked, value } = e.target;
 
     if (checked) {
       const newSpenderList = [...this.state.spenders, value];
@@ -32,6 +36,12 @@ export default class ExpenseForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if (this.state.spenders.length < 1) {
+      alert("Please select spender field");
+      return;
+    }
+
     const record = this.state;
     this.props.action(record);
     this.setState({
@@ -52,6 +62,7 @@ export default class ExpenseForm extends React.Component {
               type="text"
               name="item"
               value={this.state.item}
+              required
               onChange={(e) => this.handleChange(e)}
               placeholder="Insert name of purchase"
             />
@@ -63,25 +74,25 @@ export default class ExpenseForm extends React.Component {
               type="text"
               name="amount"
               value={this.state.amount}
+              required
               onChange={(e) => this.handleChange(e)}
-              placeholder="Insert price"
+              pattern="^\d*(\.\d{0,2})?$"
+              placeholder="Insert price up to 2 d.p."
             />
           </label>
           <br />
           Select spenders:
-          <ul>
-            {copyOfNameList.map((i) => (
-              <li>
-                <input
-                  type="checkbox"
-                  name={i}
-                  value={i}
-                  onChange={(e) => this.handleChange(e)}
-                />
-                {i}
-              </li>
-            ))}
-          </ul>
+          {copyOfNameList.map((name, i) => (
+            <div key={i}>
+              <input
+                type="checkbox"
+                name={name}
+                value={name}
+                onChange={(e) => this.handleChangeCheckBox(e)}
+              />
+              {name}
+            </div>
+          ))}
           <br />
           <br />
           <input type="submit" value="Submit to create record" />
