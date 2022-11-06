@@ -25,7 +25,7 @@ export default class GroupForm extends React.Component {
         name: "",
       });
     } else {
-      this.props.addName(this.state.name);
+      this.props.addName(newName);
       this.setState({
         name: "",
       });
