@@ -3,94 +3,8 @@ import "./App.css";
 import Header from "./Components/Header";
 import Menu from "./Components/Menu";
 import Card from "./Components/Card";
-
-const lodash = require("lodash");
-
-const gameMode = {
-  easy: { numCards: 12, gridColumns: 4 },
-  medium: { numCards: 20, gridColumns: 5 },
-  hard: { numCards: 28, gridColumns: 7 },
-};
-
-const pokemonNames = [
-  "Bulbasaur",
-  "Charmander",
-  "Clefairy",
-  "Cubone",
-  "Diglett",
-  "Ditto",
-  "Eevee",
-  "Meowth",
-  "Pichu",
-  "Pikachu",
-  "Psyduck",
-  "Slowpoke",
-  "Snorlax",
-  "Squirtle",
-  "Totodile",
-  "Wobbuffet",
-];
-
-function makeDeck (difficulty) {
-  let deck = [];
-  for(let i=0; i < pokemonNames.length; i++) {
-    deck.push({
-      id: i,
-      matched: false,
-      img: `/PokemonPics/${pokemonNames[i]}.png`
-    });
-  }
-  shuffleCards(deck);
-  console.log('Deck: ', deck)
-  let newDeck = deck.slice(-1 * (gameMode[difficulty].numCards / 2))
-  console.log(newDeck);
-  // duplicate array
-  let duplicatedDeck = [];
-    for(let j = 0; j < gameMode[difficulty].numCards; j++){
-      // Deep Clone Array so that it wont reference the same object 
-      // and produce the same id
-      let card = lodash.cloneDeep(newDeck[Math.floor(j/2)])
-      card.id = j
-      duplicatedDeck.push(card)
-    }
-  console.log(duplicatedDeck);
-  duplicatedDeck = shuffleCards(duplicatedDeck);
-  return duplicatedDeck;
-}
-
-
-function shuffleCards(deck){
-  let currentIndex = 0;
-  while (currentIndex < deck.length) {
-    let randomIndex = Math.floor(Math.random() * deck.length);
-    let a = deck[randomIndex];
-    let b = deck[currentIndex];
-    [a, b] = [b, a];
-    deck[currentIndex] = b;
-    deck[randomIndex] = a;
-    currentIndex++
-  }
-  return deck;
-}
-
-// const cardImgs = [
-//   { src: "/PokemonPics/Bulbasaur.png" },
-//   { src: "/PokemonPics/Charmander.png" },
-//   { src: "/PokemonPics/Clefairy.png" },
-//   { src: "/PokemonPics/Cubone.png" },
-//   { src: "/PokemonPics/Diglett.png" },
-//   { src: "/PokemonPics/Ditto.png" },
-//   { src: "/PokemonPics/Eevee.png" },
-//   { src: "/PokemonPics/Meowth.png" },
-//   { src: "/PokemonPics/Pichu.png" },
-//   { src: "/PokemonPics/Pikachu.png" },
-//   { src: "/PokemonPics/Psyduck.png" },
-//   { src: "/PokemonPics/Slowpoke.png" },
-//   { src: "/PokemonPics/Snorlax.png" },
-//   { src: "/PokemonPics/Squirtle.png" },
-//   { src: "/PokemonPics/Totodile.png" },
-//   { src: "/PokemonPics/Wobbuffet.png" },
-// ];
+import Overlay from "./Components/Overlay";
+import { makeDeck } from "./helpers";
 
 class App extends React.Component {
   constructor(props) {
@@ -104,9 +18,6 @@ class App extends React.Component {
       disabled: false,
       cards: [],
     };
-    const hasWon = this.state.cards.length
-      ? this.state.cards.every((card) => card.matched)
-      : false;
     this.setDifficulty = this.setDifficulty.bind(this);
   }
 
@@ -142,15 +53,6 @@ class App extends React.Component {
   //   });
   // };
 
-  // Loads the game immediately when difficulty is set
-  // componentDidMount() {
-  //   if (!this.state.difficulty) {
-  //     return;
-  //   } else {
-  //     this.shuffleCards();
-  //   }
-  // }
-
 
   // If Cards do not match, turn back the cards and add moves++
   resetTurn = () => {
@@ -162,32 +64,8 @@ class App extends React.Component {
     });
   };
 
-  // handleMatches = () => {
-  //   if (this.state.cardOne?.img === this.state.cardTwo?.img) {
-  //     this.setState(({ cards }) => ({
-  //       cards: cards.map((card) => ({
-  //         ...card,
-  //         matched: true,
-  //       })),
-  //     }));
-  //   }
-  // };
-
-  isFlipped = (card) => {
-    return (
-      card.id === this.state.cardOne?.id ||
-      card.id === this.state.cardTwo?.id ||
-      card.matched
-    );
-  };
-
-  handleClick = (card) => {
-    if (this.state.cardOne) {
-      console.log(this.state.cardOne)
-      if (card.id !== this.state.cardOne.id) {
-        this.setState({
-          cardTwo: card,
-        }, () => {if(this.state.cardOne.img === this.state.cardTwo.img) {
+  evaluateMatch = () => {
+    if(this.state.cardOne.img === this.state.cardTwo.img) {
           console.log(this.state.cardOne.id)
           console.log(this.state.cardTwo.id)
           let cardOne = {...this.state.cardOne, matched: true}
@@ -211,7 +89,23 @@ class App extends React.Component {
             this.resetTurn()
           }, 1000)
         }
-      });
+  }
+
+  isFlipped = (card) => {
+    return (
+      card.id === this.state.cardOne?.id ||
+      card.id === this.state.cardTwo?.id ||
+      card.matched
+    );
+  };
+
+  handleClick = (card) => {
+    if (this.state.cardOne) {
+      console.log(this.state.cardOne)
+      if (card.id !== this.state.cardOne.id) {
+        this.setState({
+          cardTwo: card,
+        }, () => {this.evaluateMatch()});
 
       }
     } else {
@@ -238,6 +132,9 @@ class App extends React.Component {
   }
 
   render() {
+    const hasWon = this.state.cards.length
+      ? this.state.cards.every((card) => card.matched)
+      : false;
     return (
       <div className="App">
         <Header />
@@ -262,6 +159,7 @@ class App extends React.Component {
             </>
           )}
         </main>
+        {hasWon && <Overlay newGame={this.setDifficulty} backToMenu={this.handleBackToMenu}/>}
       </div>
     );
   }
