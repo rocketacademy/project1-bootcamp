@@ -1,4 +1,5 @@
 import React from "react";
+import "./Forms.css";
 
 export default class ExpenseForm extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ export default class ExpenseForm extends React.Component {
       item: "",
       amount: "",
       spenders: [],
+      start: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,10 +28,12 @@ export default class ExpenseForm extends React.Component {
       const newSpenderList = [...this.state.spenders, value];
       this.setState({
         spenders: newSpenderList,
+        start: false,
       });
     } else {
       this.setState({
         spenders: this.state.spenders.filter((e) => e !== value),
+        start: false,
       });
     }
   };
@@ -48,6 +52,7 @@ export default class ExpenseForm extends React.Component {
       item: "",
       amount: "",
       spenders: [],
+      start: true,
     });
   };
 
@@ -56,46 +61,55 @@ export default class ExpenseForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Item name:{" "}
-            <input
-              type="text"
-              name="item"
-              value={this.state.item}
-              required
-              onChange={(e) => this.handleChange(e)}
-              placeholder="Insert name of purchase"
-            />
-          </label>
+          <input
+            className="input-field"
+            type="text"
+            name="item"
+            value={this.state.item}
+            required
+            onChange={(e) => this.handleChange(e)}
+            placeholder="Enter Item Name"
+          />
           <br />
-          <label>
-            Amount:{" "}
-            <input
-              type="text"
-              name="amount"
-              value={this.state.amount}
-              required
-              onChange={(e) => this.handleChange(e)}
-              pattern="^\d*(\.\d{0,2})?$"
-              placeholder="Insert price up to 2 d.p."
-            />
-          </label>
-          <br />
-          Select spenders:
-          {copyOfNameList.map((name, i) => (
-            <div key={i}>
-              <input
-                type="checkbox"
-                name={name}
-                value={name}
-                onChange={(e) => this.handleChangeCheckBox(e)}
-              />
-              {name}
-            </div>
-          ))}
+          <input
+            className="input-field"
+            type="text"
+            name="amount"
+            value={this.state.amount}
+            required
+            onChange={(e) => this.handleChange(e)}
+            pattern="^\d*(\.\d{0,2})?$"
+            placeholder="Enter Price (Up 2 d.p.)"
+          />
           <br />
           <br />
-          <input type="submit" value="Submit to create record" />
+          Split amongst:
+          <div className="flex-spender">
+            {copyOfNameList.map((name, i) => (
+              <div key={i}>
+                {this.state.start ? (
+                  <input
+                    type="checkbox"
+                    name={name}
+                    value={name}
+                    checked={false}
+                    onChange={(e) => this.handleChangeCheckBox(e)}
+                  />
+                ) : (
+                  <input
+                    type="checkbox"
+                    name={name}
+                    value={name}
+                    onChange={(e) => this.handleChangeCheckBox(e)}
+                  />
+                )}
+                {name}
+              </div>
+            ))}{" "}
+          </div>
+          <br />
+          <br />
+          <input className="btn" type="submit" value="SUBMIT" />
         </form>
       </div>
     );

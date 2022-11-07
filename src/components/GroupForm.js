@@ -1,4 +1,5 @@
 import React from "react";
+import "./Forms.css";
 
 export default class GroupForm extends React.Component {
   constructor(props) {
@@ -36,16 +37,16 @@ export default class GroupForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Who's involved?{" "}
-            <input
-              type="text"
-              placeholder="Person Name"
-              onChange={this.handleUserInput}
-              value={this.state.name}
-            />
-          </label>
-          <input type="submit" value="Add this person" />
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Enter Person Name"
+            onChange={this.handleUserInput}
+            value={this.state.name}
+          />
+          <br />
+          <br />
+          <input className="btn" type="submit" value="ADD" />
         </form>
       </div>
     );
