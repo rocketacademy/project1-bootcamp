@@ -36,10 +36,10 @@
   opacity: 0.9;
 }
 
-/* .card.matched .sparkle {
+.card.matched .xmassparkle {
   animation: sparkle 1s;
 }
-.card .sparkle {
+.card .xmassparkle {
   position: absolute;
   width: 20%;
   z-index: 1;
@@ -62,4 +62,4 @@
   100% {
     opacity: 0;
   }
-} */
+}
