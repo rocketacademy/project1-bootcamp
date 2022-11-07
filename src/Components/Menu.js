@@ -24,15 +24,15 @@ export default class Menu extends React.Component {
           <p>Please select a difficulty to start!</p>
         </div>
 
-        <button onClick={()=>{this.props.onClick("easy")}}>
+        <button className="blue" onClick={()=>{this.props.onClick("easy")}}>
           <div>Easy</div>
           <div>(4x3)</div>
         </button>
-        <button onClick={()=> this.props.onClick("medium")}>
+        <button className="green" onClick={()=> this.props.onClick("medium")}>
           <div>Medium</div>
           <div>(5x4)</div>
         </button>
-        <button onClick={()=> this.props.onClick("hard")}>
+        <button className="red" onClick={()=> this.props.onClick("hard")}>
           <div>Hard</div>
           <div>(8x4)</div>
         </button>

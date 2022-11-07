@@ -33,3 +33,18 @@ button:hover {
   transform: scale(1.1);
 }
 
+.blue {
+  background-color: #d7f5fa;
+  border: 4px solid #3cc8dc;
+}
+
+.green {
+  background-color: #70e0bb;
+  border: 4px solid #378e8e;
+}
+
+.red {
+  background-color: #fe9441;
+  border: 4px solid #e53800;
+}
+
