@@ -5,13 +5,14 @@
   box-sizing: border-box;
   font-family: "Noto Sans", sans-serif;
 }
+
 body {
   width: 100%;
   min-height: 100vh;
   background: url("../public/PokemonPics/background.jpg");
 }
 .App {
-  min-width: 100vw;
+  min-width: 100%;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
@@ -47,4 +48,29 @@ body {
 .card-grid.hard {
   max-width: 1500px;
   grid-template-columns: repeat(7, 1fr);
+}
+
+audio:hover,
+audio:focus,
+audio:active {
+  -webkit-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+audio {
+  margin-top: 15px;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  -moz-box-shadow: 2px 2px 4px 0px #006773;
+  -webkit-box-shadow: 2px 2px 4px 0px #006773;
+  box-shadow: 2px 2px 4px 0px #006773;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border-radius: 7px 7px 7px 7px;
+  border-radius: 7px 7px 7px 7px;
 }
