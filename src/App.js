@@ -5,6 +5,8 @@ import Menu from "./Components/Menu";
 import Card from "./Components/Card";
 import Overlay from "./Components/Overlay";
 import { makeDeck } from "./helpers";
+import ChristmasMP3 from './Sound/christmasmedley.mp3'
+import Timer from "./Components/Timer";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,9 +19,16 @@ class App extends React.Component {
       cardTwo: null,
       disabled: false,
       cards: [],
+      gameOver: false
     };
     this.setDifficulty = this.setDifficulty.bind(this);
   }
+
+  timerMethod = (property, value) => {
+    this.setState({
+      [property]: value,
+    }, ()=> console.log(this.state.gameOver));
+  };
 
   // shuffleCards = () => {
   //   const numberOfCards = gameMode[this.state.difficulty].numCards;
@@ -53,8 +62,18 @@ class App extends React.Component {
   //   });
   // };
 
+  componentDidUpdate(){
+    console.log(this.hasWon)
+    if(this.state.gameOver === false) {
+      if(this.hasWon) {
+      this.setState({
+        gameOver: true
+      }, () => console.log(this.state.gameOver))
+    }
+    }
+  }
+  // If Cards do not match, turn back the cards and moves++
 
-  // If Cards do not match, turn back the cards and add moves++
   resetTurn = () => {
     this.setState({
       cardOne: null,
@@ -65,31 +84,35 @@ class App extends React.Component {
   };
 
   evaluateMatch = () => {
-    if(this.state.cardOne.img === this.state.cardTwo.img) {
-          console.log(this.state.cardOne.id)
-          console.log(this.state.cardTwo.id)
-          let cardOne = {...this.state.cardOne, matched: true}
-          console.log(cardOne);
-          let indexOne = this.state.cards.findIndex((card) => card.id === this.state.cardOne.id)
-          console.log(indexOne);
-          let cardTwo = {...this.state.cardTwo, matched: true}
-          console.log(cardTwo);
-          let indexTwo = this.state.cards.findIndex((card) => card.id === this.state.cardTwo.id)
-          console.log(indexTwo);
-          console.log(this.state.cards);
-          this.state.cards.splice(indexOne, 1, cardOne);
-          this.state.cards.splice(indexTwo, 1, cardTwo);
-          this.setState({
-            cards: this.state.cards,
-            cardOne: null,
-            cardTwo: null
-          })
-        } else{
-          this.timerID = setTimeout(() => {
-            this.resetTurn()
-          }, 1000)
-        }
-  }
+    if (this.state.cardOne.img === this.state.cardTwo.img) {
+      console.log(this.state.cardOne.id);
+      console.log(this.state.cardTwo.id);
+      let cardOne = { ...this.state.cardOne, matched: true };
+      console.log(cardOne);
+      let indexOne = this.state.cards.findIndex(
+        (card) => card.id === this.state.cardOne.id
+      );
+      console.log(indexOne);
+      let cardTwo = { ...this.state.cardTwo, matched: true };
+      console.log(cardTwo);
+      let indexTwo = this.state.cards.findIndex(
+        (card) => card.id === this.state.cardTwo.id
+      );
+      console.log(indexTwo);
+      console.log(this.state.cards);
+      this.state.cards.splice(indexOne, 1, cardOne);
+      this.state.cards.splice(indexTwo, 1, cardTwo);
+      this.setState({
+        cards: this.state.cards,
+        cardOne: null,
+        cardTwo: null,
+      });
+    } else {
+      this.timerID = setTimeout(() => {
+        this.resetTurn();
+      }, 1000);
+    }
+  };
 
   isFlipped = (card) => {
     return (
@@ -101,26 +124,32 @@ class App extends React.Component {
 
   handleClick = (card) => {
     if (this.state.cardOne) {
-      console.log(this.state.cardOne)
+      console.log(this.state.cardOne);
       if (card.id !== this.state.cardOne.id) {
-        this.setState({
-          cardTwo: card,
-        }, () => {this.evaluateMatch()});
-
+        this.setState(
+          {
+            cardTwo: card,
+          },
+          () => {
+            this.evaluateMatch();
+          }
+        );
       }
     } else {
-        this.setState({
+      this.setState(
+        {
           cardOne: card,
-      }, () => console.log(this.state.cardOne));
+        },
+        () => console.log(this.state.cardOne)
+      );
     }
   };
-
 
   handleBackToMenu = () => {
     this.setState({
       cards: [],
       difficulty: "",
-      moves: 0
+      moves: 0,
     });
   };
 
@@ -132,12 +161,17 @@ class App extends React.Component {
   }
 
   render() {
-    const hasWon = this.state.cards.length
+    this.hasWon = this.state.cards.length
       ? this.state.cards.every((card) => card.matched)
       : false;
+    
+
     return (
       <div className="App">
         <Header />
+        <div>
+          <audio controls="controls" src={ChristmasMP3} autoPlay="autoplay" />
+        </div>
         <main>
           {!this.state.difficulty && <Menu onClick={this.setDifficulty} />}
 
@@ -145,6 +179,11 @@ class App extends React.Component {
             <>
               <div className={`card-grid ${this.state.difficulty}`}>
                 <div className="moves">Moves: {this.state.moves}</div>
+                <Timer
+                  difficulty={this.state.difficulty}
+                  timerMethod={this.timerMethod}
+                  hasWon={this.hasWon}
+                />
                 <button onClick={this.handleBackToMenu}>Back To Menu</button>
                 {this.state.cards.map((card) => (
                   <Card
@@ -159,7 +198,8 @@ class App extends React.Component {
             </>
           )}
         </main>
-        {hasWon && <Overlay newGame={this.setDifficulty} backToMenu={this.handleBackToMenu}/>}
+
+        {this.hasWon && <Overlay backToMenu={this.handleBackToMenu} />}
       </div>
     );
   }
