@@ -162,7 +162,10 @@ class App extends React.Component {
                 />
               ))}
             </div>
-            <SplitBill action={this.splitBill} />
+            <SplitBill
+              uniqueName={this.state.uniqueNames}
+              action={this.splitBill}
+            />
           </div>
 
           <div className="green-container">
@@ -188,7 +191,7 @@ class App extends React.Component {
           </div>
         </div>
         <br />
-        
+
         <div>
           <center>
             <h2 className="bangers">📜RECORDS OF EXPENSES📜</h2>
