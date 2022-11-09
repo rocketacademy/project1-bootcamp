@@ -207,7 +207,7 @@ class Game extends React.Component {
       <>
         <Header />
         <div>
-          {/* <audio controls="controls" src={ChristmasMP3} autoPlay="autoplay" /> */}
+          <audio controls="controls" src={ChristmasMP3} autoPlay="autoplay" />
         </div>
         <main>
           {!this.state.difficulty && <Menu onClick={this.setDifficulty} />}
