@@ -46,7 +46,9 @@ export default class GroupForm extends React.Component {
           />
           <br />
           <br />
-          <input className="btn" type="submit" value="ADD" />
+          <center>
+            <input className="btn" type="submit" value="ADD" />
+          </center>
         </form>
       </div>
     );

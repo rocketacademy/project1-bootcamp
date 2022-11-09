@@ -5,9 +5,11 @@ export default class SplitBill extends React.Component {
   render() {
     return (
       <div>
-        <button className="split_btn" onClick={this.props.action}>
-          SPLIT THE BILL
-        </button>
+        <center>
+          <button className="split_btn" onClick={this.props.action}>
+            SPLIT THE BILL
+          </button>
+        </center>
       </div>
     );
   }

@@ -6,6 +6,15 @@ const getFormattedPrice = (price) => {
   return priceTwoDecimal;
 };
 
+const getRandomColor = () => {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
 export default class DisplayExpense extends React.Component {
   render() {
     const pricePerPax = () => {
@@ -15,15 +24,19 @@ export default class DisplayExpense extends React.Component {
     return (
       <div className="column">
         <div className="card">
-          <h3 className="bangers">{this.props.item.toUpperCase()}</h3>
+          <h3 className="bangers" style={{ color: getRandomColor() }}>
+            {this.props.item.toUpperCase()}
+          </h3>
           <p>
-            ${getFormattedPrice(this.props.amount)} (${pricePerPax()}/px)
+            <b>${getFormattedPrice(this.props.amount)}</b> (${pricePerPax()}/px)
           </p>
           <p>
-            <p>{this.props.spenders.join(" ")} </p>
+            <p>
+              <i>{this.props.spenders.join(" ")}</i>{" "}
+            </p>
           </p>
           <button value={this.props.id} onClick={this.props.deleteRecord}>
-            delete
+            ✖
           </button>
         </div>
       </div>

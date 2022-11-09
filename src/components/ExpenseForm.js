@@ -83,7 +83,9 @@ export default class ExpenseForm extends React.Component {
           />
           <br />
           <br />
-          Split amongst:
+          <b>Split amongst:</b>
+          <br />
+          <br />
           <div className="flex-spender">
             {copyOfNameList.map((name, i) => (
               <div key={i}>
@@ -109,7 +111,9 @@ export default class ExpenseForm extends React.Component {
           </div>
           <br />
           <br />
-          <input className="btn" type="submit" value="SUBMIT" />
+          <center>
+            <input className="btn" type="submit" value="SUBMIT" />
+          </center>
         </form>
       </div>
     );
