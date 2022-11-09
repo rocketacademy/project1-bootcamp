@@ -1,17 +1,39 @@
 import React from "react";
 import "./App.css";
-import Header from "./Components/Header";
+import {Routes, Route} from 'react-router-dom';
 import Game from "./Components/Game";
+import Leaderboard from "./Components/Leaderboard";
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      scoreboard: [
+        { easy: "easy", score: 0 },
+        { medium: "medium", score: 0 },
+        { hard: "hard", score: 0 },
+      ],
+    };
+  }
 
   render() {
     return (
       <div>
-        <div className="game-container">
-          <Header />
-          <Game />
-        </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="game-container">
+                <Game />
+              </div>
+            }
+          />
+
+          <Route
+            path="leaderboard"
+            element={<Leaderboard/>}
+          />
+        </Routes>
       </div>
     );
   }
