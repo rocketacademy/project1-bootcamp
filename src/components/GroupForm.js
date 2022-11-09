@@ -1,5 +1,4 @@
 import React from "react";
-import "./Forms.css";
 
 export default class GroupForm extends React.Component {
   constructor(props) {
@@ -47,7 +46,7 @@ export default class GroupForm extends React.Component {
           <br />
           <br />
           <center>
-            <input className="btn" type="submit" value="ADD" />
+            <input className="white-btn" type="submit" value="ADD" />
           </center>
         </form>
       </div>

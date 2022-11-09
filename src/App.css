@@ -9,7 +9,23 @@ body {
   padding-top: 20px;
 }
 
-.container {
+.flex-grouplist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 5px;
+}
+
+.flex-receipt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 0.375rem;
+  padding-bottom: 15px;
+}
+
+.green-container {
   background-color: #004e00;
   border: 10px solid #000000;
   width: 400px;
@@ -52,6 +68,7 @@ body {
 
 .tooltip {
   position: relative;
+  padding: 5px;
 }
 
 .tooltip .tooltiptext {
@@ -73,3 +90,76 @@ body {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+/* Styling for ExpenseForm.js and GroupForm.js */
+
+.flex-spender {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+.white-btn {
+  background: white;
+  font-size: 20px;
+  color: black;
+  border-radius: 7px;
+  box-shadow: 0 7px 0px grey;
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  padding: 10px 15px;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.white-btn:active {
+  top: 3px;
+  box-shadow: 0 2px 0px darkgrey;
+  transition: all 0.2s;
+}
+
+.input-field {
+  margin: 10px 1px;
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75em + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: white;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Styling for button in SplitBill.js button */
+
+.split_btn {
+  background: #51a3b8;
+  font-size: 22px;
+  color: white;
+  border-radius: 7px;
+  box-shadow: 0 7px 0px #387796;
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  padding: 20px 25px;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.split_btn:active {
+  top: 3px;
+  box-shadow: 0 2px 0px #387796;
+  transition: all 0.2s;
+}
+
+/* https://webdeasy.de/en/top-css-buttons-en/ */

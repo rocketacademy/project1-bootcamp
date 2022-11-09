@@ -1,5 +1,4 @@
 import React from "react";
-import "./SplitBill.css";
 
 export default class SplitBill extends React.Component {
   render() {

@@ -1,5 +1,4 @@
 import React from "react";
-import "./Forms.css";
 
 export default class ExpenseForm extends React.Component {
   constructor(props) {
@@ -70,7 +69,6 @@ export default class ExpenseForm extends React.Component {
             onChange={(e) => this.handleChange(e)}
             placeholder="Enter Item Name"
           />
-          <br />
           <input
             className="input-field"
             type="text"
@@ -82,8 +80,9 @@ export default class ExpenseForm extends React.Component {
             placeholder="Enter Price (Up 2 d.p.)"
           />
           <br />
-          <br />
-          <b>Split amongst:</b>
+          <b>
+            <u>Split amongst:</u>
+          </b>
           <br />
           <br />
           <div className="flex-spender">
@@ -112,7 +111,7 @@ export default class ExpenseForm extends React.Component {
           <br />
           <br />
           <center>
-            <input className="btn" type="submit" value="SUBMIT" />
+            <input className="white-btn" type="submit" value="SUBMIT" />
           </center>
         </form>
       </div>
