@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Roboto:wght@400;700&display=swap');
 
-h1{
+.leaderboard-header{
   font-family: "Luckiest Guy", Roboto;
   font-size: 65px;
   margin-top: 20px;

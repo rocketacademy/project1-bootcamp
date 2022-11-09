@@ -26,7 +26,7 @@ export default class Leaderboard extends Component {
   render() {
     return (
       <>
-        <h1 style={{ textAlign: "center" }}> Single Player Leaderboard 😢 </h1>
+        <h1 className="leaderboard-header"> Single Player Leaderboard 😢 </h1>
         {this.state.myGame && this.state.myGame.length > 0 ? (
           this.state.myGame.map((data, index) => (
             <div className="center-data">
