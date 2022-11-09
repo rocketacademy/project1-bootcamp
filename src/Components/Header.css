@@ -10,6 +10,7 @@ header {
   font-size: 30px;
   text-align: center;
   margin-top: 10px;
+  margin-bottom: 20px;
   animation: color-change 1s infinite;
 }
 

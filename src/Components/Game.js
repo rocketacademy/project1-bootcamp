@@ -1,11 +1,13 @@
 import React from "react";
 import "../Components/Game.css"
+import Header from "./Header";
 import Menu from "../Components/Menu";
 import Card from "../Components/Card";
 import Overlay from "../Components/Overlay";
 import { makeDeck } from "../helpers";
 import ChristmasMP3 from "../Sound/christmasmedley.mp3";
 import Timer from "../Components/Timer";
+import {Link} from "react-router-dom"
 
 class Game extends React.Component {
   constructor(props) {
@@ -149,8 +151,38 @@ class Game extends React.Component {
       );
     }
   };
-
+  
   handleBackToMenu = () => {
+    // If every card matches:
+    // 1. Check to see if there's any objects/items in the localStorage
+    // 2. if it does, you getItem from localStorage, unstringify, parse it, and you push the new Game into the existing set of array
+    // 3. if it doesn't, you stringify a new object and add it into the local storage.
+
+    if (this.state.cards.every((card) => card.matched)) {
+      let previous = localStorage.getItem("storeGames");
+      previous = JSON.parse(previous);
+      if (previous && previous.length > 0) {
+        let Game = {
+          difficulty: this.state.difficulty,
+          moves: this.state.moves,
+        };
+        previous.push(Game);
+        console.log(previous);
+        let storeGames = JSON.stringify(previous);
+        localStorage.setItem("storeGames", storeGames);
+      } else {
+        let Game = [
+          {
+            difficulty: this.state.difficulty,
+            moves: this.state.moves,
+          },
+        ];
+        let storeGames = JSON.stringify([...Game]);
+        localStorage.setItem("storeGames", storeGames);
+        console.log(storeGames);
+      }
+    }
+    // Reset State
     this.setState({
       cards: [],
       difficulty: "",
@@ -162,8 +194,9 @@ class Game extends React.Component {
     this.setState({
       difficulty: getDifficulty,
       cards: makeDeck(getDifficulty),
-    });
+    });;
   }
+
 
   render() {
     this.hasWon = this.state.cards.length
@@ -172,8 +205,9 @@ class Game extends React.Component {
 
     return (
       <>
+        <Header />
         <div>
-          <audio controls="controls" src={ChristmasMP3} autoPlay="autoplay" />
+          {/* <audio controls="controls" src={ChristmasMP3} autoPlay="autoplay" /> */}
         </div>
         <main>
           {!this.state.difficulty && <Menu onClick={this.setDifficulty} />}
@@ -202,6 +236,7 @@ class Game extends React.Component {
           )}
         </main>
         {this.hasWon && <Overlay backToMenu={this.handleBackToMenu} />}
+        {!this.state.difficulty && <Link to="leaderboard"><button>Leaderboard</button></Link>}
       </>
     );
   }
