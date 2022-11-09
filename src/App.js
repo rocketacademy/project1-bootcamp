@@ -4,6 +4,8 @@ import DisplayExpense from "./components/DisplayExpense";
 import ExpenseForm from "./components/ExpenseForm";
 import GroupForm from "./components/GroupForm";
 import SplitBill from "./components/SplitBill";
+import TrashBinIcon from "./components/TrashBinIcon";
+import ReceiptDisplay from "./components/ReceiptDisplay";
 
 const calcSplitBill = (expenseArray) => {
   const tally = {};
@@ -25,6 +27,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      uniqueNames: [],
+      overallreceipt: {},
       group: ["anya", "bella", "cass", "darren"],
       expenses: [
         { item: "Burger 1", amount: 4.2, spenders: ["patrick", "spongebob"] },
@@ -85,11 +89,56 @@ class App extends React.Component {
     });
   };
 
-  splitBill = () => {
+  splitBill1 = () => {
     let copyOfExpenses = [...this.state.expenses];
     this.setState({
       billTally: calcSplitBill(copyOfExpenses),
     });
+  };
+
+  splitBill = () => {
+    let expensesList = [...this.state.expenses];
+    let fullList = [];
+    for (let i = 0; i < expensesList.length; i++) {
+      fullList = [...fullList, ...expensesList[i].spenders];
+    }
+    let uniqueNames = [...new Set(fullList)];
+
+    let newReceipt = {};
+    for (let k = 0; k < uniqueNames.length; k++) {
+      var purchase = [];
+      var cost = [];
+      var initialValue = 0;
+      for (let j = 0; j < expensesList.length; j++) {
+        if (expensesList[j]["spenders"].includes(uniqueNames[k])) {
+          purchase.push(expensesList[j]["item"]);
+          cost.push(
+            expensesList[j]["amount"] / expensesList[j]["spenders"].length
+          );
+        }
+
+        var record = {
+          purchases: purchase,
+          costprice: cost,
+          total: cost.reduce(
+            (previousValue, currentValue) => previousValue + currentValue,
+            initialValue
+          ),
+        };
+      }
+      newReceipt[uniqueNames[k]] = record;
+    }
+    console.log(newReceipt);
+    console.log(uniqueNames);
+    this.setState(
+      {
+        overallreceipt: newReceipt,
+        uniqueNames: uniqueNames,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
 
   onMouseEnter = (e) => {
@@ -103,62 +152,13 @@ class App extends React.Component {
 
   render() {
     let copyGroup = [...this.state.group];
-    let listOfExpenses = [...this.state.expenses];
-    const showSplitBill = this.state.billTally;
+    let copyExpenses = [...this.state.expenses];
+    const copyBillTally = this.state.billTally;
 
     let txtBill = [];
-    for (let x in showSplitBill) {
-      txtBill.push(`${x} → $${showSplitBill[x].toFixed(2)}`);
+    for (let x in copyBillTally) {
+      txtBill.push(`${x} → $${copyBillTally[x].toFixed(2)}`);
     }
-
-    const allSpenders = () => {
-      let fullList = [];
-      for (let i = 0; i < listOfExpenses.length; i++) {
-        fullList = [...fullList, ...listOfExpenses[i].spenders];
-      }
-      let uniqueList = [...new Set(fullList)];
-      return uniqueList;
-    };
-
-    const uniqueNames = allSpenders();
-
-    const makeReceipt = () => {
-      let newReceipt = [];
-      for (let k = 0; k < uniqueNames.length; k++) {
-        var purchase = [];
-        var cost = [];
-        for (let j = 0; j < listOfExpenses.length; j++) {
-          if (listOfExpenses[j]["spenders"].includes(uniqueNames[k])) {
-            purchase.push(listOfExpenses[j]["item"]);
-            cost.push(
-              listOfExpenses[j]["amount"] / listOfExpenses[j]["spenders"].length
-            );
-          }
-
-          var record = {
-            name: uniqueNames[k],
-            purchases: purchase,
-            costprice: cost,
-          };
-        }
-        newReceipt.push(record);
-      }
-      return newReceipt;
-    };
-
-    const receipt = makeReceipt();
-
-    const showBreakdown = (input) => {
-      var output = input;
-      for (let z = 0; z < receipt.length; z++) {
-        if (receipt[z].name === input) {
-          for (let t = 0; t < receipt[z]["purchases"].length; t++) {
-            output += `<br> ${receipt[z]["purchases"][t]} -- ${receipt[z]["costprice"][t]}`;
-          }
-        }
-      }
-      return output;
-    };
 
     return (
       <div>
@@ -168,14 +168,14 @@ class App extends React.Component {
         <div className="flex-container">
           <div className="container">
             <center>
-              <h4 className="step">Add person</h4>
+              <h4 className="step">1. Add person</h4>
             </center>
             <GroupForm nameList={this.state.group} addName={this.addName} />
           </div>
 
           <div className="container two-width">
             <center>
-              <h4 className="step">Add item</h4>
+              <h4 className="step">2. Add item</h4>
             </center>
             <ExpenseForm
               fullNameList={this.state.group}
@@ -185,17 +185,24 @@ class App extends React.Component {
 
           <div className="container">
             <center>
-              <h4 className="step">Pay Up!</h4>
+              <h4 className="step">3. Pay Up!</h4>
             </center>
             <div>
-              {txtBill.map((entry) => (
+              {/* {txtBill.map((entry) => (
                 <div className="tooltip">
                   {entry}
                   <span className="tooltiptext">Insert text</span>
                 </div>
+              ))} */}
+              {this.state.uniqueNames.map((name) => (
+                <ReceiptDisplay
+                  name={name}
+                  receipt={this.state.overallreceipt[name]}
+                />
               ))}
             </div>
             <SplitBill action={this.splitBill} />
+            {/* {console.log("billtally", this.state.billTally)} */}
           </div>
 
           <div className="container">
@@ -213,71 +220,7 @@ class App extends React.Component {
                     onMouseEnter={this.onMouseEnter}
                     onMouseLeave={this.onMouseLeave}
                   >
-                    <svg
-                      className="trashcan"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 25 24.8"
-                    >
-                      {Number(this.state.hover) === i ? (
-                        <g className="trashcan-open" value={i}>
-                          <path
-                            d="M18.7,24.4H5.9L4.9,7h14.9L18.7,24.4z M7.6,22.6H17l0.8-13.7h-11L7.6,22.6z"
-                            value={i}
-                          ></path>
-                          <polygon
-                            points="13.6,10.3 13.1,21.2 14.9,21.2 15.4,10.3 "
-                            value={i}
-                          ></polygon>
-                          <polygon
-                            points="11.5,21.2 11,10.3 9.2,10.3 9.7,21.2 "
-                            value={i}
-                          ></polygon>
-                          <path
-                            d="M19.1,0.7l-4.7,0.9l-0.8-1.4L8.2,1.3L8,3l-4.7,1l0.2,4.7l17.3-3.5L19.1,0.7z 
-             
-             M8.8,1.9l4.4 -1.0 l0.5,0.8
-             L8.7,2.8z 
-             
-             M5.2,6.4l0-1L18,2.8l0.3,0.9L5.2,6.4z"
-                            value={i}
-                          ></path>
-                        </g>
-                      ) : (
-                        <g className="trashcan-closed" value={i}>
-                          <path
-                            d="M6.8,8.8h11L17,22.6
-             H7.6L6.8,8.8z 
-             M4.9,7l1,17.4h12.8
-             l1-17.4
-             H4.9z"
-                            value={i}
-                          ></path>
-                          <polygon
-                            points="13.6,10.3 13.1,21.2 14.9,21.2 15.4,10.3 "
-                            value={i}
-                          ></polygon>
-                          <polygon
-                            points="11.5,21.2 11,10.3 9.2,10.3 9.7,21.2 "
-                            value={i}
-                          ></polygon>
-                          <path
-                            d="M20.4,4h-4.8l-0.5-1.6
-             H9.5L9,4
-             H4.2
-             L3.5,8.6h17.6
-             L20.4,4z 
-             
-             M9.9,3.2h4.8
-             L14.9,3.9h-5.2z
-             
-             M5.6,6.7l0.2-1 h13l0.2,1
-             H5.6z"
-                            value={i}
-                          ></path>
-                        </g>
-                      )}
-                    </svg>
+                    <TrashBinIcon value={i} hover={this.state.hover} />
                   </button>
                 </div>
               ))}
@@ -290,7 +233,7 @@ class App extends React.Component {
             <h2 className="bangers">📜RECORDS OF EXPENSES📜</h2>
           </center>
           <div className="row">
-            {listOfExpenses.map((entry, i) => (
+            {copyExpenses.map((entry, i) => (
               <DisplayExpense
                 {...entry}
                 key={i}
