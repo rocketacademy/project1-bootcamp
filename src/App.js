@@ -140,7 +140,7 @@ class App extends React.Component {
             <GroupForm nameList={this.state.group} addName={this.addName} />
           </div>
 
-          <div className="green-container two-width">
+          <div className="green-container">
             <center>
               <h4 className="step">2. Add item</h4>
             </center>

@@ -34,10 +34,6 @@ body {
   color: white;
 }
 
-.two-width {
-  max-width: 26vw;
-}
-
 .step {
   padding: 5px 13px;
   background-color: #ffc312;
