@@ -1,5 +1,20 @@
 import React from "react";
 
+const calcGST = (price) => {
+  let output = (price * 1.07).toFixed(2);
+  return output;
+};
+
+const calcSvcChrg = (price) => {
+  let output = (price * 1.1).toFixed(2);
+  return output;
+};
+
+const calcGstSc = (price) => {
+  let output = (price * 1.1 * 1.07).toFixed(2);
+  return output;
+};
+
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +23,45 @@ export default class ExpenseForm extends React.Component {
       amount: "",
       spenders: [],
       start: true,
+      taxOption: "notax",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "taxOption") {
+      let baseprice = this.state.amount;
+
+      if (this.state.taxOption === "gst") {
+        baseprice = baseprice / 1.07;
+      } else if (this.state.taxOption === "sc") {
+        baseprice = baseprice / 1.1;
+      } else if (this.state.taxOption === "gstsc") {
+        baseprice = baseprice / 1.177;
+      }
+
+      if (value === "gst") {
+        this.setState({
+          amount: calcGST(baseprice),
+        });
+      } else if (value === "sc") {
+        this.setState({
+          amount: calcSvcChrg(baseprice),
+        });
+      } else if (value === "gstsc") {
+        this.setState({
+          amount: calcGstSc(baseprice),
+        });
+      } else {
+        this.setState({
+          amount: baseprice.toFixed(2),
+        });
+      }
+    }
     this.setState({
       [name]: value,
     });
@@ -52,6 +99,7 @@ export default class ExpenseForm extends React.Component {
       amount: "",
       spenders: [],
       start: true,
+      taxOption: "notax",
     });
   };
 
@@ -79,6 +127,54 @@ export default class ExpenseForm extends React.Component {
             pattern="^\d*(\.\d{0,2})?$"
             placeholder="Enter Price (Up 2 d.p.)"
           />
+
+          <div className="flex-tax">
+            <label>
+              <input
+                type="radio"
+                name="taxOption"
+                value="notax"
+                checked={this.state.taxOption === "notax"}
+                onChange={(e) => this.handleChange(e)}
+              />
+              no tax
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="taxOption"
+                value="gst"
+                checked={this.state.taxOption === "gst"}
+                onChange={(e) => this.handleChange(e)}
+              />
+              7% gst
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="taxOption"
+                value="sc"
+                checked={this.state.taxOption === "sc"}
+                onChange={(e) => this.handleChange(e)}
+              />
+              10% svc
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="taxOption"
+                value="gstsc"
+                checked={this.state.taxOption === "gstsc"}
+                onChange={(e) => this.handleChange(e)}
+              />
+              gst + svc
+            </label>
+          </div>
+
+          <br />
           <br />
           <b>
             <u>Split amongst:</u>

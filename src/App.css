@@ -25,6 +25,13 @@ body {
   padding-bottom: 15px;
 }
 
+.flex-tax {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: smaller;
+}
+
 .green-container {
   background-color: #004e00;
   border: 10px solid #000000;

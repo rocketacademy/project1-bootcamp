@@ -17,24 +17,8 @@ class App extends React.Component {
       expenses: [
         { item: "Burger 1", amount: 4.2, spenders: ["patrick", "spongebob"] },
         { item: "Burger 2", amount: 4.8, spenders: ["anya", "bella", "cass"] },
-        {
-          item: "Burger 3",
-          amount: 9.6,
-          spenders: ["patrick", "spongebob", "darren"],
-        },
-        { item: "Burger 4", amount: 4.2, spenders: ["anya", "spongebob"] },
-        {
-          item: "Burger 5",
-          amount: 4.8,
-          spenders: ["bella", "darren", "patrick", "spongebob"],
-        },
-        {
-          item: "Burger 6",
-          amount: 9.6,
-          spenders: ["patrick", "spongebob", "bella"],
-        },
         { item: "Burger 7", amount: 4.8, spenders: ["patrick", "anya"] },
-        { item: "Burger 8", amount: 9.6, spenders: ["cass"] },
+        { item: "Burger 8", amount: 9.6, spenders: ["cass", "darren"] },
       ],
       hover: -1,
     };
@@ -125,6 +109,7 @@ class App extends React.Component {
     let copyGroup = [...this.state.group];
     let copyExpenses = [...this.state.expenses];
     let copyUniqueNames = [...this.state.uniqueNames];
+    let sortUniqueNames = copyUniqueNames.sort();
     let copyOverallReceipt = this.state.overallReceipt;
 
     return (
@@ -152,10 +137,10 @@ class App extends React.Component {
 
           <div className="green-container">
             <center>
-              <h4 className="step">3. Pay Up!</h4>
+              <h4 className="step">3. View Receipt</h4>
             </center>
             <div className="flex-receipt">
-              {copyUniqueNames.map((name) => (
+              {sortUniqueNames.map((name) => (
                 <ReceiptDisplay
                   name={name}
                   receipt={copyOverallReceipt[name]}
@@ -170,7 +155,7 @@ class App extends React.Component {
 
           <div className="green-container">
             <center>
-              <h4 className="step">Edit Group List</h4>
+              <h4 className="step">4. Edit Group List</h4>
             </center>
             <div className="flex-grouplist">
               {copyGroup.map((k, i) => (
