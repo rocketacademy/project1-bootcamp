@@ -4,7 +4,7 @@ body {
 
 .flex-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-evenly;
   padding-top: 20px;
 }
@@ -14,6 +14,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding-top: 5px;
+  max-width: 300px;
 }
 
 .flex-receipt {
@@ -34,11 +35,11 @@ body {
 
 .green-container {
   background-color: #004e00;
-  border: 10px solid #000000;
-  width: 400px;
+  border: 5px solid #000000;
   border-radius: 50px;
   padding: 2.5rem;
   color: white;
+  margin: 2px;
 }
 
 .step {
@@ -100,6 +101,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
+  max-width: 300px;
 }
 
 .white-btn {
@@ -166,3 +168,4 @@ body {
 }
 
 /* https://webdeasy.de/en/top-css-buttons-en/ */
+/* https://www.geeksforgeeks.org/css-units-em-rem-px-vh-vw/ */
