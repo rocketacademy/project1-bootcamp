@@ -77,7 +77,6 @@ body {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -165,6 +164,16 @@ body {
   top: 3px;
   box-shadow: 0 2px 0px #387796;
   transition: all 0.2s;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+  }
 }
 
 /* https://webdeasy.de/en/top-css-buttons-en/ */

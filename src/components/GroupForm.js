@@ -40,6 +40,7 @@ export default class GroupForm extends React.Component {
             className="input-field"
             type="text"
             placeholder="Enter Person Name"
+            maxLength={15}
             onChange={this.handleUserInput}
             value={this.state.name}
           />

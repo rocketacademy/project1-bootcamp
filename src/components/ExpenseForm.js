@@ -112,6 +112,7 @@ export default class ExpenseForm extends React.Component {
             className="input-field"
             type="text"
             name="item"
+            maxLength={24}
             value={this.state.item}
             required
             onChange={(e) => this.handleChange(e)}
