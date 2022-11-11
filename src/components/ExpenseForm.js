@@ -178,7 +178,9 @@ export default class ExpenseForm extends React.Component {
           <br />
           <br />
           <b>
-            <u>Split amongst:</u>
+            <span style={{ color: "#ffc312" }}>
+              <u>Split amongst:</u>
+            </span>
           </b>
           <br />
           <br />

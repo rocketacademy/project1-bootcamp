@@ -4,10 +4,10 @@ export default class ReceiptDisplay extends React.Component {
   render() {
     return (
       <div className="tooltip">
-        <b>
-          {this.props.name}
-          {" → "}${this.props.receipt.total.toFixed(2)}
-        </b>
+        <div className="flex-arrow">
+          <div>{this.props.name}</div>
+          <div>${this.props.receipt.total.toFixed(2)}</div>
+        </div>
         <span className="tooltiptext">
           <table>
             <tr>

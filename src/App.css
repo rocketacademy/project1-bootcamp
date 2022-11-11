@@ -26,6 +26,15 @@ body {
   padding-bottom: 15px;
 }
 
+.flex-arrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 200px;
+  color: #fffbc1;
+}
+
 .flex-tax {
   display: flex;
   flex-flow: row wrap;

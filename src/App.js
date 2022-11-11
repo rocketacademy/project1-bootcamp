@@ -13,13 +13,8 @@ class App extends React.Component {
     this.state = {
       uniqueNames: [],
       overallReceipt: {},
-      group: ["anya", "bella", "cass", "darren"],
-      expenses: [
-        { item: "Burger 1", amount: 4.2, spenders: ["patrick", "spongebob"] },
-        { item: "Burger 2", amount: 4.8, spenders: ["anya", "bella", "cass"] },
-        { item: "Burger 7", amount: 4.8, spenders: ["patrick", "anya"] },
-        { item: "Burger 8", amount: 9.6, spenders: ["cass", "darren"] },
-      ],
+      group: [],
+      expenses: [],
       hover: -1,
     };
   }
@@ -115,7 +110,7 @@ class App extends React.Component {
     return (
       <div>
         <center>
-          <h1 className="bangers">A Bill Splitting App</h1>
+          <h1 className="bangers">Split ⚡ My ⚡ Bill</h1>
         </center>
         <div className="flex-container">
           <div className="green-container">
@@ -179,7 +174,9 @@ class App extends React.Component {
 
         <div>
           <center>
-            <h2 className="bangers">📜RECORDS OF EXPENSES📜</h2>
+            {this.state.expenses.length > 0 && (
+              <h2 className="bangers">📜RECORDS OF EXPENSES📜</h2>
+            )}
           </center>
           <div className="row-flex">
             {copyExpenses.map((entry, i) => (
