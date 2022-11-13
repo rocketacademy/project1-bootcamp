@@ -13,15 +13,20 @@ class App extends React.Component {
     this.state = {
       uniqueNames: [],
       overallReceipt: {},
-      group: ["adeline", "bella", "cassandra", "daryl lee"],
-      expenses: [
-        { item: "Apple Juice", amount: 4.2, spenders: ["anya", "bella"] },
-        { item: "Burger", amount: 4.2, spenders: ["anya", "bella"] },
-        { item: "Cheese", amount: 4.2, spenders: ["anya", "bella"] },
-        { item: "Dango", amount: 4.2, spenders: ["anya", "bella"] },
-      ],
+      group: [],
+      expenses: [],
       hover: -1,
     };
+  }
+
+  componentDidMount() {
+    let state = localStorage.getItem("state");
+    state = JSON.parse(state);
+    this.setState(state);
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("state", JSON.stringify(this.state));
   }
 
   addName = (name) => {
@@ -40,7 +45,8 @@ class App extends React.Component {
   };
 
   deleteRecord = (e) => {
-    // e is the event, e.target is the button,
+    // deleteRecord takes in a parameter (like addName or deleteName)
+    // e is the event, e.target is the button, the value in e.target.value is defined in Line 38 of dispay expense which takes its value from the id which is an index.
     let key = e.target.value;
     let newexpenses = [...this.state.expenses];
     newexpenses.splice(key, 1);
