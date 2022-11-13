@@ -13,8 +13,13 @@ class App extends React.Component {
     this.state = {
       uniqueNames: [],
       overallReceipt: {},
-      group: [],
-      expenses: [],
+      group: ["adeline","bella","cassandra","daryl lee"],
+      expenses: [
+        { item: "Apple Juice", amount: 4.2, spenders: ["anya", "bella"] },
+        { item: "Burger", amount: 4.2, spenders: ["anya", "bella"] },
+        { item: "Cheese", amount: 4.2, spenders: ["anya", "bella"] },
+        { item: "Dango", amount: 4.2, spenders: ["anya", "bella"] },
+      ],
       hover: -1,
     };
   }
@@ -48,6 +53,12 @@ class App extends React.Component {
     let newArray = [...this.state.expenses, record];
     this.setState({
       expenses: newArray,
+    });
+  };
+
+  clearRecords = () => {
+    this.setState({
+      expenses: [],
     });
   };
 
@@ -189,6 +200,12 @@ class App extends React.Component {
             ))}
           </div>
         </div>
+        <br />
+        {this.state.expenses.length > 0 && (
+          <center>
+            <button onClick={this.clearRecords}>Clear all</button>
+          </center>
+        )}
       </div>
     );
   }
