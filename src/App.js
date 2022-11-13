@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       uniqueNames: [],
       overallReceipt: {},
-      group: ["adeline","bella","cassandra","daryl lee"],
+      group: ["adeline", "bella", "cassandra", "daryl lee"],
       expenses: [
         { item: "Apple Juice", amount: 4.2, spenders: ["anya", "bella"] },
         { item: "Burger", amount: 4.2, spenders: ["anya", "bella"] },
