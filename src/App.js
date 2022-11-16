@@ -30,7 +30,7 @@ class App extends React.Component {
           />
 
           <Route
-            path="leaderboard"
+            path="/leaderboard"
             element={<Leaderboard/>}
           />
         </Routes>
