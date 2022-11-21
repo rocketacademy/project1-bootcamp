@@ -3,17 +3,141 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 25vmin;
   pointer-events: none;
+  border-radius: 12px;
+}
+
+.animated-gif {
+  width: auto;
+  height: 15vmin;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  animation: opacityOn 1s normal forwards step-end;
+}
+
+@keyframes opacityOn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dice-image {
+  opacity: 0;
+  height: 8vmin;
+  pointer-events: none;
+  animation: opacityOff 1.5s normal forwards step-end;
+  animation-delay: 0.75s;
+}
+@keyframes opacityOff {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: lightcyan;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  font-size: calc(5px + 1.5vmin);
+  color: black;
+}
+
+.Main-body {
+  background-color: #050e22;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(9px + 2vmin);
+  color: rgb(247, 245, 151);
+}
+
+.height-auto {
+  height: auto;
+  min-height: 20vh;
+}
+
+.height-fixed {
+  min-height: 38vh;
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
   color: white;
+  padding: 7px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: calc(5px + 1.5vmin);
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.inputBoxes {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.labelClass {
+  float: left;
+  width: 150px;
+  margin: 4px 2px;
+}
+
+.boxClass {
+  border-radius: 6px;
+  margin: 4px 2px;
+}
+
+input[type="radio"] {
+  margin: 0 10px 0 10px;
+}
+
+h2 {
+  background-color: lightcyan;
+  font-size: 5em;
+  color: #008000;
+  text-align: center;
+  animation: animate 1.5s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
