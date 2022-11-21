@@ -1,19 +1,24 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Noto+Sans&family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background: url("/public/PokemonPics/background.jpg");
+}
+
+.game-container {
+  width: 100vw;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
 }

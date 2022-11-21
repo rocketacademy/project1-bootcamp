@@ -1,17 +1,39 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import {Routes, Route} from 'react-router-dom';
+import Game from "./Components/Game";
+import Leaderboard from "./Components/Leaderboard";
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      scoreboard: [
+        { easy: "easy", score: 0 },
+        { medium: "medium", score: 0 },
+        { hard: "hard", score: 0 },
+      ],
+    };
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+      <div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="game-container">
+                <Game />
+              </div>
+            }
+          />
+
+          <Route
+            path="/leaderboard"
+            element={<Leaderboard/>}
+          />
+        </Routes>
       </div>
     );
   }
