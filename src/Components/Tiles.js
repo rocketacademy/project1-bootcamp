@@ -6,22 +6,59 @@ export default class Tiles extends React.Component {
   constructor(props) {
     super(props);
 
+    const todaysWaffle = waffles[0]; //// Hard-coded for now, to be replaced by random selection of waffle from a longer list of waffles
+
     this.state = {
-      todaysWaffle: waffles[0], //// Hard-coded for now, to be replaced by random selection of waffle
-    }; // update todaysWaffle with each swop
+      waffle: [...todaysWaffle], // copy to update throughout the game
+      pairToSwop: [],
+    };
   }
-  swopLetters = (letter1, letter2) => {
-    // If letters 1 and 2 are clicked, swop their currRow and currCol
-    // let newWaffle = [...this.state.todaysWaffle]; // replace the changed tile objects
+
+  handleClick = (e) => {
+    if (this.state.pairToSwop.length < 2) {
+      this.setState(
+        {
+          pairToSwop: [...this.state.pairToSwop, e.target.id],
+        },
+        () => this.swopLetters(this.state.pairToSwop)
+      );
+    }
+  };
+
+  swopLetters = (pairIdArr) => {
+    if (pairIdArr.length === 2) {
+      const updatedWaffle = [...this.state.waffle];
+      const [tile1, tile2] = updatedWaffle.filter((tile) =>
+        pairIdArr.includes(tile.id)
+      );
+      console.log(tile1);
+      console.log(tile2);
+      let coord1 = tile1.currCoord;
+      let coord2 = tile2.currCoord;
+      console.log(coord1, coord2);
+      tile1.currCoord = coord2;
+      tile2.currCoord = coord1;
+      console.log(tile1);
+      console.log(tile2);
+      console.log(updatedWaffle);
+      this.setState({ waffle: updatedWaffle, pairToSwop: [] });
+    }
   };
 
   render() {
-    const sortedTiles = this.state.todaysWaffle.sort();
+    const sortedTiles = this.state.waffle.sort(
+      (a, b) => a.currCoord - b.currCoord
+    );
 
-    const tiles = sortedTiles.map((tileObj) => (
-      <Letter key={tileObj.id} {...tileObj} /> //Onclick
+    const tilesDisplay = sortedTiles.map((tileObj) => (
+      <div key={tileObj.id} onClick={this.handleClick}>
+        <Letter
+          {...tileObj}
+          // customClickEvent={this.handleClick}
+        />
+      </div>
     ));
 
-    return <div id="grid">{tiles}</div>;
+    return <div id="grid">{tilesDisplay}</div>;
   }
 }
