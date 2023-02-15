@@ -20,18 +20,16 @@ while (randomWaffle.length < 1) {
       });
     }
     for (let i = 0; i < 10; i++) {
-      swopAnyLetters(randomWaffle);
+      swopAnyTwoLetters(randomWaffle);
     }
   }
 }
 
-function swopAnyLetters(waffle) {
-  const waffleIndices = [...Array(waffle.length).keys()];
-  // Holes in the waffle (no letter on the tile) are not to be swopped
-  waffleIndices.splice(6, 1);
-  waffleIndices.splice(8, 1);
-  waffleIndices.splice(16, 1);
-  waffleIndices.splice(18, 1);
+function swopAnyTwoLetters(waffle) {
+  // Holes are indexed 6, 8, 11, and 18 and are not available for swops
+  const waffleIndices = [
+    0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21, 22, 23, 24,
+  ];
   const shuffledIndices = waffleIndices.sort(() => 0.5 - Math.random());
   let letter1 = waffle[shuffledIndices[0]];
   let letter2 = waffle[shuffledIndices[1]];
@@ -40,6 +38,3 @@ function swopAnyLetters(waffle) {
   letter1.currCoord = coord2;
   letter2.currCoord = coord1;
 }
-
-console.log(randomWaffle);
-console.log(randomWaffle.length);
