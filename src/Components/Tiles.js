@@ -1,6 +1,7 @@
 import React from "react";
 import Letter from "./Letter";
 import { waffles } from "../Waffles";
+import { palette } from "../Palette";
 
 export default class Tiles extends React.Component {
   constructor(props) {
@@ -9,16 +10,45 @@ export default class Tiles extends React.Component {
     const todaysWaffle = waffles[0]; //// Hard-coded for now, to be replaced by random selection of waffle from a longer list of waffles
 
     this.state = {
-      waffle: [...todaysWaffle], // copy to update throughout the game
+      waffle: [...todaysWaffle],
       pairToSwop: [],
     };
   }
 
+  componentDidMount() {
+    this.updateColor();
+  }
+
+  updateColor = () => {
+    const updatedWaffle = [...this.state.waffle];
+    for (const tile of updatedWaffle) {
+      if (tile.currCoord === tile.targetCoord) {
+        tile.color = palette.green;
+      }
+    }
+    for (const tile of updatedWaffle) {
+      const currentRow = tile.currCoord[0];
+      const rowTarget = updatedWaffle.filter(
+        (tile) => tile.targetCoord[0] === currentRow
+      );
+      if (tile.color !== palette.green && rowTarget.includes(tile)) {
+        tile.color = palette.yellow;
+      }
+    }
+    this.setState({ waffle: updatedWaffle });
+  };
+
   handleClick = (e) => {
+    const tileId = e.target.id;
+    const tileColor = this.state.waffle.filter((tile) => tile.id === tileId)[0]
+      .color;
+    if (tileColor === palette.green) {
+      return;
+    }
     if (this.state.pairToSwop.length < 2) {
       this.setState(
         {
-          pairToSwop: [...this.state.pairToSwop, e.target.id],
+          pairToSwop: [...this.state.pairToSwop, tileId],
         },
         () => this.swopLetters(this.state.pairToSwop)
       );
@@ -29,6 +59,7 @@ export default class Tiles extends React.Component {
     if (pairIdArr.length === 2) {
       if (pairIdArr[0] === pairIdArr[1]) {
         this.setState({ pairToSwop: [] });
+        alert("Can't swop a tile with itself!");
         return;
       }
       const updatedWaffle = [...this.state.waffle];
@@ -39,7 +70,10 @@ export default class Tiles extends React.Component {
       let coord2 = tile2.currCoord;
       tile1.currCoord = coord2;
       tile2.currCoord = coord1;
-      this.setState({ waffle: updatedWaffle, pairToSwop: [] });
+      this.setState(
+        { waffle: updatedWaffle, pairToSwop: [] },
+        this.updateColor
+      );
     }
   };
 
@@ -48,12 +82,9 @@ export default class Tiles extends React.Component {
       (a, b) => a.currCoord - b.currCoord
     );
 
-    const tilesDisplay = sortedTiles.map((tileObj) => (
-      <div key={tileObj.id} onClick={this.handleClick}>
-        <Letter
-          {...tileObj}
-          // customClickEvent={this.handleClick}
-        />
+    const tilesDisplay = sortedTiles.map((tile) => (
+      <div key={tile.id} onClick={this.handleClick}>
+        <Letter {...tile} />
       </div>
     ));
 
