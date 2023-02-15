@@ -27,20 +27,18 @@ export default class Tiles extends React.Component {
 
   swopLetters = (pairIdArr) => {
     if (pairIdArr.length === 2) {
+      if (pairIdArr[0] === pairIdArr[1]) {
+        this.setState({ pairToSwop: [] });
+        return;
+      }
       const updatedWaffle = [...this.state.waffle];
       const [tile1, tile2] = updatedWaffle.filter((tile) =>
         pairIdArr.includes(tile.id)
       );
-      console.log(tile1);
-      console.log(tile2);
       let coord1 = tile1.currCoord;
       let coord2 = tile2.currCoord;
-      console.log(coord1, coord2);
       tile1.currCoord = coord2;
       tile2.currCoord = coord1;
-      console.log(tile1);
-      console.log(tile2);
-      console.log(updatedWaffle);
       this.setState({ waffle: updatedWaffle, pairToSwop: [] });
     }
   };
