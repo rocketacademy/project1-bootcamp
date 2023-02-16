@@ -4,7 +4,7 @@ import Letter from "./Letter";
 import { palette } from "../Palette";
 import { randomWaffle } from "../Waffle-maker/waffle-maker";
 
-const holeCoords = ["11", "13", "31", "33"];
+const holes = ["11", "13", "31", "33"];
 
 export default class Tiles extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class Tiles extends React.Component {
     // First pass: find all green tiles
     for (const tile of updatedWaffle) {
       if (
-        !holeCoords.includes(tile.currCoord) &&
+        !holes.includes(tile.currCoord) &&
         tile.currCoord === tile.targetCoord
       ) {
         tile.color = palette.green;
@@ -47,7 +47,7 @@ export default class Tiles extends React.Component {
           ? updatedWaffle.filter((tile) => tile.targetCoord[1] === currentCol)
           : [];
       if (
-        holeCoords.includes(tile.currCoord) ||
+        holes.includes(tile.currCoord) ||
         tile.currCoord === tile.targetCoord
       ) {
         // skip if tile is a hole, or tiel is already green
@@ -68,7 +68,7 @@ export default class Tiles extends React.Component {
     if (tileColor === palette.green) {
       return;
     }
-    if (this.state.pairToSwop.length < 2) {
+    if (this.state.pairToSwop.length < 2 && !holes.includes(tileId)) {
       this.setState(
         {
           pairToSwop: [...this.state.pairToSwop, tileId],
@@ -79,7 +79,6 @@ export default class Tiles extends React.Component {
   };
 
   swopLetters = (pairIdArr) => {
-    //// to prevent swopping of holes
     if (pairIdArr.length === 2) {
       if (pairIdArr[0] === pairIdArr[1]) {
         this.setState({ pairToSwop: [] });
