@@ -2,7 +2,15 @@ import React from "react";
 import Letter from "./Letter";
 // import { waffles } from "../Waffles";
 import { palette } from "../Palette";
-import { randomWaffle } from "../Waffle-maker/waffle-maker";
+import { makeRandomWaffle } from "../Waffle-maker/waffle-maker";
+import {
+  row0word,
+  row2word,
+  row4word,
+  col0word,
+  col2word,
+  col4word,
+} from "../Waffle-maker/waffle-finder";
 
 const holes = ["11", "13", "31", "33"];
 
@@ -10,11 +18,20 @@ export default class Tiles extends React.Component {
   constructor(props) {
     super(props);
 
-    const todaysWaffle = randomWaffle;
+    const todaysWaffle = makeRandomWaffle();
+    const todaysSolution = {
+      row0: row0word,
+      row2: row2word,
+      row4: row4word,
+      col0: col0word,
+      col2: col2word,
+      col4: col4word,
+    };
 
     this.state = {
       waffle: [...todaysWaffle],
       pairToSwop: [],
+      solution: todaysSolution,
     };
   }
 
@@ -23,42 +40,76 @@ export default class Tiles extends React.Component {
   }
 
   updateColor = () => {
-    const updatedWaffle = [...this.state.waffle];
-    // First pass: find all green tiles
-    for (const tile of updatedWaffle) {
-      if (
-        !holes.includes(tile.currCoord) &&
-        tile.currCoord === tile.targetCoord
-      ) {
+    this.findGreen([...this.state.waffle]);
+  };
+
+  findGreen = (waffle) => {
+    const updatedSolution = { ...this.state.solution };
+    for (const tile of waffle) {
+      const location = tile.currCoord;
+      const currentRow = location[0];
+      const currentCol = location[1];
+      const correctLetterAtLocation = waffle.filter(
+        (tile) => tile.id === location
+      )[0];
+      if (tile.color === palette.green || holes.includes(location)) {
+        // skip
+      } else if (tile.letter === correctLetterAtLocation.letter) {
         tile.color = palette.green;
+
+        // remove the greened letter from the row and/or col's solution array(s)
+        if (currentRow % 2 === 0) {
+          updatedSolution[`row${currentRow}`] = updatedSolution[
+            `row${currentRow}`
+          ].replace(tile.letter, "");
+        }
+        if (currentCol % 2 === 0) {
+          updatedSolution[`col${currentCol}`] = updatedSolution[
+            `col${currentCol}`
+          ].replace(tile.letter, "");
+        }
       }
     }
+    this.setState(
+      {
+        solution: updatedSolution,
+      },
+      () => this.findYellow(waffle)
+    );
+  };
 
-    // Second pass: find all yellow tiles
-    for (const tile of updatedWaffle) {
+  findYellow = (waffle) => {
+    const solutionCopy = { ...this.state.solution };
+    for (const tile of waffle) {
       const currentRow = tile.currCoord[0];
       const currentCol = tile.currCoord[1];
-      const rowTarget =
-        currentRow % 2 === 0
-          ? updatedWaffle.filter((tile) => tile.targetCoord[0] === currentRow)
-          : [];
-      const colTarget =
-        currentCol % 2 === 0
-          ? updatedWaffle.filter((tile) => tile.targetCoord[1] === currentCol)
-          : [];
-      if (
-        holes.includes(tile.currCoord) ||
-        tile.currCoord === tile.targetCoord
+      const rowSolution =
+        currentRow % 2 === 0 ? solutionCopy[`row${currentRow}`] : "";
+      const colSolution =
+        currentCol % 2 === 0 ? solutionCopy[`col${currentCol}`] : "";
+      if (holes.includes(tile.currCoord) || tile.color === palette.green) {
+        // skip if tile is a hole, or tile is already green
+      } else if (
+        rowSolution.includes(tile.letter) ||
+        colSolution.includes(tile.letter)
       ) {
-        // skip if tile is a hole, or tiel is already green
-      } else if (rowTarget.includes(tile) || colTarget.includes(tile)) {
         tile.color = palette.yellow;
+        // remove the yellowed letter from the row and/or col's solution array(s), so that the next identical letter won't show up as a repeat yellow
+        if (currentRow % 2 === 0) {
+          solutionCopy[`row${currentRow}`] = solutionCopy[
+            `row${currentRow}`
+          ].replace(tile.letter, "");
+        }
+        if (currentCol % 2 === 0) {
+          solutionCopy[`col${currentCol}`] = solutionCopy[
+            `col${currentCol}`
+          ].replace(tile.letter, "");
+        }
       } else {
         tile.color = palette.grey;
       }
     }
-
-    this.setState({ waffle: updatedWaffle });
+    this.setState({ waffle: waffle });
   };
 
   handleClick = (e) => {

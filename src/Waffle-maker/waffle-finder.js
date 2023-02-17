@@ -1,30 +1,54 @@
 import { indexedWords } from "./indexed-words.js";
+import { words } from "./words.js";
 
-export const findWaffle = (row1) => {
-  let col1 = getRandomWord([...indexedWords[row1[0]]]);
-  let col2 = getRandomWord([...indexedWords[row1[2]]]);
-  let col3 = getRandomWord([...indexedWords[row1[4]]]);
+export let row0word = "";
+export let row2word = "";
+export let row4word = "";
+export let col0word = "";
+export let col2word = "";
+export let col4word = "";
 
-  let row2 = "";
-  for (const word of indexedWords[col1[2]]) {
-    if (word[2] === col2[2] && word[4] === col3[2]) {
-      row2 = word;
-    }
-  }
+export const waffleStr = findWaffle(getRandomWord(words));
+row0word = waffleStr.slice(0, 5);
 
-  let row3 = "";
-  for (const word of indexedWords[col1[4]]) {
-    if (word[2] === col2[4] && word[4] === col3[4]) {
-      row3 = word;
-    }
-  }
-
-  if (row2 && row3) {
-    // if the word for row2 or row3 does not exist, return undefined
-    return `${row1}${col1[1]} ${col2[1]} ${col3[1]}${row2}${col1[3]} ${col2[3]} ${col3[3]}${row3}`;
-  }
-};
-
-export const getRandomWord = (arr) => {
+function getRandomWord(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
-};
+}
+
+function findWaffle(row0word) {
+  while (
+    !row2word ||
+    !row4word ||
+    [...new Set([row0word, row2word, row4word, col0word, col2word, col4word])]
+      .length < 6
+  ) {
+    col0word = getRandomWord([...indexedWords[row0word[0]]]);
+    col2word = getRandomWord([...indexedWords[row0word[2]]]);
+    col4word = getRandomWord([...indexedWords[row0word[4]]]);
+
+    for (const word of indexedWords[col0word[2]]) {
+      if (word[2] === col2word[2] && word[4] === col4word[2]) {
+        row2word = word;
+      } else {
+        row2word = "";
+      }
+    }
+
+    for (const word of indexedWords[col0word[4]]) {
+      if (word[2] === col2word[4] && word[4] === col4word[4]) {
+        row4word = word;
+      } else {
+        row4word = "";
+      }
+    }
+  }
+  [row0word, row2word, row4word, col0word, col2word, col4word] = [
+    row0word,
+    row2word,
+    row4word,
+    col0word,
+    col2word,
+    col4word,
+  ].map((word) => word.toUpperCase());
+  return `${row0word}${col0word[1]} ${col2word[1]} ${col4word[1]}${row2word}${col0word[3]} ${col2word[3]} ${col4word[3]}${row4word}`;
+}

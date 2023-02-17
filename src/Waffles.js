@@ -1,3 +1,4 @@
+////  Currently not in use
 import { palette } from "./Palette";
 
 export const waffles = [
