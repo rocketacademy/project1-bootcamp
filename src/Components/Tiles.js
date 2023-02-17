@@ -1,7 +1,7 @@
 import React from "react";
-import Letter from "./Letter";
+import Letter from "./Letter.js";
 // import { waffles } from "../Waffles";
-import { palette } from "../Palette";
+import { palette } from "../Palette.js";
 import { makeRandomWaffle } from "../Waffle-maker/waffle-maker";
 import {
   row0word,
@@ -32,11 +32,26 @@ export default class Tiles extends React.Component {
       waffle: [...todaysWaffle],
       pairToSwop: [],
       solution: todaysSolution,
+      greenTiles: 0,
+      swopsLeft: 15,
     };
   }
 
   componentDidMount() {
     this.updateColor();
+  }
+
+  componentDidUpdate() {
+    if (this.hasWon()) {
+      setTimeout(() => {
+        alert("Congrats!");
+      }, 100);
+    }
+    if (this.hasLost()) {
+      setTimeout(() => {
+        alert("Ran out of tries!");
+      }, 100);
+    }
   }
 
   updateColor = () => {
@@ -45,6 +60,7 @@ export default class Tiles extends React.Component {
 
   findGreen = (waffle) => {
     const updatedSolution = { ...this.state.solution };
+    let addedGreenTiles = 0;
     for (const tile of waffle) {
       const location = tile.currCoord;
       const currentRow = location[0];
@@ -56,23 +72,19 @@ export default class Tiles extends React.Component {
         // skip
       } else if (tile.letter === correctLetterAtLocation.letter) {
         tile.color = palette.green;
-
-        // remove the greened letter from the row and/or col's solution array(s)
-        if (currentRow % 2 === 0) {
-          updatedSolution[`row${currentRow}`] = updatedSolution[
-            `row${currentRow}`
-          ].replace(tile.letter, "");
-        }
-        if (currentCol % 2 === 0) {
-          updatedSolution[`col${currentCol}`] = updatedSolution[
-            `col${currentCol}`
-          ].replace(tile.letter, "");
-        }
+        addedGreenTiles += 1;
+        this.removeLetterFromSolution(
+          tile,
+          currentRow,
+          currentCol,
+          updatedSolution
+        );
       }
     }
     this.setState(
       {
         solution: updatedSolution,
+        greenTiles: this.state.greenTiles + addedGreenTiles,
       },
       () => this.findYellow(waffle)
     );
@@ -94,22 +106,26 @@ export default class Tiles extends React.Component {
         colSolution.includes(tile.letter)
       ) {
         tile.color = palette.yellow;
-        // remove the yellowed letter from the row and/or col's solution array(s), so that the next identical letter won't show up as a repeat yellow
-        if (currentRow % 2 === 0) {
-          solutionCopy[`row${currentRow}`] = solutionCopy[
-            `row${currentRow}`
-          ].replace(tile.letter, "");
-        }
-        if (currentCol % 2 === 0) {
-          solutionCopy[`col${currentCol}`] = solutionCopy[
-            `col${currentCol}`
-          ].replace(tile.letter, "");
-        }
+        this.removeLetterFromSolution(
+          tile,
+          currentRow,
+          currentCol,
+          solutionCopy
+        );
       } else {
         tile.color = palette.grey;
       }
     }
     this.setState({ waffle: waffle });
+  };
+
+  removeLetterFromSolution = (tile, row, col, solution) => {
+    if (row % 2 === 0) {
+      solution[`row${row}`] = solution[`row${row}`].replace(tile.letter, "");
+    }
+    if (col % 2 === 0) {
+      solution[`col${col}`] = solution[`col${col}`].replace(tile.letter, "");
+    }
   };
 
   handleClick = (e) => {
@@ -145,10 +161,22 @@ export default class Tiles extends React.Component {
       tile1.currCoord = coord2;
       tile2.currCoord = coord1;
       this.setState(
-        { waffle: updatedWaffle, pairToSwop: [] },
+        {
+          waffle: updatedWaffle,
+          pairToSwop: [],
+          swopsLeft: this.state.swopsLeft - 1,
+        },
         this.updateColor
       );
     }
+  };
+
+  hasWon = () => {
+    return this.state.greenTiles === 21;
+  };
+
+  hasLost = () => {
+    return this.state.greenTiles < 21 && this.state.swopsLeft === 0;
   };
 
   render() {
@@ -162,6 +190,13 @@ export default class Tiles extends React.Component {
       </div>
     ));
 
-    return <div id="grid">{tilesDisplay}</div>;
+    return (
+      <div>
+        <div id="grid">{tilesDisplay}</div>
+        <div id="swops-left">
+          <span>{this.state.swopsLeft}</span> SWOPS REMAINING
+        </div>
+      </div>
+    );
   }
 }

@@ -9,13 +9,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #ffffff;
   font-family: "Nunito", sans-serif;
   font-weight: 800;
+  letter-spacing: 0.1em;
 }
 
 h1 {
   font-size: 28pt;
+  margin: 0;
 }
 
 #grid {
@@ -23,6 +25,7 @@ h1 {
   gap: 8px;
   grid-template-columns: repeat(5, 70px);
   grid-template-rows: repeat(5, 70px);
+  margin: 3vh 0;
 }
 
 .letter {
@@ -31,6 +34,17 @@ h1 {
   font-size: 24pt;
   cursor: pointer;
   border-radius: 6px;
+}
+
+#swops-left {
+  font-size: 18pt;
+  font-weight: 400;
+  color: #666;
+}
+
+#swops-left span {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 540px) {
@@ -50,6 +64,10 @@ h1 {
     font-size: 18pt;
     border-radius: 4px;
   }
+
+  #swops-left {
+    font-size: 14pt;
+  }
 }
 
 @media only screen and (max-width: 275px) {
@@ -68,5 +86,9 @@ h1 {
     line-height: 22px;
     font-size: 14pt;
     border-radius: 2px;
+  }
+
+  #swops-left {
+    font-size: 11pt;
   }
 }

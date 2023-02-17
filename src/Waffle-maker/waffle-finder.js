@@ -16,12 +16,7 @@ function getRandomWord(arr) {
 }
 
 function findWaffle(row0word) {
-  while (
-    !row2word ||
-    !row4word ||
-    [...new Set([row0word, row2word, row4word, col0word, col2word, col4word])]
-      .length < 6
-  ) {
+  while (!row2word || !row4word) {
     col0word = getRandomWord([...indexedWords[row0word[0]]]);
     col2word = getRandomWord([...indexedWords[row0word[2]]]);
     col4word = getRandomWord([...indexedWords[row0word[4]]]);

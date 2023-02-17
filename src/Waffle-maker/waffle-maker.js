@@ -3,7 +3,7 @@ import { waffleStr } from "./waffle-finder.js";
 
 export const makeRandomWaffle = () => {
   const randomWaffle = makeWaffle(waffleStr);
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 15; i++) {
     swopAnyTwoLetters(randomWaffle);
   }
   return randomWaffle;
