@@ -27,6 +27,7 @@ export default class Tiles extends React.Component {
       col2: col2word,
       col4: col4word,
     };
+    console.log(todaysSolution);
 
     this.state = {
       waffle: [...todaysWaffle],
@@ -41,18 +42,18 @@ export default class Tiles extends React.Component {
     this.updateColor();
   }
 
-  componentDidUpdate() {
-    if (this.hasWon()) {
-      setTimeout(() => {
-        alert("Congrats!");
-      }, 100);
-    }
-    if (this.hasLost()) {
-      setTimeout(() => {
-        alert("Ran out of tries!");
-      }, 100);
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.hasWon()) {
+  //     setTimeout(() => {
+  //       alert("Congrats!");
+  //     }, 100);
+  //   }
+  //   if (this.hasLost()) {
+  //     setTimeout(() => {
+  //       alert("Ran out of tries!");
+  //     }, 100);
+  //   }
+  // }
 
   updateColor = () => {
     this.findGreen([...this.state.waffle]);
@@ -129,19 +130,24 @@ export default class Tiles extends React.Component {
   };
 
   handleClick = (e) => {
-    const tileId = e.target.id;
-    const tileColor = this.state.waffle.filter((tile) => tile.id === tileId)[0]
-      .color;
-    if (tileColor === palette.green) {
+    if (this.hasWon() || this.hasLost()) {
       return;
-    }
-    if (this.state.pairToSwop.length < 2 && !holes.includes(tileId)) {
-      this.setState(
-        {
-          pairToSwop: [...this.state.pairToSwop, tileId],
-        },
-        () => this.swopLetters(this.state.pairToSwop)
-      );
+    } else {
+      const tileId = e.target.id;
+      const tileColor = this.state.waffle.filter(
+        (tile) => tile.id === tileId
+      )[0].color;
+      if (tileColor === palette.green) {
+        return;
+      }
+      if (this.state.pairToSwop.length < 2 && !holes.includes(tileId)) {
+        this.setState(
+          {
+            pairToSwop: [...this.state.pairToSwop, tileId],
+          },
+          () => this.swopLetters(this.state.pairToSwop)
+        );
+      }
     }
   };
 
@@ -190,12 +196,68 @@ export default class Tiles extends React.Component {
       </div>
     ));
 
+    const renderStars = (swopsLeft) => {
+      switch (swopsLeft) {
+        default:
+          return;
+        case 0:
+          return (
+            <div className="game-outcome">
+              <div>THAT WAS CLOSE!</div>
+              <div className="subtitle">No strawberries this time.</div>
+            </div>
+          );
+        case 1:
+          return (
+            <div className="game-outcome">
+              <div>GOOD TRY!</div>
+              <div className="subtitle">Beat the record next time.</div>
+              <div>🍓</div>
+            </div>
+          );
+        case 2:
+          return (
+            <div className="game-outcome">
+              <div>GOOD WORK!</div>
+              <div className="subtitle">Keep it up.</div>
+              <div>🍓🍓</div>
+            </div>
+          );
+        case 3:
+          return (
+            <div className="game-outcome">
+              <div>AWESOME!</div>
+              <div className="subtitle">That was impressive.</div>
+              <div>🍓🍓🍓</div>
+            </div>
+          );
+        case 4:
+          return (
+            <div className="game-outcome">
+              <div>AMAZING!</div>
+              <div className="subtitle">Close to perfection.</div>
+              <div>🍓🍓🍓🍓</div>
+            </div>
+          );
+        case 5:
+          return (
+            <div className="game-outcome">
+              <div>WOW!</div>
+              <div className="subtitle">That was the ultimate achievement.</div>
+              <div>🍓🍓🍓🍓🍓</div>
+            </div>
+          );
+      }
+    };
+
     return (
-      <div>
+      <div id="container">
         <div id="grid">{tilesDisplay}</div>
         <div id="swops-left">
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING
         </div>
+        {this.hasWon() && renderStars(this.state.swopsLeft)}
+        {this.hasLost() && <div className="game-outcome">GAME OVER</div>}
       </div>
     );
   }

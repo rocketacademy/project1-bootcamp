@@ -11,8 +11,14 @@
   justify-content: center;
   color: #ffffff;
   font-family: "Nunito", sans-serif;
-  font-weight: 800;
   letter-spacing: 0.1em;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -32,6 +38,7 @@ h1 {
   padding: 14px;
   line-height: 42px;
   font-size: 24pt;
+  font-weight: 800;
   cursor: pointer;
   border-radius: 6px;
 }
@@ -45,6 +52,20 @@ h1 {
 #swops-left span {
   color: #ffffff;
   font-weight: 600;
+}
+
+.game-outcome {
+  font-size: 24pt;
+  font-weight: 600;
+  background-color: #292b2b;
+  margin: 2vh 0;
+  padding: 1vh 0;
+  width: 100vw;
+}
+
+.game-outcome .subtitle {
+  font-size: 0.6em;
+  font-weight: 400;
 }
 
 @media only screen and (max-width: 540px) {
@@ -68,6 +89,10 @@ h1 {
   #swops-left {
     font-size: 14pt;
   }
+
+  .game-outcome {
+    font-size: 18pt;
+  }
 }
 
 @media only screen and (max-width: 275px) {
@@ -90,5 +115,9 @@ h1 {
 
   #swops-left {
     font-size: 11pt;
+  }
+
+  .game-outcome {
+    font-size: 14pt;
   }
 }
