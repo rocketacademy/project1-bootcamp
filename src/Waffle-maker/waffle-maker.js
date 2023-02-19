@@ -3,9 +3,9 @@ import { waffleStr } from "./waffle-finder.js";
 
 export const makeRandomWaffle = () => {
   const randomWaffle = makeWaffle(waffleStr);
-  for (let i = 0; i < 15; i++) {
-    swopAnyTwoLetters(randomWaffle);
-  }
+
+  preScramble(randomWaffle);
+
   return randomWaffle;
 };
 
@@ -24,16 +24,26 @@ function makeWaffle(str) {
   return waffle;
 }
 
-function swopAnyTwoLetters(waffle) {
-  // Holes are indexed 6, 8, 11, and 18 and are not available for swops
-  const waffleIndices = [
-    0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21, 22, 23, 24,
-  ];
-  const shuffledIndices = waffleIndices.sort(() => 0.5 - Math.random());
-  let letter1 = waffle[shuffledIndices[0]];
-  let letter2 = waffle[shuffledIndices[1]];
-  let coord1 = letter1.currCoord;
-  let coord2 = letter2.currCoord;
-  letter1.currCoord = coord2;
-  letter2.currCoord = coord1;
+// Holes are indexed 6, 8, 16, and 18 and are not available for swops
+// Nodes are indexed 0, 4, 12, 20, and 24 and are not to be pre-scrambled
+const indicesToScramble = [
+  1, 2, 3, 5, 7, 9, 10, 11, 13, 14, 15, 17, 19, 21, 22, 23,
+];
+
+function preScramble(waffle) {
+  while (tilesLeftToScramble(waffle)) {
+    const shuffledIndices = indicesToScramble.sort(() => 0.5 - Math.random());
+    let letter1 = waffle[shuffledIndices[0]];
+    let letter2 = waffle[shuffledIndices[1]];
+    let coord1 = letter1.currCoord;
+    let coord2 = letter2.currCoord;
+    letter1.currCoord = coord2;
+    letter2.currCoord = coord1;
+  }
+}
+
+function tilesLeftToScramble(waffle) {
+  return indicesToScramble.some(
+    (index) => waffle[index].id === waffle[index].currCoord
+  );
 }
