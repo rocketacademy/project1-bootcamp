@@ -28,11 +28,7 @@ export default class RulesModal extends React.Component {
           <p>
             In this example, the "S"es are in the correct place. The "A" is in
             the word, but in a different position. <br />
-            <img
-              src={require("./images/waffle-row-example.png")}
-              alt=""
-              style={{ maxWidth: "70%" }}
-            />
+            <img src={require("./images/waffle-row-example.png")} alt="" />
           </p>
           <p>
             When the yellow letter is on a corner, either the vertical word or
@@ -41,7 +37,7 @@ export default class RulesModal extends React.Component {
             <img
               src={require("./images/waffle-junction-example.png")}
               alt=""
-              style={{ maxWidth: "42%" }}
+              style={{ maxWidth: "150px" }}
             />
           </p>{" "}
           <br />
@@ -54,7 +50,6 @@ export default class RulesModal extends React.Component {
             <img
               src={require("./images/waffle-oney-onegy-example.png")}
               alt=""
-              style={{ maxWidth: "70%" }}
             />
           </p>
           <p>
@@ -63,7 +58,6 @@ export default class RulesModal extends React.Component {
             <img
               src={require("./images/waffle-onegn-onegy-example.png")}
               alt=""
-              style={{ maxWidth: "70%" }}
             />
           </p>
         </Modal.Body>

@@ -30,6 +30,10 @@
   font-family: "Nunito", sans-serif;
 }
 
+.modal-body img {
+  max-width: 250px;
+}
+
 .modal-footer {
   font-size: smaller;
 }
@@ -189,5 +193,9 @@ h1 {
 
   .game-outcome {
     font-size: 14pt;
+  }
+
+  .modal-body img {
+    max-width: 200px;
   }
 }
