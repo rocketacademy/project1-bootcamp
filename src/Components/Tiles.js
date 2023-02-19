@@ -42,26 +42,13 @@ export default class Tiles extends React.Component {
     this.updateColor();
   }
 
-  // componentDidUpdate() {
-  //   if (this.hasWon()) {
-  //     setTimeout(() => {
-  //       alert("Congrats!");
-  //     }, 100);
-  //   }
-  //   if (this.hasLost()) {
-  //     setTimeout(() => {
-  //       alert("Ran out of tries!");
-  //     }, 100);
-  //   }
-  // }
-
   updateColor = () => {
     this.findGreen([...this.state.waffle]);
   };
 
   findGreen = (waffle) => {
     const updatedSolution = { ...this.state.solution };
-    let addedGreenTiles = 0;
+    let greenTilesFound = 0;
     for (const tile of waffle) {
       const location = tile.currCoord;
       const currentRow = location[0];
@@ -73,7 +60,7 @@ export default class Tiles extends React.Component {
         // skip
       } else if (tile.letter === correctLetterAtLocation.letter) {
         tile.color = palette.green;
-        addedGreenTiles += 1;
+        greenTilesFound += 1;
         this.removeLetterFromSolution(
           tile,
           currentRow,
@@ -85,7 +72,7 @@ export default class Tiles extends React.Component {
     this.setState(
       {
         solution: updatedSolution,
-        greenTiles: this.state.greenTiles + addedGreenTiles,
+        greenTiles: this.state.greenTiles + greenTilesFound,
       },
       () => this.findYellow(waffle)
     );
@@ -130,24 +117,18 @@ export default class Tiles extends React.Component {
   };
 
   handleClick = (e) => {
-    if (this.hasWon() || this.hasLost()) {
+    const tileId = e.target.id;
+    const tileColor = this.state.waffle.filter((tile) => tile.id === tileId)[0]
+      .color;
+    if (this.hasWon() || this.hasLost() || tileColor === palette.green) {
       return;
-    } else {
-      const tileId = e.target.id;
-      const tileColor = this.state.waffle.filter(
-        (tile) => tile.id === tileId
-      )[0].color;
-      if (tileColor === palette.green) {
-        return;
-      }
-      if (this.state.pairToSwop.length < 2 && !holes.includes(tileId)) {
-        this.setState(
-          {
-            pairToSwop: [...this.state.pairToSwop, tileId],
-          },
-          () => this.swopLetters(this.state.pairToSwop)
-        );
-      }
+    } else if (this.state.pairToSwop.length < 2) {
+      this.setState(
+        {
+          pairToSwop: [...this.state.pairToSwop, tileId],
+        },
+        () => this.swopLetters(this.state.pairToSwop)
+      );
     }
   };
 
@@ -191,15 +172,24 @@ export default class Tiles extends React.Component {
     );
 
     const tilesDisplay = sortedTiles.map((tile) => (
-      <div key={tile.id} onClick={this.handleClick}>
+      <div
+        key={tile.id}
+        onClick={holes.includes(tile.id) ? () => {} : this.handleClick}
+      >
         <Letter {...tile} />
       </div>
     ));
 
-    const renderStars = (swopsLeft) => {
+    const renderStrawberries = (swopsLeft) => {
       switch (swopsLeft) {
         default:
-          return;
+          return (
+            <div className="game-outcome">
+              <div>ASTOUNDING!</div>
+              <div className="subtitle">Have as many toppings as you like.</div>
+              <div>🍓🥭🫐🍒🥜🍫🍌🍑🍨</div>
+            </div>
+          );
         case 0:
           return (
             <div className="game-outcome">
@@ -256,7 +246,7 @@ export default class Tiles extends React.Component {
         <div id="swops-left">
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING
         </div>
-        {this.hasWon() && renderStars(this.state.swopsLeft)}
+        {this.hasWon() && renderStrawberries(this.state.swopsLeft)}
         {this.hasLost() && <div className="game-outcome">GAME OVER</div>}
       </div>
     );
