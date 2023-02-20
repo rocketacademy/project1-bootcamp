@@ -111,10 +111,33 @@ h1 {
   font-weight: 600;
 }
 
+#definitions {
+  display: block;
+  max-width: 500px;
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  letter-spacing: normal;
+}
+
+.definition {
+  text-align: justify;
+  margin: 1.5vh 0;
+}
+
+.definition .def-word {
+  font-weight: 700;
+}
+
+.definition .def-part-of-speech {
+  color: #939393;
+  font-style: italic;
+}
+
 /* Game outcome fade-in aminations */
 .game-outcome,
 .btn-success,
-#solution {
+#solution,
+#definitions {
   animation: fadeIn 2s;
   -webkit-animation: fadeIn 2s;
   -moz-animation: fadeIn 2s;
@@ -169,11 +192,11 @@ h1 {
 
 /* Game win rainbow animation */
 .rainbow-letter {
-  animation: rainbow-bg 2.5s linear;
-  animation-iteration-count: infinite;
+  animation: rainbow 2.5s linear;
+  animation-iteration-count: 2;
 }
 
-@keyframes rainbow-bg {
+@keyframes rainbow {
   100%,
   0% {
     background-color: #ff9f8cc0;
@@ -229,6 +252,10 @@ h1 {
   .game-outcome {
     font-size: 18pt;
   }
+
+  #definitions {
+    max-width: 275px;
+  }
 }
 
 @media only screen and (max-width: 275px) {
@@ -261,5 +288,9 @@ h1 {
 
   .modal-body img {
     max-width: 200px;
+  }
+
+  #definitions {
+    max-width: 250px;
   }
 }

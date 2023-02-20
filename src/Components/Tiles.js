@@ -37,6 +37,7 @@ export default class Tiles extends React.Component {
       greenTiles: 0,
       swopsLeft: 15,
       showSolution: false,
+      definitions: [],
     };
   }
 
@@ -61,7 +62,38 @@ export default class Tiles extends React.Component {
 
   componentDidMount() {
     this.updateColor();
+    this.getDefinitions([
+      row0word,
+      row2word,
+      row4word,
+      col0word,
+      col2word,
+      col4word,
+    ]);
   }
+
+  getDefinitions = (solutionWords) => {
+    for (const word of solutionWords) {
+      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+        .then((response) => response.json())
+        .then((data) =>
+          this.setState({ definitions: [...this.state.definitions, data] })
+        );
+    }
+  };
+
+  renderDefinitions = (defs) => {
+    return defs.map((def) => (
+      <div className="definition" key={def[0].word}>
+        <span className="def-word">{def[0].word}</span> {def[0].phonetic}{" "}
+        <span className="def-part-of-speech">
+          {def[0].meanings[0].partOfSpeech}
+        </span>
+        {". "}
+        {def[0].meanings[0].definitions[0].definition}
+      </div>
+    ));
+  };
 
   handleClick = (e) => {
     const tileId = e.target.id;
@@ -213,7 +245,7 @@ export default class Tiles extends React.Component {
     return this.state.greenTiles === 21;
   };
 
-  renderStrawberries = (swopsLeft) => {
+  renderToppings = (swopsLeft) => {
     switch (swopsLeft) {
       default:
         return (
@@ -280,7 +312,12 @@ export default class Tiles extends React.Component {
         <div id="swops-left">
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING
         </div>
-        {this.hasWon() && this.renderStrawberries(this.state.swopsLeft)}
+        {this.hasWon() && this.renderToppings(this.state.swopsLeft)}
+        {this.hasWon() && (
+          <div id="definitions">
+            {this.renderDefinitions(this.state.definitions)}
+          </div>
+        )}
         {this.hasLost() && <div className="game-outcome">GAME OVER</div>}
         {this.hasLost() && (
           <div className="game-solution">
@@ -288,8 +325,13 @@ export default class Tiles extends React.Component {
               SHOW SOLUTION
             </Button>
             {this.state.showSolution && (
-              <div className="grid" id="solution">
-                {this.renderSolution()}
+              <div>
+                <div className="grid" id="solution">
+                  {this.renderSolution()}
+                </div>
+                <div id="definitions">
+                  {this.renderDefinitions(this.state.definitions)}
+                </div>
               </div>
             )}
           </div>
