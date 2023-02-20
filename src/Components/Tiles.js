@@ -14,7 +14,7 @@ import {
 } from "../Waffle-maker/waffle-finder";
 import { Button } from "react-bootstrap";
 
-const holes = ["11", "13", "31", "33"];
+export const holes = ["11", "13", "31", "33"];
 
 export default class Tiles extends React.Component {
   constructor(props) {
@@ -53,7 +53,7 @@ export default class Tiles extends React.Component {
         key={tile.id}
         onClick={holes.includes(tile.id) ? () => {} : this.handleClick}
       >
-        <Letter {...tile} />
+        <Letter {...tile} hasWon={this.hasWon()} />
       </div>
     ));
     return tilesDisplay;

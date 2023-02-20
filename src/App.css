@@ -58,6 +58,7 @@ a:hover {
 
 h1 {
   font-size: 28pt;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -69,13 +70,15 @@ h1 {
   margin: 3vh 0;
 }
 
-.letter {
-  padding: 14px;
-  line-height: 42px;
-  font-size: 24pt;
+.letter,
+.rainbow-letter {
+  padding: 10px;
+  max-height: 70px;
+  font-size: 26pt;
   font-weight: 800;
   cursor: pointer;
   border-radius: 6px;
+  border-bottom: 5px solid rgba(26, 26, 27, 0.12);
 }
 
 #swops-left {
@@ -164,6 +167,40 @@ h1 {
   }
 }
 
+/* Game win rainbow animation */
+.rainbow-letter {
+  animation: rainbow-bg 2.5s linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainbow-bg {
+  100%,
+  0% {
+    background-color: #ff9f8cc0;
+  }
+  13% {
+    background-color: #ffc369aa;
+  }
+  26% {
+    background-color: #fff4ada5;
+  }
+  39% {
+    background-color: #28ffb796;
+  }
+  52% {
+    background-color: #9affffa9;
+  }
+  65% {
+    background-color: #70aeffb9;
+  }
+  78% {
+    background-color: #7a97ffab;
+  }
+  91% {
+    background-color: #ff9dc8a4;
+  }
+}
+
 /* Mobile responsive settings */
 @media only screen and (max-width: 540px) {
   h1 {
@@ -177,10 +214,11 @@ h1 {
   }
 
   .letter {
-    padding: 12px;
-    line-height: 26px;
+    padding: 7px;
+    max-height: 50px;
     font-size: 18pt;
     border-radius: 4px;
+    border-bottom: 4px solid rgba(26, 26, 27, 0.12);
   }
 
   #swops-left {
@@ -204,10 +242,11 @@ h1 {
   }
 
   .letter {
-    padding: 9px;
-    line-height: 22px;
-    font-size: 14pt;
+    padding: 4px;
+    max-height: 40px;
+    font-size: 15pt;
     border-radius: 2px;
+    border-bottom: 3px solid rgba(26, 26, 27, 0.12);
   }
 
   #swops-left {
