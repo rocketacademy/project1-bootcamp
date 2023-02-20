@@ -213,7 +213,8 @@ h1 {
     grid-template-rows: repeat(5, 50px);
   }
 
-  .letter {
+  .letter,
+  .rainbow-letter {
     padding: 7px;
     max-height: 50px;
     font-size: 18pt;
@@ -241,7 +242,8 @@ h1 {
     grid-template-rows: repeat(5, 40px);
   }
 
-  .letter {
+  .letter,
+  .rainbow-letter {
     padding: 4px;
     max-height: 40px;
     font-size: 15pt;
