@@ -1,6 +1,10 @@
 import { palette } from "../Palette.js";
 import { waffleStr } from "./waffle-finder.js";
 
+export const makeSolutionWaffle = () => {
+  return makeWaffle(waffleStr);
+};
+
 export const makeRandomWaffle = () => {
   const randomWaffle = makeWaffle(waffleStr);
 
@@ -14,12 +18,13 @@ function makeWaffle(str) {
   for (let i = 0; i < str.length; i++) {
     let rowNum = Math.floor(i / 5);
     let colNum = i % 5;
-    waffle.push({
+    const tile = {
       id: `${rowNum}${colNum}`,
       letter: str[i],
       currCoord: `${rowNum}${colNum}`,
       color: str[i] === " " ? palette.background : palette.grey,
-    });
+    };
+    waffle.push(tile);
   }
   return waffle;
 }

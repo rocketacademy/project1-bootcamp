@@ -2,7 +2,8 @@ import React from "react";
 import Letter from "./Letter.js";
 // import { waffles } from "../Waffles";
 import { palette } from "../Palette.js";
-import { makeRandomWaffle } from "../Waffle-maker/waffle-maker";
+import { makeRandomWaffle } from "../Waffle-maker/waffle-maker.js";
+import { makeSolutionWaffle } from "../Waffle-maker/waffle-maker.js";
 import {
   row0word,
   row2word,
@@ -11,6 +12,7 @@ import {
   col2word,
   col4word,
 } from "../Waffle-maker/waffle-finder";
+import { Button } from "react-bootstrap";
 
 const holes = ["11", "13", "31", "33"];
 
@@ -27,7 +29,6 @@ export default class Tiles extends React.Component {
       col2: col2word,
       col4: col4word,
     };
-    console.log(todaysSolution);
 
     this.state = {
       waffle: [...todaysWaffle],
@@ -35,8 +36,28 @@ export default class Tiles extends React.Component {
       solution: todaysSolution,
       greenTiles: 0,
       swopsLeft: 15,
+      showSolution: false,
     };
   }
+
+  sortTilesByCoords = (waffle) => {
+    const sortedTiles = waffle.sort((a, b) => a.currCoord - b.currCoord);
+    return sortedTiles;
+  };
+
+  renderTiles = (waffle) => {
+    const sortedTiles = this.sortTilesByCoords(waffle);
+    let tilesDisplay = [];
+    tilesDisplay = sortedTiles.map((tile) => (
+      <div
+        key={tile.id}
+        onClick={holes.includes(tile.id) ? () => {} : this.handleClick}
+      >
+        <Letter {...tile} />
+      </div>
+    ));
+    return tilesDisplay;
+  };
 
   componentDidMount() {
     this.updateColor();
@@ -175,6 +196,19 @@ export default class Tiles extends React.Component {
     }
   };
 
+  showSolution = () => {
+    this.setState({ showSolution: true });
+  };
+
+  renderSolution = () => {
+    const solutionDisplay = makeSolutionWaffle().map((tile) => (
+      <div key={"s" + tile.id}>
+        <Letter {...tile} />
+      </div>
+    ));
+    return solutionDisplay;
+  };
+
   hasWon = () => {
     return this.state.greenTiles === 21;
   };
@@ -240,27 +274,26 @@ export default class Tiles extends React.Component {
   };
 
   render() {
-    const sortedTiles = this.state.waffle.sort(
-      (a, b) => a.currCoord - b.currCoord
-    );
-
-    const tilesDisplay = sortedTiles.map((tile) => (
-      <div
-        key={tile.id}
-        onClick={holes.includes(tile.id) ? () => {} : this.handleClick}
-      >
-        <Letter {...tile} />
-      </div>
-    ));
-
     return (
       <div id="container">
-        <div id="grid">{tilesDisplay}</div>
+        <div className="grid">{this.renderTiles(this.state.waffle)}</div>
         <div id="swops-left">
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING
         </div>
         {this.hasWon() && this.renderStrawberries(this.state.swopsLeft)}
         {this.hasLost() && <div className="game-outcome">GAME OVER</div>}
+        {this.hasLost() && (
+          <div className="game-solution">
+            <Button variant="success" onClick={this.showSolution}>
+              SHOW SOLUTION
+            </Button>
+            {this.state.showSolution && (
+              <div className="grid" id="solution">
+                {this.renderSolution()}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     );
   }

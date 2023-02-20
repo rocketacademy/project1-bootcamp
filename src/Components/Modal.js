@@ -62,7 +62,9 @@ export default class RulesModal extends React.Component {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button variant="dark" onClick={this.props.onHide}>
+            X
+          </Button>
           Built by <a href="https://github.com/peanutyabing">peanutyabing</a> |
           Created by <a href="https://twitter.com/jamesjessian">jessian</a> |
           Original game at <a href="https://wafflegame.net/">wafflegame.net</a>

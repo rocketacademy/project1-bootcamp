@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Button variant="dark" onClick={() => setModalShow(true)}>
-          ❔
+          ?
         </Button>
         <h1>WAFFLE</h1>
         <Tiles />
