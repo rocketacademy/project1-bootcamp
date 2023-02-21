@@ -22,7 +22,7 @@ export default class Tiles extends React.Component {
     super(props);
 
     const todaysWaffle = makeRandomWaffle();
-    const todaysSolution = {
+    const todaysSolutionStr = {
       row0: row0word,
       row2: row2word,
       row4: row4word,
@@ -30,11 +30,13 @@ export default class Tiles extends React.Component {
       col2: col2word,
       col4: col4word,
     };
+    const todaysSolutionWaffle = makeSolutionWaffle();
 
     this.state = {
       waffle: [...todaysWaffle],
       pairToSwop: [],
-      solution: todaysSolution,
+      solutionStr: todaysSolutionStr,
+      solutionWaffle: todaysSolutionWaffle,
       greenTiles: 0,
       swopsLeft: 15,
       showSolution: false,
@@ -76,7 +78,9 @@ export default class Tiles extends React.Component {
   getDefinitions = (solutionWords) => {
     const defs = [];
     for (const word of solutionWords) {
-      const definition = dictionary[word.toLowerCase()][0];
+      const definition = dictionary[word.toLowerCase()][0]
+        ? dictionary[word.toLowerCase()][0]
+        : {};
       defs.push(definition);
     }
     this.setState({ definitions: defs });
@@ -89,8 +93,7 @@ export default class Tiles extends React.Component {
         {def.phonetic ? def.phonetic : null}{" "}
         <span className="def-part-of-speech">
           {def.meanings ? def.meanings[0].partOfSpeech : null}
-        </span>
-        {". "}
+        </span>{" "}
         {def.meanings ? def.meanings[0].definitions[0].definition : null}
       </div>
     ));
@@ -143,7 +146,7 @@ export default class Tiles extends React.Component {
   };
 
   findGreen = (waffle) => {
-    const updatedSolution = { ...this.state.solution };
+    const updatedSolutionStr = { ...this.state.solutionStr };
     let greenTilesFound = 0;
     for (const tile of waffle) {
       const location = tile.currCoord;
@@ -161,13 +164,13 @@ export default class Tiles extends React.Component {
           tile,
           currentRow,
           currentCol,
-          updatedSolution
+          updatedSolutionStr
         );
       }
     }
     this.setState(
       {
-        solution: updatedSolution,
+        solutionStr: updatedSolutionStr,
         greenTiles: this.state.greenTiles + greenTilesFound,
       },
       () => this.findYellow(waffle)
@@ -175,7 +178,7 @@ export default class Tiles extends React.Component {
   };
 
   findYellow = (waffle) => {
-    const solutionCopy = { ...this.state.solution };
+    const solutionCopy = { ...this.state.solutionStr };
     for (const tile of waffle) {
       const currentRow = tile.currCoord[0];
       const currentCol = tile.currCoord[1];
@@ -234,7 +237,7 @@ export default class Tiles extends React.Component {
   };
 
   renderSolution = () => {
-    const solutionDisplay = makeSolutionWaffle().map((tile) => (
+    const solutionDisplay = this.state.solutionWaffle.map((tile) => (
       <div key={"s" + tile.id}>
         <Letter {...tile} />
       </div>
