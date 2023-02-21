@@ -1,3 +1,5 @@
+// import fs from "fs";
+
 export const words = [
   "which",
   "there",
@@ -4020,13 +4022,11 @@ export const words = [
   "blabs",
   "splay",
   "talus",
-
   "moola",
   "nixed",
   "kilos",
   "snide",
   "horsy",
-
   "jaggy",
   "trove",
   "nixes",
@@ -4035,10 +4035,8 @@ export const words = [
   "iotas",
   "cadge",
   "skyed",
-
   "curie",
   "nutsy",
-
   "remix",
   "angst",
   "burls",
@@ -4168,7 +4166,6 @@ export const words = [
   "gamin",
   "gouty",
   "esses",
-
   "paned",
   "druid",
   "jades",
@@ -4185,7 +4182,6 @@ export const words = [
   "fazes",
   "oxbow",
   "dowse",
-
   "macaw",
   "scone",
   "drily",
@@ -4354,13 +4350,9 @@ export const words = [
   "boobs",
   "boons",
   "hypes",
-
   "yogis",
-
   "quark",
-
   "prate",
-
   "swigs",
   "vitas",
   "toker",
@@ -4370,10 +4362,8 @@ export const words = [
   "foist",
   "mondo",
   "stash",
-
   "twerp",
   "zesty",
-
   "wimpy",
   "rewed",
   "fungo",
@@ -4434,21 +4424,17 @@ export const words = [
   "coset",
   "finks",
   "faddy",
-
   "sauna",
-
   "craws",
   "stats",
   "condo",
   "coxes",
   "loopy",
   "dorms",
-
   "dippy",
   "execs",
   "dopey",
   "envoi",
-
   "gismo",
   "fazed",
   "strop",
@@ -4469,20 +4455,15 @@ export const words = [
   "ogles",
   "tweet",
   "toady",
-
   "hider",
   "nuked",
-
   "obits",
   "narcs",
   "tyros",
-
   "wooer",
   "hyped",
-
   "byway",
   "texas",
-
   "avows",
   "futon",
   "torte",
@@ -4498,7 +4479,6 @@ export const words = [
   "toped",
   "psych",
   "sicko",
-
   "tarns",
   "coxed",
   "drays",
@@ -4509,7 +4489,6 @@ export const words = [
   "suras",
   "limos",
   "flack",
-
   "dutch",
   "mucky",
   "shire",
@@ -4527,10 +4506,8 @@ export const words = [
   "sudsy",
   "batty",
   "coifs",
-
   "pitas",
   "gouda",
-
   "taupe",
   "topes",
   "duchy",
@@ -4836,18 +4813,40 @@ export const words = [
   "apnea",
   "prims",
   "fatwa",
-
   "taros",
-
   "nerdy",
-
   "baldy",
-
   "wonky",
-
   "hypos",
-
   "rumba",
-
   "pupal",
 ];
+
+// async function fetchDefinition(arr) {
+//   const defs = {};
+//   for (const word of arr) {
+//     let response = await fetch(
+//       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+//     )
+//       .then((response) => response.json())
+//       .catch(() => false);
+//     console.log(response);
+//     if (response) {
+//       defs[word] = response;
+//     } else {
+//       break;
+//     }
+//   }
+//   return JSON.stringify(defs);
+// }
+
+// async function writeDefinitions() {
+//   let definitions = await fetchDefinition(words);
+//   fs.writeFile("./definitions9.js", definitions, (err) => {
+//     if (err) {
+//       console.error(err);
+//     }
+//   });
+// }
+
+// writeDefinitions();

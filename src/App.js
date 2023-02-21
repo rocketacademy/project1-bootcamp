@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import Tiles from "./Components/Tiles";
+import Tiles from "./Components/Tiles.js";
 import Button from "react-bootstrap/Button";
-import RulesModal from "./Components/Modal";
+import RulesModal from "./Components/Modal.js";
 
 function App() {
   const [modalShow, setModalShow] = React.useState(false);

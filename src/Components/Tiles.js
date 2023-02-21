@@ -12,6 +12,7 @@ import {
   col2word,
   col4word,
 } from "../Waffle-maker/waffle-finder";
+import { dictionary } from "../Waffle-maker/definitions.js";
 import { Button } from "react-bootstrap";
 
 export const holes = ["11", "13", "31", "33"];
@@ -73,24 +74,26 @@ export default class Tiles extends React.Component {
   }
 
   getDefinitions = (solutionWords) => {
+    const defs = [];
     for (const word of solutionWords) {
-      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-        .then((response) => response.json())
-        .then((data) =>
-          this.setState({ definitions: [...this.state.definitions, data] })
-        );
+      console.log(word.toLowerCase());
+      console.log(dictionary[word.toLowerCase()][0]);
+      const definition = dictionary[word.toLowerCase()][0];
+      defs.push(definition);
     }
+    this.setState({ definitions: defs });
   };
 
   renderDefinitions = (defs) => {
-    return defs.map((def) => (
-      <div className="definition" key={def[0].word}>
-        <span className="def-word">{def[0].word}</span> {def[0].phonetic}{" "}
+    return defs.map((def, index) => (
+      <div className="definition" key={def.word ? def.word : index}>
+        <span className="def-word">{def.word ? def.word : null}</span>{" "}
+        {def.phonetic ? def.phonetic : null}{" "}
         <span className="def-part-of-speech">
-          {def[0].meanings[0].partOfSpeech}
+          {def.meanings ? def.meanings[0].partOfSpeech : null}
         </span>
         {". "}
-        {def[0].meanings[0].definitions[0].definition}
+        {def.meanings ? def.meanings[0].definitions[0].definition : null}
       </div>
     ));
   };
@@ -320,12 +323,12 @@ export default class Tiles extends React.Component {
         )}
         {this.hasLost() && <div className="game-outcome">GAME OVER</div>}
         {this.hasLost() && (
-          <div className="game-solution">
+          <div>
             <Button variant="success" onClick={this.showSolution}>
               SHOW SOLUTION
             </Button>
             {this.state.showSolution && (
-              <div>
+              <div className="solution-container">
                 <div className="grid" id="solution">
                   {this.renderSolution()}
                 </div>
