@@ -1,17 +1,7 @@
 import React from "react";
 import Letter from "./Letter.js";
-// import { waffles } from "../Waffles";
 import { palette } from "../Palette.js";
-import { makeRandomWaffle } from "../Waffle-maker/waffle-maker.js";
-import { makeSolutionWaffle } from "../Waffle-maker/waffle-maker.js";
-import {
-  row0word,
-  row2word,
-  row4word,
-  col0word,
-  col2word,
-  col4word,
-} from "../Waffle-maker/waffle-finder";
+import { dailyWaffles } from "../Waffle-maker/daily-waffles-2023.js";
 import { dictionary } from "../Waffle-maker/definitions.js";
 import { Button } from "react-bootstrap";
 
@@ -20,23 +10,11 @@ export const holes = ["11", "13", "31", "33"];
 export default class Tiles extends React.Component {
   constructor(props) {
     super(props);
-
-    const todaysWaffle = makeRandomWaffle();
-    const todaysSolutionStr = {
-      row0: row0word,
-      row2: row2word,
-      row4: row4word,
-      col0: col0word,
-      col2: col2word,
-      col4: col4word,
-    };
-    const todaysSolutionWaffle = makeSolutionWaffle();
-
     this.state = {
-      waffle: [...todaysWaffle],
+      waffle: dailyWaffles[this.getTodaysWaffleIndex()].waffle,
       pairToSwop: [],
-      solutionStr: todaysSolutionStr,
-      solutionWaffle: todaysSolutionWaffle,
+      solutionWords: dailyWaffles[this.getTodaysWaffleIndex()].solutionWords,
+      solutionWaffle: dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle,
       greenTiles: 0,
       swopsLeft: 15,
       showSolution: false,
@@ -44,9 +22,13 @@ export default class Tiles extends React.Component {
     };
   }
 
-  sortTilesByCoords = (waffle) => {
-    const sortedTiles = waffle.sort((a, b) => a.currCoord - b.currCoord);
-    return sortedTiles;
+  getTodaysWaffleIndex = () => {
+    const startDate = new Date("02/21/2023");
+    const today = new Date();
+    const timePassed = today.getTime() - startDate.getTime();
+    const dailyWaffleIndex =
+      Math.floor(timePassed / (1000 * 3600 * 24)) % dailyWaffles.length;
+    return dailyWaffleIndex;
   };
 
   renderTiles = (waffle) => {
@@ -63,16 +45,14 @@ export default class Tiles extends React.Component {
     return tilesDisplay;
   };
 
+  sortTilesByCoords = (waffle) => {
+    const sortedTiles = waffle.sort((a, b) => a.currCoord - b.currCoord);
+    return sortedTiles;
+  };
+
   componentDidMount() {
     this.updateColor();
-    this.getDefinitions([
-      row0word,
-      row2word,
-      row4word,
-      col0word,
-      col2word,
-      col4word,
-    ]);
+    this.getDefinitions(Object.values(this.state.solutionWords));
   }
 
   getDefinitions = (solutionWords) => {
@@ -146,7 +126,7 @@ export default class Tiles extends React.Component {
   };
 
   findGreen = (waffle) => {
-    const updatedSolutionStr = { ...this.state.solutionStr };
+    const updatedSolutionWords = { ...this.state.solutionWords };
     let greenTilesFound = 0;
     for (const tile of waffle) {
       const location = tile.currCoord;
@@ -164,13 +144,13 @@ export default class Tiles extends React.Component {
           tile,
           currentRow,
           currentCol,
-          updatedSolutionStr
+          updatedSolutionWords
         );
       }
     }
     this.setState(
       {
-        solutionStr: updatedSolutionStr,
+        solutionWords: updatedSolutionWords,
         greenTiles: this.state.greenTiles + greenTilesFound,
       },
       () => this.findYellow(waffle)
@@ -178,7 +158,7 @@ export default class Tiles extends React.Component {
   };
 
   findYellow = (waffle) => {
-    const solutionCopy = { ...this.state.solutionStr };
+    const solutionCopy = { ...this.state.solutionWords };
     for (const tile of waffle) {
       const currentRow = tile.currCoord[0];
       const currentCol = tile.currCoord[1];
