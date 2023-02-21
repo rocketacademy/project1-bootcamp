@@ -76,8 +76,6 @@ export default class Tiles extends React.Component {
   getDefinitions = (solutionWords) => {
     const defs = [];
     for (const word of solutionWords) {
-      console.log(word.toLowerCase());
-      console.log(dictionary[word.toLowerCase()][0]);
       const definition = dictionary[word.toLowerCase()][0];
       defs.push(definition);
     }

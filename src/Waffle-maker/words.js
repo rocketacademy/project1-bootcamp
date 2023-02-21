@@ -1,5 +1,3 @@
-// import fs from "fs";
-
 export const words = [
   "which",
   "there",
@@ -4821,32 +4819,3 @@ export const words = [
   "rumba",
   "pupal",
 ];
-
-// async function fetchDefinition(arr) {
-//   const defs = {};
-//   for (const word of arr) {
-//     let response = await fetch(
-//       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-//     )
-//       .then((response) => response.json())
-//       .catch(() => false);
-//     console.log(response);
-//     if (response) {
-//       defs[word] = response;
-//     } else {
-//       break;
-//     }
-//   }
-//   return JSON.stringify(defs);
-// }
-
-// async function writeDefinitions() {
-//   let definitions = await fetchDefinition(words);
-//   fs.writeFile("./definitions9.js", definitions, (err) => {
-//     if (err) {
-//       console.error(err);
-//     }
-//   });
-// }
-
-// writeDefinitions();
