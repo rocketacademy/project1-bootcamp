@@ -18,7 +18,7 @@ export default class Menu extends React.Component {
               DAILY WAFFLE
             </div>
             <div className="menu-selection" onClick={this.props.onClick}>
-              UNLIMTED WAFFLE
+              WAFFLE BUFFET
             </div>
           </Offcanvas.Body>
         </Offcanvas>

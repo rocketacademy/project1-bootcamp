@@ -321,15 +321,15 @@ export default class Tiles extends React.Component {
       case 1:
         return (
           <div className="game-outcome">
-            <div>GOOD TRY!</div>
-            <div className="subtitle">Beat the record next time.</div>
+            <div>GOOD WORK!</div>
+            <div className="subtitle">Enjoy your waffle with a strawberry.</div>
             <div>🍓</div>
           </div>
         );
       case 2:
         return (
           <div className="game-outcome">
-            <div>GOOD WORK!</div>
+            <div>GREAT JOB!</div>
             <div className="subtitle">Keep it up.</div>
             <div>🍓🍓</div>
           </div>
@@ -367,10 +367,11 @@ export default class Tiles extends React.Component {
         {this.props.playDaily && (
           <div id="game-mode">{new Date().toLocaleDateString()}</div>
         )}
-        {!this.props.playDaily && <div id="game-mode">UNLIMITED</div>}
+        {!this.props.playDaily && <div id="game-mode">ALL-YOU-CAN-EAT</div>}
         <div className="grid">{this.renderTiles(this.state.waffle)}</div>
         <div id="swops-left">
-          <span>{this.state.swopsLeft}</span> SWOPS REMAINING
+          <span>{this.state.swopsLeft}</span>{" "}
+          {this.state.swopsLeft < 2 ? "SWOP" : "SWOPS"} REMAINING
         </div>
         {this.hasWon() && this.renderToppings(this.state.swopsLeft)}
         {this.hasWon() && !this.state.dailyMode && (

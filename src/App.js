@@ -14,7 +14,7 @@ function App() {
     if (e.target.innerHTML === "DAILY WAFFLE") {
       togglePlayDaily(true);
       setOffcanvasShow(false);
-    } else if (e.target.innerHTML === "UNLIMTED WAFFLE") {
+    } else if (e.target.innerHTML === "WAFFLE BUFFET") {
       togglePlayDaily(false);
       setOffcanvasShow(false);
     }
