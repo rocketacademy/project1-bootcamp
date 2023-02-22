@@ -2,28 +2,85 @@ import React from "react";
 import Letter from "./Letter.js";
 import { palette } from "../Palette.js";
 import { dailyWaffles } from "../Waffle-maker/daily-waffles-2023.js";
+import { makeOneWaffle } from "../Waffle-maker/waffle-maker-2.js";
 import { dictionary } from "../Waffle-maker/definitions.js";
 import { Button } from "react-bootstrap";
 
 export const holes = ["11", "13", "31", "33"];
+let dailyWaffleState; // This variable keeps track of the last state under Daily Mode, when user toggles between Unlimted and Daily
 
 export default class Tiles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      dailyMode: true,
+      date: new Date().toLocaleDateString(),
       waffle: dailyWaffles[this.getTodaysWaffleIndex()].waffle,
-      pairToSwop: [],
       solutionWords: dailyWaffles[this.getTodaysWaffleIndex()].solutionWords,
       solutionWaffle: dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle,
       greenTiles: 0,
+      pairToSwop: [],
       swopsLeft: 15,
       showSolution: false,
       definitions: [],
     };
   }
 
+  componentDidMount() {
+    const storedState = JSON.parse(localStorage.getItem("dailyState"));
+    if (storedState && storedState.date !== this.state.date) {
+      this.removeStoredState();
+      this.updateColor();
+      this.getDefinitions(Object.values(this.state.solutionWords));
+    } else if (storedState && this.state.dailyMode) {
+      this.setState(
+        {
+          waffle: storedState.waffle,
+          solutionWords: storedState.solutionWords,
+          solutionWaffle: storedState.solutionWaffle,
+          greenTiles: storedState.greenTiles,
+          swopsLeft: storedState.swopsLeft,
+          showSolution: storedState.showSolution,
+          definitions: storedState.definitions,
+        },
+        () => {
+          this.updateColor();
+        }
+      );
+    } else {
+      this.updateColor();
+      this.getDefinitions(Object.values(this.state.solutionWords));
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.playDaily !== prevProps.playDaily) {
+      if (this.props.playDaily) {
+        this.setState(dailyWaffleState);
+      } else {
+        dailyWaffleState = { ...prevState };
+        const newWaffle = makeOneWaffle();
+        const updatedState = {
+          dailyMode: this.props.playDaily,
+          waffle: newWaffle.waffle,
+          solutionWords: newWaffle.solutionWords,
+          solutionWaffle: newWaffle.solutionWaffle,
+          greenTiles: 0,
+          pairToSwop: [],
+          swopsLeft: 15,
+          showSolution: false,
+          definitions: [],
+        };
+        this.setState(updatedState, () => {
+          this.updateColor();
+          this.getDefinitions(Object.values(this.state.solutionWords));
+        });
+      }
+    }
+  }
+
   getTodaysWaffleIndex = () => {
-    const startDate = new Date("02/21/2023");
+    const startDate = new Date("02/20/2023");
     const today = new Date();
     const timePassed = today.getTime() - startDate.getTime();
     const dailyWaffleIndex =
@@ -49,11 +106,6 @@ export default class Tiles extends React.Component {
     const sortedTiles = waffle.sort((a, b) => a.currCoord - b.currCoord);
     return sortedTiles;
   };
-
-  componentDidMount() {
-    this.updateColor();
-    this.getDefinitions(Object.values(this.state.solutionWords));
-  }
 
   getDefinitions = (solutionWords) => {
     const defs = [];
@@ -185,7 +237,15 @@ export default class Tiles extends React.Component {
     }
     this.setState(
       { waffle: waffle },
-      this.hasLost() ? this.renderBlackWaffle : () => {}
+      () => {
+        if (this.state.dailyMode) {
+          this.storeState();
+        }
+        if (this.hasLost()) {
+          this.renderBlackWaffle();
+        }
+      }
+      // this.hasLost() ? this.renderBlackWaffle : this.storeState
     );
   };
 
@@ -225,7 +285,17 @@ export default class Tiles extends React.Component {
     return solutionDisplay;
   };
 
+  storeState = () => {
+    localStorage.setItem("dailyState", JSON.stringify(this.state));
+  };
+
+  removeStoredState = () => {
+    localStorage.removeItem("dailyState");
+  };
+
   hasWon = () => {
+    if (this.props.playDaily) {
+    }
     return this.state.greenTiles === 21;
   };
 
@@ -292,6 +362,10 @@ export default class Tiles extends React.Component {
   render() {
     return (
       <div id="container">
+        {this.props.playDaily && (
+          <div id="game-mode">{new Date().toLocaleDateString()}</div>
+        )}
+        {!this.props.playDaily && <div id="game-mode">UNLIMITED</div>}
         <div className="grid">{this.renderTiles(this.state.waffle)}</div>
         <div id="swops-left">
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING
