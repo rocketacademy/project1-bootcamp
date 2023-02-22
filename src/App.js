@@ -11,7 +11,6 @@ function App() {
   const [playDaily, togglePlayDaily] = React.useState(true);
 
   function handleClick(e) {
-    console.log(e.target.innerHTML);
     if (e.target.innerHTML === "DAILY WAFFLE") {
       togglePlayDaily(true);
       setOffcanvasShow(false);

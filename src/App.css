@@ -23,16 +23,19 @@
   justify-content: space-between;
 }
 
-.btn {
+.btn-dark {
   background-color: #323434;
   border-color: #323434;
   font-family: "Nunito", sans-serif;
-  /* font-size: 14pt;
-  font-weight: 900; */
   padding: 0.5vh;
-  /* letter-spacing: 0.1em; */
   max-height: 6vh;
   max-width: 6vh;
+}
+
+.btn-success {
+  font-size: 14pt;
+  font-weight: 900;
+  letter-spacing: 0.1em;
 }
 
 .btn img {
@@ -96,7 +99,7 @@ a:hover {
 h1 {
   font-size: 28pt;
   font-weight: 700;
-  margin: 0;
+  margin-top: 2vh;
 }
 
 #game-mode {

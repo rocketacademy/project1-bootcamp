@@ -7,12 +7,14 @@ import { dictionary } from "../Waffle-maker/definitions.js";
 import { Button } from "react-bootstrap";
 
 export const holes = ["11", "13", "31", "33"];
+let dailyWaffleState; // This variable keeps track of the last state under Daily Mode, when user toggles between Unlimted and Daily
 
 export default class Tiles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dailyMode: true,
+      date: new Date().toLocaleDateString(),
       waffle: dailyWaffles[this.getTodaysWaffleIndex()].waffle,
       solutionWords: dailyWaffles[this.getTodaysWaffleIndex()].solutionWords,
       solutionWaffle: dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle,
@@ -22,6 +24,61 @@ export default class Tiles extends React.Component {
       showSolution: false,
       definitions: [],
     };
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("date") !== this.state.date) {
+      this.removeDailyWaffleOutcome();
+    } else if (this.state.dailyMode) {
+      this.setState({
+        waffle: localStorage.getItem("waffle"),
+        solutionWords: localStorage.getItem("solutionWords"),
+        solutionWaffle: localStorage.getItem("solutionWaffle"),
+        greenTiles: localStorage.getItem("greenTiles"),
+        swopsLeft: localStorage.getItem("swopsLeft"),
+        showSolution: localStorage.getItem("showSolution"),
+        definitions: localStorage.getItem("definitions"),
+      });
+    }
+    this.updateColor();
+    this.getDefinitions(Object.values(this.state.solutionWords));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.playDaily !== prevProps.playDaily) {
+      if (this.props.playDaily) {
+        console.log("daily");
+        console.log("read", dailyWaffleState);
+        this.setState(dailyWaffleState);
+      } else {
+        console.log("prev", prevState);
+        dailyWaffleState = { ...prevState };
+        console.log("unlimited");
+        console.log("copy", dailyWaffleState);
+        const newWaffle = makeOneWaffle();
+        const updatedState = {
+          dailyMode: this.props.playDaily,
+          waffle: this.props.playDaily
+            ? dailyWaffles[this.getTodaysWaffleIndex()].waffle
+            : newWaffle.waffle,
+          solutionWords: this.props.playDaily
+            ? dailyWaffles[this.getTodaysWaffleIndex()].solutionWords
+            : newWaffle.solutionWords,
+          solutionWaffle: this.props.playDaily
+            ? dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle
+            : newWaffle.solutionWaffle,
+          greenTiles: 0,
+          pairToSwop: [],
+          swopsLeft: 15,
+          showSolution: false,
+          definitions: [],
+        };
+        this.setState(updatedState, () => {
+          this.updateColor();
+          this.getDefinitions(Object.values(this.state.solutionWords));
+        });
+      }
+    }
   }
 
   getTodaysWaffleIndex = () => {
@@ -51,27 +108,6 @@ export default class Tiles extends React.Component {
     const sortedTiles = waffle.sort((a, b) => a.currCoord - b.currCoord);
     return sortedTiles;
   };
-
-  componentDidMount() {
-    this.updateColor();
-    this.getDefinitions(Object.values(this.state.solutionWords));
-  }
-
-  componentWillReceiveProps() {
-    const updatedState = {
-      dailyMode: this.props.playDaily,
-      waffle: this.props.playDaily
-        ? dailyWaffles[this.getTodaysWaffleIndex()].waffle
-        : makeOneWaffle().waffle,
-      solutionWords: this.props.playDaily
-        ? dailyWaffles[this.getTodaysWaffleIndex()].solutionWords
-        : makeOneWaffle().solutionWords,
-      solutionWaffle: this.props.playDaily
-        ? dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle
-        : makeOneWaffle().solutionWaffle,
-    };
-    this.setState(updatedState);
-  }
 
   getDefinitions = (solutionWords) => {
     const defs = [];
@@ -243,7 +279,31 @@ export default class Tiles extends React.Component {
     return solutionDisplay;
   };
 
+  storeDailyWaffleOutcome = () => {
+    localStorage.setItem("date", this.state.date);
+    localStorage.setItem("waffle", this.state.waffle);
+    localStorage.setItem("solutionWords", this.state.solutionWords);
+    localStorage.setItem("solutionWaffle", this.state.solutionWaffle);
+    localStorage.setItem("greenTiles", this.state.greenTiles);
+    localStorage.setItem("swopsLeft", this.state.swopsLeft);
+    localStorage.setItem("showSolution", this.state.showSolution);
+    localStorage.setItem("definitions", this.state.definitions);
+  };
+
+  removeDailyWaffleOutcome = () => {
+    localStorage.removeItem("date", this.state.date);
+    localStorage.removeItem("waffle", this.state.waffle);
+    localStorage.removeItem("solutionWords", this.state.solutionWords);
+    localStorage.removeItem("solutionWaffle", this.state.solutionWaffle);
+    localStorage.removeItem("greenTiles", this.state.greenTiles);
+    localStorage.removeItem("swopsLeft", this.state.swopsLeft);
+    localStorage.removeItem("showSolution", this.state.showSolution);
+    localStorage.removeItem("definitions", this.state.definitions);
+  };
+
   hasWon = () => {
+    if (this.props.playDaily) {
+    }
     return this.state.greenTiles === 21;
   };
 
