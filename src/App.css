@@ -33,9 +33,11 @@
 }
 
 .btn-success {
-  font-size: 14pt;
-  font-weight: 900;
+  position: static;
+  font-weight: 600;
+  font-size: 12pt;
   letter-spacing: 0.1em;
+  margin: 1vh 1vw;
 }
 
 .btn img {
@@ -154,11 +156,6 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.btn-success {
-  position: static;
-  font-weight: 600;
 }
 
 #definitions {

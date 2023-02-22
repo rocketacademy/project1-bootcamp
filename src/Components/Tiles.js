@@ -59,22 +59,7 @@ export default class Tiles extends React.Component {
         this.setState(dailyWaffleState);
       } else {
         dailyWaffleState = { ...prevState };
-        const newWaffle = makeOneWaffle();
-        const updatedState = {
-          dailyMode: this.props.playDaily,
-          waffle: newWaffle.waffle,
-          solutionWords: newWaffle.solutionWords,
-          solutionWaffle: newWaffle.solutionWaffle,
-          greenTiles: 0,
-          pairToSwop: [],
-          swopsLeft: 15,
-          showSolution: false,
-          definitions: [],
-        };
-        this.setState(updatedState, () => {
-          this.updateColor();
-          this.getDefinitions(Object.values(this.state.solutionWords));
-        });
+        this.playAgain();
       }
     }
   }
@@ -276,6 +261,25 @@ export default class Tiles extends React.Component {
     this.setState({ showSolution: true });
   };
 
+  playAgain = () => {
+    const newWaffle = makeOneWaffle();
+    const updatedState = {
+      dailyMode: this.props.playDaily,
+      waffle: newWaffle.waffle,
+      solutionWords: newWaffle.solutionWords,
+      solutionWaffle: newWaffle.solutionWaffle,
+      greenTiles: 0,
+      pairToSwop: [],
+      swopsLeft: 15,
+      showSolution: false,
+      definitions: [],
+    };
+    this.setState(updatedState, () => {
+      this.updateColor();
+      this.getDefinitions(Object.values(this.state.solutionWords));
+    });
+  };
+
   renderSolution = () => {
     const solutionDisplay = this.state.solutionWaffle.map((tile) => (
       <div key={"s" + tile.id}>
@@ -294,8 +298,6 @@ export default class Tiles extends React.Component {
   };
 
   hasWon = () => {
-    if (this.props.playDaily) {
-    }
     return this.state.greenTiles === 21;
   };
 
@@ -371,6 +373,11 @@ export default class Tiles extends React.Component {
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING
         </div>
         {this.hasWon() && this.renderToppings(this.state.swopsLeft)}
+        {this.hasWon() && !this.state.dailyMode && (
+          <Button variant="success" onClick={this.playAgain}>
+            PLAY AGAIN
+          </Button>
+        )}
         {this.hasWon() && (
           <div id="definitions">
             {this.renderDefinitions(this.state.definitions)}
@@ -382,6 +389,11 @@ export default class Tiles extends React.Component {
             <Button variant="success" onClick={this.showSolution}>
               SHOW SOLUTION
             </Button>
+            {!this.state.dailyMode && (
+              <Button variant="success" onClick={this.playAgain}>
+                PLAY AGAIN
+              </Button>
+            )}
             {this.state.showSolution && (
               <div className="solution-container">
                 <div className="grid" id="solution">
