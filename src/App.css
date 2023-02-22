@@ -14,17 +14,54 @@
   letter-spacing: 0.1em;
 }
 
-.btn {
+#buttons-container {
   position: absolute;
   top: 1vh;
+  left: 1vh;
   right: 1vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
   background-color: #323434;
   border-color: #323434;
   font-family: "Nunito", sans-serif;
-  font-size: 14pt;
-  font-weight: 900;
-  padding: 2px 11px;
+  /* font-size: 14pt;
+  font-weight: 900; */
+  padding: 0.5vh;
+  /* letter-spacing: 0.1em; */
+  max-height: 6vh;
+  max-width: 6vh;
+}
+
+.btn img {
+  max-height: 80%;
+}
+
+.offcanvas-header,
+.offcanvas-body {
+  background-color: #292b2b;
+  color: #ffffff;
+  font-family: "Nunito", sans-serif;
   letter-spacing: 0.1em;
+}
+
+.offcanvas-header .h5 {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.offcanvas-body {
+  padding: 0;
+}
+
+.menu-selection {
+  padding: 2vh 16px;
+}
+
+.menu-selection:hover {
+  background-color: #1a1a1b;
 }
 
 .modal-content {
@@ -60,6 +97,10 @@ h1 {
   font-size: 28pt;
   font-weight: 700;
   margin: 0;
+}
+
+#game-mode {
+  color: #666;
 }
 
 .grid {

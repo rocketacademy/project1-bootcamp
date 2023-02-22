@@ -2,6 +2,7 @@ import React from "react";
 import Letter from "./Letter.js";
 import { palette } from "../Palette.js";
 import { dailyWaffles } from "../Waffle-maker/daily-waffles-2023.js";
+import { makeOneWaffle } from "../Waffle-maker/waffle-maker-2.js";
 import { dictionary } from "../Waffle-maker/definitions.js";
 import { Button } from "react-bootstrap";
 
@@ -11,11 +12,12 @@ export default class Tiles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      dailyMode: true,
       waffle: dailyWaffles[this.getTodaysWaffleIndex()].waffle,
-      pairToSwop: [],
       solutionWords: dailyWaffles[this.getTodaysWaffleIndex()].solutionWords,
       solutionWaffle: dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle,
       greenTiles: 0,
+      pairToSwop: [],
       swopsLeft: 15,
       showSolution: false,
       definitions: [],
@@ -53,6 +55,22 @@ export default class Tiles extends React.Component {
   componentDidMount() {
     this.updateColor();
     this.getDefinitions(Object.values(this.state.solutionWords));
+  }
+
+  componentWillReceiveProps() {
+    const updatedState = {
+      dailyMode: this.props.playDaily,
+      waffle: this.props.playDaily
+        ? dailyWaffles[this.getTodaysWaffleIndex()].waffle
+        : makeOneWaffle().waffle,
+      solutionWords: this.props.playDaily
+        ? dailyWaffles[this.getTodaysWaffleIndex()].solutionWords
+        : makeOneWaffle().solutionWords,
+      solutionWaffle: this.props.playDaily
+        ? dailyWaffles[this.getTodaysWaffleIndex()].solutionWaffle
+        : makeOneWaffle().solutionWaffle,
+    };
+    this.setState(updatedState);
   }
 
   getDefinitions = (solutionWords) => {
@@ -292,6 +310,10 @@ export default class Tiles extends React.Component {
   render() {
     return (
       <div id="container">
+        {this.props.playDaily && (
+          <div id="game-mode">{new Date().toLocaleDateString()}</div>
+        )}
+        {!this.props.playDaily && <div id="game-mode">UNLIMITED</div>}
         <div className="grid">{this.renderTiles(this.state.waffle)}</div>
         <div id="swops-left">
           <span>{this.state.swopsLeft}</span> SWOPS REMAINING

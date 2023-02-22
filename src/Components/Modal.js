@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import CloseButton from "react-bootstrap/CloseButton";
 import Modal from "react-bootstrap/Modal";
 
 export default class RulesModal extends React.Component {
@@ -11,10 +11,11 @@ export default class RulesModal extends React.Component {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter">
             HOW TO PLAY
           </Modal.Title>
+          <CloseButton variant="white" onClick={this.props.onHide} />
         </Modal.Header>
         <Modal.Body>
           <p>Solve the WAFFLE in as few moves as possible to earn toppings.</p>
@@ -62,9 +63,6 @@ export default class RulesModal extends React.Component {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" onClick={this.props.onHide}>
-            X
-          </Button>
           Built by <a href="https://github.com/peanutyabing">peanutyabing</a> |
           Created by <a href="https://twitter.com/jamesjessian">jessian</a> |
           Original game at <a href="https://wafflegame.net/">wafflegame.net</a>
