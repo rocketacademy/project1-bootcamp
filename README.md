@@ -1,15 +1,7 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# Rocket Academy Coding Bootcamp: Project 1 - WAFFLE
 
-https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
+Hello! Welcome to my first [Bootcamp](https://bc.rocketacademy.co/1-frontend/1.p-frontend-app) project, a clone of the WAFFLE game. Give it a try [here](https://peanutyabing.github.io/project-waffle/)!
 
-## Available Scripts
+I built this game to practice using React, and chose WAFFLE as I loved playing the [original game](https://wafflegame.net/) created by [James Robinson](https://twitter.com/jamesjessian).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Please tell me what you think and what other features you would like you see in the Discussions.

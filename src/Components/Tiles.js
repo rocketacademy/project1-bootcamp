@@ -7,7 +7,7 @@ import { dictionary } from "../Waffle-maker/definitions.js";
 import { Button } from "react-bootstrap";
 
 export const holes = ["11", "13", "31", "33"];
-let dailyWaffleState; // This variable keeps track of the last state under Daily Mode, when user toggles between Unlimted and Daily
+let dailyWaffleState; // This variable keeps track of the last state under Daily Mode, and will be updated in componentDidUpdate()
 
 export default class Tiles extends React.Component {
   constructor(props) {
@@ -120,12 +120,16 @@ export default class Tiles extends React.Component {
     const tileId = e.target.id;
     const tileColor = this.state.waffle.filter((tile) => tile.id === tileId)[0]
       .color;
+    const updatedWaffle = [...this.state.waffle];
+    const thisTile = updatedWaffle.filter((tile) => tile.id === tileId)[0];
     if (this.hasWon() || this.hasLost() || tileColor === palette.green) {
       return;
     } else if (this.state.pairToSwop.length < 2) {
+      thisTile.color = `${thisTile.color}60`;
       this.setState(
         {
           pairToSwop: [...this.state.pairToSwop, tileId],
+          waffle: updatedWaffle,
         },
         () => this.swopLetters(this.state.pairToSwop)
       );
@@ -136,7 +140,7 @@ export default class Tiles extends React.Component {
     if (pairIdArr.length === 2) {
       if (pairIdArr[0] === pairIdArr[1]) {
         this.setState({ pairToSwop: [] });
-        alert("Can't swop a tile with itself!");
+        this.updateColor();
         return;
       }
       const updatedWaffle = [...this.state.waffle];
@@ -204,7 +208,7 @@ export default class Tiles extends React.Component {
       const colSolution =
         currentCol % 2 === 0 ? solutionCopy[`col${currentCol}`] : "";
       if (holes.includes(tile.currCoord) || tile.color === palette.green) {
-        // skip if tile is a hole, or tile is already green
+        // skip
       } else if (
         rowSolution.includes(tile.letter) ||
         colSolution.includes(tile.letter)
@@ -220,18 +224,14 @@ export default class Tiles extends React.Component {
         tile.color = palette.grey;
       }
     }
-    this.setState(
-      { waffle: waffle },
-      () => {
-        if (this.state.dailyMode) {
-          this.storeState();
-        }
-        if (this.hasLost()) {
-          this.renderBlackWaffle();
-        }
+    this.setState({ waffle: waffle }, () => {
+      if (this.state.dailyMode) {
+        this.storeState();
       }
-      // this.hasLost() ? this.renderBlackWaffle : this.storeState
-    );
+      if (this.hasLost()) {
+        this.renderBlackWaffle();
+      }
+    });
   };
 
   removeLetterFromSolution = (tile, row, col, solution) => {

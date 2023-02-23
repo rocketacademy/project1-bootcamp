@@ -123,9 +123,11 @@ h1 {
   max-height: 70px;
   font-size: 26pt;
   font-weight: 800;
-  cursor: pointer;
   border-radius: 6px;
   border-bottom: 5px solid rgba(26, 26, 27, 0.12);
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #swops-left {

@@ -1,3 +1,5 @@
+// Words obtained from https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt, with customisation
+
 export const indexedWords = {
   w: [
     "which",

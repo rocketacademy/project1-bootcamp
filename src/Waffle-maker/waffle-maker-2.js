@@ -1,15 +1,14 @@
 import { indexedWords } from "./indexed-words.js";
 import { words } from "./words.js";
 import { palette } from "../Palette.js";
-// import fs from "fs";
 
+//// The following code was used to write the file containing 313 waffles:
+// import fs from "fs";
 // fs.writeFile("./daily-waffles-2023.js", makeDailyWaffles(), (err) => {
 //   if (err) {
 //     console.error(err);
 //   }
 // });
-
-// makeDailyWaffles();
 
 export const makeDailyWaffles = () => {
   const dailyWaffles = [];
@@ -125,7 +124,7 @@ function findMatchingWord(firstLetter, middleLetter, lastLetter) {
 }
 
 function getSwoppableIndices() {
-  // Holes are indexed 6, 8, 16, and 18 and are not available for swops
+  // Holes are indexed 6, 8, 16, and 18 and are not available for swops, ever!
   // Nodes are indexed 0, 4, 12, 20, and 24 and are not to be pre-scrambled
   return [1, 2, 3, 5, 7, 9, 10, 11, 13, 14, 15, 17, 19, 21, 22, 23];
 }
