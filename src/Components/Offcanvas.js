@@ -9,10 +9,18 @@ export default class Menu extends React.Component {
           <Offcanvas.Title>MENU</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <div className="menu-selection" onClick={this.props.onClick}>
+          <div
+            className="menu-selection"
+            id="daily"
+            onClick={this.props.onClick}
+          >
             DAILY WAFFLE
           </div>
-          <div className="menu-selection" onClick={this.props.onClick}>
+          <div
+            className="menu-selection"
+            id="buffet"
+            onClick={this.props.onClick}
+          >
             WAFFLE BUFFET
           </div>
         </Offcanvas.Body>

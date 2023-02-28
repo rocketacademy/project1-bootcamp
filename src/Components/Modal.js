@@ -1,6 +1,10 @@
 import React from "react";
 import CloseButton from "react-bootstrap/CloseButton";
 import Modal from "react-bootstrap/Modal";
+import rowExample from "./images/waffle-row-example.png";
+import junctionExample from "./images/waffle-junction-example.png";
+import ylgyExample from "./images/waffle-oney-onegy-example.png";
+import gngyExample from "./images/waffle-onegn-onegy-example.png";
 
 export default class RulesModal extends React.Component {
   render() {
@@ -29,15 +33,15 @@ export default class RulesModal extends React.Component {
           <p>
             In this example, the "S"es are in the correct place. The "A" is in
             the word, but in a different position. <br />
-            <img src={require("./images/waffle-row-example.png")} alt="" />
+            <img src={rowExample} alt="waffle-row-example" />
           </p>
           <p>
             When the yellow letter is on a corner, either the vertical word or
             the horizontal word contains this letter.
             <br />
             <img
-              src={require("./images/waffle-junction-example.png")}
-              alt=""
+              src={junctionExample}
+              alt="waffle-junction-example"
               style={{ maxWidth: "150px" }}
             />
           </p>{" "}
@@ -48,18 +52,12 @@ export default class RulesModal extends React.Component {
             In this case, the word must contain only one "L", as the first is
             yellow but the second is grey. Neither of them are in the correct
             position. <br />
-            <img
-              src={require("./images/waffle-oney-onegy-example.png")}
-              alt=""
-            />
+            <img src={ylgyExample} alt="waffle-oney-onegy-example" />
           </p>
           <p>
             Once we have an "L" in the correct place, the first "L" is no longer
             needed in the word, so, it is no longer yellow. <br />
-            <img
-              src={require("./images/waffle-onegn-onegy-example.png")}
-              alt=""
-            />
+            <img src={gngyExample} alt="waffle-onegn-onegy-example" />
           </p>
         </Modal.Body>
         <Modal.Footer>

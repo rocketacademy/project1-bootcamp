@@ -27,9 +27,9 @@
   background-color: #323434;
   border-color: #323434;
   font-family: "Nunito", sans-serif;
-  padding: 0.5vh;
-  max-height: 6vh;
-  max-width: 6vh;
+  padding: 5px;
+  max-height: 50px;
+  max-width: 50px;
 }
 
 .btn-success {
@@ -275,7 +275,7 @@ h1 {
 }
 
 /* Mobile responsive settings */
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 450px) {
   h1 {
     font-size: 24pt;
   }
@@ -305,6 +305,12 @@ h1 {
 
   #definitions {
     max-width: 275px;
+  }
+
+  .btn-dark {
+    padding: 3px;
+    max-height: 36px;
+    max-width: 36px;
   }
 }
 
@@ -342,5 +348,11 @@ h1 {
 
   #definitions {
     max-width: 250px;
+  }
+
+  .btn-dark {
+    padding: 2px;
+    max-height: 32px;
+    max-width: 32px;
   }
 }
