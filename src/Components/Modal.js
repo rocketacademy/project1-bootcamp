@@ -22,7 +22,10 @@ export default class RulesModal extends React.Component {
           <CloseButton variant="white" onClick={this.props.onHide} />
         </Modal.Header>
         <Modal.Body>
-          <p>Solve the WAFFLE in as few moves as possible to earn toppings.</p>
+          <p>
+            Solve the WAFFLE in as few moves as possible to earn toppings. Click
+            or tap on tiles to swop them.
+          </p>
           <p>
             Rearrange the letters into the correct words, horizontally or
             vertically. Click letters to swop their positions anywhere on the
