@@ -1,3 +1,4 @@
 var main = function(input){
-    return input;
+    var output = input+' end'; 
+    return output;
 }
