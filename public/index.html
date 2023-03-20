@@ -39,5 +39,43 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <div id="container">
+      <!-- The <p> tag defines a paragraph element. -->
+      <p>Please input:</p>
+      <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
+      <input id="input-field" />
+      <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
+      <br />
+      <!-- The <button> tag represents.. you guessed it! a button. -->
+      <button id="submit-button">Submit</button>
+      <p>Output:</p>
+      <div id="output-div"></div>
+    </div>
+    <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
+    <!-- The script tag encloses JavaScript syntax for the browser to interpret programtically -->
+    <!-- The following line imports all code written in the script.js file -->
+    <script src="script.js"></script>
+    <!-- Define button click functionality -->
+    <script>
+      // Declare and define a variable that represents the Submit Button
+      var button = document.querySelector("#submit-button");
+      // When the submit button is clicked, access the text entered by the user in the input field
+      // And pass it as an input parameter to the main function as defined in script.js
+      button.addEventListener("click", function () {
+        // Set result to input value
+        var input = document.querySelector("#input-field");
+        // Store the output of main() in a new variable
+        
+        
+        
+
+        // Display result in output element
+        var output = document.querySelector("#output-div");
+        output.innerHTML = main(input.value);
+       
+        // Reset input value
+        input.value = "";
+      });
+    </script>
   </body>
 </html>
