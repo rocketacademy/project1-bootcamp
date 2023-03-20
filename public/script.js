@@ -1,4 +1,5 @@
 var main = function(input){
-    var output = input+' end'; 
+    var int = 0;
+    var output = input+' end'+int; 
     return output;
 }
