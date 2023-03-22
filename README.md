@@ -1,4 +1,4 @@
-# Rocket Academy Coding Bootcamp: Project 1 - WAFFLE
+# WAFFLE
 
 ## About this Project
 
