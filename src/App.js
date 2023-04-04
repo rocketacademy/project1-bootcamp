@@ -1,8 +1,9 @@
 import React from "react";
 import Papa from "papaparse";
-
-const meal = "Lunch";
-const location = "North";
+import HomeScreen from "./Components/HomeScreen";
+import QuestionScreen from "./Components/QuestionScreen";
+import FinalScreen from "./Components/FinalScreen";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,11 @@ class App extends React.Component {
 
     this.state = {
       data: [],
-      // page: 1,
+      stage: 1,
+      question: 1,
+      meal: "",
+      type: "",
+      area: "",
     };
   }
 
@@ -36,31 +41,52 @@ class App extends React.Component {
     // console.log(this.state.data[0].MEAL);
   }
 
-  handleClick = () => {
-    let list = this.getApplicableList(this.state.data, meal, location);
-    if (list.length !== 0) {
-      console.log(list);
-    } else {
-      console.log("Oops! None Found");
-    }
+  handleNext = () => {
+    this.setState({
+      stage: this.state.stage + 1,
+    });
   };
 
-  getApplicableList = (arr, meal, location) => {
-    let applicableList = [];
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].MEAL.includes(meal) && arr[i].AREA.includes(location)) {
-        applicableList.push(arr[i]);
-      }
-    }
-    return applicableList;
+  handleRestart = () => {
+    this.setState({
+      stage: 1,
+      meal: "",
+      type: "",
+      area: "",
+    });
+  };
+
+  handleUpdate = async (name, value) => {
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
-    return (
-      <div>
-        <button onClick={this.handleClick}>Click Here</button>
-      </div>
-    );
+    const { stage, question, meal, type, area } = this.state;
+    let currentStage;
+    if (stage === 1) {
+      currentStage = <HomeScreen handleNext={this.handleNext} />;
+    } else if (stage === 2) {
+      currentStage = (
+        <QuestionScreen
+          handleUpdate={this.handleUpdate}
+          handleRestart={this.handleRestart}
+          handleNext={this.handleNext}
+        />
+      );
+    } else if (stage === 3) {
+      currentStage = (
+        <FinalScreen
+          data={this.state.data}
+          meal={this.state.meal}
+          type={this.state.type}
+          area={this.state.area}
+          handleRestart={this.handleRestart}
+        />
+      );
+    }
+    return <div>{currentStage}</div>;
   }
 }
 
