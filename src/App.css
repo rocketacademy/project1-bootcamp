@@ -18,11 +18,25 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("./fonts/Oakes-Grotesk/Oakes-Grotesk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
 * {
   font-family: "Satoshi", sans-serif;
-  margin: 10px 0;
   padding: 0;
+  margin: 0;
 }
+
+body {
+  overflow: hidden;
+}
+
+/* General Styling */
 
 .screen {
   text-align: center;
@@ -30,11 +44,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Oakes Grotesk", sans-serif;
+  text-transform: uppercase;
+}
+
+h2,
+h3 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 40px;
 }
 
 img {
-  width: 100vw;
+  width: 90vw;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 button {
@@ -43,6 +75,15 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
+  margin: 0px 5px;
+}
+
+/* Home Page */
+
+#home h1 {
+  font-size: 15vw;
+  letter-spacing: -0.2vw;
+  line-height: 0.85;
 }
 
 /* Question Page */
@@ -56,13 +97,13 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 #question button {
   height: 120px;
   width: 120px;
   border-radius: 60px;
-  margin: 0px 5px;
 }
 
 #question .footer button {
@@ -73,4 +114,10 @@ button {
   padding: 0px 0px 2px 0px;
   border-radius: 0;
   border-bottom: 1px solid white;
+}
+
+/* Final Page */
+
+#final img {
+  height: 400px;
 }

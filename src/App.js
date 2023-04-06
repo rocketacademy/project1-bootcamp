@@ -14,6 +14,7 @@ class App extends React.Component {
       stage: 1,
       question: 1,
       locationAvailable: false,
+      searchRadius: 4,
       meal: "",
       type: "",
       area: "",
@@ -77,6 +78,7 @@ class App extends React.Component {
       currentStage = (
         <QuestionScreen
           locationAvailable={this.state.locationAvailable}
+          searchRadius={this.state.searchRadius}
           handleUpdate={this.handleUpdate}
           handleRestart={this.handleRestart}
           handleNext={this.handleNext}
@@ -85,6 +87,7 @@ class App extends React.Component {
     } else if (stage === 3) {
       currentStage = (
         <FinalScreen
+          searchRadius={this.state.searchRadius}
           data={this.state.data}
           meal={this.state.meal}
           type={this.state.type}

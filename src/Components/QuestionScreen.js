@@ -6,7 +6,8 @@ export default class QuestionScreen extends React.Component {
     this.state = {
       question: 1,
       locationButton: true,
-      buttonText: "2KM Radius",
+      buttonText: "KM Radius",
+      searchRadius: this.props.searchRadius,
     };
   }
   handleClick = (e) => {
@@ -32,14 +33,15 @@ export default class QuestionScreen extends React.Component {
 
   handleLocation = async () => {
     await this.setState({
+      searchRadius: "",
       buttonText: "Getting location...",
     });
     await navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.props.handleUpdate("area", [
-          position.coords.latitude,
-          position.coords.longitude,
-        ]);
+        this.props.handleUpdate("area", {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
         this.setState({
           question: this.state.question + 1,
         });
@@ -51,6 +53,11 @@ export default class QuestionScreen extends React.Component {
             locationButton: false,
           });
         }
+      },
+      {
+        enableHighAccuracy: false,
+        // timeout: 3000,
+        maximumAge: Infinity,
       }
     );
   };
@@ -120,7 +127,7 @@ export default class QuestionScreen extends React.Component {
             </button>
             {this.props.locationAvailable && this.state.locationButton ? (
               <button onClick={this.handleLocation}>
-                {this.state.buttonText}
+                {this.state.searchRadius + this.state.buttonText}
               </button>
             ) : (
               <div></div>
@@ -138,7 +145,7 @@ export default class QuestionScreen extends React.Component {
     }
     return (
       <div className="screen" id="question">
-        <h1>Makan Where</h1>
+        <h3>Makan Where</h3>
         {displayQuestion}
         <div className="footer">
           <button onClick={this.props.handleRestart}>Restart</button>
