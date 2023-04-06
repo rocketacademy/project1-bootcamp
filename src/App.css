@@ -1,3 +1,29 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi/Satoshi-Medium.woff2") format("woff2"),
+    url("./fonts/Satoshi/Satoshi-Medium.woff") format("woff"),
+    url("./fonts/Satoshi/Satoshi-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi/Satoshi-Bold.woff2") format("woff2"),
+    url("./fonts/Satoshi/Satoshi-Bold.woff") format("woff"),
+    url("./fonts/Satoshi/Satoshi-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  font-family: "Satoshi", sans-serif;
+  margin: 10px 0;
+  padding: 0;
+}
+
 .screen {
   text-align: center;
   display: flex;
@@ -7,11 +33,44 @@
   height: 100vh;
 }
 
+img {
+  width: 100vw;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* Question Page */
+
 #question {
   background-color: #0078ef;
   color: white;
 }
 
-img {
-  width: 100vw;
+.question-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#question button {
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  margin: 0px 5px;
+}
+
+#question .footer button {
+  background-color: transparent;
+  color: white;
+  height: fit-content;
+  width: fit-content;
+  padding: 0px 0px 2px 0px;
+  border-radius: 0;
+  border-bottom: 1px solid white;
 }

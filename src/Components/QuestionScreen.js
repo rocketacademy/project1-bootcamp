@@ -32,7 +32,7 @@ export default class QuestionScreen extends React.Component {
 
   handleLocation = async () => {
     await this.setState({
-      buttonText: "Getting location",
+      buttonText: "Getting location...",
     });
     await navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -62,64 +62,70 @@ export default class QuestionScreen extends React.Component {
       displayQuestion = (
         <div>
           <h2>Which?</h2>
-          <button onClick={this.handleClick} name="meal" value="Breakfast">
-            Breakfast
-          </button>
-          <button onClick={this.handleClick} name="meal" value="Brunch">
-            Brunch
-          </button>
-          <button onClick={this.handleClick} name="meal" value="Lunch">
-            Lunch
-          </button>
-          <button onClick={this.handleClick} name="meal" value="Dinner">
-            Dinner
-          </button>
-          <button onClick={this.handleClick} name="meal" value="Dessert">
-            Dessert
-          </button>
+          <div className="question-options">
+            <button onClick={this.handleClick} name="meal" value="Breakfast">
+              Breakfast
+            </button>
+            <button onClick={this.handleClick} name="meal" value="Brunch">
+              Brunch
+            </button>
+            <button onClick={this.handleClick} name="meal" value="Lunch">
+              Lunch
+            </button>
+            <button onClick={this.handleClick} name="meal" value="Dinner">
+              Dinner
+            </button>
+            <button onClick={this.handleClick} name="meal" value="Dessert">
+              Dessert
+            </button>
+          </div>
         </div>
       );
     } else if (question === 2) {
       displayQuestion = (
         <div>
           <h2>What?</h2>
-          <button onClick={this.handleClick} name="type" value="H">
-            Hawker
-          </button>
-          <button onClick={this.handleClick} name="type" value="C">
-            Casual Eatery
-          </button>
-          <button onClick={this.handleClick} name="type" value="R">
-            Restaurant
-          </button>
+          <div className="question-options">
+            <button onClick={this.handleClick} name="type" value="H">
+              Hawker
+            </button>
+            <button onClick={this.handleClick} name="type" value="C">
+              Casual Eatery
+            </button>
+            <button onClick={this.handleClick} name="type" value="R">
+              Restaurant
+            </button>
+          </div>
         </div>
       );
     } else if (question === 3) {
       displayQuestion = (
         <div>
           <h2>Where?</h2>
-          <button onClick={this.handleClick} name="area" value="NT">
-            North
-          </button>
-          <button onClick={this.handleClick} name="area" value="NE">
-            Northeast
-          </button>
-          <button onClick={this.handleClick} name="area" value="CN">
-            Central
-          </button>
-          <button onClick={this.handleClick} name="area" value="WT">
-            West
-          </button>
-          <button onClick={this.handleClick} name="area" value="ET">
-            East
-          </button>
-          {this.props.locationAvailable && this.state.locationButton ? (
-            <button onClick={this.handleLocation}>
-              {this.state.buttonText}
+          <div className="question-options">
+            <button onClick={this.handleClick} name="area" value="NT">
+              North
             </button>
-          ) : (
-            <div></div>
-          )}
+            <button onClick={this.handleClick} name="area" value="NE">
+              Northeast
+            </button>
+            <button onClick={this.handleClick} name="area" value="CN">
+              Central
+            </button>
+            <button onClick={this.handleClick} name="area" value="WT">
+              West
+            </button>
+            <button onClick={this.handleClick} name="area" value="ET">
+              East
+            </button>
+            {this.props.locationAvailable && this.state.locationButton ? (
+              <button onClick={this.handleLocation}>
+                {this.state.buttonText}
+              </button>
+            ) : (
+              <div></div>
+            )}
+          </div>
         </div>
       );
     } else if (question === 4) {
@@ -134,9 +140,9 @@ export default class QuestionScreen extends React.Component {
       <div className="screen" id="question">
         <h1>Makan Where</h1>
         {displayQuestion}
-        <div>
+        <div className="footer">
           <button onClick={this.props.handleRestart}>Restart</button>
-          <button onClick={this.handleSkip}>Skip</button>
+          {question !== 4 && <button onClick={this.handleSkip}>Skip</button>}
         </div>
       </div>
     );
