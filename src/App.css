@@ -76,6 +76,9 @@ button {
   letter-spacing: 1px;
   font-weight: 700;
   margin: 0px 5px;
+  background-color: #0078ef;
+  color: white;
+  border-radius: 5px;
 }
 
 /* Home Page */
@@ -101,6 +104,8 @@ button {
 }
 
 #question button {
+  background-color: white;
+  color: #0078ef;
   height: 120px;
   width: 120px;
   border-radius: 60px;
