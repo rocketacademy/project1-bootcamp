@@ -68,10 +68,13 @@ export default class FinalScreen extends React.Component {
     const result = resultArray[select];
     return (
       <div className="screen" id="final">
-        <h3>Makan Where</h3>
+        <div className="header">
+          <h3>Makan Where</h3>
+          <img src="./logo192.png" alt="logo" />
+        </div>
         <DisplayMeal meal={result} />
         {resultArray.length !== 0 && (
-          <div>
+          <div className="food-links">
             <button
               role="link"
               onClick={(e) => {
@@ -101,7 +104,9 @@ export default class FinalScreen extends React.Component {
           </div>
         )}
 
-        <button onClick={this.props.handleRestart}>Restart</button>
+        <button id="final-restart" onClick={this.props.handleRestart}>
+          Restart
+        </button>
       </div>
     );
   }

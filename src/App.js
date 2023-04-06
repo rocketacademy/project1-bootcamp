@@ -73,7 +73,9 @@ class App extends React.Component {
       this.state;
     let currentStage;
     if (stage === 1) {
-      currentStage = <HomeScreen handleNext={this.handleNext} />;
+      currentStage = (
+        <HomeScreen data={this.state.data} handleNext={this.handleNext} />
+      );
     } else if (stage === 2) {
       currentStage = (
         <QuestionScreen

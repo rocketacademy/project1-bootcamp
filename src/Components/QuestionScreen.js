@@ -138,14 +138,22 @@ export default class QuestionScreen extends React.Component {
     } else if (question === 4) {
       displayQuestion = (
         <div>
-          <h2>Tap to find out your rec</h2>
+          <h2>Tap here</h2>
           <button onClick={this.handleClick}>CLICK ME</button>
+          <h2>to get</h2>
+          <h2>your rec!</h2>
         </div>
       );
     }
     return (
       <div className="screen" id="question">
-        <h3>Makan Where</h3>
+        <div className="header">
+          <h3>Makan Where</h3>
+          <img
+            src="https://www.dropbox.com/s/01kx8kv9depvpbx/Logo-White-Small.png?raw=1"
+            alt="logo"
+          />
+        </div>
         {displayQuestion}
         <div className="footer">
           <button onClick={this.props.handleRestart}>Restart</button>
