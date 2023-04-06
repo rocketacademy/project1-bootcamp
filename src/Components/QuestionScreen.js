@@ -6,6 +6,7 @@ export default class QuestionScreen extends React.Component {
     this.state = {
       question: 1,
       locationButton: true,
+      buttonText: "2KM Radius",
     };
   }
   handleClick = (e) => {
@@ -30,6 +31,9 @@ export default class QuestionScreen extends React.Component {
   };
 
   handleLocation = async () => {
+    await this.setState({
+      buttonText: "Getting location",
+    });
     await navigator.geolocation.getCurrentPosition(
       (position) => {
         this.props.handleUpdate("area", [
@@ -110,7 +114,9 @@ export default class QuestionScreen extends React.Component {
             East
           </button>
           {this.props.locationAvailable && this.state.locationButton ? (
-            <button onClick={this.handleLocation}>2km Radius</button>
+            <button onClick={this.handleLocation}>
+              {this.state.buttonText}
+            </button>
           ) : (
             <div></div>
           )}

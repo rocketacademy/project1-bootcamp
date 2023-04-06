@@ -20,8 +20,8 @@ export default class FinalScreen extends React.Component {
 
   getApplicableList = (arr, meal, type, area) => {
     let applicableList = [];
-    if (area.length > 2) {
-      let actualArea = 0;
+    const regex = new RegExp("^[A-Z]{2}$");
+    if (regex.test(area)) {
       for (let i = 0; i < arr.length; i++) {
         if (
           arr[i].MEAL.includes(meal) &&
@@ -32,6 +32,7 @@ export default class FinalScreen extends React.Component {
         }
       }
     } else {
+      let actualArea = 0;
       for (let i = 0; i < arr.length; i++) {
         if (
           arr[i].MEAL.includes(meal) &&
