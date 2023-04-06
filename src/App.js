@@ -13,6 +13,7 @@ class App extends React.Component {
       data: [],
       stage: 1,
       question: 1,
+      locationAvailable: false,
       meal: "",
       type: "",
       area: "",
@@ -21,6 +22,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getCsvData();
+    if ("geolocation" in navigator) {
+      this.setState({
+        locationAvailable: true,
+      });
+    }
   }
 
   getCsvData = () => {
@@ -70,6 +76,7 @@ class App extends React.Component {
     } else if (stage === 2) {
       currentStage = (
         <QuestionScreen
+          locationAvailable={this.state.locationAvailable}
           handleUpdate={this.handleUpdate}
           handleRestart={this.handleRestart}
           handleNext={this.handleNext}
@@ -86,6 +93,7 @@ class App extends React.Component {
         />
       );
     }
+
     return <div>{currentStage}</div>;
   }
 }

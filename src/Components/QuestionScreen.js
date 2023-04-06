@@ -5,6 +5,7 @@ export default class QuestionScreen extends React.Component {
     super(props);
     this.state = {
       question: 1,
+      locationButton: true,
     };
   }
   handleClick = (e) => {
@@ -26,6 +27,28 @@ export default class QuestionScreen extends React.Component {
     this.setState({
       question: this.state.question + 1,
     });
+  };
+
+  handleLocation = async () => {
+    await navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.props.handleUpdate("area", [
+          position.coords.latitude,
+          position.coords.longitude,
+        ]);
+        this.setState({
+          question: this.state.question + 1,
+        });
+      },
+      (error) => {
+        if (error.code === error.PERMISSION_DENIED) {
+          alert("Can't find your location!");
+          this.setState({
+            locationButton: false,
+          });
+        }
+      }
+    );
   };
 
   render() {
@@ -86,6 +109,11 @@ export default class QuestionScreen extends React.Component {
           <button onClick={this.handleClick} name="area" value="ET">
             East
           </button>
+          {this.props.locationAvailable && this.state.locationButton ? (
+            <button onClick={this.handleLocation}>2km Radius</button>
+          ) : (
+            <div></div>
+          )}
         </div>
       );
     } else if (question === 4) {
@@ -97,11 +125,13 @@ export default class QuestionScreen extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="screen" id="question">
         <h1>Makan Where</h1>
         {displayQuestion}
-        <button onClick={this.props.handleRestart}>Restart</button>
-        <button onClick={this.handleSkip}>Skip</button>
+        <div>
+          <button onClick={this.props.handleRestart}>Restart</button>
+          <button onClick={this.handleSkip}>Skip</button>
+        </div>
       </div>
     );
   }

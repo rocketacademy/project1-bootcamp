@@ -20,15 +20,29 @@ export default class FinalScreen extends React.Component {
 
   getApplicableList = (arr, meal, type, area) => {
     let applicableList = [];
-    for (let i = 0; i < arr.length; i++) {
-      if (
-        arr[i].MEAL.includes(meal) &&
-        arr[i].TYPE.includes(type) &&
-        arr[i].AREA.includes(area)
-      ) {
-        applicableList.push(arr[i]);
+    if (area.length > 2) {
+      let actualArea = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (
+          arr[i].MEAL.includes(meal) &&
+          arr[i].TYPE.includes(type) &&
+          arr[i].AREA.includes(area)
+        ) {
+          applicableList.push(arr[i]);
+        }
+      }
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        if (
+          arr[i].MEAL.includes(meal) &&
+          arr[i].TYPE.includes(type) &&
+          arr[i].AREA.includes(area)
+        ) {
+          applicableList.push(arr[i]);
+        }
       }
     }
+
     return applicableList;
   };
 
@@ -36,7 +50,7 @@ export default class FinalScreen extends React.Component {
     let select = randomNumber(this.state.resultArray.length);
     const result = this.state.resultArray[select];
     return (
-      <div>
+      <div className="screen" id="final">
         <h1>Makan Where</h1>
         <DisplayMeal meal={result} />
         {this.state.resultArray.length !== 0 && (
