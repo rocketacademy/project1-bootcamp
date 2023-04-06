@@ -12,7 +12,6 @@ class App extends React.Component {
     this.state = {
       data: [],
       stage: 1,
-      question: 1,
       locationAvailable: false,
       searchRadius: 4,
       meal: "",
@@ -70,15 +69,16 @@ class App extends React.Component {
   };
 
   render() {
-    const { stage, question, meal, type, area } = this.state;
+    const { stage, data, locationAvailable, searchRadius, meal, type, area } =
+      this.state;
     let currentStage;
     if (stage === 1) {
       currentStage = <HomeScreen handleNext={this.handleNext} />;
     } else if (stage === 2) {
       currentStage = (
         <QuestionScreen
-          locationAvailable={this.state.locationAvailable}
-          searchRadius={this.state.searchRadius}
+          locationAvailable={locationAvailable}
+          searchRadius={searchRadius}
           handleUpdate={this.handleUpdate}
           handleRestart={this.handleRestart}
           handleNext={this.handleNext}
@@ -87,11 +87,11 @@ class App extends React.Component {
     } else if (stage === 3) {
       currentStage = (
         <FinalScreen
-          searchRadius={this.state.searchRadius}
-          data={this.state.data}
-          meal={this.state.meal}
-          type={this.state.type}
-          area={this.state.area}
+          searchRadius={searchRadius}
+          data={data}
+          meal={meal}
+          type={type}
+          area={area}
           handleRestart={this.handleRestart}
         />
       );

@@ -64,12 +64,13 @@ export default class FinalScreen extends React.Component {
   };
 
   render() {
-    const result = this.state.resultArray[this.state.select];
+    const { resultArray, select } = this.state;
+    const result = resultArray[select];
     return (
       <div className="screen" id="final">
         <h3>Makan Where</h3>
         <DisplayMeal meal={result} />
-        {this.state.resultArray.length !== 0 && (
+        {resultArray.length !== 0 && (
           <div>
             <button
               role="link"
@@ -80,21 +81,23 @@ export default class FinalScreen extends React.Component {
             >
               Open in Google Maps
             </button>
-            <button
-              role="link"
-              onClick={(e) => {
-                e.preventDefault();
-                let newNo = randomNumber(this.state.resultArray.length);
-                while (newNo === this.state.select) {
-                  newNo = randomNumber(this.state.resultArray.length);
-                }
-                this.setState({
-                  select: newNo,
-                });
-              }}
-            >
-              Another one!
-            </button>
+            {resultArray !== 1 && (
+              <button
+                role="link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  let newNo = randomNumber(resultArray.length);
+                  while (newNo === select) {
+                    newNo = randomNumber(resultArray.length);
+                  }
+                  this.setState({
+                    select: newNo,
+                  });
+                }}
+              >
+                Another one!
+              </button>
+            )}
           </div>
         )}
 

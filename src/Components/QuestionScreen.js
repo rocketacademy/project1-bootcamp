@@ -56,7 +56,7 @@ export default class QuestionScreen extends React.Component {
       },
       {
         enableHighAccuracy: false,
-        // timeout: 3000,
+        timeout: 5000,
         maximumAge: Infinity,
       }
     );
