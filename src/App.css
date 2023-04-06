@@ -63,30 +63,75 @@ h2 {
   font-size: 40px;
 }
 
-img {
-  width: 90vw;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
+h4,
 button {
-  padding: 10px;
-  border: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  margin: 0px 5px;
+}
+
+img {
+  width: 91vw;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+button {
+  padding: 20px;
+  border: none;
+  background-color: #0078ef;
+  color: white;
+  border-radius: 5px;
+  width: calc(100% - 8vw);
 }
 
 /* Home Page */
 
+#home .header {
+  position: fixed;
+  top: 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #home h1 {
-  font-size: 15vw;
+  font-size: 22vw;
   letter-spacing: -0.2vw;
   line-height: 0.85;
 }
 
+#home img {
+  position: relative;
+  top: 17vw;
+  height: 55vh;
+}
+
+#home button {
+  position: fixed;
+  bottom: 4vw;
+}
+
 /* Question Page */
+
+.header {
+  position: fixed;
+  top: 5vw;
+  display: flex;
+  width: calc(100% - 8vw);
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: -1vw;
+  border-bottom: 1px solid white;
+}
+
+.header h3 {
+  font-size: 10vw;
+}
+
+.header img {
+  width: 8vw;
+}
 
 #question {
   background-color: #0078ef;
@@ -101,9 +146,20 @@ button {
 }
 
 #question button {
+  background-color: white;
+  color: #0078ef;
   height: 120px;
   width: 120px;
   border-radius: 60px;
+  margin: 0px 10px 10px;
+}
+
+#question .footer {
+  position: fixed;
+  bottom: 5vw;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 8vw);
 }
 
 #question .footer button {
@@ -114,10 +170,30 @@ button {
   padding: 0px 0px 2px 0px;
   border-radius: 0;
   border-bottom: 1px solid white;
+  margin-bottom: 0px;
 }
 
 /* Final Page */
 
+#final .header img {
+  width: 8vw;
+  height: auto;
+}
+
+#final .food-links {
+  display: flex;
+  width: calc(100% - 8vw);
+  gap: 8px;
+  position: fixed;
+  bottom: calc(4vw + 65px);
+}
+
 #final img {
   height: 400px;
+  margin-bottom: 15px;
+}
+
+#final #final-restart {
+  position: fixed;
+  bottom: 4vw;
 }
