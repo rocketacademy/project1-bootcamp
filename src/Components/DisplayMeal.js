@@ -6,11 +6,13 @@ export default class DisplayMeal extends React.Component {
     const meal = this.props.meal;
     if (this.props.meal) {
       display = (
-        <div>
+        <div className="food-display">
           <img src={meal.IMAGE} alt={meal.NAME} />
-          <h1>{meal.NAME}</h1>
-          <p>{meal.ADDRESS}</p>
-          <h4>{meal.TAGS}</h4>
+          <div>
+            <h1>{meal.NAME}</h1>
+            <p>{meal.ADDRESS}</p>
+            <h4>{meal.TAGS}</h4>
+          </div>
         </div>
       );
     } else {

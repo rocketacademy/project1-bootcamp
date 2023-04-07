@@ -67,7 +67,7 @@ export default class QuestionScreen extends React.Component {
     let displayQuestion;
     if (question === 1) {
       displayQuestion = (
-        <div>
+        <div className="question-box">
           <h2>Which?</h2>
           <div className="question-options">
             <button onClick={this.handleClick} name="meal" value="Breakfast">
@@ -90,7 +90,7 @@ export default class QuestionScreen extends React.Component {
       );
     } else if (question === 2) {
       displayQuestion = (
-        <div>
+        <div className="question-box">
           <h2>What?</h2>
           <div className="question-options">
             <button onClick={this.handleClick} name="type" value="H">
@@ -107,7 +107,7 @@ export default class QuestionScreen extends React.Component {
       );
     } else if (question === 3) {
       displayQuestion = (
-        <div>
+        <div className="question-box">
           <h2>Where?</h2>
           <div className="question-options">
             <button onClick={this.handleClick} name="area" value="NT">
@@ -137,22 +137,21 @@ export default class QuestionScreen extends React.Component {
       );
     } else if (question === 4) {
       displayQuestion = (
-        <div>
+        <div className="question-box">
           <h2>Tap here</h2>
           <button onClick={this.handleClick}>CLICK ME</button>
-          <h2>to get</h2>
-          <h2>your rec!</h2>
+          <h2>
+            to get
+            <br />
+            your rec!
+          </h2>
         </div>
       );
     }
     return (
       <div className="screen" id="question">
         <div className="header">
-          <h3>Makan Where</h3>
-          <img
-            src="https://www.dropbox.com/s/01kx8kv9depvpbx/Logo-White-Small.png?raw=1"
-            alt="logo"
-          />
+          <img src="./logos/logo-white-wide.svg" alt="logo" />
         </div>
         {displayQuestion}
         <div className="footer">

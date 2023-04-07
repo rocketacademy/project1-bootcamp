@@ -69,8 +69,7 @@ export default class FinalScreen extends React.Component {
     return (
       <div className="screen" id="final">
         <div className="header">
-          <h3>Makan Where</h3>
-          <img src="./logo192.png" alt="logo" />
+          <img src="./logos/logo-black-wide.svg" alt="logo" />
         </div>
         <DisplayMeal meal={result} />
         {resultArray.length !== 0 && (

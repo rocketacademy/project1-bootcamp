@@ -99,7 +99,7 @@ class App extends React.Component {
       );
     }
 
-    return <div>{currentStage}</div>;
+    return <div className="container">{currentStage}</div>;
   }
 }
 
