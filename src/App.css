@@ -71,6 +71,8 @@ h3 {
 
 h2 {
   font-size: 40px;
+  letter-spacing: -1px;
+  line-height: 0.9;
 }
 
 h4,
@@ -207,6 +209,7 @@ button {
   gap: 8px;
 }
 #final .food-display {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -218,6 +221,12 @@ button {
 #final .food-display img {
   flex: 1 1 auto;
   min-height: 0;
+}
+
+#final #logo-failed {
+  flex: 0 1 auto;
+  width: 50vw;
+  height: auto;
 }
 
 #final .footer {

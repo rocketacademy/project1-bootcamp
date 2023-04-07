@@ -16,7 +16,13 @@ export default class DisplayMeal extends React.Component {
         </div>
       );
     } else {
-      display = <h1>I couldn't find anything that fits your criteria :(</h1>;
+      display = (
+        <div className="food-display">
+          <h2>I couldn't find anything</h2>
+          <img id="logo-failed" src="./logos/icon-fail.svg" alt="logo" />
+          <h2>that fits your criteria</h2>
+        </div>
+      );
     }
     return display;
   }
