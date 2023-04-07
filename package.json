@@ -2,6 +2,7 @@
   "name": "project1-bootcamp",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "gh-pages": "^3.2.3",
     "geolib": "^3.3.3",

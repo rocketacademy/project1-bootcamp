@@ -22,7 +22,7 @@ export default class HomeScreen extends React.Component {
     return (
       <div className="screen" id="home">
         <div className="header">
-          <h1>Makan Where</h1>
+          <img src="./logos/logo-home.svg" alt="logo" />
           <h4>By @markan.sg</h4>
         </div>
         <img src={randomImage} alt="Food pic from @markan.sg!" />

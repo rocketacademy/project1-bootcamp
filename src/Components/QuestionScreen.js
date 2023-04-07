@@ -6,8 +6,7 @@ export default class QuestionScreen extends React.Component {
     this.state = {
       question: 1,
       locationButton: true,
-      buttonText: "KM Radius",
-      searchRadius: this.props.searchRadius,
+      buttonText: "Current Location",
     };
   }
   handleClick = (e) => {
@@ -125,21 +124,23 @@ export default class QuestionScreen extends React.Component {
             <button onClick={this.handleClick} name="area" value="ET">
               East
             </button>
-            {this.props.locationAvailable && this.state.locationButton ? (
-              <button onClick={this.handleLocation}>
-                {this.state.searchRadius + this.state.buttonText}
-              </button>
-            ) : (
-              <div></div>
-            )}
           </div>
+          {this.props.locationAvailable && this.state.locationButton ? (
+            <button onClick={this.handleLocation}>
+              {this.state.buttonText}
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
       );
     } else if (question === 4) {
       displayQuestion = (
         <div className="question-box">
           <h2>Tap here</h2>
-          <button onClick={this.handleClick}>CLICK ME</button>
+          <button id="logo-button" onClick={this.handleClick}>
+            <img src="./logos/icon-white.svg" alt="logo" />
+          </button>
           <h2>
             to get
             <br />

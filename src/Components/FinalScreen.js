@@ -72,40 +72,42 @@ export default class FinalScreen extends React.Component {
           <img src="./logos/logo-black-wide.svg" alt="logo" />
         </div>
         <DisplayMeal meal={result} />
-        {resultArray.length !== 0 && (
-          <div className="food-links">
-            <button
-              role="link"
-              onClick={(e) => {
-                e.preventDefault();
-                window.open(result.LINK, "_blank", "noreferrer");
-              }}
-            >
-              Open in Google Maps
-            </button>
-            {resultArray !== 1 && (
+
+        <div className="footer">
+          {resultArray.length !== 0 && (
+            <div className="food-links">
               <button
                 role="link"
                 onClick={(e) => {
                   e.preventDefault();
-                  let newNo = randomNumber(resultArray.length);
-                  while (newNo === select) {
-                    newNo = randomNumber(resultArray.length);
-                  }
-                  this.setState({
-                    select: newNo,
-                  });
+                  window.open(result.LINK, "_blank", "noreferrer");
                 }}
               >
-                Another one!
+                Open in Maps
               </button>
-            )}
-          </div>
-        )}
-
-        <button id="final-restart" onClick={this.props.handleRestart}>
-          Restart
-        </button>
+              {resultArray !== 1 && (
+                <button
+                  role="link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    let newNo = randomNumber(resultArray.length);
+                    while (newNo === select) {
+                      newNo = randomNumber(resultArray.length);
+                    }
+                    this.setState({
+                      select: newNo,
+                    });
+                  }}
+                >
+                  Another one!
+                </button>
+              )}
+            </div>
+          )}
+          <button id="final-restart" onClick={this.props.handleRestart}>
+            Restart
+          </button>
+        </div>
       </div>
     );
   }
