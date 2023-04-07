@@ -13,14 +13,20 @@ class App extends React.Component {
           habit: "Exercise everyday",
           upCount: 1,
         },
-        {
-          id: 1,
-          habit: "Take meds everyday",
-          upCount: 2,
-        },
       ],
     };
   }
+
+  addNewHabit = (habit) => {
+    const highestId = Math.max(...this.state.habits.map((h) => h.id));
+
+    const newHabit = { ...habit, id: highestId + 1 };
+    console.log(newHabit);
+
+    this.setState({
+      habits: [...this.state.habits, newHabit],
+    });
+  };
 
   handleUpcount = (id) => {
     const index = this.state.habits.findIndex((habit) => habit.id === id);
@@ -41,7 +47,10 @@ class App extends React.Component {
             difference.
           </h2>
           <h2>-Aristotle</h2>
-          <HabitComposer habitsLength={this.state.habits.length} />
+          <HabitComposer
+            addNewHabit={this.addNewHabit}
+            habitsID={this.props.id}
+          />
           {this.state.habits && this.state.habits.length > 0 ? (
             this.state.habits.map((habit) => (
               <Habit key={habit.id} {...habit} onUpcount={this.handleUpcount} />
