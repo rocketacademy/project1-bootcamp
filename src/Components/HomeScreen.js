@@ -5,26 +5,35 @@ const randomNumber = (limit) => {
 };
 
 const imageList = [
-  "https://www.dropbox.com/s/ywqirn2y2iclg01/928-Laksa.jpg?raw=1",
-  "https://www.dropbox.com/s/rf563hls76zp124/Maruhachi.JPG?raw=1",
-  "https://www.dropbox.com/s/kde2jm2ezrbkxd8/Maries-Lapis.JPG?raw=1",
-  "https://www.dropbox.com/s/cs1f3yg0dkh93z5/Percolate.JPG?raw=1",
+  "https://drive.google.com/uc?export=view&id=1EBcentBVFF8sC0oXPjsGzlsh3brILGhY",
+  "https://drive.google.com/uc?export=view&id=1y9rH1FlYHIQ-ME2upPgNZL4NRxM0HIRY",
+  "https://drive.google.com/uc?export=view&id=1s2HoSwfjpwrmNXBf9jlgG2_LMa5KnQvo",
+  "https://drive.google.com/uc?export=view&id=1jlZ6AiVdc_KydPk6KiEq7IP--Z5LSm41",
+  "https://drive.google.com/uc?export=view&id=1OYYgiwrgoeuQtGDlloPtSpd8hyEnPY0t",
+  "https://drive.google.com/uc?export=view&id=1e1qRu9pd3Rh7oGcaiM-hxujRpa7wv59R",
+  "https://drive.google.com/uc?export=view&id=18Z4ArS_SyhvtsFxCEOxuEr6YVBdorR7g",
 ];
 
 export default class HomeScreen extends React.Component {
-  getRandomImage = (arr) => {
-    const select = randomNumber(arr.length);
-    return arr[select];
+  constructor(props) {
+    super(props);
+    this.state = {
+      select: randomNumber(imageList.length),
+    };
+  }
+  getRandomImage = (number) => {
+    return imageList[number];
   };
 
   render() {
-    const randomImage = this.getRandomImage(imageList);
+    const randomImage = this.getRandomImage(this.state.select);
     return (
       <div className="screen" id="home">
         <div className="header">
           <img src="./logos/logo-home.svg" alt="logo" />
           <h4>By @markan.sg</h4>
         </div>
+        {/* <img id="logo" src="./logos/icon-blue.svg" alt="logo" /> */}
         <img src={randomImage} alt="Food pic from @markan.sg!" />
         <button onClick={this.props.handleNext}>
           Tap for a recommendation

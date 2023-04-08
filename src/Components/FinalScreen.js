@@ -85,7 +85,7 @@ export default class FinalScreen extends React.Component {
               >
                 Open in Maps
               </button>
-              {resultArray !== 1 && (
+              {resultArray.length !== 1 && (
                 <button
                   role="link"
                   onClick={(e) => {

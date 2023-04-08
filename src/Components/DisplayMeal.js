@@ -4,6 +4,21 @@ export default class DisplayMeal extends React.Component {
   render() {
     let display;
     const meal = this.props.meal;
+    let mealTags = [];
+    if (meal.TAGS) {
+      const mealTagsArray = meal.TAGS.split(", ");
+      mealTagsArray.forEach((tag) => {
+        const tagLower = tag.toLowerCase();
+        mealTags.push(
+          <h4 key={tagLower} id={tagLower}>
+            {tag}
+          </h4>
+        );
+      });
+    } else {
+      mealTags = "";
+    }
+
     if (this.props.meal) {
       display = (
         <div className="food-display">
@@ -11,7 +26,7 @@ export default class DisplayMeal extends React.Component {
           <div>
             <h1>{meal.NAME}</h1>
             <p>{meal.ADDRESS}</p>
-            <h4>{meal.TAGS}</h4>
+            <div className="meal-tags">{mealTags}</div>
           </div>
         </div>
       );

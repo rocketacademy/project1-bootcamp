@@ -96,10 +96,10 @@ export default class QuestionScreen extends React.Component {
               Hawker
             </button>
             <button onClick={this.handleClick} name="type" value="C">
-              Casual Eatery
+              Casual Dining
             </button>
             <button onClick={this.handleClick} name="type" value="R">
-              Restaurant
+              $$$ Dining
             </button>
           </div>
         </div>
@@ -126,7 +126,8 @@ export default class QuestionScreen extends React.Component {
             </button>
           </div>
           {this.props.locationAvailable && this.state.locationButton ? (
-            <button onClick={this.handleLocation}>
+            <button id="get-location" onClick={this.handleLocation}>
+              <img src="./icons/location.svg" alt="location icon" />
               {this.state.buttonText}
             </button>
           ) : (
