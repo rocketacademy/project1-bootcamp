@@ -37,7 +37,7 @@ export default class FinalScreen extends React.Component {
   getApplicableList = (arr, meal, type, area) => {
     let applicableList = [];
     const regex = new RegExp("^[A-Z]{2}$");
-    if (regex.test(area)) {
+    if (regex.test(area) || area === "") {
       for (let i = 0; i < arr.length; i++) {
         if (
           arr[i].MEAL.includes(meal) &&
