@@ -5,18 +5,20 @@ export default class DisplayMeal extends React.Component {
     let display;
     const meal = this.props.meal;
     let mealTags = [];
-    if (meal.TAGS) {
-      const mealTagsArray = meal.TAGS.split(", ");
-      mealTagsArray.forEach((tag) => {
-        const tagLower = tag.toLowerCase();
-        mealTags.push(
-          <h4 key={tagLower} id={tagLower}>
-            {tag}
-          </h4>
-        );
-      });
-    } else {
-      mealTags = "";
+    if (meal) {
+      if (meal.TAGS) {
+        const mealTagsArray = meal.TAGS.split(", ");
+        mealTagsArray.forEach((tag) => {
+          const tagLower = tag.toLowerCase();
+          mealTags.push(
+            <h4 key={tagLower} id={tagLower}>
+              {tag}
+            </h4>
+          );
+        });
+      } else {
+        mealTags = "";
+      }
     }
 
     if (this.props.meal) {
