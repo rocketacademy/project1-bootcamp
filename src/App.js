@@ -30,7 +30,9 @@ class App extends React.Component {
   }
 
   getCsvData = () => {
-    fetch("./markan-database.csv").then((rawOutput) => {
+    fetch(
+      "https://docs.google.com/spreadsheets/d/1lr6rakViESEyL92WLERkX7ZY3lRuKr5O8UG5B7LlIq4/export?format=csv"
+    ).then((rawOutput) => {
       rawOutput.text().then((finalOutput) => {
         const outputData = Papa.parse(finalOutput, {
           header: true,
