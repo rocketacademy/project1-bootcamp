@@ -15,7 +15,7 @@ class HabitComposer extends React.Component {
     const habit = this.state;
     this.props.addNewHabit(habit);
 
-    alert("You added a new habit:" + " " + this.state.habit + ". CARPE DIEM!");
+    alert("You added a new habit:  " + this.state.habit + ". CARPE DIEM!");
 
     this.setState({
       id: this.props.habitsID,
