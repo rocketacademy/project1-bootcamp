@@ -55,29 +55,26 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>
-            We are the sum of our actions, therefore our habits make all the
-            difference.
-          </h2>
-          <h2>-Aristotle</h2>
-          <HabitComposer
-            addNewHabit={this.addNewHabit}
-            habitsID={this.props.id}
-          />
-          {this.state.habits && this.state.habits.length > 0 ? (
-            this.state.habits.map((habit) => (
-              <Habit
-                key={habit.id}
-                {...habit}
-                onUpcount={this.handleUpcount}
-                onDelete={this.handleDelete}
-              />
-            ))
-          ) : (
-            <p>Track your habits today!</p>
-          )}
-        </header>
+        <h2>
+          We are the sum of our actions, therefore our habits make all the
+          difference. <br /> -Aristotle
+        </h2>
+        <HabitComposer
+          addNewHabit={this.addNewHabit}
+          habitsID={this.props.id}
+        />
+        {this.state.habits && this.state.habits.length > 0 ? (
+          this.state.habits.map((habit) => (
+            <Habit
+              key={habit.id}
+              {...habit}
+              onUpcount={this.handleUpcount}
+              onDelete={this.handleDelete}
+            />
+          ))
+        ) : (
+          <p>Track your habits today!</p>
+        )}
       </div>
     );
   }

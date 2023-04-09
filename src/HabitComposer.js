@@ -1,4 +1,5 @@
 import React from "react";
+import shiaGif from "./ShiaLeBoufGif.gif";
 
 class HabitComposer extends React.Component {
   constructor(props) {
@@ -33,7 +34,9 @@ class HabitComposer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="HabitComposer">
+        <img src={shiaGif} alt="shia-gif" />
+        <br />
         <form onSubmit={this.handleSubmit}>
           Enter a habit to track it:
           <p>
@@ -43,6 +46,7 @@ class HabitComposer extends React.Component {
               value={this.state.habit}
               onChange={this.handleChange}
             />
+            <br />
             <br />
             <input name="submit" type="submit" value="submit" />
           </p>
