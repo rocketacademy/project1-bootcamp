@@ -18,16 +18,14 @@ class App extends React.Component {
   }
 
   addNewHabit = (habit) => {
-    const highestId = Math.max(...this.state.habits.map((h) => h.id));
-    console.log(highestId);
-    let newHabit = { ...habit, id: highestId };
-    if (highestId === -Infinity) {
+    const highestID = Math.max(...this.state.habits.map((h) => h.id));
+
+    let newHabit = { ...habit, id: highestID };
+    if (highestID === -Infinity) {
       newHabit = { ...habit, id: 0 };
     } else if (this.state.habits.length > 0) {
-      newHabit = { ...habit, id: highestId + 1 };
+      newHabit = { ...habit, id: highestID + 1 };
     }
-
-    console.log(newHabit);
 
     this.setState({
       habits: [...this.state.habits, newHabit],
