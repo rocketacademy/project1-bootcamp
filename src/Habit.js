@@ -5,8 +5,11 @@ class Habit extends React.Component {
     return (
       <div>
         <h4>Habit: {this.props.habit}</h4>
-        <h5>Counter: {this.props.upCount}</h5>
         <button onClick={() => this.props.onUpcount(this.props.id)}>+</button>
+        <h5>Counter: {this.props.upCount}</h5>
+        <button onClick={() => this.props.onDelete(this.props.id)}>
+          Delete Habit
+        </button>
       </div>
     );
   }

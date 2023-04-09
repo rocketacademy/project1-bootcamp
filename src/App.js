@@ -11,7 +11,7 @@ class App extends React.Component {
         {
           id: 0,
           habit: "Exercise everyday",
-          upCount: 1,
+          upCount: 0,
         },
       ],
     };
@@ -19,8 +19,14 @@ class App extends React.Component {
 
   addNewHabit = (habit) => {
     const highestId = Math.max(...this.state.habits.map((h) => h.id));
+    console.log(highestId);
+    let newHabit = { ...habit, id: highestId };
+    if (highestId === -Infinity) {
+      newHabit = { ...habit, id: 0 };
+    } else if (this.state.habits.length > 0) {
+      newHabit = { ...habit, id: highestId + 1 };
+    }
 
-    const newHabit = { ...habit, id: highestId + 1 };
     console.log(newHabit);
 
     this.setState({
@@ -35,6 +41,16 @@ class App extends React.Component {
 
     const newArray = [...this.state.habits];
     newArray.splice(index, 1, habit);
+    this.setState({ habits: newArray });
+  };
+
+  handleDelete = (id) => {
+    const index = this.state.habits.findIndex((habit) => habit.id === id);
+    const newArray = [...this.state.habits];
+    newArray.splice(index, 1);
+    newArray.forEach((habit, index) => {
+      habit.id = index;
+    });
     this.setState({ habits: newArray });
   };
 
@@ -53,7 +69,12 @@ class App extends React.Component {
           />
           {this.state.habits && this.state.habits.length > 0 ? (
             this.state.habits.map((habit) => (
-              <Habit key={habit.id} {...habit} onUpcount={this.handleUpcount} />
+              <Habit
+                key={habit.id}
+                {...habit}
+                onUpcount={this.handleUpcount}
+                onDelete={this.handleDelete}
+              />
             ))
           ) : (
             <p>Track your habits today!</p>
