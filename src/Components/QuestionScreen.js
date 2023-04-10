@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, stagger } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default class QuestionScreen extends React.Component {
   constructor(props) {
@@ -92,6 +92,7 @@ export default class QuestionScreen extends React.Component {
         <motion.li
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 20 }}
+          whileHover={{ scale: 1.1 }}
           exit={{ opacity: 0, y: 20 }}
           key={option}
         >

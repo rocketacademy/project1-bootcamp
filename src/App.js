@@ -3,7 +3,6 @@ import Papa from "papaparse";
 import HomeScreen from "./Components/HomeScreen";
 import QuestionScreen from "./Components/QuestionScreen";
 import FinalScreen from "./Components/FinalScreen";
-import { motion } from "framer-motion";
 import "./App.css";
 
 class App extends React.Component {

@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 export default class DisplayMeal extends React.Component {
   render() {
@@ -20,9 +19,7 @@ export default class DisplayMeal extends React.Component {
       } else {
         mealTags = "";
       }
-    }
 
-    if (this.props.meal) {
       display = (
         <div className="food-display">
           <img src={meal.IMAGE} alt={meal.NAME} />
