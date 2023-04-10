@@ -49,6 +49,7 @@ ul {
 .container,
 .screen {
   height: 100%;
+  min-height: 600px;
 }
 
 .screen {
@@ -80,7 +81,8 @@ h2 {
 }
 
 h4,
-button {
+button,
+#food-notes {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
@@ -162,7 +164,7 @@ button {
   width: 100%;
   align-items: flex-start;
   justify-content: space-between;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   border-bottom: 1px solid white;
 }
 
@@ -248,8 +250,12 @@ button {
 }
 
 @media (min-width: 950px) {
+  #question .header {
+    padding-bottom: 30px;
+  }
+
   #question .question-box {
-    gap: 20px;
+    gap: 30px;
   }
 
   .question-options {
@@ -281,6 +287,7 @@ button {
   width: 100%;
   gap: 8px;
 }
+
 #final .food-display {
   flex: 1 1 auto;
   display: flex;
@@ -290,6 +297,19 @@ button {
   gap: 20px;
   width: 100%;
   min-height: 0;
+  position: relative;
+}
+
+#final #food-notes {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  background-color: #0078ef;
+  color: white;
+  padding: 10px 15px;
+  width: fit-content;
+  text-align: left;
+  border-radius: 5px;
 }
 
 #final .meal-tags {
