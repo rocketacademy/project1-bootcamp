@@ -1,5 +1,6 @@
 import React from "react";
 import shiaGif from "./ShiaLeBoufGif.gif";
+import Button from "@mui/material/Button";
 
 class HabitComposer extends React.Component {
   constructor(props) {
@@ -38,18 +39,27 @@ class HabitComposer extends React.Component {
         <img src={shiaGif} alt="shia-gif" />
         <br />
         <form onSubmit={this.handleSubmit}>
-          Enter a habit to track it:
-          <p>
-            <input
-              name="habit"
-              type="text"
-              value={this.state.habit}
-              onChange={this.handleChange}
-            />
-            <br />
-            <br />
-            <input name="submit" type="submit" value="submit" />
-          </p>
+          Enter a habit to track it: <br />
+          <input
+            name="habit"
+            type="text"
+            value={this.state.habit}
+            onChange={this.handleChange}
+          />
+          <br />
+          <Button
+            variant="contained"
+            type="submit"
+            size="small"
+            color="secondary"
+            sx={{
+              borderRadius: 2,
+              fontSize: "13px",
+              mt: 1,
+            }}
+          >
+            SUBMIT
+          </Button>
         </form>
       </div>
     );
