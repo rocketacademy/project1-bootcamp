@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, stagger } from "framer-motion";
 
 export default class QuestionScreen extends React.Component {
   constructor(props) {
@@ -88,7 +89,12 @@ export default class QuestionScreen extends React.Component {
     let questionList;
     if (question < 4) {
       questionList = currentQuestion.value.map((option, i) => (
-        <li key={option}>
+        <motion.li
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          exit={{ opacity: 0, y: 20 }}
+          key={option}
+        >
           <button
             onClick={this.handleClick}
             name={currentQuestion.name}
@@ -96,11 +102,17 @@ export default class QuestionScreen extends React.Component {
           >
             {currentQuestion.display[i]}
           </button>
-        </li>
+        </motion.li>
       ));
       displayQuestion = (
         <div className="question-box">
-          <h2>{currentQuestion.q}</h2>
+          <motion.h2
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            {currentQuestion.q}
+          </motion.h2>
           <ul className="question-options">{questionList}</ul>
           {question === 3 &&
           this.props.locationAvailable &&
@@ -117,7 +129,12 @@ export default class QuestionScreen extends React.Component {
     }
     if (question === 4) {
       displayQuestion = (
-        <div className="question-box">
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          className="question-box"
+        >
           <h2>Tap here</h2>
           <button id="logo-button" onClick={this.handleClick}>
             <img src="./logos/icon-white.svg" alt="logo" />
@@ -127,11 +144,17 @@ export default class QuestionScreen extends React.Component {
             <br />
             your rec!
           </h2>
-        </div>
+        </motion.div>
       );
     }
     return (
-      <div className="screen" id="question">
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        className="screen"
+        id="question"
+      >
         <div className="header">
           <img src="./logos/logo-white-wide.svg" alt="logo" />
         </div>
@@ -140,7 +163,7 @@ export default class QuestionScreen extends React.Component {
           <button onClick={this.props.handleRestart}>Restart</button>
           {question !== 4 && <button onClick={this.handleSkip}>Skip</button>}
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

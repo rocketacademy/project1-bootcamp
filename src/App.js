@@ -98,15 +98,7 @@ class App extends React.Component {
       );
     }
 
-    return (
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0.1 }}
-        className="container"
-      >
-        {currentStage}
-      </motion.div>
-    );
+    return <div className="container">{currentStage}</div>;
   }
 }
 

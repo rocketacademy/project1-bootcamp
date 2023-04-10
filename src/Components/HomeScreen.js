@@ -1,17 +1,17 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const randomNumber = (limit) => {
   return Math.floor(Math.random() * limit);
 };
 
 const imageList = [
-  "https://drive.google.com/uc?export=view&id=1EBcentBVFF8sC0oXPjsGzlsh3brILGhY",
-  "https://drive.google.com/uc?export=view&id=1y9rH1FlYHIQ-ME2upPgNZL4NRxM0HIRY",
-  "https://drive.google.com/uc?export=view&id=1s2HoSwfjpwrmNXBf9jlgG2_LMa5KnQvo",
-  "https://drive.google.com/uc?export=view&id=1jlZ6AiVdc_KydPk6KiEq7IP--Z5LSm41",
-  "https://drive.google.com/uc?export=view&id=1OYYgiwrgoeuQtGDlloPtSpd8hyEnPY0t",
-  "https://drive.google.com/uc?export=view&id=1e1qRu9pd3Rh7oGcaiM-hxujRpa7wv59R",
-  "https://drive.google.com/uc?export=view&id=18Z4ArS_SyhvtsFxCEOxuEr6YVBdorR7g",
+  "https://i.imgur.com/GFU4Rck.jpg",
+  "https://i.imgur.com/7JX5nqm.jpg",
+  "https://i.imgur.com/CzmORKO.jpg",
+  "https://i.imgur.com/P4dTYzY.jpg",
+  "https://i.imgur.com/ciSqZkv.jpg",
+  "https://i.imgur.com/YzyslzF.jpg",
 ];
 
 export default class HomeScreen extends React.Component {
@@ -28,7 +28,13 @@ export default class HomeScreen extends React.Component {
   render() {
     const randomImage = this.getRandomImage(this.state.select);
     return (
-      <div className="screen" id="home">
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        className="screen"
+        id="home"
+      >
         <div className="header">
           <img src="./logos/logo-home.svg" alt="logo" />
           <h4>By @markan.sg</h4>
@@ -38,7 +44,7 @@ export default class HomeScreen extends React.Component {
         <button onClick={this.props.handleNext}>
           Tap for a recommendation
         </button>
-      </div>
+      </motion.div>
     );
   }
 }
