@@ -28,11 +28,6 @@ export default class HomeScreen extends React.Component {
   render() {
     const randomImage = this.getRandomImage(this.state.select);
     return (
-      // <motion.div
-      //   animate={{ opacity: 1 }}
-      //   initial={{ opacity: 0.1 }}
-      //   exit={{ opacity: 0.1 }}
-      // >
       <div className="screen" id="home">
         <div className="header">
           <img src="./logos/logo-home.svg" alt="logo" />
