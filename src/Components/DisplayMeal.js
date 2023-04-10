@@ -23,7 +23,7 @@ export default class DisplayMeal extends React.Component {
       display = (
         <div className="food-display">
           <img src={meal.IMAGE} alt={meal.NAME} />
-          <div>
+          <div id="food-details">
             <h1>{meal.NAME}</h1>
             <p>{meal.ADDRESS}</p>
             <div className="meal-tags">{mealTags}</div>

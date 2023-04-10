@@ -336,7 +336,13 @@ button {
     min-height: 0;
   }
 
+  #final .food-display #food-details {
+    flex: 1;
+  }
+
   #final .food-display img {
     height: 100%;
+    min-width: 0;
+    flex: 3;
   }
 }
