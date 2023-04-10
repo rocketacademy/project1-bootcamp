@@ -3,6 +3,7 @@ import Papa from "papaparse";
 import HomeScreen from "./Components/HomeScreen";
 import QuestionScreen from "./Components/QuestionScreen";
 import FinalScreen from "./Components/FinalScreen";
+import { motion } from "framer-motion";
 import "./App.css";
 
 class App extends React.Component {
@@ -97,7 +98,15 @@ class App extends React.Component {
       );
     }
 
-    return <div className="container">{currentStage}</div>;
+    return (
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0.1 }}
+        className="container"
+      >
+        {currentStage}
+      </motion.div>
+    );
   }
 }
 

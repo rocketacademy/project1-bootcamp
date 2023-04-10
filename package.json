@@ -4,8 +4,9 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "gh-pages": "^3.2.3",
+    "framer-motion": "^10.11.2",
     "geolib": "^3.3.3",
+    "gh-pages": "^3.2.3",
     "papaparse": "^5.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

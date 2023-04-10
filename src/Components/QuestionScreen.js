@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default class QuestionScreen extends React.Component {
   constructor(props) {
