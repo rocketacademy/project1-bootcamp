@@ -130,6 +130,7 @@ button {
 }
 
 #home .hero-image {
+  position: relative;
   width: 100%;
   flex: 1 1 auto;
   min-height: 0;
@@ -137,9 +138,9 @@ button {
 }
 
 #home .hero-image #logo {
-  position: relative;
+  position: absolute;
   top: -4vw;
-  left: -94%;
+  left: 6%;
   z-index: 5;
   height: 18vw;
   width: auto;
@@ -186,14 +187,13 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 5px;
+  gap: 20px;
 }
 
 .question-options {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 10px;
   gap: 0px 10px;
 }
 
@@ -216,6 +216,7 @@ button {
   color: white;
   border: 1px solid white;
   display: flex;
+  margin: 5px;
   gap: 5px;
 }
 
@@ -238,7 +239,8 @@ button {
   width: 100%;
 }
 
-#question .footer button {
+#question .footer button,
+#question #skip {
   background-color: transparent;
   color: white;
   height: fit-content;
@@ -248,7 +250,6 @@ button {
   border-bottom: 1px solid white;
   margin-bottom: 0px;
 }
-
 @media (min-width: 950px) {
   #question .header {
     padding-bottom: 30px;

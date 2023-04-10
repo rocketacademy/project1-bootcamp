@@ -51,6 +51,12 @@ export default class QuestionScreen extends React.Component {
     });
   };
 
+  handleBack = () => {
+    this.setState({
+      question: this.state.question - 1,
+    });
+  };
+
   handleLocation = async () => {
     await this.setState({
       searchRadius: "",
@@ -116,19 +122,19 @@ export default class QuestionScreen extends React.Component {
           </motion.h2>
           <ul className="question-options">{questionList}</ul>
           {question === 3 &&
-          this.props.locationAvailable &&
-          this.state.locationButton ? (
-            <button id="get-location" onClick={this.handleLocation}>
-              <img src="./icons/location.svg" alt="location icon" />
-              {this.state.buttonText}
-            </button>
-          ) : (
-            <div></div>
-          )}
+            this.props.locationAvailable &&
+            this.state.locationButton && (
+              <button id="get-location" onClick={this.handleLocation}>
+                <img src="./icons/location.svg" alt="location icon" />
+                {this.state.buttonText}
+              </button>
+            )}
+          <button id="skip" onClick={this.handleSkip}>
+            All of the above
+          </button>
         </div>
       );
-    }
-    if (question === 4) {
+    } else if (question === 4) {
       displayQuestion = (
         <motion.div
           animate={{ opacity: 1 }}
@@ -162,7 +168,7 @@ export default class QuestionScreen extends React.Component {
         {displayQuestion}
         <div className="footer">
           <button onClick={this.props.handleRestart}>Restart</button>
-          {question !== 4 && <button onClick={this.handleSkip}>Skip</button>}
+          {question !== 1 && <button onClick={this.handleBack}>Back</button>}
         </div>
       </motion.div>
     );

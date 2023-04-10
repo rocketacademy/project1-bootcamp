@@ -13,7 +13,7 @@ class App extends React.Component {
       data: [],
       stage: 1,
       locationAvailable: false,
-      searchRadius: 4,
+      searchRadius: 3,
       meal: "",
       type: "",
       area: "",
