@@ -44,12 +44,19 @@ class App extends React.Component {
 
   handleDelete = (id) => {
     const index = this.state.habits.findIndex((habit) => habit.id === id);
-    const newArray = [...this.state.habits];
-    newArray.splice(index, 1);
-    newArray.forEach((habit, index) => {
-      habit.id = index;
-    });
-    this.setState({ habits: newArray });
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this habit?"
+    );
+    if (confirmed) {
+      const newArray = [...this.state.habits];
+      newArray.splice(index, 1);
+      newArray.forEach((habit, index) => {
+        habit.id = index;
+      });
+      this.setState({
+        habits: newArray,
+      });
+    }
   };
 
   render() {
