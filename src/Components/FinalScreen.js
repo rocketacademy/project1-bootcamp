@@ -1,6 +1,7 @@
 import React from "react";
 import DisplayMeal from "./DisplayMeal";
 import { getDistance } from "geolib";
+import { motion } from "framer-motion";
 
 const randomNumber = (limit) => {
   return Math.floor(Math.random() * limit);
@@ -68,7 +69,13 @@ export default class FinalScreen extends React.Component {
     const { resultArray, select } = this.state;
     const result = resultArray[select];
     return (
-      <div className="screen" id="final">
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        className="screen"
+        id="final"
+      >
         <div className="header">
           <img src="./logos/logo-black-wide.svg" alt="logo" />
         </div>
@@ -109,7 +116,7 @@ export default class FinalScreen extends React.Component {
             Restart
           </button>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }
