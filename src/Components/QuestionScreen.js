@@ -5,6 +5,26 @@ export default class QuestionScreen extends React.Component {
     super(props);
     this.state = {
       question: 1,
+      questions: [
+        {
+          q: "Which?",
+          name: "meal",
+          value: ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert"],
+          display: ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert"],
+        },
+        {
+          q: "What?",
+          name: "type",
+          value: ["H", "C", "R"],
+          display: ["Hawker", "Casual Dining", "$$$ Dining"],
+        },
+        {
+          q: "Where?",
+          name: "area",
+          value: ["NT", "NE", "CN", "WT", "ET"],
+          display: ["North", "Northeast", "Central", "West", "East"],
+        },
+      ],
       locationButton: true,
       buttonText: "Current Location",
     };
@@ -62,70 +82,29 @@ export default class QuestionScreen extends React.Component {
   };
 
   render() {
-    const { question } = this.state;
+    const { question, questions } = this.state;
+    let currentQuestion = questions[question - 1];
     let displayQuestion;
-    if (question === 1) {
+    let questionList;
+    if (question < 4) {
+      questionList = currentQuestion.value.map((option, i) => (
+        <li key={option}>
+          <button
+            onClick={this.handleClick}
+            name={currentQuestion.name}
+            value={option}
+          >
+            {currentQuestion.display[i]}
+          </button>
+        </li>
+      ));
       displayQuestion = (
         <div className="question-box">
-          <h2>Which?</h2>
-          <div className="question-options">
-            <button onClick={this.handleClick} name="meal" value="Breakfast">
-              Breakfast
-            </button>
-            <button onClick={this.handleClick} name="meal" value="Brunch">
-              Brunch
-            </button>
-            <button onClick={this.handleClick} name="meal" value="Lunch">
-              Lunch
-            </button>
-            <button onClick={this.handleClick} name="meal" value="Dinner">
-              Dinner
-            </button>
-            <button onClick={this.handleClick} name="meal" value="Dessert">
-              Dessert
-            </button>
-          </div>
-        </div>
-      );
-    } else if (question === 2) {
-      displayQuestion = (
-        <div className="question-box">
-          <h2>What?</h2>
-          <div className="question-options">
-            <button onClick={this.handleClick} name="type" value="H">
-              Hawker
-            </button>
-            <button onClick={this.handleClick} name="type" value="C">
-              Casual Dining
-            </button>
-            <button onClick={this.handleClick} name="type" value="R">
-              $$$ Dining
-            </button>
-          </div>
-        </div>
-      );
-    } else if (question === 3) {
-      displayQuestion = (
-        <div className="question-box">
-          <h2>Where?</h2>
-          <div className="question-options">
-            <button onClick={this.handleClick} name="area" value="NT">
-              North
-            </button>
-            <button onClick={this.handleClick} name="area" value="NE">
-              Northeast
-            </button>
-            <button onClick={this.handleClick} name="area" value="CN">
-              Central
-            </button>
-            <button onClick={this.handleClick} name="area" value="WT">
-              West
-            </button>
-            <button onClick={this.handleClick} name="area" value="ET">
-              East
-            </button>
-          </div>
-          {this.props.locationAvailable && this.state.locationButton ? (
+          <h2>{currentQuestion.q}</h2>
+          <ul className="question-options">{questionList}</ul>
+          {question === 3 &&
+          this.props.locationAvailable &&
+          this.state.locationButton ? (
             <button id="get-location" onClick={this.handleLocation}>
               <img src="./icons/location.svg" alt="location icon" />
               {this.state.buttonText}
@@ -135,7 +114,8 @@ export default class QuestionScreen extends React.Component {
           )}
         </div>
       );
-    } else if (question === 4) {
+    }
+    if (question === 4) {
       displayQuestion = (
         <div className="question-box">
           <h2>Tap here</h2>
