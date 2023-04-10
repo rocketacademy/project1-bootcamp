@@ -10,18 +10,19 @@ export default class FinalScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      resultArray: this.getApplicableList(
-        this.props.data,
-        this.props.meal,
-        this.props.type,
-        this.props.area
-      ),
+      resultArray: [],
       select: 0,
     };
   }
 
   componentDidMount() {
     this.setState({
+      resultArray: this.getApplicableList(
+        this.props.data,
+        this.props.meal,
+        this.props.type,
+        this.props.area
+      ),
       select: randomNumber(this.state.resultArray.length),
     });
   }

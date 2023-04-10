@@ -45,10 +45,6 @@ class App extends React.Component {
     });
   };
 
-  componentDidUpdate() {
-    // console.log(this.state.data[0].MEAL);
-  }
-
   handleNext = () => {
     this.setState({
       stage: this.state.stage + 1,

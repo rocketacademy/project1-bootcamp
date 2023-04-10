@@ -88,6 +88,8 @@ img {
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
+  min-height: 0;
+  flex: 1 1 auto;
 }
 
 button {
@@ -115,11 +117,6 @@ button {
 #home .header img {
   width: 100%;
   min-width: 0;
-}
-
-#home img {
-  flex: 1 1 auto;
-  min-height: 0;
 }
 
 /* Question Page */
@@ -233,10 +230,6 @@ button {
   justify-content: center;
   gap: 20px;
   width: 100%;
-  min-height: 0;
-}
-#final .food-display img {
-  flex: 1 1 auto;
   min-height: 0;
 }
 
