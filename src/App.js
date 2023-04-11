@@ -14,11 +14,15 @@ class App extends React.Component {
       data: [],
       stage: 1,
       locationAvailable: false,
-      firstTime: null,
-      searchRadius: 3,
       meal: "",
       type: "",
       area: "",
+      settings: {
+        searchRadius: 3,
+        firstTime: true,
+        halal: false,
+        vegetarian: false,
+      },
     };
   }
 
@@ -29,9 +33,11 @@ class App extends React.Component {
         locationAvailable: true,
       });
     }
-    this.setState({
-      firstTime: localStorage.getItem("firstTime") === null ? true : false,
-    });
+    if (localStorage.getItem("settings") !== null) {
+      this.setState({
+        settings: JSON.parse(localStorage.getItem("settings")),
+      });
+    }
   }
 
   getCsvData = () => {
@@ -51,15 +57,15 @@ class App extends React.Component {
   };
 
   handleNext = () => {
-    if (this.state.firstTime) {
+    if (this.state.settings["firstTime"]) {
       this.setState({
         stage: this.state.stage + 1,
       });
       if (this.state.stage === 2) {
-        this.setState({
-          firstTime: false,
-        });
-        localStorage.setItem("firstTime", "false");
+        let settings = Object.assign({}, this.state.settings);
+        settings.firstTime = false;
+        this.setState({ settings });
+        localStorage.setItem("settings", JSON.stringify(settings));
       }
     } else {
       this.setState({
@@ -85,14 +91,17 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.firstTime);
-    console.log(this.state.stage);
-    const { stage, data, locationAvailable, searchRadius, meal, type, area } =
+    const { stage, data, locationAvailable, settings, meal, type, area } =
       this.state;
     let currentStage;
     if (stage === 1) {
       currentStage = (
-        <HomeScreen data={this.state.data} handleNext={this.handleNext} />
+        <HomeScreen
+          data={this.state.data}
+          handleNext={this.handleNext}
+          handleUpdate={this.handleUpdate}
+          settings={this.state.settings}
+        />
       );
     } else if (stage === 2) {
       currentStage = <Instructions handleNext={this.handleNext} />;
@@ -100,16 +109,18 @@ class App extends React.Component {
       currentStage = (
         <QuestionScreen
           locationAvailable={locationAvailable}
-          searchRadius={searchRadius}
+          searchRadius={settings["searchRadius"]}
           handleUpdate={this.handleUpdate}
           handleRestart={this.handleRestart}
           handleNext={this.handleNext}
         />
       );
+
+      console.log(settings["searchRadius"]);
     } else if (stage === 4) {
       currentStage = (
         <FinalScreen
-          searchRadius={searchRadius}
+          settings={settings}
           data={data}
           meal={meal}
           type={type}

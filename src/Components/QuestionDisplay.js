@@ -31,7 +31,7 @@ export default class QuestionDisplay extends React.Component {
             {this.props.buttonText}
           </button>
         )}
-        <button id="skip" onClick={this.handleSkip}>
+        <button id="skip" onClick={this.props.handleSkip}>
           All of the above
         </button>
       </div>

@@ -89,7 +89,8 @@ h2 {
 
 h4,
 button,
-#food-notes {
+#food-notes,
+#home #settings-nav {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
@@ -150,6 +151,11 @@ button {
   width: auto;
 }
 
+#home .footer {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
 @media (min-width: 950px) {
   #home .hero-image #logo {
     display: none;
@@ -160,6 +166,35 @@ button {
   #home .header #stacked-logo {
     display: none;
   }
+}
+
+/* Settings */
+
+#home .footer #settings {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  z-index: 11;
+}
+
+#home #settings-nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  padding: 20px 25px;
+  background-color: #0078ef;
+  color: white;
+  border-radius: 5px;
+  bottom: 83px;
+  right: 30px;
+  gap: 10px;
+  transform-origin: bottom right;
+}
+
+#home #settings-nav .checklist {
+  display: flex;
+  gap: 5px;
 }
 
 /* Instructions Page */

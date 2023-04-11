@@ -1,4 +1,5 @@
 import React from "react";
+import Settings from "./Settings";
 import { motion } from "framer-motion";
 
 const randomNumber = (limit) => {
@@ -20,10 +21,17 @@ export default class HomeScreen extends React.Component {
     super(props);
     this.state = {
       select: randomNumber(imageList.length),
+      navShow: false,
     };
   }
   getRandomImage = (number) => {
     return imageList[number];
+  };
+
+  handleClick = () => {
+    this.setState({
+      navShow: !this.state.navShow,
+    });
   };
 
   render() {
@@ -45,9 +53,19 @@ export default class HomeScreen extends React.Component {
           <img src={randomImage} alt="Food pic from @markan.sg!" />
           <img id="logo" src="./logos/icon-blue.svg" alt="logo" />
         </div>
-        <button onClick={this.props.handleNext}>
-          Tap for a recommendation
-        </button>
+        <div className="footer">
+          <button onClick={this.props.handleNext}>
+            Tap for a recommendation
+          </button>
+          <button id="settings" onClick={this.handleClick}>
+            ...
+          </button>
+        </div>
+        <Settings
+          navShow={this.state.navShow}
+          settings={this.props.settings}
+          handleUpdate={this.props.handleUpdate}
+        />
       </motion.div>
     );
   }

@@ -2,10 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default class Instructions extends React.Component {
-  handleClick = () => {
-    this.props.handleNext();
-  };
-
   render() {
     return (
       <motion.div
@@ -31,7 +27,7 @@ export default class Instructions extends React.Component {
           (Enable location sharing in settings to get location based
           recommendations!)
         </p>
-        <button onClick={this.handleClick}>Tap to begin</button>
+        <button onClick={this.props.handleNext}>Tap to begin</button>
       </motion.div>
     );
   }

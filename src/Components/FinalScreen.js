@@ -22,7 +22,8 @@ export default class FinalScreen extends React.Component {
         this.props.data,
         this.props.meal,
         this.props.type,
-        this.props.area
+        this.props.area,
+        this.props.settings
       ),
       select: randomNumber(this.state.resultArray.length),
     });
@@ -36,28 +37,27 @@ export default class FinalScreen extends React.Component {
     };
   };
 
-  getApplicableList = (arr, meal, type, area) => {
+  getApplicableList = (arr, meal, type, area, settings) => {
+    const halal = settings["halal"] ? "H" : "";
+    const veg = settings["vegetarian"] ? "V" : "";
     let applicableList = [];
     const regex = new RegExp("^[A-Z]{2}$");
-    if (regex.test(area) || area === "") {
-      for (let i = 0; i < arr.length; i++) {
-        if (
-          arr[i].MEAL.includes(meal) &&
-          arr[i].TYPE.includes(type) &&
-          arr[i].AREA.includes(area)
-        ) {
-          applicableList.push(arr[i]);
-        }
-      }
-    } else {
-      for (let i = 0; i < arr.length; i++) {
-        const distance = getDistance(this.props.area, this.getCoords(arr[i]));
-        if (
-          arr[i].MEAL.includes(meal) &&
-          arr[i].TYPE.includes(type) &&
-          distance < this.props.searchRadius * 1000
-        ) {
-          applicableList.push(arr[i]);
+    for (let i = 0; i < arr.length; i++) {
+      if (
+        arr[i].MEAL.includes(meal) &&
+        arr[i].TYPE.includes(type) &&
+        arr[i].TAGS.includes(halal) &&
+        arr[i].TAGS.includes(veg)
+      ) {
+        if (regex.test(area) || area === "") {
+          if (arr[i].AREA.includes(area)) {
+            applicableList.push(arr[i]);
+          }
+        } else {
+          const distance = getDistance(this.props.area, this.getCoords(arr[i]));
+          if (distance < this.props.settings["searchRadius"] * 1000) {
+            applicableList.push(arr[i]);
+          }
         }
       }
     }

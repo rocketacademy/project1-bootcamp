@@ -60,7 +60,6 @@ export default class QuestionScreen extends React.Component {
 
   handleLocation = async () => {
     await this.setState({
-      searchRadius: "",
       buttonText: "Getting location...",
     });
     await navigator.geolocation.getCurrentPosition(
@@ -98,6 +97,7 @@ export default class QuestionScreen extends React.Component {
         <QuestionDisplay
           handleClick={this.handleClick}
           handleLocation={this.handleLocation}
+          handleSkip={this.handleSkip}
           questionNo={question}
           question={currentQuestion}
           locationButton={this.state.locationButton}
