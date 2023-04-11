@@ -35,7 +35,10 @@ class HabitComposer extends React.Component {
   render() {
     return (
       <div className="HabitComposer">
-        <img src="https://imgur.com/a/cGF2WNA" alt="shia-gif" />
+        <img
+          src={process.env.PUBLIC_URL + "/ShiaLeBoufGif.gif"}
+          alt="shia-gif"
+        />
         <br />
         <form onSubmit={this.handleSubmit}>
           Enter a habit to track it: <br />
