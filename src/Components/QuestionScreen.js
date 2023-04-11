@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import QuestionDisplay from "./QuestionDisplay";
 
 export default class QuestionScreen extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class QuestionScreen extends React.Component {
           display: ["North", "Northeast", "Central", "West", "East"],
         },
       ],
-      locationButton: true,
+      locationButton: this.props.locationAvailable,
       buttonText: "Current Location",
     };
   }
@@ -92,41 +93,16 @@ export default class QuestionScreen extends React.Component {
     const { question, questions } = this.state;
     let currentQuestion = questions[question - 1];
     let displayQuestion;
-    let questionList;
     if (question < 4) {
-      questionList = currentQuestion.value.map((option, i) => (
-        <motion.li
-          animate={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          exit={{ opacity: 0, y: 20 }}
-          key={option}
-        >
-          <button
-            onClick={this.handleClick}
-            name={currentQuestion.name}
-            value={option}
-          >
-            {currentQuestion.display[i]}
-          </button>
-        </motion.li>
-      ));
       displayQuestion = (
-        <div className="question-box">
-          <h2>{currentQuestion.q}</h2>
-          <ul className="question-options">{questionList}</ul>
-          {question === 3 &&
-            this.props.locationAvailable &&
-            this.state.locationButton && (
-              <button id="get-location" onClick={this.handleLocation}>
-                <img src="./icons/location.svg" alt="location icon" />
-                {this.state.buttonText}
-              </button>
-            )}
-          <button id="skip" onClick={this.handleSkip}>
-            All of the above
-          </button>
-        </div>
+        <QuestionDisplay
+          handleClick={this.handleClick}
+          handleLocation={this.handleLocation}
+          questionNo={question}
+          question={currentQuestion}
+          locationButton={this.state.locationButton}
+          buttonText={this.state.buttonText}
+        />
       );
     } else if (question === 4) {
       displayQuestion = (
