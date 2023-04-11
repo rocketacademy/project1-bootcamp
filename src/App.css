@@ -58,6 +58,7 @@ ul {
 }
 
 #home,
+#instructions,
 #question,
 #final {
   display: flex;
@@ -65,6 +66,12 @@ ul {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+#instructions,
+#question {
+  background-color: #0078ef;
+  color: white;
 }
 
 h1,
@@ -105,9 +112,6 @@ button {
   color: white;
   border-radius: 5px;
   width: 100%;
-  background-color: #0078ef;
-  color: white;
-  border-radius: 5px;
 }
 
 /* Home Page */
@@ -158,6 +162,36 @@ button {
   }
 }
 
+/* Instructions Page */
+
+#instructions .header {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+#instructions #instructions-box {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+#instructions #instructions-box h4 {
+  font-size: 15px;
+}
+
+#instructions button {
+  background-color: white;
+  color: #0078ef;
+}
+
 /* Question Page */
 
 #question .header {
@@ -173,11 +207,6 @@ button {
   width: 100%;
   border-radius: 0;
   min-width: 0;
-}
-
-#question {
-  background-color: #0078ef;
-  color: white;
 }
 
 #question .question-box {
@@ -250,6 +279,7 @@ button {
   border-bottom: 1px solid white;
   margin-bottom: 0px;
 }
+
 @media (min-width: 950px) {
   #question .header {
     padding-bottom: 30px;
@@ -340,6 +370,14 @@ button {
   flex: 0 1 auto;
   width: 50vw;
   height: auto;
+}
+
+@media (min-width: 950px) {
+  #final #logo-failed {
+    width: 20vw;
+    min-width: 20vw;
+    height: 20vw;
+  }
 }
 
 #final .footer {

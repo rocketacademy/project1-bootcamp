@@ -1,6 +1,7 @@
 import React from "react";
 import Papa from "papaparse";
 import HomeScreen from "./Components/HomeScreen";
+import Instructions from "./Components/Instructions";
 import QuestionScreen from "./Components/QuestionScreen";
 import FinalScreen from "./Components/FinalScreen";
 import "./App.css";
@@ -13,6 +14,7 @@ class App extends React.Component {
       data: [],
       stage: 1,
       locationAvailable: false,
+      firstTime: null,
       searchRadius: 3,
       meal: "",
       type: "",
@@ -27,6 +29,9 @@ class App extends React.Component {
         locationAvailable: true,
       });
     }
+    this.setState({
+      firstTime: localStorage.getItem("firstTime") === null ? true : false,
+    });
   }
 
   getCsvData = () => {
@@ -46,9 +51,22 @@ class App extends React.Component {
   };
 
   handleNext = () => {
-    this.setState({
-      stage: this.state.stage + 1,
-    });
+    if (this.state.firstTime) {
+      this.setState({
+        stage: this.state.stage + 1,
+      });
+      if (this.state.stage === 2) {
+        this.setState({
+          firstTime: false,
+        });
+        localStorage.setItem("firstTime", "false");
+      }
+    } else {
+      this.setState({
+        stage:
+          this.state.stage === 1 ? this.state.stage + 2 : this.state.stage + 1,
+      });
+    }
   };
 
   handleRestart = () => {
@@ -67,6 +85,8 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.firstTime);
+    console.log(this.state.stage);
     const { stage, data, locationAvailable, searchRadius, meal, type, area } =
       this.state;
     let currentStage;
@@ -75,6 +95,8 @@ class App extends React.Component {
         <HomeScreen data={this.state.data} handleNext={this.handleNext} />
       );
     } else if (stage === 2) {
+      currentStage = <Instructions handleNext={this.handleNext} />;
+    } else if (stage === 3) {
       currentStage = (
         <QuestionScreen
           locationAvailable={locationAvailable}
@@ -84,7 +106,7 @@ class App extends React.Component {
           handleNext={this.handleNext}
         />
       );
-    } else if (stage === 3) {
+    } else if (stage === 4) {
       currentStage = (
         <FinalScreen
           searchRadius={searchRadius}

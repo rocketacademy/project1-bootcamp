@@ -113,13 +113,7 @@ export default class QuestionScreen extends React.Component {
       ));
       displayQuestion = (
         <div className="question-box">
-          <motion.h2
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-          >
-            {currentQuestion.q}
-          </motion.h2>
+          <h2>{currentQuestion.q}</h2>
           <ul className="question-options">{questionList}</ul>
           {question === 3 &&
             this.props.locationAvailable &&
