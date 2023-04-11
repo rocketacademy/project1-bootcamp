@@ -13,3 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+### Habit Tracker App
+
+This is a habit tracker app. Enter habits you would like to track. Everytime you do the habit (e.g. exercise everyday), increase the counter by 1, pat yourself on the back and keep going. Don't give up. Building habits take time and consistency. 
