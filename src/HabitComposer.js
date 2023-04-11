@@ -1,5 +1,4 @@
 import React from "react";
-import shiaGif from "./ShiaLeBoufGif.gif";
 import Button from "@mui/material/Button";
 
 class HabitComposer extends React.Component {
@@ -36,7 +35,10 @@ class HabitComposer extends React.Component {
   render() {
     return (
       <div className="HabitComposer">
-        <img src={shiaGif} alt="shia-gif" />
+        <img
+          src={process.env.PUBLIC_URL + "ShiaLeBoufGif.gif"}
+          alt="shia-gif"
+        />
         <br />
         <form onSubmit={this.handleSubmit}>
           Enter a habit to track it: <br />
