@@ -52,18 +52,18 @@
   overflow-y: auto;
 }
 
-"@keyframes show": {
-  "0%": {
-    display: "none";
+@keyframes show {
+  0% {
+    display: none;
     opacity: 0;
   }
-  ,
-    "1%": {
-    display: "flex";
+
+  1% {
+    display: flex;
     opacity: 0;
   }
-  ,
-    "100%": {
+
+  100% {
     opacity: 1;
   }
 }
@@ -261,7 +261,7 @@ td.cell-invalid {
 }
 
 td.cell-hinted {
-  color: #c62368; /* Maybe #a0b147 */
+  color: #c62368;
   animation-name: hintAnimation;
   animation-duration: 2s;
   animation-timing-function: ease-out;
@@ -395,12 +395,11 @@ td.cell-hinted {
   transform: translateY(-5px);
 }
 
-/* Button colors and styles */
-/* .btn-primary {
+.btn-primary {
   background: #ffc809;
   color: #3c3661;
   border: none;
-} */
+}
 
 .btn-hint,
 .btn-solve,
