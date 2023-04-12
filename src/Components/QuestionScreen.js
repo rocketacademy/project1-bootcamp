@@ -74,7 +74,9 @@ export default class QuestionScreen extends React.Component {
       },
       (error) => {
         if (error.code === error.PERMISSION_DENIED) {
-          alert("Can't find your location!");
+          alert(
+            "Can't find your location! Enable location services for your browser in settings."
+          );
           this.setState({
             locationButton: false,
           });

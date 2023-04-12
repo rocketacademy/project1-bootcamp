@@ -182,19 +182,63 @@ button {
   flex-direction: column;
   position: fixed;
   z-index: 10;
-  padding: 20px 25px;
+  padding: 25px;
   background-color: #0078ef;
   color: white;
   border-radius: 5px;
   bottom: 83px;
   right: 30px;
-  gap: 10px;
+  gap: 20px;
   transform-origin: bottom right;
+  text-align: left;
+}
+
+#home #settings-nav h2 {
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+#home #settings-nav h4 {
+  line-height: 1.4;
+}
+
+#home #settings-nav #settings-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 2px dotted white;
 }
 
 #home #settings-nav .checklist {
   display: flex;
   gap: 5px;
+}
+
+.slider {
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.slider-track {
+  height: 6px;
+  border-radius: 3px;
+  border: 1.5px solid white;
+  background-color: white;
+}
+
+.slider-track.slider-track-0 {
+  background-color: #0078ef;
+}
+
+.slider-thumb {
+  background-color: black;
+  top: 5px;
+  width: 16px;
+  height: 15px;
+  border-radius: 100%;
+  /* remove default outline when selected */
+  outline: none;
 }
 
 /* Instructions Page */

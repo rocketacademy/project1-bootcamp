@@ -18,7 +18,7 @@ class App extends React.Component {
       type: "",
       area: "",
       settings: {
-        searchRadius: 3,
+        searchRadius: 1,
         firstTime: true,
         halal: false,
         vegetarian: false,
