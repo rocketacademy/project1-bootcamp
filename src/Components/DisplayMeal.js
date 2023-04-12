@@ -22,7 +22,12 @@ export default class DisplayMeal extends React.Component {
 
       display = (
         <div className="food-display">
-          <p id="food-notes">{meal.NOTES}</p>
+          <p
+            className="food-notes"
+            id={meal.NOTES.includes("Heard it's good") && "food-hearsay"}
+          >
+            {meal.NOTES}
+          </p>
           <img src={meal.IMAGE} alt={meal.NAME} />
           <div id="food-details">
             <h1>{meal.NAME}</h1>

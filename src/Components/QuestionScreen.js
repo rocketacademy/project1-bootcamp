@@ -28,7 +28,7 @@ export default class QuestionScreen extends React.Component {
         },
       ],
       locationButton: this.props.locationAvailable,
-      buttonText: "Current Location",
+      buttonText: "Use Current Location",
     };
   }
   handleClick = (e) => {
@@ -39,9 +39,6 @@ export default class QuestionScreen extends React.Component {
         question: this.state.question + 1,
       });
     } else {
-      this.setState({
-        question: 1,
-      });
       this.props.handleNext();
     }
   };

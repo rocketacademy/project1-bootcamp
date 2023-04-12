@@ -89,7 +89,7 @@ h2 {
 
 h4,
 button,
-#food-notes,
+.food-notes,
 #home #settings-nav {
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -419,7 +419,7 @@ button {
   position: relative;
 }
 
-#final #food-notes {
+#final .food-notes {
   position: absolute;
   top: 20px;
   left: -10px;
@@ -429,6 +429,10 @@ button {
   width: fit-content;
   text-align: left;
   border-radius: 5px;
+}
+
+#final #food-hearsay {
+  background-color: #ff4a31;
 }
 
 #final .meal-tags {

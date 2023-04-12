@@ -115,8 +115,6 @@ class App extends React.Component {
           handleNext={this.handleNext}
         />
       );
-
-      console.log(settings["searchRadius"]);
     } else if (stage === 4) {
       currentStage = (
         <FinalScreen
