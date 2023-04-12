@@ -9,7 +9,7 @@ const getWrongLines = (board, type) => {
     for (let j = 0; j < 9; j++) {
       let key;
       if (type === "horizontal") key = board[i][j].value;
-      else key = board[j][i].value;
+      else if (type === "vertical") key = board[j][i].value;
 
       if (key === 0) continue;
 
@@ -76,7 +76,7 @@ const getWrongSquares = (board) => {
   return wrongSquares;
 };
 
-// Numbers squares from 0-8
+// Number squares from 0-8
 const getSquareNumber = (x, y) => {
   let x0 = Math.floor(x / 3);
   let y0 = Math.floor(y / 3);
@@ -94,8 +94,8 @@ const checkBoard = (board) => {
   let wrongVertical = getWrongLines(board, "vertical");
   let wrongSquares = getWrongSquares(board);
 
-  console.log(getSquareNumber(1, 5));
-  console.log(wrongSquares);
+  // console.log(getSquareNumber(1, 5));
+  // console.log(wrongSquares);
 
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
