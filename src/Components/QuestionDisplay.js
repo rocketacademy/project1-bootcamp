@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const isOdd = (number) => {
+  return number % 2 ? true : false;
+};
+
 export default class QuestionDisplay extends React.Component {
   render() {
     const { question } = this.props;
@@ -24,7 +28,13 @@ export default class QuestionDisplay extends React.Component {
     return (
       <div className="question-box">
         <h2>{question.q}</h2>
-        <ul className="question-options">{questionList}</ul>
+        <ul
+          className={`question-options ${
+            !isOdd(question.value.length) && "question-even"
+          }`}
+        >
+          {questionList}
+        </ul>
         {this.props.questionNo === 3 && this.props.locationButton && (
           <button id="get-location" onClick={this.props.handleLocation}>
             <img src="./icons/location.svg" alt="location icon" />

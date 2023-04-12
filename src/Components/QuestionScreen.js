@@ -17,8 +17,8 @@ export default class QuestionScreen extends React.Component {
         {
           q: "What?",
           name: "type",
-          value: ["H", "C", "R"],
-          display: ["Hawker", "Casual Dining", "$$$ Dining"],
+          value: ["H", "C", "R", "T"],
+          display: ["Hawker", "Casual Dining", "$$$ Dining", "Takeaway Only"],
         },
         {
           q: "Where?",

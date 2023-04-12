@@ -58,7 +58,7 @@ export default class HomeScreen extends React.Component {
             Tap for a recommendation
           </button>
           <button id="settings" onClick={this.handleClick}>
-            ...
+            <img src="./icons/filter.svg" alt="logo" />
           </button>
         </div>
         <Settings

@@ -30,7 +30,7 @@ export default class Settings extends React.Component {
             exit={{ opacity: 0 }}
             id="settings-nav"
           >
-            <h2>Settings</h2>
+            <h2>Filters</h2>
             <div id="settings-checklist">
               {settingOptions.map((option) => (
                 <div key={option} className="checklist">
