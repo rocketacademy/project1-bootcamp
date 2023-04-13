@@ -126,7 +126,8 @@ const Game = () => {
   const handleCellClick = (row, column, isEditable) => {
     if (!isEditable) return;
 
-    // moves registered when the value is not 0
+    // Moves registered when the value is not 0
+    // Increment mistakes made
     if (clickValue !== 0) {
       setMovesTaken((moves) => moves + 1);
       if (!clickValue.isValid) setMistakesMade((mistakes) => mistakes + 1);
