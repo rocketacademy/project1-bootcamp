@@ -1,6 +1,7 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import ReactSlider from "react-slider";
+import Fade from "./Fade";
 
 const settingOptions = ["halal", "vegetarian"];
 
@@ -24,12 +25,7 @@ export default class Settings extends React.Component {
     return (
       <AnimatePresence>
         {this.props.navShow && (
-          <motion.div
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            id="settings-nav"
-          >
+          <Fade idName="settings-nav">
             <h2>Filters</h2>
             <div id="settings-checklist">
               {settingOptions.map((option) => (
@@ -61,7 +57,7 @@ export default class Settings extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-          </motion.div>
+          </Fade>
         )}
       </AnimatePresence>
     );

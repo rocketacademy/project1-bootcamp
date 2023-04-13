@@ -1,9 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-const isOdd = (number) => {
-  return number % 2 ? true : false;
-};
+import { isOdd } from "../utils";
 
 export default class QuestionDisplay extends React.Component {
   render() {

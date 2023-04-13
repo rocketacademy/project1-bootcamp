@@ -1,10 +1,7 @@
 import React from "react";
 import Settings from "./Settings";
-import { motion } from "framer-motion";
-
-const randomNumber = (limit) => {
-  return Math.floor(Math.random() * limit);
-};
+import Fade from "./Fade";
+import { randomNumber } from "../utils";
 
 const imageList = [
   "https://i.imgur.com/GFU4Rck.jpg",
@@ -37,13 +34,7 @@ export default class HomeScreen extends React.Component {
   render() {
     const randomImage = this.getRandomImage(this.state.select);
     return (
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        className="screen"
-        id="home"
-      >
+      <Fade className="screen" idName="home">
         <div className="header">
           <img id="long-logo" src="./logos/logo-black-wide.svg" alt="logo" />
           <img id="stacked-logo" src="./logos/logo-home.svg" alt="logo" />
@@ -66,7 +57,7 @@ export default class HomeScreen extends React.Component {
           settings={this.props.settings}
           handleUpdate={this.props.handleUpdate}
         />
-      </motion.div>
+      </Fade>
     );
   }
 }

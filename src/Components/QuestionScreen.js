@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Fade from "./Fade";
 import QuestionDisplay from "./QuestionDisplay";
 
 export default class QuestionScreen extends React.Component {
@@ -105,12 +105,7 @@ export default class QuestionScreen extends React.Component {
       );
     } else if (question === 4) {
       displayQuestion = (
-        <motion.div
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          exit={{ opacity: 0 }}
-          className="question-box"
-        >
+        <Fade className="question-box">
           <h2>Tap here</h2>
           <button id="logo-button" onClick={this.handleClick}>
             <img src="./logos/icon-white.svg" alt="logo" />
@@ -120,17 +115,11 @@ export default class QuestionScreen extends React.Component {
             <br />
             your rec!
           </h2>
-        </motion.div>
+        </Fade>
       );
     }
     return (
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        className="screen"
-        id="question"
-      >
+      <Fade className="screen" idName="question">
         <div className="header">
           <img src="./logos/logo-white-wide.svg" alt="logo" />
         </div>
@@ -139,7 +128,7 @@ export default class QuestionScreen extends React.Component {
           <button onClick={this.props.handleRestart}>Restart</button>
           {question !== 1 && <button onClick={this.handleBack}>Back</button>}
         </div>
-      </motion.div>
+      </Fade>
     );
   }
 }

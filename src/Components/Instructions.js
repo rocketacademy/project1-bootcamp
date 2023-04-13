@@ -1,16 +1,10 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Fade from "./Fade";
 
 export default class Instructions extends React.Component {
   render() {
     return (
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        className="screen"
-        id="instructions"
-      >
+      <Fade className="screen" idName="instructions">
         <div className="header">
           <img src="./logos/logo-white-wide.svg" alt="logo" />
         </div>
@@ -28,7 +22,7 @@ export default class Instructions extends React.Component {
           recommendations!)
         </p>
         <button onClick={this.props.handleNext}>Tap to begin</button>
-      </motion.div>
+      </Fade>
     );
   }
 }

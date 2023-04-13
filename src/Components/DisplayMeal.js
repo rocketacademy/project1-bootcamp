@@ -24,7 +24,9 @@ export default class DisplayMeal extends React.Component {
         <div className="food-display">
           <p
             className="food-notes"
-            id={meal.NOTES.includes("Haven't tried") && "food-hearsay"}
+            id={
+              meal.NOTES.includes("Haven't tried") ? "food-hearsay" : undefined
+            }
           >
             {meal.NOTES}
           </p>
