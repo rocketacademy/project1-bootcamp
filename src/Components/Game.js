@@ -129,10 +129,8 @@ const Game = () => {
     // moves registered when the value is not 0
     if (clickValue !== 0) {
       setMovesTaken((moves) => moves + 1);
+      if (!clickValue.isValid) setMistakesMade((mistakes) => mistakes + 1);
     }
-
-    // Count mistakes made
-    if (!clickValue.isValid) setMistakesMade((mistakes) => mistakes + 1);
 
     let newGrid = arrayDeepCopy(grid);
     newGrid[row][column].value = clickValue;
