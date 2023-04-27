@@ -1,5 +1,6 @@
 import React from "react";
 import Papa from "papaparse";
+import axios from "axios";
 import HomeScreen from "./Components/HomeScreen";
 import Instructions from "./Components/Instructions";
 import QuestionScreen from "./Components/QuestionScreen";
@@ -41,11 +42,12 @@ class App extends React.Component {
   }
 
   getCsvData = () => {
-    fetch(
-      "https://docs.google.com/spreadsheets/d/1lr6rakViESEyL92WLERkX7ZY3lRuKr5O8UG5B7LlIq4/export?format=csv"
-    ).then((rawOutput) => {
-      rawOutput.text().then((finalOutput) => {
-        const outputData = Papa.parse(finalOutput, {
+    axios
+      .get(
+        "https://docs.google.com/spreadsheets/d/1lr6rakViESEyL92WLERkX7ZY3lRuKr5O8UG5B7LlIq4/export?format=csv"
+      )
+      .then((rawOutput) => {
+        const outputData = Papa.parse(rawOutput.data, {
           header: true,
           skipEmptyLines: true,
         });
@@ -53,7 +55,6 @@ class App extends React.Component {
           data: outputData.data,
         });
       });
-    });
   };
 
   handleNext = () => {
@@ -84,7 +85,7 @@ class App extends React.Component {
     });
   };
 
-  handleUpdate = async (name, value) => {
+  handleUpdate = (name, value) => {
     this.setState({
       [name]: value,
     });
