@@ -6,7 +6,6 @@ import Instructions from "./Components/Instructions";
 import QuestionScreen from "./Components/QuestionScreen";
 import FinalScreen from "./Components/FinalScreen";
 import "./App.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -21,7 +20,6 @@ const App = () => {
     halal: false,
     vegetarian: false,
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
     getCsvData();
