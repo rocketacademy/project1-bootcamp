@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Settings from "./Settings";
 import Fade from "./Fade";
 import { randomNumber } from "../utils";
@@ -14,8 +14,12 @@ const imageList = [
 ];
 
 const HomeScreen = (props) => {
-  const [select, setSelect] = useState(randomNumber(imageList.length));
+  const [select, setSelect] = useState(null);
   const [navShow, setNavShow] = useState(false);
+
+  useEffect(() => {
+    setSelect(randomNumber(imageList.length));
+  }, []);
 
   const getRandomImage = (number) => {
     return imageList[number];

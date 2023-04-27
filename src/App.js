@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import axios from "axios";
 import HomeScreen from "./Components/HomeScreen";
@@ -6,42 +6,34 @@ import Instructions from "./Components/Instructions";
 import QuestionScreen from "./Components/QuestionScreen";
 import FinalScreen from "./Components/FinalScreen";
 import "./App.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [data, setData] = useState(null);
+  const [stage, setStage] = useState(1);
+  const [locationAvailable, setLocationAvailable] = useState(false);
+  const [meal, setMeal] = useState("");
+  const [type, setType] = useState("");
+  const [area, setArea] = useState("");
+  const [settings, setSettings] = useState({
+    searchRadius: 1,
+    firstTime: true,
+    halal: false,
+    vegetarian: false,
+  });
+  const navigate = useNavigate();
 
-    this.state = {
-      data: [],
-      stage: 1,
-      locationAvailable: false,
-      meal: "",
-      type: "",
-      area: "",
-      settings: {
-        searchRadius: 1,
-        firstTime: true,
-        halal: false,
-        vegetarian: false,
-      },
-    };
-  }
-
-  componentDidMount() {
-    this.getCsvData();
+  useEffect(() => {
+    getCsvData();
     if ("geolocation" in navigator) {
-      this.setState({
-        locationAvailable: true,
-      });
+      setLocationAvailable(true);
     }
     if (localStorage.getItem("settings") !== null) {
-      this.setState({
-        settings: JSON.parse(localStorage.getItem("settings")),
-      });
+      setSettings(JSON.parse(localStorage.getItem("settings")));
     }
-  }
+  }, []);
 
-  getCsvData = () => {
+  const getCsvData = () => {
     axios
       .get(
         "https://docs.google.com/spreadsheets/d/1lr6rakViESEyL92WLERkX7ZY3lRuKr5O8UG5B7LlIq4/export?format=csv"
@@ -51,86 +43,79 @@ class App extends React.Component {
           header: true,
           skipEmptyLines: true,
         });
-        this.setState({
-          data: outputData.data,
-        });
+        setData(outputData.data);
       });
   };
 
-  handleNext = () => {
-    if (this.state.settings["firstTime"]) {
-      this.setState({
-        stage: this.state.stage + 1,
-      });
-      if (this.state.stage === 2) {
-        let settings = Object.assign({}, this.state.settings);
-        settings.firstTime = false;
-        this.setState({ settings });
+  const handleNext = () => {
+    if (settings["firstTime"]) {
+      setStage((current) => current + 1);
+      if (stage === 2) {
+        let settingsCopy = Object.assign({}, settings);
+        settingsCopy.firstTime = false;
+        setSettings(settingsCopy);
         localStorage.setItem("settings", JSON.stringify(settings));
       }
     } else {
-      this.setState({
-        stage:
-          this.state.stage === 1 ? this.state.stage + 2 : this.state.stage + 1,
-      });
+      setStage((current) => (current === 1 ? current + 2 : current + 1));
     }
   };
 
-  handleRestart = () => {
-    this.setState({
-      stage: 1,
-      meal: "",
-      type: "",
-      area: "",
-    });
+  const handleRestart = () => {
+    setStage(1);
+    setMeal(null);
+    setType(null);
+    setArea(null);
   };
 
-  handleUpdate = (name, value) => {
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  render() {
-    const { stage, data, locationAvailable, settings, meal, type, area } =
-      this.state;
-    let currentStage;
-    if (stage === 1) {
-      currentStage = (
-        <HomeScreen
-          data={this.state.data}
-          handleNext={this.handleNext}
-          handleUpdate={this.handleUpdate}
-          settings={this.state.settings}
-        />
-      );
-    } else if (stage === 2) {
-      currentStage = <Instructions handleNext={this.handleNext} />;
-    } else if (stage === 3) {
-      currentStage = (
-        <QuestionScreen
-          locationAvailable={locationAvailable}
-          searchRadius={settings["searchRadius"]}
-          handleUpdate={this.handleUpdate}
-          handleRestart={this.handleRestart}
-          handleNext={this.handleNext}
-        />
-      );
-    } else if (stage === 4) {
-      currentStage = (
-        <FinalScreen
-          settings={settings}
-          data={data}
-          meal={meal}
-          type={type}
-          area={area}
-          handleRestart={this.handleRestart}
-        />
-      );
+  const handleUpdate = (name, value) => {
+    if (name === "area") {
+      setArea(value);
+    } else if (name === "meal") {
+      setMeal(value);
+    } else if (name === "type") {
+      setType(value);
+    } else if (name === "settings") {
+      setSettings(value);
     }
+  };
 
-    return <div className="container">{currentStage}</div>;
+  let currentStage;
+  if (stage === 1) {
+    currentStage = (
+      <HomeScreen
+        data={data}
+        handleNext={handleNext}
+        handleUpdate={handleUpdate}
+        settings={settings}
+      />
+    );
+  } else if (stage === 2) {
+    currentStage = <Instructions handleNext={handleNext} />;
+  } else if (stage === 3) {
+    currentStage = (
+      <QuestionScreen
+        locationAvailable={locationAvailable}
+        searchRadius={settings["searchRadius"]}
+        handleUpdate={handleUpdate}
+        handleRestart={handleRestart}
+        handleNext={handleNext}
+      />
+    );
+  } else if (stage === 4) {
+    currentStage = (
+      <FinalScreen
+        settings={settings}
+        data={data}
+        meal={meal}
+        type={type}
+        area={area}
+        handleRestart={handleRestart}
+      />
+    );
   }
-}
+
+  return <div className="container">{currentStage}</div>;
+};
 
 export default App;

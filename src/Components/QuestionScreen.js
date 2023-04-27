@@ -1,82 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import Fade from "./Fade";
 import QuestionDisplay from "./QuestionDisplay";
 
-export default class QuestionScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: 1,
-      questions: [
-        {
-          q: "Which?",
-          name: "meal",
-          value: ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert"],
-          display: ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert"],
-        },
-        {
-          q: "What?",
-          name: "type",
-          value: ["H", "C", "R", "T"],
-          display: ["Hawker", "Casual Dining", "$$$ Dining", "Takeaway Only"],
-        },
-        {
-          q: "Where?",
-          name: "area",
-          value: ["NT", "NE", "CN", "WT", "ET"],
-          display: ["North", "Northeast", "Central", "West", "East"],
-        },
-      ],
-      locationButton: this.props.locationAvailable,
-      buttonText: "Use Current Location",
-    };
-  }
-  handleClick = (e) => {
+const questions = [
+  {
+    q: "Which?",
+    name: "meal",
+    value: ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert"],
+    display: ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert"],
+  },
+  {
+    q: "What?",
+    name: "type",
+    value: ["H", "C", "R", "T"],
+    display: ["Hawker", "Casual Dining", "$$$ Dining", "Takeaway Only"],
+  },
+  {
+    q: "Where?",
+    name: "area",
+    value: ["NT", "NE", "CN", "WT", "ET"],
+    display: ["North", "Northeast", "Central", "West", "East"],
+  },
+];
+
+const QuestionScreen = (props) => {
+  const [questionNo, setQuestionNo] = useState(1);
+  const [locationButton, setLocationButton] = useState(props.locationAvailable);
+  const [buttonText, setButtonText] = useState("Use Current Location");
+
+  const handleClick = (e) => {
     const { name, value } = e.target;
-    this.props.handleUpdate(name, value);
-    if (this.state.question < 4) {
-      this.setState({
-        question: this.state.question + 1,
-      });
+    props.handleUpdate(name, value);
+    if (questionNo < 4) {
+      setQuestionNo((current) => current + 1);
     } else {
-      this.props.handleNext();
+      props.handleNext();
     }
   };
 
-  handleSkip = () => {
-    this.setState({
-      question: this.state.question + 1,
-    });
+  const handleSkip = () => {
+    setQuestionNo((current) => current + 1);
   };
 
-  handleBack = () => {
-    this.setState({
-      question: this.state.question - 1,
-    });
+  const handleBack = () => {
+    setQuestionNo((current) => current - 1);
   };
 
-  handleLocation = async () => {
-    await this.setState({
-      buttonText: "Getting location...",
-    });
+  const handleLocation = async () => {
+    await setButtonText("Getting location...");
     await navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.props.handleUpdate("area", {
+        props.handleUpdate("area", {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
-        this.setState({
-          question: this.state.question + 1,
-        });
+        setQuestionNo((current) => current + 1);
       },
       (error) => {
         if (error.code === error.PERMISSION_DENIED) {
           alert(
             "Can't find your location! Enable location services for your browser in settings."
           );
-          this.setState({
-            locationButton: false,
-          });
+          setLocationButton(false);
         }
       },
       {
@@ -87,48 +72,47 @@ export default class QuestionScreen extends React.Component {
     );
   };
 
-  render() {
-    const { question, questions } = this.state;
-    let currentQuestion = questions[question - 1];
-    let displayQuestion;
-    if (question < 4) {
-      displayQuestion = (
-        <QuestionDisplay
-          handleClick={this.handleClick}
-          handleLocation={this.handleLocation}
-          handleSkip={this.handleSkip}
-          questionNo={question}
-          question={currentQuestion}
-          locationButton={this.state.locationButton}
-          buttonText={this.state.buttonText}
-        />
-      );
-    } else if (question === 4) {
-      displayQuestion = (
-        <Fade className="question-box">
-          <h2>Tap here</h2>
-          <button id="logo-button" onClick={this.handleClick}>
-            <img src="./logos/icon-white.svg" alt="logo" />
-          </button>
-          <h2>
-            to get
-            <br />
-            your rec!
-          </h2>
-        </Fade>
-      );
-    }
-    return (
-      <Fade className="screen" idName="question">
-        <div className="header">
-          <img src="./logos/logo-white-wide.svg" alt="logo" />
-        </div>
-        {displayQuestion}
-        <div className="footer">
-          <button onClick={this.props.handleRestart}>Restart</button>
-          {question !== 1 && <button onClick={this.handleBack}>Back</button>}
-        </div>
+  let currentQuestion = questions[questionNo - 1];
+  let displayQuestion;
+  if (questionNo < 4) {
+    displayQuestion = (
+      <QuestionDisplay
+        handleClick={handleClick}
+        handleLocation={handleLocation}
+        handleSkip={handleSkip}
+        questionNo={questionNo}
+        question={currentQuestion}
+        locationButton={locationButton}
+        buttonText={buttonText}
+      />
+    );
+  } else if (questionNo === 4) {
+    displayQuestion = (
+      <Fade className="question-box">
+        <h2>Tap here</h2>
+        <button id="logo-button" onClick={handleClick}>
+          <img src="./logos/icon-white.svg" alt="logo" />
+        </button>
+        <h2>
+          to get
+          <br />
+          your rec!
+        </h2>
       </Fade>
     );
   }
-}
+  return (
+    <Fade className="screen" idName="question">
+      <div className="header">
+        <img src="./logos/logo-white-wide.svg" alt="logo" />
+      </div>
+      {displayQuestion}
+      <div className="footer">
+        <button onClick={props.handleRestart}>Restart</button>
+        {questionNo !== 1 && <button onClick={handleBack}>Back</button>}
+      </div>
+    </Fade>
+  );
+};
+
+export default QuestionScreen;

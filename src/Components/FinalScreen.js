@@ -1,32 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import DisplayMeal from "./DisplayMeal";
 import Fade from "./Fade";
 import { getDistance } from "geolib";
 import { randomNumber } from "../utils";
 
-export default class FinalScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      resultArray: [],
-      select: 0,
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      resultArray: this.getApplicableList(
-        this.props.data,
-        this.props.meal,
-        this.props.type,
-        this.props.area,
-        this.props.settings
-      ),
-      select: randomNumber(this.state.resultArray.length),
-    });
-  }
-
-  getCoords = (obj) => {
+const FinalScreen = (props) => {
+  const getCoords = (obj) => {
     const cords = obj.COORDS.split(", ");
     return {
       latitude: Number(cords[0]),
@@ -34,7 +13,7 @@ export default class FinalScreen extends React.Component {
     };
   };
 
-  getApplicableList = (arr, meal, type, area, settings) => {
+  const getApplicableList = (arr, meal, type, area, settings) => {
     const halal = settings["halal"] ? "H" : "";
     const veg = settings["vegetarian"] ? "V" : "";
     let applicableList = [];
@@ -51,8 +30,8 @@ export default class FinalScreen extends React.Component {
             applicableList.push(arr[i]);
           }
         } else {
-          const distance = getDistance(this.props.area, this.getCoords(arr[i]));
-          if (distance < this.props.settings["searchRadius"] * 1000) {
+          const distance = getDistance(props.area, getCoords(arr[i]));
+          if (distance < props.settings["searchRadius"] * 1000) {
             applicableList.push(arr[i]);
           }
         }
@@ -62,52 +41,59 @@ export default class FinalScreen extends React.Component {
     return applicableList;
   };
 
-  render() {
-    const { resultArray, select } = this.state;
-    const result = resultArray[select];
-    return (
-      <Fade className="screen" idName="final">
-        <div className="header">
-          <img src="./logos/logo-black-wide.svg" alt="logo" />
-        </div>
-        <DisplayMeal meal={result} />
+  const resultArray = getApplicableList(
+    props.data,
+    props.meal,
+    props.type,
+    props.area,
+    props.settings
+  );
 
-        <div className="footer">
-          {resultArray.length !== 0 && (
-            <div className="food-links">
+  const [select, setSelect] = useState(randomNumber(resultArray.length));
+
+  const result = resultArray[select];
+  return (
+    <Fade className="screen" idName="final">
+      <div className="header">
+        <img src="./logos/logo-black-wide.svg" alt="logo" />
+      </div>
+      <DisplayMeal meal={result} />
+
+      <div className="footer">
+        {resultArray.length !== 0 && (
+          <div className="food-links">
+            <button
+              role="link"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open(result.LINK, "_blank", "noreferrer");
+              }}
+            >
+              Open in Maps
+            </button>
+            {resultArray.length !== 1 && (
               <button
                 role="link"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open(result.LINK, "_blank", "noreferrer");
+                  let newNo = randomNumber(resultArray.length);
+                  while (newNo === select) {
+                    newNo = randomNumber(resultArray.length);
+                  }
+                  setSelect(newNo);
                 }}
               >
-                Open in Maps
+                Another one!
               </button>
-              {resultArray.length !== 1 && (
-                <button
-                  role="link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    let newNo = randomNumber(resultArray.length);
-                    while (newNo === select) {
-                      newNo = randomNumber(resultArray.length);
-                    }
-                    this.setState({
-                      select: newNo,
-                    });
-                  }}
-                >
-                  Another one!
-                </button>
-              )}
-            </div>
-          )}
-          <button id="final-restart" onClick={this.props.handleRestart}>
-            Restart
-          </button>
-        </div>
-      </Fade>
-    );
-  }
-}
+            )}
+          </div>
+        )}
+        <button id="final-restart" onClick={props.handleRestart}>
+          Restart
+        </button>
+      </div>
+    </Fade>
+  );
+};
+
+export default FinalScreen;
