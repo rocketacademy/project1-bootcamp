@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./assets/logo.png";
 import "./App.css";
+import { IngredientList } from "./pages/Ingredients/ingredientsPage";
 
 class App extends React.Component {
   render() {
@@ -8,9 +9,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <IngredientList />
         </header>
       </div>
     );
