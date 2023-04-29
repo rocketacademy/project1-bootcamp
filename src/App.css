@@ -1,19 +1,49 @@
+@import "@font/nunito";
+
 .App {
   text-align: center;
+  font-family: var(--fontFamily-nunito);
+  background-color: #fae8e0;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 150px;
+  width: 150px;
   pointer-events: none;
 }
 
-.App-header {
-  background-color: #282c34;
+.App-name {
+  font-size: calc(20px + 10vmin);
+  color: #ef7c8e;
+}
+
+.base-container {
+  background-color: #fae8e0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.base-container-secondary {
+  background-color: #fae8e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.rbc-calendar {
+  min-height: 580px;
+}
+
+.modal-show {
+  display: block;
+}
+
+.modal-hide {
+  display: none;
 }
