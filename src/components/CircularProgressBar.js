@@ -30,7 +30,7 @@ class CircularProgressBar extends React.Component {
             className="circle-background"
             cx={this.props.sqSize / 2}
             cy={this.props.sqSize / 2}
-            r={radius}
+            r={radius-this.props.strokeWidth/2}
             strokeWidth={`${this.props.strokeWidth}px`} />
             </clipPath>
           </defs>
