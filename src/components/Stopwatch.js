@@ -6,8 +6,10 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       timeInit: this.props.setTime,
       time: this.props.setTime, // initial time in seconds (5 minutes)
+
       isActive: false,
     };
     this.intervalId = null;
@@ -41,7 +43,9 @@ class Stopwatch extends React.Component {
 
   resetTimer = () => {
     //reset timer
+
     this.setState({ timeInit: this.props.setTime, time: this.props.setTime, isActive: false });
+
   };
 
   formatTime = (seconds) => {
@@ -72,6 +76,7 @@ class Stopwatch extends React.Component {
     )
   }
   
+
   render() {
     return (
       <div className="timerWidget rounded">
@@ -86,6 +91,7 @@ class Stopwatch extends React.Component {
 
         <div className="buttonArray">{this.formatTime(this.state.time)}</div>
 
+
         <div className="buttonArray">
         <button className="btn btn-info" onClick={this.startTimer}>
           Start
@@ -96,6 +102,7 @@ class Stopwatch extends React.Component {
         <button className="btn btn-info" onClick={this.resetTimer}>
           Reset
         </button>
+
         </div>
       </div>
     );
