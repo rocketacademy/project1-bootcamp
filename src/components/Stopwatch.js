@@ -49,6 +49,20 @@ class Stopwatch extends React.Component {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
+  timerGraphic = ()=>{
+    return (
+      <div className="progress yellow">
+      <span className="progress-left">
+                      <span className="progress-bar"></span>
+      </span>
+      <span className="progress-right">
+                      <span className="progress-bar"></span>
+      </span>
+      <div className="progress-value">37.5%</div>
+    </div>
+    )
+  }
+  
   render() {
     return (
       <div class="timerWidget rounded">
@@ -57,8 +71,13 @@ class Stopwatch extends React.Component {
             <i class="bi bi-x-circle-fill"></i>
           </button>
         </div>
+
         <h3 class="text">Cooking Pasta</h3>
-        <div>{this.formatTime(this.state.time)}</div>
+        <div class="buttonArray">{this.timerGraphic()}</div>
+
+        <div class="buttonArray">{this.formatTime(this.state.time)}</div>
+
+        <div class="buttonArray">
         <button class="btn btn-info" onClick={this.startTimer}>
           Start
         </button>
@@ -68,6 +87,7 @@ class Stopwatch extends React.Component {
         <button class="btn btn-info" onClick={this.resetTimer}>
           Reset
         </button>
+        </div>
       </div>
     );
   }
