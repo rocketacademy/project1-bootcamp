@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import StopWatch from "./components/Stopwatch";
+import StopWatch from "./components/Stopwatch.js";
 
 class App extends React.Component {
   render() {
@@ -13,6 +13,7 @@ class App extends React.Component {
             Edit <code>src/App.js</code> and save to reload.
           </p>
         </header>
+        <StopWatch/>
         <StopWatch/>
       </div>
     );

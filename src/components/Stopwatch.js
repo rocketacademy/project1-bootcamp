@@ -1,5 +1,4 @@
-import React from "react";
-const { useState, useEffect } = React;
+import React, { useState, useEffect } from "react";
 
 function StopWatch() {
   const [time, setTime] = useState(300); // initial time in seconds (5 minutes)
@@ -10,7 +9,7 @@ function StopWatch() {
 
     if (isActive && time > 0) {
       intervalId = setInterval(() => {
-        setTime(time - 1);
+        setTime(time - 1); //count down per second
       }, 1000);
     }
 
