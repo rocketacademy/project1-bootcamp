@@ -4,7 +4,7 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 300, // initial time in seconds (5 minutes)
+      time: props.time, // initial time in seconds (5 minutes)
       isActive: false,
     };
     this.intervalId = null;
@@ -38,7 +38,7 @@ class Stopwatch extends React.Component {
 
   resetTimer = () => {
     //reset timer
-    this.setState({ time: 300, isActive: false });
+    this.setState({ time: this.props.time, isActive: false });
   };
 
   formatTime = (seconds) => {
@@ -49,20 +49,20 @@ class Stopwatch extends React.Component {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
-  timerGraphic = ()=>{
+  timerGraphic = () => {
     return (
       <div className="progress yellow">
-      <span className="progress-left">
-                      <span className="progress-bar"></span>
-      </span>
-      <span className="progress-right">
-                      <span className="progress-bar"></span>
-      </span>
-      <div className="progress-value">37.5%</div>
-    </div>
-    )
-  }
-  
+        <span className="progress-left">
+          <span className="progress-bar"></span>
+        </span>
+        <span className="progress-right">
+          <span className="progress-bar"></span>
+        </span>
+        <div className="progress-value">37.5%</div>
+      </div>
+    );
+  };
+
   render() {
     return (
       <div class="timerWidget rounded">
@@ -78,15 +78,15 @@ class Stopwatch extends React.Component {
         <div class="buttonArray">{this.formatTime(this.state.time)}</div>
 
         <div class="buttonArray">
-        <button class="btn btn-info" onClick={this.startTimer}>
-          Start
-        </button>
-        <button class="btn btn-info" onClick={this.stopTimer}>
-          Stop
-        </button>
-        <button class="btn btn-info" onClick={this.resetTimer}>
-          Reset
-        </button>
+          <button class="btn btn-info" onClick={this.startTimer}>
+            Start
+          </button>
+          <button class="btn btn-info" onClick={this.stopTimer}>
+            Stop
+          </button>
+          <button class="btn btn-info" onClick={this.resetTimer}>
+            Reset
+          </button>
         </div>
       </div>
     );
