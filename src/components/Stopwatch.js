@@ -11,6 +11,7 @@ class Stopwatch extends React.Component {
   }
 
   componentDidMount() {
+    //start counting down
     this.intervalId = setInterval(() => {
       if (this.state.isActive && this.state.time > 0) {
         this.setState((prevState) => ({
@@ -24,15 +25,19 @@ class Stopwatch extends React.Component {
     clearInterval(this.intervalId);
   }
 
+  //Timer specific functions
   startTimer = () => {
+    //start
     this.setState({ isActive: true });
   };
 
   stopTimer = () => {
+    //stop or pause
     this.setState({ isActive: false });
   };
 
   resetTimer = () => {
+    //reset timer
     this.setState({ time: 300, isActive: false });
   };
 
@@ -46,11 +51,23 @@ class Stopwatch extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="timerWidget rounded">
+        <div class="timerClose">
+          <button class="btn">
+            <i class="bi bi-x-circle-fill"></i>
+          </button>
+        </div>
+        <h3 class="text">Cooking Pasta</h3>
         <div>{this.formatTime(this.state.time)}</div>
-        <button onClick={this.startTimer}>Start</button>
-        <button onClick={this.stopTimer}>Stop</button>
-        <button onClick={this.resetTimer}>Reset</button>
+        <button class="btn btn-info" onClick={this.startTimer}>
+          Start
+        </button>
+        <button class="btn btn-info" onClick={this.stopTimer}>
+          Stop
+        </button>
+        <button class="btn btn-info" onClick={this.resetTimer}>
+          Reset
+        </button>
       </div>
     );
   }
