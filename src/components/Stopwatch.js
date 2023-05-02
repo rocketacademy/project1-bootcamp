@@ -1,10 +1,15 @@
 import React from "react";
+//import CircularProgress from '@mui/joy/CircularProgress';
+import CircularProgressBar from "./CircularProgressBar";
 
 class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: props.time, // initial time in seconds (5 minutes)
+
+      timeInit: this.props.setTime,
+      time: this.props.setTime, // initial time in seconds (5 minutes)
+
       isActive: false,
     };
     this.intervalId = null;
@@ -38,7 +43,9 @@ class Stopwatch extends React.Component {
 
   resetTimer = () => {
     //reset timer
-    this.setState({ time: this.props.time, isActive: false });
+
+    this.setState({ timeInit: this.props.setTime, time: this.props.setTime, isActive: false });
+
   };
 
   formatTime = (seconds) => {
@@ -49,44 +56,53 @@ class Stopwatch extends React.Component {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
-  timerGraphic = () => {
+  //Calculating the percentage remaining
+  calPercent = () => {
+    let timeRemain = (this.state.time/this.state.timeInit);
+    timeRemain = 1-timeRemain;
+    console.log(this.state.time);
+    console.log(this.state.timeInit);
+    console.log(timeRemain)
+    return (timeRemain*100) //as a percentage for progress bar
+  }
+
+  //Inserting the timer graphic
+  timerGraphic = ()=>{
     return (
-      <div className="progress yellow">
-        <span className="progress-left">
-          <span className="progress-bar"></span>
-        </span>
-        <span className="progress-right">
-          <span className="progress-bar"></span>
-        </span>
-        <div className="progress-value">37.5%</div>
-      </div>
-    );
-  };
+      <CircularProgressBar
+            strokeWidth="12.5"
+            sqSize="200"
+            percentage={this.calPercent()}/>
+    )
+  }
+  
 
   render() {
     return (
-      <div class="timerWidget rounded">
-        <div class="timerClose">
-          <button class="btn">
-            <i class="bi bi-x-circle-fill"></i>
+      <div className="timerWidget rounded">
+        <div className="timerClose">
+          <button className="btn">
+            <i className="bi bi-x-circle-fill"></i>
           </button>
         </div>
 
-        <h3 class="text">Cooking Pasta</h3>
-        <div class="buttonArray">{this.timerGraphic()}</div>
+        <h3 className="text">Cooking Pasta</h3>
+        <div className="buttonArray">{this.timerGraphic()}</div>
 
-        <div class="buttonArray">{this.formatTime(this.state.time)}</div>
+        <div className="buttonArray">{this.formatTime(this.state.time)}</div>
 
-        <div class="buttonArray">
-          <button class="btn btn-info" onClick={this.startTimer}>
-            Start
-          </button>
-          <button class="btn btn-info" onClick={this.stopTimer}>
-            Stop
-          </button>
-          <button class="btn btn-info" onClick={this.resetTimer}>
-            Reset
-          </button>
+
+        <div className="buttonArray">
+        <button className="btn btn-info" onClick={this.startTimer}>
+          Start
+        </button>
+        <button className="btn btn-info" onClick={this.stopTimer}>
+          Stop
+        </button>
+        <button className="btn btn-info" onClick={this.resetTimer}>
+          Reset
+        </button>
+
         </div>
       </div>
     );
