@@ -2,6 +2,12 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+// - task name to be input by user
+// - task description to be input by user
+// - category to be input by user, and becomes selectable for subsequent tasks
+// - priority selected from dropdown of high med low
+// - “cancel” and “save” options
+
 function NewTask(props) {
   // 'show' state to handle the showing / hiding of the modal (or pop up box)
   const [show, setShow] = useState(false);

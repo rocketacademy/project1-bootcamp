@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import NewTask from "./Component/NewTask";
 import TaskTables from "./Component/TaskTables";
+import Timer from "./Component/Timer";
 
 // created an array of objects to store tasks and details relating to the tasks
 const existingTasks = [
@@ -26,6 +27,7 @@ function App() {
   return (
     <div>
       {/* passed the function 'addTask' as a prop to the child component 'AddNewTask' */}
+         <Timer />
       <NewTask addTask={addTask} />
       <TaskTables tasks={tasks} />
     </div>
@@ -33,25 +35,3 @@ function App() {
 }
 
 export default App;
-
-// Original App.js code - to delete the above and uncomment the below before pushing local changes to remote repo & merging to main branch
-// import React from "react";
-// import logo from "./logo.png";
-// import "./App.css";
-
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>
-//             Edit <code>src/App.js</code> and save to reload.
-//           </p>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
