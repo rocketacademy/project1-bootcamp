@@ -84,6 +84,10 @@ class Timer extends React.Component {
   };
 
   checkTimerType = (typeIndex) => {
+    const { pomodoroCycle } = this.state;
+    if ((typeIndex !== 0) & (typeIndex % 8 === 0)) {
+      this.setState({ pomodoroCycle: pomodoroCycle + 1 });
+    }
     if (typeIndex !== 0) {
       if ((typeIndex + 1) % 8 === 0) {
         return 2; //long break
@@ -94,39 +98,6 @@ class Timer extends React.Component {
       }
     } else {
       return 0; //pomodoro. first run.
-    }
-  };
-
-  checkPomoType = (typeIndex) => {
-    const { pomodoroCycle } = this.state;
-    if ((typeIndex !== 0) & (typeIndex % 8 === 0)) {
-      this.setState({ pomodoroCycle: pomodoroCycle + 1 });
-    }
-  };
-
-  componentDidUpdate(prevState) {
-    if (prevState.typeIndex !== this.state.typeIndex) {
-      this.checkPomoType(this.state.typeIndex);
-    }
-  }
-
-  // Insert form callback functions handleChange
-  handleChange = (e) => {
-    let { name, value } = e.target;
-    if (name === "pomodoro") {
-      this.setState((prevState) => ({
-        timer: [{ minutes: value }, ...prevState.timer.slice(1)],
-        minutes: value,
-        seconds: 0,
-      }));
-    } else if ((name = "short break")) {
-      this.setState((prevState) => ({
-        timer: [{ minutes: value }, ...prevState.timer.slice(1)],
-      }));
-    } else {
-      this.setState((prevState) => ({
-        timer: [{ minutes: value }, ...prevState.timer.slice(1)],
-      }));
     }
   };
 
@@ -147,31 +118,6 @@ class Timer extends React.Component {
           <br />#{pomodoroCycle}
           <br /> {typeIndex}
         </p>
-        <form>
-          <label>
-            <input
-              name="pomodoro"
-              type="number"
-              value={this.state.timer[0].minutes}
-              onChange={this.handleChange}
-              placeholder="25"
-            />
-            <input
-              name="Short Break"
-              type="number"
-              value={this.state.timer[1].minutes}
-              onChange={this.handleChange}
-              placeholder="5"
-            />
-            <input
-              name="Long Break"
-              type="number"
-              value={this.state.timer[2].minutes}
-              onChange={this.handleChange}
-              placeholder="15"
-            />
-          </label>
-        </form>
         <h1>
           {minutes < 10 ? `0${minutes}` : `${minutes}`} :
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
