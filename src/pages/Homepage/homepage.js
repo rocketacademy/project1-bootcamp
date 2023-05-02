@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button';
+import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 class HomePage extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class HomePage extends Component {
 
   handleClick() {
     // Do something when the button is clicked
-    console.log('Button clicked!');
+    console.log("Button clicked!");
   }
 
   render() {
@@ -19,31 +20,39 @@ class HomePage extends Component {
 
     const divStyle = {
       backgroundImage: `url(${backgroundImage})`,
-      height: '100vh',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'contain',
-      backgroundColor: 'grey',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden',
+      height: "100vh",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "contain",
+      backgroundColor: "grey",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "hidden",
     };
 
     const containerStyle = {
-        textAlign: 'center',
-        color: '#ffffed',
+      textAlign: "center",
+      color: "#ffffed",
     };
 
     return (
       <div style={divStyle}>
         <div className="container" style={containerStyle}>
           <h1>{title}</h1>
-          <Button 
+          <Button
             variant="primary"
             size="lg"
-            style={{width: '180px', height: '50px', padding: '5px', fontSize: '20px'}}
-            onClick={this.handleClick}>{buttonText}
+            style={{
+              width: "180px",
+              height: "50px",
+              padding: "5px",
+              fontSize: "20px",
+            }}
+            onClick={this.handleClick}
+            as={Link} to="/ingredients"
+          >
+            {buttonText}
           </Button>
         </div>
       </div>
@@ -51,5 +60,16 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+class homepage extends React.Component {
+  render() {
+    return (
+      <HomePage
+        backgroundImage="https://img.us.news.samsung.com/us/wp-content/uploads/2018/01/14112220/180108_FH_AKG-Speaker_Full-Shot_w_homescreen_rgb_04.jpg"
+        title="What's left in your fridge today?"
+        buttonText="Let's take a look!"
+      />
+    );
+  }
+}
 
+export default homepage;

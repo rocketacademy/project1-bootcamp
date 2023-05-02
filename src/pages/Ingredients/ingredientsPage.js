@@ -38,25 +38,27 @@ export class IngredientList extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>This is the ingredients list page</h2>
-        <div className="checkList">
-          <div className="title">Check off what you have in your fridge:</div>
-          <div className="list-container">
-            {this.state.checkList.map((item, index) => (
-              <div key={index}>
-                <input
-                  value={item}
-                  type="checkbox"
-                  onChange={this.handleCheck}
-                />
-                <span className={this.isChecked(item)}>{item}</span>
-              </div>
-            ))}
+      <div className="App">
+        <div className="App-header">
+          <h2>This is the ingredients list page</h2>
+          <div className="checkList">
+            <div className="title">Check off what you have in your fridge:</div>
+            <div className="list-container">
+              {this.state.checkList.map((item, index) => (
+                <div key={index}>
+                  <input
+                    value={item}
+                    type="checkbox"
+                    onChange={this.handleCheck}
+                  />
+                  <span className={this.isChecked(item)}>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
+          <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
+        </div>
       </div>
     );
   }
