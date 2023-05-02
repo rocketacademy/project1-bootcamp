@@ -27,7 +27,9 @@ function App() {
   return (
     <div>
       {/* passed the function 'addTask' as a prop to the child component 'AddNewTask' */}
-         <Timer />
+      <div className="App-header">
+        <Timer />
+      </div>
       <NewTask addTask={addTask} />
       <TaskTables tasks={tasks} />
     </div>
