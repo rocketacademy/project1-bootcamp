@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import HomePage from "./pages/Homepage/homepage";
+import { IngredientList } from "./pages/Ingredients/ingredientsPage";
 
 class App extends React.Component {
   render() {
