@@ -7,11 +7,12 @@ import Table from "react-bootstrap/Table";
 // - `toggleCompletedTask` show/hide completed tasks button
 //     - on click, change state for completed tasks, to style based on whether to show or hide
 
-function TaskTables(props) {
+export default function TaskTables(props) {
   return (
     <Table hover size="sm">
       <thead>
         <tr>
+          <th>Status</th>
           <th>Name</th>
           <th>Description</th>
           <th>Category</th>
@@ -19,17 +20,33 @@ function TaskTables(props) {
         </tr>
       </thead>
       <tbody>
-        {props.tasks.map((task) => (
-          <tr key={task.id}>
-            <td>{task.name}</td>
-            <td>{task.description}</td>
-            <td>{task.category}</td>
-            <td>{task.priority}</td>
-          </tr>
-        ))}
+        {props.tasks.map((task) => {
+          if (props.showHide && task.completed) {
+            return null;
+          } else {
+            return (
+              <tr
+                key={task.id}
+                style={{
+                  textDecoration: task.completed ? "line-through" : "none",
+                }}
+              >
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => props.handleCheckboxChange(task.id)}
+                  />
+                </td>
+                <td>{task.name}</td>
+                <td>{task.description}</td>
+                <td>{task.category}</td>
+                <td>{task.priority}</td>
+              </tr>
+            );
+          }
+        })}
       </tbody>
     </Table>
   );
 }
-
-export default TaskTables;

@@ -8,11 +8,10 @@ import Modal from "react-bootstrap/Modal";
 // - priority selected from dropdown of high med low
 // - “cancel” and “save” options
 
-function NewTask(props) {
+export default function NewTask(props) {
   // 'show' state to handle the showing / hiding of the modal (or pop up box)
   const [show, setShow] = useState(false);
   const handleClose = (event) => {
-    event.preventDefault();
     setShow(false);
   };
   const handleShow = () => setShow(true);
@@ -38,6 +37,7 @@ function NewTask(props) {
       description: description,
       category: category,
       priority: priority,
+      completed: false,
     };
     // calls the addTask function that has been passed down from the parent component as a prop, and pushes the newTask object as the parameter
     props.addTask(newTask);
@@ -186,5 +186,3 @@ function NewTask(props) {
     </>
   );
 }
-
-export default NewTask;
