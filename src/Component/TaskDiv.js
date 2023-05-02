@@ -38,16 +38,20 @@ export default function TaskDiv() {
   };
 
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className="p-1">
+      <div
+        className="p-1"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
         {/* passed the function 'addTask' as a prop to the child component 'AddNewTask' */}
         <NewTask addTask={addTask} style={{ float: "left" }} />
         <ShowHideButton
+          showHide={showHide}
           handleShowHide={handleShowHide}
           style={{ float: "right" }}
         />
       </div>
-      <div>
+      <div className="p-1">
         <TaskTables
           tasks={tasks}
           showHide={showHide}

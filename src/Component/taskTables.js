@@ -9,10 +9,12 @@ import Table from "react-bootstrap/Table";
 
 export default function TaskTables(props) {
   return (
-    <Table hover size="sm">
+    <Table hover size="sm" style={{ overflowY: "scroll" }}>
       <thead>
         <tr>
-          <th>Status</th>
+          <th style={{ verticalAlign: "middle", textAlign: "center" }}>
+            Done?
+          </th>
           <th>Name</th>
           <th>Description</th>
           <th>Category</th>
@@ -31,7 +33,7 @@ export default function TaskTables(props) {
                   textDecoration: task.completed ? "line-through" : "none",
                 }}
               >
-                <td>
+                <td style={{ verticalAlign: "middle", textAlign: "center" }}>
                   <input
                     type="checkbox"
                     checked={task.completed}

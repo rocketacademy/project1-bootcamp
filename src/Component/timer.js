@@ -111,24 +111,24 @@ class Timer extends React.Component {
   }
 
   // Insert form callback functions handleChange
-  handleChange = (e) => {
-    let { name, value } = e.target;
-    if (name === "pomodoro") {
-      this.setState((prevState) => ({
-        timer: [{ minutes: value }, ...prevState.timer.slice(1)],
-        minutes: value,
-        seconds: 0,
-      }));
-    } else if ((name = "short break")) {
-      this.setState((prevState) => ({
-        timer: [{ minutes: value }, ...prevState.timer.slice(1)],
-      }));
-    } else {
-      this.setState((prevState) => ({
-        timer: [{ minutes: value }, ...prevState.timer.slice(1)],
-      }));
-    }
-  };
+  // handleChange = (e) => {
+  //   let { name, value } = e.target;
+  //   if (name === "pomodoro") {
+  //     this.setState((prevState) => ({
+  //       timer: [{ minutes: value }, ...prevState.timer.slice(1)],
+  //       minutes: value,
+  //       seconds: 0,
+  //     }));
+  //   } else if ((name = "short break")) {
+  //     this.setState((prevState) => ({
+  //       timer: [{ minutes: value }, ...prevState.timer.slice(1)],
+  //     }));
+  //   } else {
+  //     this.setState((prevState) => ({
+  //       timer: [{ minutes: value }, ...prevState.timer.slice(1)],
+  //     }));
+  //   }
+  // };
 
   render() {
     const {
@@ -147,7 +147,7 @@ class Timer extends React.Component {
           <br />#{pomodoroCycle}
           <br /> {typeIndex}
         </p>
-        <form>
+        {/* <form>
           <label>
             <input
               name="pomodoro"
@@ -171,7 +171,7 @@ class Timer extends React.Component {
               placeholder="15"
             />
           </label>
-        </form>
+        </form> */}
         <h1>
           {minutes < 10 ? `0${minutes}` : `${minutes}`} :
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
