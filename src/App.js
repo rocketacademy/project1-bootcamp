@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import "./App.css";
-import AddNewTask from "./Component/AddNewTask";
+import NewTask from "./Component/NewTask";
 import TaskTables from "./Component/TaskTables";
 
 // created an array of objects to store tasks and details relating to the tasks
 const existingTasks = [
   {
     id: 1,
-    name: "Task Apple",
+    name: "Apple",
     description: "Sell Macbook Air",
     category: "Personal",
     priority: "Medium",
@@ -26,7 +26,7 @@ function App() {
   return (
     <div>
       {/* passed the function 'addTask' as a prop to the child component 'AddNewTask' */}
-      <AddNewTask addTask={addTask} />
+      <NewTask addTask={addTask} />
       <TaskTables tasks={tasks} />
     </div>
   );

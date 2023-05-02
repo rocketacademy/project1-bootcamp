@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function AddNewTask(props) {
+function NewTask(props) {
   // 'show' state to handle the showing / hiding of the modal (or pop up box)
   const [show, setShow] = useState(false);
   const handleClose = (event) => {
@@ -181,4 +181,4 @@ function AddNewTask(props) {
   );
 }
 
-export default AddNewTask;
+export default NewTask;
