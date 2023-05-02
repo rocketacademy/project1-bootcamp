@@ -1,29 +1,55 @@
-import React from "react";
-import logo from "../../assets/logo.png";
+import React, { Component } from 'react'
+import Button from 'react-bootstrap/Button';
 
-class Homepage extends React.Component {
+class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    // Do something when the button is clicked
+    console.log('Button clicked!');
+  }
+
   render() {
+    const backgroundImage = this.props.backgroundImage;
+    const title = this.props.title;
+    const buttonText = this.props.buttonText;
+
+    const divStyle = {
+      backgroundImage: `url(${backgroundImage})`,
+      height: '100vh',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+      backgroundColor: 'grey',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      overflow: 'hidden',
+    };
+
+    const containerStyle = {
+        textAlign: 'center',
+        color: '#ffffed',
+    };
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <br />
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <br />
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+      <div style={divStyle}>
+        <div className="container" style={containerStyle}>
+          <h1>{title}</h1>
+          <Button 
+            variant="primary"
+            size="lg"
+            style={{width: '180px', height: '50px', padding: '5px', fontSize: '20px'}}
+            onClick={this.handleClick}>{buttonText}
+          </Button>
+        </div>
       </div>
     );
   }
 }
 
-export default Homepage;
+export default HomePage;
+
