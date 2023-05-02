@@ -1,18 +1,26 @@
 import React from "react";
-import logo from "./assets/logo.png";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage/homepage";
+import Ingredients from "./pages/Ingredients/ingredientsPage";
+import Recipes from "./pages/Recipes/recipes"
+import Navbar from "./components/navbar";
 
 class App extends React.Component {
   render() {
+    const Error = () => {
+      return <h1>Oops! Page not found!</h1>;
+    };
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
+      <main>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} exact />
+          <Route path="/ingredients" element={<Ingredients />} />
+          <Route path="/recipes" element={<Recipes />} />
+          <Route element={Error} />
+        </Routes>
+      </main>
     );
   }
 }
