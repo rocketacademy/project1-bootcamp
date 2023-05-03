@@ -1,6 +1,5 @@
 import React from "react";
-
-// import IngredientItems from "./ingredientsList";
+import IngredientItems from "../../data/ingredientsDatabase";
 
 export class IngredientList extends React.Component {
   constructor(props) {
@@ -8,7 +7,8 @@ export class IngredientList extends React.Component {
     // State with list of all checked item
     this.state = {
       checked: [],
-      checkList: ["Apple", "Banana", "Tea", "Coffee"],
+      checkList: IngredientItems,
+      // checkList: ["Apple", "Banana", "Tea", "Coffee"],
     };
   }
 
@@ -51,26 +51,24 @@ export class IngredientList extends React.Component {
       <div className="App">
         <form onSubmit={this.handleFormSubmit}>
           <div className="App-header">
+            <br />
+            <br />
             <h2>This is the ingredients list page</h2>
+            <h3>Check off what you have in your fridge:</h3>
             <div className="checkList">
-              <div className="title">
-                Check off what you have in your fridge:
-              </div>
-              <div className="list-container">
-                {this.state.checkList.map((item, index) => (
-                  <div key={index}>
-                    <input
-                      value={item}
-                      type="checkbox"
-                      onChange={this.handleCheck}
-                    />
-                    <span className={this.isChecked(item)}>{item}</span>
-                  </div>
-                ))}
-              </div>
+              {this.state.checkList.map((item, index) => (
+                <div key={index}>
+                  <input
+                    value={item}
+                    type="checkbox"
+                    onChange={this.handleCheck}
+                  />
+                  <span className={this.isChecked(item)}>{item}</span>
+                </div>
+              ))}
             </div>
-
             <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
+            <br />
             <button type="submit">Save</button>
           </div>
         </form>
