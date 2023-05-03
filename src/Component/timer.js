@@ -50,7 +50,7 @@ class Timer extends React.Component {
 
   handleRestart = () => {
     const { timer, typeIndex } = this.state;
-    const currentTimerIndex = this.checkTimerType(typeIndex);
+    const currentTimerIndex = this.checkTimerType(typeIndex, false);
     this.setState({
       typeIndex: typeIndex,
       minutes: timer[currentTimerIndex].minutes,
@@ -83,10 +83,13 @@ class Timer extends React.Component {
     }, 1000);
   };
 
-  checkTimerType = (typeIndex) => {
-    const { pomodoroCycle } = this.state;
-    if ((typeIndex !== 0) & (typeIndex % 8 === 0)) {
-      this.setState({ pomodoroCycle: pomodoroCycle + 1 });
+  checkTimerType = (typeIndex, isNewCycle = true) => {
+    console.log(isNewCycle);
+    if (isNewCycle) {
+      const { pomodoroCycle } = this.state;
+      if ((typeIndex !== 0) & (typeIndex % 8 === 0)) {
+        this.setState({ pomodoroCycle: pomodoroCycle + 1 });
+      }
     }
     if (typeIndex !== 0) {
       if ((typeIndex + 1) % 8 === 0) {
