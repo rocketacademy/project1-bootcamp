@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import Timer from "./Component/Timer";
-import TaskDiv from "./Component/TaskDiv";
+import Timer from "./Component/Timer.js";
+import TaskDiv from "./Component/TaskDiv.js";
 
 function App() {
   return (
