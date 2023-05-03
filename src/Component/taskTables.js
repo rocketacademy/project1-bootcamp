@@ -9,7 +9,7 @@ import Table from "react-bootstrap/Table";
 
 export default function TaskTables(props) {
   return (
-    <Table hover size="sm" style={{ overflowY: "scroll" }}>
+    <Table hover size="sm" >
       <thead>
         <tr>
           <th style={{ verticalAlign: "middle", textAlign: "center" }}>
