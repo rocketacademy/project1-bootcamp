@@ -36,29 +36,44 @@ export class IngredientList extends React.Component {
   isChecked = (item) =>
     this.state.checked.includes(item) ? "checked-item" : "not-checked-item";
 
+  // form submit handle
+  handleFormSubmit = (formSubmitEvent) => {
+    formSubmitEvent.preventDefault();
+    Object.keys(this.state.checked)
+      .filter((checkbox) => this.state.checked[checkbox])
+      .forEach((checkbox) => {
+        console.log(checkbox, "is selected.");
+      });
+  };
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>This is the ingredients list page</h2>
-          <div className="checkList">
-            <div className="title">Check off what you have in your fridge:</div>
-            <div className="list-container">
-              {this.state.checkList.map((item, index) => (
-                <div key={index}>
-                  <input
-                    value={item}
-                    type="checkbox"
-                    onChange={this.handleCheck}
-                  />
-                  <span className={this.isChecked(item)}>{item}</span>
-                </div>
-              ))}
+        <form onSubmit={this.handleFormSubmit}>
+          <div className="App-header">
+            <h2>This is the ingredients list page</h2>
+            <div className="checkList">
+              <div className="title">
+                Check off what you have in your fridge:
+              </div>
+              <div className="list-container">
+                {this.state.checkList.map((item, index) => (
+                  <div key={index}>
+                    <input
+                      value={item}
+                      type="checkbox"
+                      onChange={this.handleCheck}
+                    />
+                    <span className={this.isChecked(item)}>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
-        </div>
+            <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
+            <button type="submit">Save</button>
+          </div>
+        </form>
       </div>
     );
   }
