@@ -14,6 +14,22 @@ const existingTasks = [
     priority: "Medium",
     completed: false,
   },
+  {
+    id: 2,
+    name: "Grocery",
+    description: "Buy ingredients for dinner prep",
+    category: "Home",
+    priority: "Low",
+    completed: false,
+  },
+  {
+    id: 3,
+    name: "Study Rocket",
+    description: "To do pre-class before lesson",
+    category: "School",
+    priority: "High",
+    completed: false,
+  },
 ];
 
 export default function TaskDiv() {
