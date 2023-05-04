@@ -1,4 +1,5 @@
 import Table from "react-bootstrap/Table";
+import SortTable from "./SortTable";
 
 // - `filterTask` filter button
 //     - selectable tags
@@ -7,48 +8,69 @@ import Table from "react-bootstrap/Table";
 // - `toggleCompletedTask` show/hide completed tasks button
 //     - on click, change state for completed tasks, to style based on whether to show or hide
 
-export default function TaskTables(props) {
+function TaskTables(props) {
+  const { tasks } = props;
+  const { items, requestSort } = SortTable(tasks);
+
+  const tableData = items.map((task) => {
+    if (props.showHide && task.completed) {
+      return null;
+    } else {
+      return (
+        <tr
+          key={task.id}
+          style={{
+            textDecoration: task.completed ? "line-through" : "none",
+          }}
+        >
+          <td style={{ verticalAlign: "middle", textAlign: "center" }}>
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => props.handleCheckboxChange(task.id)}
+            />
+          </td>
+          <td>{task.name}</td>
+          <td>{task.description}</td>
+          <td>{task.category}</td>
+          <td>{task.priority}</td>
+        </tr>
+      );
+    }
+  });
+
   return (
-    <Table hover size="sm" >
+    <Table hover size="sm">
       <thead>
         <tr>
           <th style={{ verticalAlign: "middle", textAlign: "center" }}>
-            Done?
+            Status
           </th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Category</th>
-          <th>Priority</th>
+          <th>
+            <button type="button" onClick={() => requestSort("name")}>
+              Name{" "}
+            </button>
+          </th>
+          <th>
+            <button type="button" onClick={() => requestSort("description")}>
+              Description{" "}
+            </button>
+          </th>
+          <th>
+            <button type="button" onClick={() => requestSort("category")}>
+              Category{" "}
+            </button>
+          </th>
+          <th>
+            <button type="button" onClick={() => requestSort("priority")}>
+              Priority{" "}
+            </button>
+          </th>
         </tr>
       </thead>
-      <tbody>
-        {props.tasks.map((task) => {
-          if (props.showHide && task.completed) {
-            return null;
-          } else {
-            return (
-              <tr
-                key={task.id}
-                style={{
-                  textDecoration: task.completed ? "line-through" : "none",
-                }}
-              >
-                <td style={{ verticalAlign: "middle", textAlign: "center" }}>
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => props.handleCheckboxChange(task.id)}
-                  />
-                </td>
-                <td>{task.name}</td>
-                <td>{task.description}</td>
-                <td>{task.category}</td>
-                <td>{task.priority}</td>
-              </tr>
-            );
-          }
-        })}
-      </tbody>
+      <tbody>{tableData}</tbody>
     </Table>
   );
 }
+
+export default TaskTables;
