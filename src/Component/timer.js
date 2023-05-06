@@ -1,36 +1,43 @@
 import React from "react";
+import "../App.css";
 
 class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       timer: [
-        { type: "pomodoro", minutes: 25 },
-        { type: "short break", minutes: 5 },
-        { type: "long break", minutes: 15 },
+        { type: "Focus Time!", minutes: 25 },
+        { type: "Short Break", minutes: 5 },
+        { type: "Long Break", minutes: 15 },
       ],
       typeIndex: 0,
-      currentTimer: "pomodoro",
+      currentTimer: "Code-struction Zone",
       minutes: 25,
       seconds: 0,
       pomodoroCycle: 1,
       isRunning: false,
+      elapsedSeconds: 0,
     };
   }
 
   handleStart = () => {
-    const { timer, typeIndex } = this.state;
+    const { timer, typeIndex, elapsedSeconds } = this.state; // added elapsedSeconds to state
     const currentTimerIndex = this.checkTimerType(typeIndex);
+    const totalSeconds = timer[currentTimerIndex].minutes * 60;
+    const remainingSeconds =
+      elapsedSeconds === 0 ? totalSeconds : totalSeconds - elapsedSeconds; // calculate remaining seconds
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
     this.setState({
       currentTimer: timer[currentTimerIndex].type,
-      minutes: timer[currentTimerIndex].minutes,
-      seconds: 0,
+      minutes,
+      seconds,
       isRunning: true,
     });
     this.tick();
   };
 
-  handleStop = () => {
+  handlePause = () => {
     this.setState({ isRunning: false });
   };
 
@@ -66,7 +73,10 @@ class Timer extends React.Component {
       const { seconds, minutes, isRunning } = this.state;
       if (isRunning) {
         if (seconds > 0) {
-          this.setState(({ seconds }) => ({ seconds: seconds - 1 }));
+          this.setState(({ seconds }) => ({
+            seconds: seconds - 1,
+            elapsedSeconds: this.state.elapsedSeconds + 1,
+          })); // increment elapsedSeconds
         } else {
           if (minutes === 0) {
             this.handleSkip();
@@ -74,6 +84,7 @@ class Timer extends React.Component {
             this.setState(({ minutes }) => ({
               minutes: minutes - 1,
               seconds: 59,
+              elapsedSeconds: this.state.elapsedSeconds + 1, // increment elapsedSeconds
             }));
           }
         }
@@ -110,28 +121,28 @@ class Timer extends React.Component {
       seconds,
       currentTimer,
       isRunning,
-      typeIndex,
+      // typeIndex,
       pomodoroCycle,
     } = this.state;
 
     return (
-      <div>
-        <p>
-          {currentTimer}
-          <br />#{pomodoroCycle}
-          <br /> {typeIndex}
-        </p>
-        <h1>
-          {minutes < 10 ? `0${minutes}` : `${minutes}`} :
+      <div class="text-center text-green-500">
+        <div>
+          {currentTimer} [Cycle #{pomodoroCycle}]{/* <br /> {typeIndex} */}
+        </div>
+        <div className="countdown-timer">
+          {minutes < 10 ? `0${minutes}` : `${minutes}`}:
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
-        </h1>
-        <button onClick={this.handleRestart}> Restart </button>
-        {isRunning ? (
-          <button onClick={this.handleStop}> Stop</button>
-        ) : (
-          <button onClick={this.handleStart}> Start </button>
-        )}
-        <button onClick={this.handleSkip}> Skip </button>
+        </div>
+        <div className="button-container">
+          <button onClick={this.handleRestart}>Restart</button>
+          {isRunning ? (
+            <button onClick={this.handlePause}>Pause</button>
+          ) : (
+            <button onClick={this.handleStart}>Start</button>
+          )}
+          <button onClick={this.handleSkip}>Skip</button>
+        </div>
       </div>
     );
   }
