@@ -31,9 +31,11 @@ function TaskTables(props) {
             />
           </td>
           <td>{task.name}</td>
-          <td>{task.description}</td>
+          {/* <td>{task.description}</td> */}
           <td>{task.category}</td>
-          <td>{task.priority}</td>
+          <td style={{ verticalAlign: "middle", textAlign: "center" }}>
+            {task.priority}
+          </td>
         </tr>
       );
     }
@@ -43,27 +45,25 @@ function TaskTables(props) {
     <Table hover size="sm">
       <thead>
         <tr>
-          <th style={{ verticalAlign: "middle", textAlign: "center" }}>
-            Status
-          </th>
+          <th style={{ verticalAlign: "middle", textAlign: "center" }}>✅</th>
           <th>
             <button type="button" onClick={() => requestSort("name")}>
-              Name{" "}
+              Task{" "}
             </button>
           </th>
-          <th>
+          {/* <th>
             <button type="button" onClick={() => requestSort("description")}>
               Description{" "}
             </button>
-          </th>
+          </th> */}
           <th>
             <button type="button" onClick={() => requestSort("category")}>
               Category{" "}
             </button>
           </th>
-          <th>
+          <th style={{ verticalAlign: "middle", textAlign: "center" }}>
             <button type="button" onClick={() => requestSort("priority")}>
-              Priority{" "}
+              ❗{" "}
             </button>
           </th>
         </tr>
