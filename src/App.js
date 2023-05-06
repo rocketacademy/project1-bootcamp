@@ -6,7 +6,6 @@ import TaskDiv from "./Component/TaskDiv";
 function App() {
   return (
     <div style={{ overflow: "hidden" }}>
-      {/* passed the function 'addTask' as a prop to the child component 'AddNewTask' */}
       <div>
         <div className="Timer">
           <Timer />

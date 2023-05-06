@@ -16,22 +16,28 @@ class Timer extends React.Component {
       seconds: 0,
       pomodoroCycle: 1,
       isRunning: false,
+      elapsedSeconds: 0,
     };
   }
 
   handleStart = () => {
-    const { timer, typeIndex } = this.state;
+    const { timer, typeIndex, elapsedSeconds } = this.state; // added elapsedSeconds to state
     const currentTimerIndex = this.checkTimerType(typeIndex);
+    const totalSeconds = timer[currentTimerIndex].minutes * 60;
+    const remainingSeconds =
+      elapsedSeconds === 0 ? totalSeconds : totalSeconds - elapsedSeconds; // calculate remaining seconds
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
     this.setState({
       currentTimer: timer[currentTimerIndex].type,
-      minutes: timer[currentTimerIndex].minutes,
-      seconds: 0,
+      minutes,
+      seconds,
       isRunning: true,
     });
     this.tick();
   };
 
-  handleStop = () => {
+  handlePause = () => {
     this.setState({ isRunning: false });
   };
 
@@ -67,7 +73,10 @@ class Timer extends React.Component {
       const { seconds, minutes, isRunning } = this.state;
       if (isRunning) {
         if (seconds > 0) {
-          this.setState(({ seconds }) => ({ seconds: seconds - 1 }));
+          this.setState(({ seconds }) => ({
+            seconds: seconds - 1,
+            elapsedSeconds: this.state.elapsedSeconds + 1,
+          })); // increment elapsedSeconds
         } else {
           if (minutes === 0) {
             this.handleSkip();
@@ -75,6 +84,7 @@ class Timer extends React.Component {
             this.setState(({ minutes }) => ({
               minutes: minutes - 1,
               seconds: 59,
+              elapsedSeconds: this.state.elapsedSeconds + 1, // increment elapsedSeconds
             }));
           }
         }
@@ -111,7 +121,7 @@ class Timer extends React.Component {
       seconds,
       currentTimer,
       isRunning,
-      typeIndex,
+      // typeIndex,
       pomodoroCycle,
     } = this.state;
 
@@ -127,7 +137,7 @@ class Timer extends React.Component {
         <div className="button-container">
           <button onClick={this.handleRestart}>Restart</button>
           {isRunning ? (
-            <button onClick={this.handleStop}>Stop</button>
+            <button onClick={this.handlePause}>Pause</button>
           ) : (
             <button onClick={this.handleStart}>Start</button>
           )}
