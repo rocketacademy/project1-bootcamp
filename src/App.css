@@ -53,3 +53,9 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.circle-outline{
+  stroke: #FF6F61;
+  fill: none;
+  stroke-opacity: 30%;
+}

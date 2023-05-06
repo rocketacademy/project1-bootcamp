@@ -20,11 +20,11 @@ class CircularProgressBar extends React.Component {
     const dashOffset = dashArray - dashArray * this.props.percentage / 100;
 
     return (
-      <svg
+      <svg //Creating the overall .svg graphic
           width={this.props.sqSize}
           height={this.props.sqSize}
           viewBox={viewBox}>
-          <defs>
+          <defs> 
             <clipPath id='circleView'>
             <circle
             className="circle-background"
@@ -40,6 +40,15 @@ class CircularProgressBar extends React.Component {
       href="https://evergoodfoods.com/wp-content/uploads/2020/04/2L1A8146-min-scaled.jpg" 
       clip-path="url(#circleView)"
     />
+    
+          <circle
+            className="circle-outline"
+            cx={this.props.sqSize / 2}
+            cy={this.props.sqSize / 2}
+            r={radius}
+            strokeWidth={`${this.props.strokeWidth}px`}
+            />
+
           <circle
             className="circle-progress"
             cx={this.props.sqSize / 2}
@@ -65,6 +74,7 @@ class CircularProgressBar extends React.Component {
   }
 }
 
+//Defining the display object before exporting
 CircularProgressBar.defaultProps = {
   sqSize: 200,
   percentage: 25,

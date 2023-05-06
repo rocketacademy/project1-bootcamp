@@ -2,6 +2,8 @@ import React from "react";
 //import CircularProgress from '@mui/joy/CircularProgress';
 import CircularProgressBar from "./CircularProgressBar";
 
+
+//Defining props to be passed into the object
 class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
@@ -9,8 +11,7 @@ class Stopwatch extends React.Component {
 
       timeInit: this.props.setTime,
       time: this.props.setTime, // initial time in seconds (5 minutes)
-
-      isActive: false,
+      isActive: false, //state whether it's running or not
     };
     this.intervalId = null;
   }
@@ -93,11 +94,8 @@ class Stopwatch extends React.Component {
 
 
         <div className="buttonArray">
-        <button className="btn btn-info" onClick={this.startTimer}>
-          Start
-        </button>
-        <button className="btn btn-info" onClick={this.stopTimer}>
-          Stop
+        <button className="btn btn-info" onClick={this.state.isActive ? this.stopTimer : this.startTimer}>
+          {this.state.isActive ? "Stop" : "Start"}
         </button>
         <button className="btn btn-info" onClick={this.resetTimer}>
           Reset
