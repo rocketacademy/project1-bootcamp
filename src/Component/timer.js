@@ -117,23 +117,22 @@ class Timer extends React.Component {
 
     return (
       <div class="text-center text-green-500">
-        <p>
-          {currentTimer}
-          <br />
-          Focus Cycle #{pomodoroCycle}
-          {/* <br /> {typeIndex} */}
-        </p>
-        <h1 className="bittypix-countdown">
-          {minutes < 10 ? `0${minutes}` : `${minutes}`} :
+        <div>
+          {currentTimer} [Cycle #{pomodoroCycle}]{/* <br /> {typeIndex} */}
+        </div>
+        <div className="countdown-timer">
+          {minutes < 10 ? `0${minutes}` : `${minutes}`}:
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
-        </h1>
-        <button onClick={this.handleRestart}> Restart </button>
-        {isRunning ? (
-          <button onClick={this.handleStop}> Stop</button>
-        ) : (
-          <button onClick={this.handleStart}> Start </button>
-        )}
-        <button onClick={this.handleSkip}> Skip </button>
+        </div>
+        <div className="button-container">
+          <button onClick={this.handleRestart}>Restart</button>
+          {isRunning ? (
+            <button onClick={this.handleStop}>Stop</button>
+          ) : (
+            <button onClick={this.handleStart}>Start</button>
+          )}
+          <button onClick={this.handleSkip}>Skip</button>
+        </div>
       </div>
     );
   }
