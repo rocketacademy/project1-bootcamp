@@ -1,6 +1,7 @@
 * {
   font-family: Consolas, "Courier New", monospace;
   font-weight: 550;
+  background-color: #212429;
 }
 
 @font-face {
@@ -10,8 +11,7 @@
   font-style: normal;
 }
 
-.Timer {
-  background-color: #28282b;
+.timer {
   min-height: 50vh;
   display: flex;
   flex-direction: column;
@@ -44,4 +44,14 @@
 
 .button-container button:hover {
   color: darkgray;
+}
+
+.taskDiv {
+  height: "50vh";
+  overflow-y: "auto";
+  color: white;
+}
+
+.table {
+  color: white;
 }

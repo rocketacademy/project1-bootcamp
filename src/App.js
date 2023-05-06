@@ -7,10 +7,10 @@ function App() {
   return (
     <div style={{ overflow: "hidden" }}>
       <div>
-        <div className="Timer">
+        <div className="timer">
           <Timer />
         </div>
-        <div style={{ height: "50vh", overflowY: "auto" }}>
+        <div className="taskDiv">
           <TaskDiv />
         </div>
       </div>

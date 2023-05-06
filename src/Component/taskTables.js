@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Table from "react-bootstrap/Table";
 import SortTable from "./SortTable";
+import "../App.css";
 
 function TaskTables(props) {
   const { tasks } = props;
@@ -20,10 +20,6 @@ function TaskTables(props) {
           style={{
             textDecoration: task.completed ? "line-through" : "none",
           }}
-          onClick={
-            () =>
-              isExpanded ? setExpandedTaskId(null) : setExpandedTaskId(task.id) // toggle expanded task
-          }
         >
           <td style={{ verticalAlign: "middle", textAlign: "center" }}>
             <input
@@ -32,7 +28,16 @@ function TaskTables(props) {
               onChange={() => props.handleCheckboxChange(task.id)}
             />
           </td>
-          <td>{task.name}</td>
+          <td
+            onClick={
+              () =>
+                isExpanded
+                  ? setExpandedTaskId(null)
+                  : setExpandedTaskId(task.id) // toggle expanded task
+            }
+          >
+            {task.name}
+          </td>
           <td>{task.category}</td>
           <td style={{ verticalAlign: "middle", textAlign: "center" }}>
             {task.priority}
@@ -58,8 +63,11 @@ function TaskTables(props) {
   });
 
   return (
-    <Table hover size="sm">
-      <thead>
+    <table
+      size="sm"
+      class="table table-dark table-striped table-bordered table-hover table-sm"
+    >
+      <thead class=".thead-dark">
         <tr>
           <th style={{ verticalAlign: "middle", textAlign: "center" }}>
             Done?
@@ -82,7 +90,7 @@ function TaskTables(props) {
         </tr>
       </thead>
       <tbody>{tableData}</tbody>
-    </Table>
+    </table>
   );
 }
 
