@@ -53,7 +53,6 @@ export class IngredientList extends React.Component {
           <div className="App-header">
             <br />
             <br />
-            <h2>This is the ingredients list page</h2>
             <h3>Check off what you have in your fridge:</h3>
             <div className="checkList">
               {this.state.checkList.map((item, index) => (

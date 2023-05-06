@@ -3,7 +3,7 @@ const IngredientItems = [
   "potatoes",
   "salt",
   "pepper",
-  "olive oil",
+  "oil",
   "garlic",
   "onion",
   "sugar",
@@ -30,6 +30,12 @@ const IngredientItems = [
   "strawberries",
   "blueberries",
   "pasta",
+  "soy sauce",
+  "mayonaise",
+  "cornstarch",
+  "herbs",
+  "bread",
+  "avocado",
 ];
 
 export default IngredientItems;
