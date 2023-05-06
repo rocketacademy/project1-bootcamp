@@ -42,10 +42,6 @@
   margin: 0 10px;
 }
 
-.button-container button:hover {
-  color: darkgray;
-}
-
 .taskDiv {
   height: "50vh";
   overflow-y: "auto";
