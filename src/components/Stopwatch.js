@@ -99,7 +99,7 @@ class Stopwatch extends React.Component {
 
   render() {
     return (
-      <div className="timerWidget rounded">
+      <div className= {this.state.time===0 ? "timerWidget-wiggle rounded" : "timerWidget rounded"}>
         <div className="timerClose">
           <button className="btn">
             <i className="bi bi-x-circle-fill"></i>
@@ -107,6 +107,7 @@ class Stopwatch extends React.Component {
         </div>
 
         <h3 className="text">Cooking Pasta</h3>
+
         <div className="buttonArray">{this.timerGraphic()}</div>
 
         <div className="buttonArray">{this.formatTime(this.state.time)}</div>
@@ -116,6 +117,7 @@ class Stopwatch extends React.Component {
         <button disabled = {(this.state.time===0)} className="btn btn-info" onClick={((this.state.time!==0 && !this.state.isActive) || (this.state.time===this.state.timeInit)) ? this.startTimer : this.stopTimer}>
           {((this.state.time!==0 && !this.state.isActive) || (this.state.time===this.state.timeInit)) ? "Start" : "Stop"}
         </button>
+
         <button className="btn btn-info" onClick={this.resetTimer}>
           Reset
         </button>
