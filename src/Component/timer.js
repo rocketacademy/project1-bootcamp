@@ -135,13 +135,21 @@ class Timer extends React.Component {
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
         </div>
         <div className="button-container">
-          <button onClick={this.handleRestart}>Restart</button>
+          <button onClick={this.handleRestart} class="btn btn-secondary">
+            Restart
+          </button>
           {isRunning ? (
-            <button onClick={this.handlePause}>Pause</button>
+            <button onClick={this.handlePause} class="btn btn-success">
+              Pause
+            </button>
           ) : (
-            <button onClick={this.handleStart}>Start</button>
+            <button onClick={this.handleStart} class="btn btn-success">
+              Start
+            </button>
           )}
-          <button onClick={this.handleSkip}>Skip</button>
+          <button onClick={this.handleSkip} class="btn btn-danger">
+            Skip
+          </button>
         </div>
       </div>
     );

@@ -55,12 +55,7 @@ export default function TaskDiv() {
 
   return (
     <div className="p-1">
-      <div
-        className="p-1"
-        style={{ display: "flex", justifyContent: "space-between" }}
-      >
-        {/* passed the function 'addTask' as a prop to the child component 'AddNewTask' */}
-        <NewTask addTask={addTask} style={{ float: "left" }} />
+      <div className="p-1 flex justify-end">
         <ShowHideButton
           showHide={showHide}
           handleShowHide={handleShowHide}
@@ -73,6 +68,9 @@ export default function TaskDiv() {
           showHide={showHide}
           handleCheckboxChange={handleCheckboxChange}
         />
+      </div>
+      <div className="p-1">
+        <NewTask addTask={addTask} />
       </div>
     </div>
   );
