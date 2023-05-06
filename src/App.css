@@ -15,10 +15,21 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(94, 80, 150);
+  /* color: rgb(94, 80, 150); */
 }
 
 * {
   font-family: Consolas, "Courier New", monospace;
   font-weight: 600;
+}
+
+@font-face {
+  font-family: "Bittypix Countdown";
+  src: url("./Bittypix Countdown.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bittypix-countdown {
+  font-family: "Bittypix Countdown", monospace;
 }

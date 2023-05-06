@@ -1,16 +1,17 @@
 import React from "react";
+import "../App.css";
 
 class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       timer: [
-        { type: "pomodoro", minutes: 25 },
-        { type: "short break", minutes: 5 },
-        { type: "long break", minutes: 15 },
+        { type: "Focus Time!", minutes: 25 },
+        { type: "Short Break", minutes: 5 },
+        { type: "Long Break", minutes: 15 },
       ],
       typeIndex: 0,
-      currentTimer: "pomodoro",
+      currentTimer: "Code-struction Zone",
       minutes: 25,
       seconds: 0,
       pomodoroCycle: 1,
@@ -115,13 +116,14 @@ class Timer extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <div class="text-center text-green-500">
         <p>
           {currentTimer}
-          <br />#{pomodoroCycle}
-          <br /> {typeIndex}
+          <br />
+          Focus Cycle #{pomodoroCycle}
+          {/* <br /> {typeIndex} */}
         </p>
-        <h1>
+        <h1 className="bittypix-countdown">
           {minutes < 10 ? `0${minutes}` : `${minutes}`} :
           {seconds < 10 ? `0${seconds}` : `${seconds}`}
         </h1>
