@@ -8,7 +8,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
 
-          <StopWatch setTime={30}/>
+          <StopWatch setTime={10}/>
 
         </header>
       </div>

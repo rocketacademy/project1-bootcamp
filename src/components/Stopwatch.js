@@ -1,6 +1,8 @@
 import React from "react";
 //import CircularProgress from '@mui/joy/CircularProgress';
 import CircularProgressBar from "./CircularProgressBar";
+import ding from "./assets/ding.mp3";
+import tick from "./assets/tick.mp3";
 
 
 //Defining props to be passed into the object
@@ -16,6 +18,18 @@ class Stopwatch extends React.Component {
     this.intervalId = null;
   }
 
+  //When the state has been updated
+  componentDidUpdate(prevProps,prevState){
+    console.log(this.state.time)
+    // 1. Audio to play ding-ing
+    if (this.state.time === 0){
+      this.playAudio(ding)
+    }
+    // 2. Audio to track time changes to allow ticking
+    if ((this.state.time === prevState.time-1) && this.state.time>0){
+      this.playAudio(tick)
+    }
+  }
   componentDidMount() {
     //start counting down
     this.intervalId = setInterval(() => {
@@ -44,11 +58,11 @@ class Stopwatch extends React.Component {
 
   resetTimer = () => {
     //reset timer
-
     this.setState({ timeInit: this.props.setTime, time: this.props.setTime, isActive: false });
 
   };
 
+  //Extracting the seconds/minutes from seconds
   formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -61,10 +75,15 @@ class Stopwatch extends React.Component {
   calPercent = () => {
     let timeRemain = (this.state.time/this.state.timeInit);
     timeRemain = 1-timeRemain;
-    console.log(this.state.time);
-    console.log(this.state.timeInit);
-    console.log(timeRemain)
+    //console.log(this.state.time);
+    //console.log(this.state.timeInit);
+    //console.log(timeRemain)
     return (timeRemain*100) //as a percentage for progress bar
+  }
+
+  //Extracting audio
+  playAudio = (sound) => {
+    new Audio(sound).play()
   }
 
   //Inserting the timer graphic
@@ -92,10 +111,10 @@ class Stopwatch extends React.Component {
 
         <div className="buttonArray">{this.formatTime(this.state.time)}</div>
 
-
         <div className="buttonArray">
-        <button className="btn btn-info" onClick={this.state.isActive ? this.stopTimer : this.startTimer}>
-          {this.state.isActive ? "Stop" : "Start"}
+          {console.log(this.state)}
+        <button disabled = {(this.state.time===0)} className="btn btn-info" onClick={((this.state.time!==0 && !this.state.isActive) || (this.state.time===this.state.timeInit)) ? this.startTimer : this.stopTimer}>
+          {((this.state.time!==0 && !this.state.isActive) || (this.state.time===this.state.timeInit)) ? "Start" : "Stop"}
         </button>
         <button className="btn btn-info" onClick={this.resetTimer}>
           Reset

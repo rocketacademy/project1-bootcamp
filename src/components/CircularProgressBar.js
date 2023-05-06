@@ -1,10 +1,17 @@
 
 import React from "react";
+import ding from "./assets/ding.mp3";
+import tick from "./assets/tick.mp3";
 
 class CircularProgressBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  //Extracting audio
+  playAudio = (sound) => {
+    new Audio(sound).play()
   }
 
   render() {
