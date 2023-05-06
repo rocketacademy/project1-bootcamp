@@ -1,4 +1,6 @@
 import React from "react";
+import { searchRecipes } from "../../utils/utils";
+import { RecipesDatabase, recipes } from "../../data/recipesDatabase";
 
 // import IngredientItems from "./ingredientsList";
 
@@ -8,7 +10,7 @@ export class IngredientList extends React.Component {
     // State with list of all checked item
     this.state = {
       checked: [],
-      checkList: ["Apple", "Banana", "Tea", "Coffee"],
+      checkList: ["Oil", "Sugar", "Pepper", "Cornstarch"],
     };
   }
 
@@ -32,6 +34,14 @@ export class IngredientList extends React.Component {
       : "";
   };
 
+  handleFormSubmit = (formSubmitEvent) => {
+    formSubmitEvent.preventDefault();
+    const selectedOptions = this.state.checked;
+    const output = searchRecipes(recipes,selectedOptions)
+
+    console.log(output);
+  };
+
   // Return classes based on whether item is checked
   isChecked = (item) =>
     this.state.checked.includes(item) ? "checked-item" : "not-checked-item";
@@ -44,16 +54,21 @@ export class IngredientList extends React.Component {
           <div className="checkList">
             <div className="title">Check off what you have in your fridge:</div>
             <div className="list-container">
-              {this.state.checkList.map((item, index) => (
-                <div key={index}>
-                  <input
-                    value={item}
-                    type="checkbox"
-                    onChange={this.handleCheck}
-                  />
-                  <span className={this.isChecked(item)}>{item}</span>
-                </div>
-              ))}
+              <form onSubmit={this.handleFormSubmit}>
+                {this.state.checkList.map((item, index) => (
+                  <div key={index}>
+                    <input
+                      value={item}
+                      type="checkbox"
+                      onChange={this.handleCheck}
+                    />
+                    <span className={this.isChecked(item)}>{item}</span>
+                  </div>
+                ))}
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+              </form>
             </div>
           </div>
 
@@ -66,12 +81,12 @@ export class IngredientList extends React.Component {
 
 /*
 import Checkbox from "../../components/checkbox";
-import {recipes}  from "../../data/recipesDatabase";
+import { recipes } from "../../data/recipesDatabase";
 import { matchResults } from "../../utils/utils";
 
-const OPTIONS = ["One", "Two", "Three"];
+const OPTIONS = ["mushrooms", "guacomolo", "tomatoes", "beef"];
 
-class IngredientsInput extends React.Component {
+class IngredientList extends React.Component {
   state = {
     checkboxes: OPTIONS.reduce(
       (options, option) => ({
@@ -118,8 +133,8 @@ class IngredientsInput extends React.Component {
       .forEach((checkbox) => {
         inputRange.push(checkbox);
       });
-    const output = matchResults(inputRange,recipes)
-    console.log(output)
+    
+    console.log(inputRange);
   };
 
   createCheckbox = (option) => (
@@ -167,7 +182,9 @@ class IngredientsInput extends React.Component {
             </div>
           </div>
         </header>
-
-
-export default IngredientsInput;
+      </div>
+    );
+  }
+}
+export { IngredientList };
 */
