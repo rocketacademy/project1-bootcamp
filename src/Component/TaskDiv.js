@@ -1,44 +1,25 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewTask from "./NewTask";
 import ShowHideButton from "./ShowHideButton";
 import TaskTables from "./TaskTables";
 
-// created an array of objects to store tasks and details relating to the tasks
-const existingTasks = [
-  {
-    id: 1,
-    name: "Apple",
-    description: "Sell Macbook Air",
-    category: "Personal",
-    priority: "Medium",
-    completed: false,
-  },
-  {
-    id: 2,
-    name: "Grocery",
-    description: "Buy ingredients for dinner prep",
-    category: "Home",
-    priority: "Low",
-    completed: false,
-  },
-  {
-    id: 3,
-    name: "Study Rocket",
-    description: "To do pre-class before lesson",
-    category: "School",
-    priority: "High",
-    completed: false,
-  },
-];
-
 export default function TaskDiv() {
-  const [tasks, setTasks] = useState(existingTasks);
+  const [tasks, setTasks] = useState([]);
   const [showHide, setShowHide] = useState(false);
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks")
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : [];
+    setTasks(storedTasks);
+  }, []); // empty array as the second parameter ensures that useEffect only runs once
 
   // created a 'addTask' function that adds a new task to the list of existing tasks
   const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const handleShowHide = () => {
@@ -63,11 +44,13 @@ export default function TaskDiv() {
         />
       </div>
       <div className="p-1">
-        <TaskTables
-          tasks={tasks}
-          showHide={showHide}
-          handleCheckboxChange={handleCheckboxChange}
-        />
+        {tasks.length > 0 && (
+          <TaskTables
+            tasks={tasks}
+            showHide={showHide}
+            handleCheckboxChange={handleCheckboxChange}
+          />
+        )}
       </div>
       <div className="p-1">
         <NewTask addTask={addTask} />
