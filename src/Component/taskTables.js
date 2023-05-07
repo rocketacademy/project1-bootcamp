@@ -10,6 +10,8 @@ function TaskTables(props) {
   const [expandedTaskId, setExpandedTaskId] = useState(null);
 
   const tableData = items.flatMap((task) => {
+    const showPrioritySymbol = { Low: "❗", Medium: "❗❗", High: "❗❗❗" };
+
     if (props.showHide && task.completed) {
       return [];
     } else {
@@ -40,7 +42,7 @@ function TaskTables(props) {
           </td>
           <td>{task.category}</td>
           <td style={{ verticalAlign: "middle", textAlign: "center" }}>
-            {task.priority}
+            {showPrioritySymbol[task.priority]}
           </td>
         </tr>,
         isExpanded && ( // add extra row if task is expanded
@@ -67,7 +69,7 @@ function TaskTables(props) {
       <thead class=".thead-dark">
         <tr>
           <th style={{ verticalAlign: "middle", textAlign: "center" }}>
-            Done?
+            Status
           </th>
           <th>
             <button type="button" onClick={() => requestSort("name")}>

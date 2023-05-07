@@ -34,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 500px; /* optional */
+  /* max-width: 500px; remove as it cause distortion of the button during resize of browser */
 }
 
 .button-container button {
