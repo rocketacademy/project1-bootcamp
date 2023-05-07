@@ -5,14 +5,12 @@ import TaskDiv from "./Component/TaskDiv";
 
 function App() {
   return (
-    <div style={{ overflow: "hidden" }}>
-      <div>
-        <div className="timer">
-          <Timer />
-        </div>
-        <div className="taskDiv">
-          <TaskDiv />
-        </div>
+    <div className="App-main">
+      <div className="timer">
+        <Timer />
+      </div>
+      <div className="taskDiv">
+        <TaskDiv />
       </div>
     </div>
   );
