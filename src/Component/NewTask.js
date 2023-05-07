@@ -66,7 +66,7 @@ export default function NewTask(props) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="name"
+                  htmlFor="name"
                 >
                   Name
                 </label>
@@ -88,7 +88,7 @@ export default function NewTask(props) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="description"
+                  htmlFor="description"
                 >
                   Description
                 </label>
@@ -109,7 +109,7 @@ export default function NewTask(props) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="category"
+                  htmlFor="category"
                 >
                   Category
                 </label>
@@ -139,7 +139,7 @@ export default function NewTask(props) {
               <div className="md:w-1/3">
                 <label
                   className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-                  for="priority"
+                  htmlFor="priority"
                 >
                   Priority
                 </label>
