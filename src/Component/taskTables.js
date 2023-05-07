@@ -65,8 +65,8 @@ function TaskTables(props) {
   });
 
   return (
-    <table size="sm" class="table table-dark table-striped table-hover">
-      <thead class=".thead-dark">
+    <table size="sm" className="table table-dark table-striped table-hover">
+      <thead>
         <tr>
           <th style={{ verticalAlign: "middle", textAlign: "center" }}>
             Status
