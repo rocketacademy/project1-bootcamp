@@ -155,9 +155,9 @@ export default function NewTask(props) {
                   <option value="" disabled>
                     Select priority
                   </option>
-                  <option value="❗">Low</option>
-                  <option value="❗❗">Medium</option>
-                  <option value="❗❗❗">High</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
                 </select>
               </div>
             </div>

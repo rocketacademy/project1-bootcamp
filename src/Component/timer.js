@@ -128,7 +128,8 @@ class Timer extends React.Component {
     return (
       <div class="text-center text-green-500">
         <div>
-          {currentTimer} [Cycle #{pomodoroCycle}]{/* <br /> {typeIndex} */}
+          {currentTimer} <br />
+          [Cycle #{pomodoroCycle}]
         </div>
         <div className="countdown-timer">
           {minutes < 10 ? `0${minutes}` : `${minutes}`}:
