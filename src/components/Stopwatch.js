@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class Stopwatch extends React.Component {
   constructor(props) {
@@ -44,47 +44,47 @@ class Stopwatch extends React.Component {
   formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    const formattedMinutes = String(minutes).padStart(2, "0");
-    const formattedSeconds = String(remainingSeconds).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
   timerGraphic = () => {
     return (
-      <div className="progress yellow">
-        <span className="progress-left">
-          <span className="progress-bar"></span>
+      <div className='progress yellow'>
+        <span className='progress-left'>
+          <span className='progress-bar'></span>
         </span>
-        <span className="progress-right">
-          <span className="progress-bar"></span>
+        <span className='progress-right'>
+          <span className='progress-bar'></span>
         </span>
-        <div className="progress-value">37.5%</div>
+        <div className='progress-value'>37.5%</div>
       </div>
     );
   };
 
   render() {
     return (
-      <div class="timerWidget rounded">
-        <div class="timerClose">
-          <button class="btn">
-            <i class="bi bi-x-circle-fill"></i>
+      <div class='timerWidget rounded'>
+        <div class='timerClose'>
+          <button class='btn'>
+            <i class='bi bi-x-circle-fill'></i>
           </button>
         </div>
 
-        <h3 class="text">Cooking Pasta</h3>
-        <div class="buttonArray">{this.timerGraphic()}</div>
+        <h3 class='text'>Cooking Pasta</h3>
+        <div class='buttonArray'>{this.timerGraphic()}</div>
 
-        <div class="buttonArray">{this.formatTime(this.state.time)}</div>
+        <div class='buttonArray'>{this.formatTime(this.state.time)}</div>
 
-        <div class="buttonArray">
-          <button class="btn btn-info" onClick={this.startTimer}>
+        <div class='buttonArray'>
+          <button class='btn btn-info' onClick={this.startTimer}>
             Start
           </button>
-          <button class="btn btn-info" onClick={this.stopTimer}>
+          <button class='btn btn-info' onClick={this.stopTimer}>
             Stop
           </button>
-          <button class="btn btn-info" onClick={this.resetTimer}>
+          <button class='btn btn-info' onClick={this.resetTimer}>
             Reset
           </button>
         </div>
