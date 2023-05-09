@@ -126,9 +126,10 @@ class Timer extends React.Component {
     } = this.state;
 
     return (
-      <div class="text-center text-green-500">
+      <div class="text-center text-white">
         <div>
-          {currentTimer} <br />
+          {currentTimer}
+          <br />
           [Cycle #{pomodoroCycle}]
         </div>
         <div className="countdown-timer">
