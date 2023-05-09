@@ -76,3 +76,18 @@
   background-color: #212429;
   color: wheat;
 }
+
+.footer {
+  text-align: center;
+  color: whitesmoke;
+  position: fixed;
+  background-color: rgb(0, 0, 0);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+}
+
+.footer a {
+  color: forestgreen;
+}
