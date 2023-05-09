@@ -2,7 +2,13 @@
   "name": "project1-bootcamp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dexterch91.github.io/project1-bootcamp/",
   "dependencies": {
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@fontsource/public-sans": "^4.5.12",
+    "@mui/joy": "^5.0.0-alpha.77",
+    "@mui/material": "^5.12.2",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
     "popper.js": "^1.16.1",
@@ -13,7 +19,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -31,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
