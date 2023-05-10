@@ -1,0 +1,8 @@
+.container{
+    background-color: #fcd7d4;
+    border-radius: var(--border-radius);
+}
+
+.addTask{
+display: flex;
+}

@@ -1,0 +1,11 @@
+.container{
+    background-color:papayawhip;
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.tasklist{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

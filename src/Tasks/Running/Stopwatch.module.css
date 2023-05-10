@@ -1,0 +1,36 @@
+/* define animation */
+@keyframes wiggle {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+.timerWidgetWiggle {
+  position: relative;
+  width: 300px;
+  background-color: white;
+  color: black;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  /* add animation */
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.timerWidget {
+  position: relative;
+  width: 300px;
+  background-color: white;
+  color: black;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.closeTask {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

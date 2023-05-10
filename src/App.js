@@ -1,14 +1,14 @@
-import React from 'react';
-import './App.css';
-import { useState } from 'react';
-import { Task } from './Task';
-import { Container } from 'react-bootstrap';
-import Stopwatch from './components/Stopwatch';
+import React from "react";
+import { useState } from "react";
+import { Container, Stack } from "react-bootstrap";
+import CookingTasks from "./Tasks/Cooking/CookingTasks";
+import TimersRunning from "./Tasks/Running/TimersRunning";
+import "./App.css";
 
 function App() {
   const [toDoList, setToDoList] = useState([]); // name task, duration, state, dictionary
   const [newTask, setNewTask] = useState({
-    name: '',
+    name: "",
     duration: 0,
   }); // to store values of new task in inputfield
 
@@ -25,7 +25,7 @@ function App() {
     });
   };
 
-  const addTask = () => {
+  const handleAddTask = () => {
     const task = {
       id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
       name: newTask.name,
@@ -36,14 +36,14 @@ function App() {
     setToDoList([...toDoList, task]);
   };
 
-  const deleteTask = (id) => {
+  const handleDeleteTask = (id) => () => {
     const newToDoList = toDoList.filter((task) => {
       return task.id !== id;
     });
     setToDoList(newToDoList);
   };
 
-  const startTask = (id) => {
+  const handleStartTask = (id) => {
     setToDoList(
       toDoList.map((task) => {
         if (task.id === id) {
@@ -56,57 +56,14 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <Container>
-        <div>
-          <h1>Register Time</h1>
-          <label>Task Name: </label>
-          <input name='name' onChange={handleChange} />
-          <label>Duration: </label>
-          <input name='duration' type='number' onChange={handleChange} />
-          <button onClick={addTask} className='btn'>
-            Add Task
-          </button>
-        </div>
-      </Container>
-      <br />
-      <Container>
-        <h1>Cooking Tasks</h1>
-        <div className='list'>
-          {toDoList.map((task) => {
-            return (
-              <Task
-                taskName={task.name}
-                id={task.id}
-                deleteTask={deleteTask}
-                started={task.started}
-                startTask={startTask}
-              />
-            );
-          })}
-        </div>
-      </Container>
-      <br />
-      <Container>
-        <h1>Timers Running</h1>
-        {toDoList.map((task) => {
-          if (task.started) {
-            // convert task.duration from minutes to seconds
-            const timeInSeconds = task.duration * 60;
-
-            return (
-              <div key={task.id}>
-                <Stopwatch
-                  id={task.id}
-                  name={task.name}
-                  setTime={timeInSeconds}
-                />
-              </div>
-            );
-          }
-        })}
-      </Container>
-    </div>
+    <Container>
+      <Stack gap={3} className="m-1">
+        {/* Cooking Tasks */}
+        <CookingTasks {...{ toDoList }} onDeleteTask={handleDeleteTask} onStartTask={handleStartTask} onChange={handleChange} onAddTask={handleAddTask} />
+        {/* Timers Running */}
+        <TimersRunning {...{ toDoList }} onDeleteTask={handleDeleteTask} />
+      </Stack>
+    </Container>
   );
 }
 
