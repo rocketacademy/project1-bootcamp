@@ -3,26 +3,37 @@ import './App.css';
 import { useState } from 'react';
 import { Task } from './Task';
 import { Container } from 'react-bootstrap';
+import Stopwatch from './components/Stopwatch';
 
 function App() {
-  const [toDoList, setToDoList] = useState([]);
-  const [newTask, setNewTask] = useState('');
+  const [toDoList, setToDoList] = useState([]); // name task, duration, state, dictionary
+  const [newTask, setNewTask] = useState({
+    name: '',
+    duration: 0,
+  }); // to store values of new task in inputfield
+
+  console.table(toDoList);
 
   const handleChange = (event) => {
-    setNewTask(event.target.value);
-    // alert(`${this.state.task} ${this.state.duration}`);
-    // event.preventDefault();
+    const { name, value } = event.target;
+    console.log(name, value);
+    setNewTask((prevTask) => {
+      return {
+        ...prevTask,
+        [name]: value,
+      };
+    });
   };
 
   const addTask = () => {
     const task = {
       id: toDoList.length === 0 ? 1 : toDoList[toDoList.length - 1].id + 1,
-      taskName: newTask,
+      name: newTask.name,
+      duration: newTask.duration,
       started: false,
     };
 
     setToDoList([...toDoList, task]);
-    console.log(newTask);
   };
 
   const deleteTask = (id) => {
@@ -49,8 +60,10 @@ function App() {
       <Container>
         <div>
           <h1>Register Time</h1>
-          <input onChange={handleChange} />
-          <input type='number' />
+          <label>Task Name: </label>
+          <input name='name' onChange={handleChange} />
+          <label>Duration: </label>
+          <input name='duration' type='number' onChange={handleChange} />
           <button onClick={addTask} className='btn'>
             Add Task
           </button>
@@ -63,7 +76,7 @@ function App() {
           {toDoList.map((task) => {
             return (
               <Task
-                taskName={task.taskName}
+                taskName={task.name}
                 id={task.id}
                 deleteTask={deleteTask}
                 started={task.started}
@@ -76,6 +89,22 @@ function App() {
       <br />
       <Container>
         <h1>Timers Running</h1>
+        {toDoList.map((task) => {
+          if (task.started) {
+            // convert task.duration from minutes to seconds
+            const timeInSeconds = task.duration * 60;
+
+            return (
+              <div key={task.id}>
+                <Stopwatch
+                  id={task.id}
+                  name={task.name}
+                  setTime={timeInSeconds}
+                />
+              </div>
+            );
+          }
+        })}
       </Container>
     </div>
   );
