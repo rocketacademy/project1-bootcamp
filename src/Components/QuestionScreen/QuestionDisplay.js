@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { isOdd } from "../utils";
+import { isOdd } from "../../utils";
+import "./Question.css";
 
 const QuestionDisplay = (props) => {
   const { question } = props;

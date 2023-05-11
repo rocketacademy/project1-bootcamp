@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import DisplayMeal from "./DisplayMeal";
-import Fade from "./Fade";
+import DisplayMeal from "../DisplayMeal";
+import Fade from "../Fade";
 import { getDistance } from "geolib";
-import { randomNumber } from "../utils";
+import { randomNumber } from "../../utils";
+import "./FinalScreen.css";
 
 const FinalScreen = (props) => {
   const getCoords = (obj) => {

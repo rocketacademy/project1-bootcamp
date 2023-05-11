@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Fade from "./Fade";
+import Fade from "../Fade";
 import QuestionDisplay from "./QuestionDisplay";
+import "./Question.css";
 
 const questions = [
   {

@@ -3,9 +3,12 @@ import Papa from "papaparse";
 import axios from "axios";
 import HomeScreen from "./Components/HomeScreen";
 import Instructions from "./Components/Instructions";
-import QuestionScreen from "./Components/QuestionScreen";
-import FinalScreen from "./Components/FinalScreen";
+import QuestionScreen from "./Components/QuestionScreen/QuestionScreen";
+import FinalScreen from "./Components/FinalScreen/FinalScreen";
 import "./App.css";
+
+const dataSource =
+  "https://docs.google.com/spreadsheets/d/1lr6rakViESEyL92WLERkX7ZY3lRuKr5O8UG5B7LlIq4/export?format=csv";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -32,17 +35,13 @@ const App = () => {
   }, []);
 
   const getCsvData = () => {
-    axios
-      .get(
-        "https://docs.google.com/spreadsheets/d/1lr6rakViESEyL92WLERkX7ZY3lRuKr5O8UG5B7LlIq4/export?format=csv"
-      )
-      .then((rawOutput) => {
-        const outputData = Papa.parse(rawOutput.data, {
-          header: true,
-          skipEmptyLines: true,
-        });
-        setData(outputData.data);
+    axios.get(dataSource).then((rawOutput) => {
+      const outputData = Papa.parse(rawOutput.data, {
+        header: true,
+        skipEmptyLines: true,
       });
+      setData(outputData.data);
+    });
   };
 
   const handleNext = () => {
@@ -61,9 +60,9 @@ const App = () => {
 
   const handleRestart = () => {
     setStage(1);
-    setMeal(null);
-    setType(null);
-    setArea(null);
+    setMeal("");
+    setType("");
+    setArea("");
   };
 
   const handleUpdate = (name, value) => {
