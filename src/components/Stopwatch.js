@@ -96,6 +96,7 @@ class Stopwatch extends React.Component {
         strokeWidth='12.5'
         sqSize='200'
         percentage={this.calPercent()}
+        taskName={this.state.name}
       />
     );
   };
