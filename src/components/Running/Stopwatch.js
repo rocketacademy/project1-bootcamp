@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
 //import CircularProgress from '@mui/joy/CircularProgress';
-import CircularProgressBar from './CircularProgressBar';
-import ding from './assets/ding.mp3';
-import tick from './assets/tick.mp3';
+import CircularProgressBar from "./CircularProgressBar";
+import ding from "../../assets/ding.mp3";
+import tick from "../../assets/tick.mp3";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import styles from "./Stopwatch.module.css";
 
 //Defining props to be passed into the object
 class Stopwatch extends React.Component {
@@ -21,6 +24,9 @@ class Stopwatch extends React.Component {
 
   //When the state has been updated
   componentDidUpdate(prevProps, prevState) {
+    if (prevState.time === this.state.time) {
+      return false;
+    }
     // 1. Audio to play ding-ing
     if (this.state.time === 0) {
       this.playAudio(ding);
@@ -69,8 +75,8 @@ class Stopwatch extends React.Component {
   formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    const formattedMinutes = String(minutes).padStart(2, '0');
-    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(remainingSeconds).padStart(2, "0");
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
@@ -91,60 +97,33 @@ class Stopwatch extends React.Component {
 
   //Inserting the timer graphic
   timerGraphic = () => {
-    return (
-      <CircularProgressBar
-        strokeWidth='12.5'
-        sqSize='200'
-        percentage={this.calPercent()}
-        taskName={this.state.name}
-      />
-    );
+    return <CircularProgressBar strokeWidth="12.5" sqSize="200" percentage={this.calPercent()} taskName = {this.props.name} />;
   };
 
   render() {
+    const isStarted = (this.state.time !== 0 && !this.state.isActive) || this.state.time === this.state.timeInit;
+
     return (
-      <div
-        className={
-          this.state.time === 0
-            ? 'timerWidget-wiggle rounded'
-            : 'timerWidget rounded'
-        }
-      >
-        <div className='timerClose'>
-          <button className='btn'>
-            <i className='bi bi-x-circle-fill'></i>
+      <Card className={`${this.state.time === 0 ? `${styles.timerWidgetWiggle} rounded` : `${styles.timerWidget} rounded`} text-center`} bg={this.props.started ? "warning" : "light"} style={{ width: "18rem", marginLeft: 20, marginBottom: 20 }}>
+        <div className={styles.closeTask}>
+          <button className="btn" onClick={this.props.onDelete}>
+            <i className="bi bi-x-circle-fill"></i>
           </button>
         </div>
-
-        <h3 className='text'>{this.state.name}</h3>
-
-        <div className='buttonArray'>{this.timerGraphic()}</div>
-
-        <div className='buttonArray'>{this.formatTime(this.state.time)}</div>
-
-        <div className='buttonArray'>
-          {console.log(this.state)}
-          <button
-            disabled={this.state.time === 0}
-            className='btn btn-info'
-            onClick={
-              (this.state.time !== 0 && !this.state.isActive) ||
-              this.state.time === this.state.timeInit
-                ? this.startTimer
-                : this.stopTimer
-            }
-          >
-            {(this.state.time !== 0 && !this.state.isActive) ||
-            this.state.time === this.state.timeInit
-              ? 'Start'
-              : 'Stop'}
-          </button>
-
-          <button className='btn btn-info' onClick={this.resetTimer}>
+        <Card.Body>
+          <Card.Title>{this.state.name}</Card.Title>
+          
+          {/* <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text> */}
+          <Card.Text style={{ textAlign: "center" }}>{this.timerGraphic()}</Card.Text>
+          <div className='buttonArray'>{this.formatTime(this.state.time)}</div>
+          <Button variant="primary" size="sm" disabled={this.state.time === 0} onClick={isStarted ? this.startTimer : this.stopTimer}>
+            {isStarted ? "Start" : "Stop"}
+          </Button>
+          <Button variant="danger" className="m-3" size="sm" onClick={this.resetTimer}>
             Reset
-          </button>
-        </div>
-      </div>
+          </Button>
+        </Card.Body>
+      </Card>
     );
   }
 }

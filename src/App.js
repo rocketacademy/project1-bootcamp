@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Container, Stack } from "react-bootstrap";
-import CookingTasks from "./Tasks/Cooking/CookingTasks";
-import TimersRunning from "./Tasks/Running/TimersRunning";
+import CookingTasks from "./components/Cooking/CookingTasks";
+import TimersRunning from "./components/Running/TimersRunning";
 import "./App.css";
 
 function App() {
