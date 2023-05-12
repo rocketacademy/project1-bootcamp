@@ -1,19 +1,283 @@
-.App {
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi/Satoshi-Medium.woff2") format("woff2"),
+    url("./fonts/Satoshi/Satoshi-Medium.woff") format("woff"),
+    url("./fonts/Satoshi/Satoshi-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi/Satoshi-Bold.woff2") format("woff2"),
+    url("./fonts/Satoshi/Satoshi-Bold.woff") format("woff"),
+    url("./fonts/Satoshi/Satoshi-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oakes Grotesk";
+  src: url("./fonts/Oakes-Grotesk/Oakes-Grotesk-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  font-family: "Satoshi", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+body #root {
+  overflow: hidden;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* General Styling */
+
+.container,
+.screen {
+  height: 100%;
+  min-height: 600px;
+}
+
+.screen {
   text-align: center;
+  padding: 30px 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#home,
+#instructions,
+#question,
+#final {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#instructions,
+#question {
+  background-color: #0078ef;
+  color: white;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Oakes Grotesk", sans-serif;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 40px;
+  letter-spacing: -1px;
+  line-height: 0.9;
+}
+
+h4,
+button,
+.food-notes,
+#home #settings-nav {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+button {
+  padding: 15px;
+  border: none;
+  background-color: #0078ef;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.header img {
+  width: 100%;
+  border-radius: 0;
+  min-width: 0;
+}
+
+/* Home Page */
+
+#home .header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+#home .header img {
+  width: 100%;
+  min-width: 0;
+}
+
+#home .header #long-logo {
+  display: none;
+}
+
+#home .hero-image {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+}
+
+#home .hero-image #logo {
+  position: absolute;
+  top: -4vw;
+  left: 6%;
+  z-index: 5;
+  height: 18vw;
+  width: auto;
+}
+
+#home .footer {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+@media (min-width: 950px) {
+  #home .hero-image #logo {
+    display: none;
+  }
+  #home .header #long-logo {
+    display: block;
+  }
+  #home .header #stacked-logo {
+    display: none;
+  }
+}
+
+/* Settings */
+
+#home .footer #settings {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  width: fit-content;
+  z-index: 11;
+}
+
+#home .footer #settings img {
+  border-radius: 0;
+}
+
+#home #settings-nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  padding: 25px;
+  background-color: #0078ef;
   color: white;
+  border-radius: 5px;
+  bottom: 83px;
+  right: 30px;
+  gap: 20px;
+  transform-origin: bottom right;
+  text-align: left;
+}
+
+#home #settings-nav h2 {
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+#home #settings-nav h4 {
+  line-height: 1.4;
+}
+
+#home #settings-nav #settings-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 2px dotted white;
+}
+
+#home #settings-nav .checklist {
+  display: flex;
+  gap: 5px;
+}
+
+.slider {
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.slider-track {
+  height: 6px;
+  border-radius: 3px;
+  border: 1.5px solid white;
+  background-color: white;
+}
+
+.slider-track.slider-track-0 {
+  background-color: #0078ef;
+}
+
+.slider-thumb {
+  background-color: black;
+  top: 5px;
+  width: 16px;
+  height: 15px;
+  border-radius: 100%;
+  /* remove default outline when selected */
+  outline: none;
+}
+
+/* Instructions Page */
+
+#instructions .header {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+#instructions #instructions-box {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+#instructions #instructions-box h4 {
+  font-size: 15px;
+}
+
+#instructions button {
+  background-color: white;
+  color: #0078ef;
 }
