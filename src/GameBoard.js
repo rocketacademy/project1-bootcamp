@@ -6,20 +6,33 @@ export default class GridBoard extends React.Component {
     super(props);
     this.state = {
       playerPosition: { x: 0, y: 7 },
-      healthPoints: 10,
+      healthPoints: 15,
       gameWon: "ongoing",
       playerName: "",
       resultMessage: "",
     };
   }
   componentDidMount = () => {
-    let name = prompt("Declare your identity.. Foolhardy Traveller..");
+    let name = prompt("Declare your identity.. Foolish Adventurer..");
     if (!name) {
-      name = "Nameless Traveller";
+      name = "Nameless Adventurer";
     }
     this.setState({
       playerName: name,
     });
+  };
+  checkCoordinates = () => {
+    console.log(this.state.playerPosition);
+  };
+  addLife = () => {
+    this.setState(
+      {
+        healthPoints: this.state.healthPoints + 1,
+      },
+      () => {
+        console.log(`ADDED 1 HP, NEW HP: ${this.state.healthPoints}`);
+      }
+    );
   };
   handleMove = (direction) => {
     let { x, y } = this.state.playerPosition;
@@ -59,68 +72,208 @@ export default class GridBoard extends React.Component {
         playerPosition: { x, y },
       },
       () => {
-        console.log(this.state.playerPosition);
-        let gameStatus;
-        this.state.playerPosition.x === 7 && this.state.playerPosition.y === 0
-          ? (gameStatus = "gameWon")
-          : (gameStatus = this.state.gameWon);
+        let gameStatus = "ongoing";
+        const saferSquares = [
+          { x: 0, y: 5 },
+          { x: 0, y: 6 },
+          { x: 0, y: 7 },
+          { x: 1, y: 7 },
+          { x: 1, y: 6 },
+          { x: 2, y: 7 },
+          { x: 5, y: 0 },
+          { x: 6, y: 0 },
+          { x: 6, y: 1 },
+          { x: 7, y: 1 },
+          { x: 7, y: 2 },
+        ];
+        const neutralSquares = [
+          { x: 2, y: 0 },
+          { x: 3, y: 0 },
+          { x: 4, y: 0 },
+          { x: 3, y: 1 },
+          { x: 4, y: 1 },
+          { x: 5, y: 1 },
+          { x: 4, y: 2 },
+          { x: 5, y: 2 },
+          { x: 6, y: 2 },
+          { x: 5, y: 3 },
+          { x: 6, y: 3 },
+          { x: 7, y: 3 },
+          { x: 6, y: 4 },
+          { x: 7, y: 4 },
+          { x: 7, y: 5 },
+          { x: 0, y: 2 },
+          { x: 0, y: 3 },
+          { x: 1, y: 3 },
+          { x: 0, y: 4 },
+          { x: 1, y: 4 },
+          { x: 2, y: 4 },
+          { x: 1, y: 5 },
+          { x: 2, y: 5 },
+          { x: 3, y: 5 },
+          { x: 2, y: 6 },
+          { x: 3, y: 6 },
+          { x: 4, y: 6 },
+          { x: 3, y: 7 },
+          { x: 4, y: 7 },
+          { x: 5, y: 7 },
+        ];
+        const dangerSquares = [
+          { x: 0, y: 0 },
+          { x: 1, y: 0 },
+          { x: 0, y: 1 },
+          { x: 1, y: 1 },
+          { x: 2, y: 1 },
+          { x: 1, y: 2 },
+          { x: 2, y: 2 },
+          { x: 3, y: 2 },
+          { x: 2, y: 3 },
+          { x: 3, y: 3 },
+          { x: 4, y: 3 },
+          { x: 3, y: 4 },
+          { x: 4, y: 4 },
+          { x: 5, y: 4 },
+          { x: 4, y: 5 },
+          { x: 5, y: 5 },
+          { x: 6, y: 5 },
+          { x: 5, y: 6 },
+          { x: 6, y: 6 },
+          { x: 7, y: 6 },
+          { x: 6, y: 7 },
+          { x: 7, y: 7 },
+        ];
         if (
           this.state.playerPosition.x === 7 &&
           this.state.playerPosition.y === 0
         ) {
           gameStatus = "gameWon";
-        } else if (this.state.healthPoints < 1) {
-          gameStatus = "gameLost";
-        } else {
-          gameStatus = this.state.gameWon;
+        } else if (saferSquares.some((tile) => tile.x === x && tile.y === y)) {
+          console.log("safezone");
+          this.handleSafeZone();
+        } else if (dangerSquares.some((tile) => tile.x === x && tile.y === y)) {
+          console.log("dangerzone");
+          this.handleDangerZone();
+        } else if (
+          neutralSquares.some((tile) => tile.x === x && tile.y === y)
+        ) {
+          console.log("neutralzone");
+          this.handleNeutralZone();
         }
-        console.log(gameStatus);
-        this.setState({
-          gameWon: gameStatus,
-        });
+        this.setState(
+          {
+            gameWon: gameStatus,
+          },
+          () => {
+            let health = this.state.healthPoints;
+            console.log(`HP: ${health}`);
+            this.setState({
+              gameWon: health < 1 ? "gameLost" : gameStatus,
+            });
+          }
+        );
       }
     );
+  };
+  handleSafeZone = () => {
+    let resultMessage;
+    let rngResult = Math.ceil(Math.random() * 100);
+    console.log(`RNG: ${rngResult}`);
+    let health = this.state.healthPoints;
+    if (rngResult >= 92) {
+      resultMessage =
+        "You stumble upon a small rock, which causes you to find a hidden Health Potion! HEALTH +2";
+      health += 2;
+    } else if (92 > rngResult && rngResult >= 50) {
+      resultMessage =
+        "You trudged along the road. It was filled with nothingness.. Which is not a bad sign..";
+    } else if (50 > rngResult && rngResult >= 35) {
+      resultMessage = "You stumbled on small Rock and fell! HEALTH -1";
+      health -= 1;
+    } else if (35 > rngResult && rngResult >= 3) {
+      resultMessage =
+        "You wandered too close to Poisonous Flora! The scent irritated your systems.. HEALTH -2";
+      health -= 2;
+    } else {
+      resultMessage =
+        "You hallucinated about your own mortality and trembled at your potential demise.. HEALTH -3";
+      health = -3;
+    }
+    if (health > 15) {
+      health = 15;
+    }
+    this.setState({
+      resultMessage: resultMessage,
+      healthPoints: health,
+    });
+  };
+  handleNeutralZone = () => {
+    let resultMessage;
+    let rngResult = Math.ceil(Math.random() * 100);
+    console.log(`RNG: ${rngResult}`);
+    let health = this.state.healthPoints;
+    if (rngResult >= 94) {
+      resultMessage =
+        "You Met a friendly critter which shared some of its Fresh Water! HEALTH +1";
+      health += 1;
+    } else if (94 > rngResult && rngResult >= 66) {
+      resultMessage =
+        "You adventured into a large forest clearing.. It is a safe spot for now..";
+    } else if (66 > rngResult && rngResult >= 40) {
+      resultMessage =
+        "The blight of the Swamp affects the region which you are present.. You are intoxicated by the alluring fumes! HEALTH -1";
+      health -= 1;
+    } else if (40 > rngResult && rngResult >= 10) {
+      resultMessage =
+        "You dance with Death as you hastily darted for safe zones.. HEALTH -2";
+      health -= 2;
+    } else {
+      resultMessage =
+        "Local Swamp Wildlife attacked you and gave you a massive bite! HEALTH -3";
+      health -= -3;
+    }
+    if (health > 15) {
+      health = 15;
+    }
+    this.setState({
+      resultMessage: resultMessage,
+      healthPoints: health,
+    });
   };
   handleDangerZone = () => {
     let resultMessage;
     let rngResult = Math.ceil(Math.random() * 100);
-    console.log(rngResult);
-    if (rngResult >= 95) {
+    console.log(`RNG: ${rngResult}`);
+    let health = this.state.healthPoints;
+    if (rngResult >= 96) {
       resultMessage =
-        "The Dangerous Swamp Zone seems to be extremely kind to you today, and instead of punishing you for your hubris. You have found a RECOVERY Fruit which heals you! HEALTH +2";
-      this.setState({
-        healthPoints: this.state.healthPoints + 2,
-      });
-    } else if (95 > rngResult && rngResult >= 70) {
+        "The Dangerous Swamp Zone seems to be extremely kind to you today, and instead of punishing you for your hubris. You have found a RECOVERY Fruit which heals you! HEALTH +1";
+      health += 1;
+    } else if (96 > rngResult && rngResult >= 70) {
       resultMessage =
         "Fortune smiles upon you as you managed to evade the threats of the Swamp...";
     } else if (70 > rngResult && rngResult >= 55) {
       resultMessage =
         "The Swamp lets you off with a tiny dose of poisonous cuts to your thigh.. HEALTH -1";
-      this.setState({
-        healthPoints: this.state.healthPoints - 1,
-      });
+      health -= 1;
     } else if (55 > rngResult && rngResult >= 25) {
       resultMessage =
         "You have been hit by a venomous creature of the Swamp! HEALTH -2";
-      this.setState({
-        healthPoints: this.state.healthPoints - 2,
-      });
+      health -= 2;
     } else if (25 > rngResult && rngResult >= 3) {
       resultMessage =
         "You barely escaped as the Swamp attempts to devour and sink you under its malice.. HEALTH -3";
-      this.setState({
-        healthPoints: this.state.healthPoints - 3,
-      });
+      health -= 3;
     } else {
       resultMessage =
         "The Swamp has devoured your entire being, and you failed to get out of it.. You have DIED!";
-      this.setState({
-        healthPoints: 0,
-      });
+      health = 0;
+    }
+    if (health > 15) {
+      health = 15;
     }
     this.setState({
       resultMessage: resultMessage,
+      healthPoints: health,
     });
   };
   render() {
@@ -137,6 +290,7 @@ export default class GridBoard extends React.Component {
       "7,7",
       "8,7",
       "8,6",
+      "1,1",
     ];
     const neutralSquares = [
       "4,1",
@@ -240,8 +394,9 @@ export default class GridBoard extends React.Component {
             <div>
               <img src={Relieved} alt="alive"></img>
               <div>
-                You have Survived 1 Portion of the Swamp... For now, You are
-                Safe!
+                You have Survived an insignificant part of the Swamp...
+                <br />
+                You made it to a Camp.. and may rest for now..
               </div>
               <button onClick={null}>Onto the Next Journey..</button>
             </div>
@@ -249,7 +404,12 @@ export default class GridBoard extends React.Component {
           {this.state.gameWon === "gameLost" ? (
             <div>
               <img src={Death} alt="Death"></img>
-              <div>You tried, however running from Death was futile</div>
+              <div>
+                Running from Death is futile..
+                <br />
+                Adventurer {this.state.playerName.toUpperCase()} has met their
+                Fate!
+              </div>
             </div>
           ) : null}
         </div>
@@ -301,6 +461,8 @@ export default class GridBoard extends React.Component {
           <button onClick={() => this.handleDangerZone()}>
             Test Danger Zone
           </button>
+          <button onClick={() => this.checkCoordinates()}>Check Coords</button>
+          <button onClick={() => this.addLife()}>add hp</button>
         </div>
         <div>
           <div style={{ fontSize: 14 }}>{this.state.resultMessage}</div>
