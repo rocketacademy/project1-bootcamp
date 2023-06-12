@@ -1,6 +1,9 @@
 import React from "react";
 import Death from "./pictures/death.png";
 import Relieved from "./pictures/relieved.png";
+import { Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 export default class GridBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -13,13 +16,33 @@ export default class GridBoard extends React.Component {
     };
   }
   componentDidMount = () => {
-    let name = prompt("Declare your identity.. Foolish Adventurer..");
-    if (!name) {
-      name = "Nameless Adventurer";
-    }
+    // let name = prompt("Declare your identity.. Foolish Adventurer..");
+    // if (!name) {
+    //   name = "Nameless Adventurer";
+    // }
+    let name = "TESTING";
+    document.addEventListener("keydown", this.keyPressed);
     this.setState({
       playerName: name,
     });
+  };
+  keyPressed = (e) => {
+    e.preventDefault();
+    let key;
+    if (e.key === "ArrowUp") {
+      key = "up";
+    } else if (e.key === "ArrowLeft") {
+      key = "left";
+    } else if (e.key === "ArrowRight") {
+      key = "right";
+    } else if (e.key === "ArrowDown") {
+      key = "down";
+    } else {
+      return;
+    }
+    if (key) {
+      this.handleMove(key);
+    }
   };
   checkCoordinates = () => {
     console.log(this.state.playerPosition);
@@ -34,7 +57,19 @@ export default class GridBoard extends React.Component {
       }
     );
   };
+  reset = () => {
+    document.addEventListener("keydown", this.keyPressed);
+    this.setState({
+      healthPoints: 15,
+      gameWon: "ongoing",
+      resultMessage: "",
+      playerPosition: { x: 0, y: 7 },
+    });
+  };
   handleMove = (direction) => {
+    if (this.state.gameWon !== "ongoing") {
+      return;
+    }
     let { x, y } = this.state.playerPosition;
     const warningMessage = `You have reached the Border, You cannot move ${direction.toUpperCase()}!`;
     if (direction === "up") {
@@ -196,7 +231,7 @@ export default class GridBoard extends React.Component {
     } else {
       resultMessage =
         "You hallucinated about your own mortality and trembled at your potential demise.. HEALTH -3";
-      health = -3;
+      health -= 3;
     }
     if (health > 15) {
       health = 15;
@@ -229,7 +264,7 @@ export default class GridBoard extends React.Component {
     } else {
       resultMessage =
         "Local Swamp Wildlife attacked you and gave you a massive bite! HEALTH -3";
-      health -= -3;
+      health -= 3;
     }
     if (health > 15) {
       health = 15;
@@ -386,81 +421,104 @@ export default class GridBoard extends React.Component {
       }
       displayGameElements.push(<tr key={rowIndex}>{rowElements}</tr>);
     }
-
+    if (this.state.gameWon !== "ongoing") {
+      document.removeEventListener("keydown", this.keyPressed);
+    }
+    let hpCount = this.state.healthPoints;
+    let hpArray = [];
+    for (let i = 0; i < hpCount; i++) {
+      hpArray.push("❤️");
+    }
+    let hpBar = hpArray.join(" ");
+    // if (hpCount < 8) {
+    //   document.getElementById(
+    //     "Gameboard"
+    //   ).style.backgroundImage = `linear-gradient(#000000, transparent, #000000),
+    // url(./pictures/swampbg.png);`;
+    // }
+    //else {
+    //   document.getElementById(
+    //     "Gameboard"
+    //   ).style.backgroundImage = `url(./pictures/swampbg.png);`;
+    // }
     return (
       <div>
         <div>
-          {this.state.gameWon === "gameWon" ? (
-            <div>
-              <img src={Relieved} alt="alive"></img>
-              <div>
-                You have Survived an insignificant part of the Swamp...
-                <br />
-                You made it to a Camp.. and may rest for now..
-              </div>
-              <button onClick={null}>Onto the Next Journey..</button>
-            </div>
-          ) : null}
-          {this.state.gameWon === "gameLost" ? (
-            <div>
-              <img src={Death} alt="Death"></img>
-              <div>
-                Running from Death is futile..
-                <br />
-                Adventurer {this.state.playerName.toUpperCase()} has met their
-                Fate!
-              </div>
-            </div>
-          ) : null}
-        </div>
-        <div>
-          {this.state.gameWon === "ongoing" ? (
-            <div>
-              <table>
-                <tbody>{displayGameElements}</tbody>
-              </table>
-              <div>Survivor Name: {this.state.playerName}</div>
-              <div>
-                Health Points:{" "}
-                {this.state.healthPoints > 5 ? (
-                  <span style={{ color: "green" }}>
-                    {this.state.healthPoints}😊
-                  </span>
-                ) : (
-                  <span style={{ color: "red" }}>
-                    {this.state.healthPoints}💀
-                  </span>
-                )}
-              </div>
-            </div>
-          ) : null}
+          <Container fluid className="TopContainer">
+            <Row className="TopRow">
+              <Col sm={6} xs={12} className="Gameboard">
+                {this.state.gameWon === "gameWon" ? (
+                  <div>
+                    <img src={Relieved} alt="alive"></img>
+                    <div>
+                      You have Survived an insignificant part of the Swamp...
+                      <br />
+                      You made it to a Camp.. and may rest for now..
+                    </div>
+                    <button onClick={this.reset}>
+                      Onto the Next Journey..
+                    </button>
+                  </div>
+                ) : null}
+                {this.state.gameWon === "gameLost" ? (
+                  <div>
+                    <img src={Death} alt="Death"></img>
+                    <div>
+                      Running from Death is futile..
+                      <br />
+                      Adventurer {this.state.playerName.toUpperCase()} has met
+                      their Fate!
+                      <br />
+                      Perhaps if Time is rewound and if you had better luck?
+                    </div>
+                    <button onClick={this.reset}>Reverse Time!</button>
+                  </div>
+                ) : null}
+                {this.state.gameWon === "ongoing" ? (
+                  <table>
+                    <tbody>{displayGameElements}</tbody>
+                  </table>
+                ) : null}
+              </Col>
+              <Col sm={4} xs={12} offset={2} className="StatusBoard">
+                <Row>
+                  <div>Survivor Name: {this.state.playerName}</div>
+                </Row>
+                <Row>
+                  {this.state.gameWon === "ongoing" ? (
+                    <div>
+                      <div className="LifeStatus">Life:</div>
+                      <div>{hpBar}</div>
+                    </div>
+                  ) : null}
+                </Row>
+              </Col>
+            </Row>
+          </Container>
         </div>
         <div>
           {this.state.playerPosition.y !== 0 &&
           this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("up")}>⏫</button>
+            <button onClick={() => this.handleMove("up")}>↑</button>
           ) : null}
         </div>
         <div>
           {this.state.playerPosition.x !== 0 &&
           this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("left")}>⏪</button>
+            <button onClick={() => this.handleMove("left")}>←</button>
           ) : null}
           {this.state.playerPosition.x !== 7 &&
           this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("right")}>⏩</button>
+            <button onClick={() => this.handleMove("right")}>→</button>
           ) : null}
         </div>
         <div>
           {this.state.playerPosition.y !== 7 &&
           this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("down")}>⏬</button>
+            <button onClick={() => this.handleMove("down")}>↓</button>
           ) : null}
         </div>
         <div>
-          <button onClick={() => this.handleDangerZone()}>
-            Test Danger Zone
-          </button>
           <button onClick={() => this.checkCoordinates()}>Check Coords</button>
           <button onClick={() => this.addLife()}>add hp</button>
         </div>

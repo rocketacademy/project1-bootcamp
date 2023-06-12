@@ -1,6 +1,5 @@
-.App {
-  text-align: center;
-  position: static;
+* {
+  box-sizing: border-box;
 }
 
 .App-logo {
@@ -10,11 +9,60 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  color: white; */
+}
+/* .TopContainer {
+  background-color: #282c34;
+  min-height: 0vh;
+  min-width: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
+} */
+.TopRow {
+  /* background-color: #282c34; */
+  min-height: 50vh;
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-evenly;
+  /* color: white; */
+}
+.Gameboard {
+  background-image: linear-gradient(#000000, transparent, #000000),
+    url(./pictures/swampbg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border-color: magenta;
+  border-style: solid;
+  margin: 6px;
+  font-size: calc(10px + 1vmin);
+  text-align: center;
+  color: white;
+}
+
+.StatusBoard {
+  background-color: blueviolet;
+  border-radius: 40px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+}
+.LifeStatus {
+  text-align: center;
 }
