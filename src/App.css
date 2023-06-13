@@ -9,46 +9,42 @@
 
 .App-header {
   background-color: #282c34;
-  /* min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
 }
-/* .TopContainer {
-  background-color: #282c34;
-  min-height: 0vh;
-  min-width: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
 .TopRow {
-  /* background-color: #282c34; */
   min-height: 50vh;
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
-  justify-content: space-evenly;
-  /* color: white; */
 }
-.Gameboard {
-  background-image: linear-gradient(#000000, transparent, #000000),
+.BotRow {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: row;
+}
+.Gameboard-Low-HP {
+  background-image: linear-gradient(#000000, transparent, red),
     url(./pictures/swampbg.png);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 40px;
-  border-color: magenta;
+  /* border-radius: 40px; */
+  border-color: red;
   border-style: solid;
-  margin: 6px;
+  font-size: calc(10px + 1vmin);
+  text-align: center;
+  color: white;
+}
+.Gameboard-High-HP {
+  background-image: url(./pictures/swampbg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 40px; */
+  border-color: purple;
+  border-style: solid;
   font-size: calc(10px + 1vmin);
   text-align: center;
   color: white;
@@ -56,7 +52,7 @@
 
 .StatusBoard {
   background-color: blueviolet;
-  border-radius: 40px;
+  /* border-radius: 40px; */
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
@@ -65,4 +61,52 @@
 }
 .LifeStatus {
   text-align: center;
+}
+
+.MessageBoard {
+  /* border-radius: 40px; */
+  border-color: white;
+  border-style: solid;
+  font-size: calc(10px + 1vmin);
+  /* text-align: center; */
+  color: white;
+  /* justify-content: center; */
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+}
+.MessageHistoryTitle {
+  text-align: center;
+  justify-content: center;
+}
+
+.Messages {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+.KeysOverall {
+  /* border-radius: 40px; */
+  border-color: red;
+  border-style: solid;
+  /* justify-content: center;
+  align-items: center; */
+  text-align: center;
+}
+
+.topKey {
+  padding-top: 20px;
+  height: 98px;
+}
+
+.middleKey {
+  padding-top: 20px;
+  height: 98px;
+}
+
+.bottomKey {
+  padding-top: 20px;
+  height: 98px;
 }

@@ -4,15 +4,20 @@ import Relieved from "./pictures/relieved.png";
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 export default class GridBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      messageHistory: [],
       playerPosition: { x: 0, y: 7 },
       healthPoints: 15,
       gameWon: "ongoing",
       playerName: "",
       resultMessage: "",
+      openModal: false,
     };
   }
   componentDidMount = () => {
@@ -26,6 +31,14 @@ export default class GridBoard extends React.Component {
       playerName: name,
     });
   };
+  onClickModalButton = (e) => {
+    e.preventDefault();
+    this.setState({ openModal: true });
+  };
+  onCloseModal = () => {
+    this.setState({ openModal: false });
+  };
+
   keyPressed = (e) => {
     e.preventDefault();
     let key;
@@ -64,6 +77,7 @@ export default class GridBoard extends React.Component {
       gameWon: "ongoing",
       resultMessage: "",
       playerPosition: { x: 0, y: 7 },
+      messageHistory: [],
     });
   };
   handleMove = (direction) => {
@@ -71,37 +85,31 @@ export default class GridBoard extends React.Component {
       return;
     }
     let { x, y } = this.state.playerPosition;
-    const warningMessage = `You have reached the Border, You cannot move ${direction.toUpperCase()}!`;
     if (direction === "up") {
       if (y !== 0) {
         y -= 1;
       } else {
-        alert(warningMessage);
         return;
       }
     } else if (direction === "down") {
       if (y !== 7) {
         y += 1;
       } else {
-        alert(warningMessage);
         return;
       }
     } else if (direction === "left") {
       if (x !== 0) {
         x -= 1;
       } else {
-        alert(warningMessage);
         return;
       }
-    } else {
+    } else if (direction === "right") {
       if (x !== 7) {
         x += 1;
       } else {
-        alert(warningMessage);
         return;
       }
     }
-
     this.setState(
       {
         playerPosition: { x, y },
@@ -182,6 +190,13 @@ export default class GridBoard extends React.Component {
           this.state.playerPosition.y === 0
         ) {
           gameStatus = "gameWon";
+          let resultMessage = "You have made it into a Safe Zone... For now..";
+          let temporaryHistory = this.state.messageHistory;
+          temporaryHistory.push(resultMessage);
+          this.setState({
+            resultMessage: resultMessage,
+            messageHistory: temporaryHistory,
+          });
         } else if (saferSquares.some((tile) => tile.x === x && tile.y === y)) {
           console.log("safezone");
           this.handleSafeZone();
@@ -236,9 +251,12 @@ export default class GridBoard extends React.Component {
     if (health > 15) {
       health = 15;
     }
+    let temporaryHistory = this.state.messageHistory;
+    temporaryHistory.push(resultMessage);
     this.setState({
       resultMessage: resultMessage,
       healthPoints: health,
+      messageHistory: temporaryHistory,
     });
   };
   handleNeutralZone = () => {
@@ -269,9 +287,12 @@ export default class GridBoard extends React.Component {
     if (health > 15) {
       health = 15;
     }
+    let temporaryHistory = this.state.messageHistory;
+    temporaryHistory.push(resultMessage);
     this.setState({
       resultMessage: resultMessage,
       healthPoints: health,
+      messageHistory: temporaryHistory,
     });
   };
   handleDangerZone = () => {
@@ -306,9 +327,12 @@ export default class GridBoard extends React.Component {
     if (health > 15) {
       health = 15;
     }
+    let temporaryHistory = this.state.messageHistory;
+    temporaryHistory.push(resultMessage);
     this.setState({
       resultMessage: resultMessage,
       healthPoints: health,
+      messageHistory: temporaryHistory,
     });
   };
   render() {
@@ -430,23 +454,18 @@ export default class GridBoard extends React.Component {
       hpArray.push("❤️");
     }
     let hpBar = hpArray.join(" ");
-    // if (hpCount < 8) {
-    //   document.getElementById(
-    //     "Gameboard"
-    //   ).style.backgroundImage = `linear-gradient(#000000, transparent, #000000),
-    // url(./pictures/swampbg.png);`;
-    // }
-    //else {
-    //   document.getElementById(
-    //     "Gameboard"
-    //   ).style.backgroundImage = `url(./pictures/swampbg.png);`;
-    // }
+    let hpStatus;
+    if (hpCount < 8) {
+      hpStatus = "Gameboard-Low-HP";
+    } else {
+      hpStatus = "Gameboard-High-HP";
+    }
     return (
       <div>
         <div>
-          <Container fluid className="TopContainer">
+          <Container fluid className="Container">
             <Row className="TopRow">
-              <Col sm={6} xs={12} className="Gameboard">
+              <Col sm={{ span: 5, offset: 1 }} xs={12} className={hpStatus}>
                 {this.state.gameWon === "gameWon" ? (
                   <div>
                     <img src={Relieved} alt="alive"></img>
@@ -455,23 +474,25 @@ export default class GridBoard extends React.Component {
                       <br />
                       You made it to a Camp.. and may rest for now..
                     </div>
-                    <button onClick={this.reset}>
+                    <Button onClick={this.reset} variant="danger">
                       Onto the Next Journey..
-                    </button>
+                    </Button>
                   </div>
                 ) : null}
                 {this.state.gameWon === "gameLost" ? (
                   <div>
                     <img src={Death} alt="Death"></img>
                     <div>
-                      Running from Death is futile..
+                      Running from Death had proven futile..
                       <br />
                       Adventurer {this.state.playerName.toUpperCase()} has met
                       their Fate!
                       <br />
                       Perhaps if Time is rewound and if you had better luck?
                     </div>
-                    <button onClick={this.reset}>Reverse Time!</button>
+                    <Button onClick={this.reset} variant="success">
+                      Reverse Time!
+                    </Button>
                   </div>
                 ) : null}
                 {this.state.gameWon === "ongoing" ? (
@@ -480,7 +501,7 @@ export default class GridBoard extends React.Component {
                   </table>
                 ) : null}
               </Col>
-              <Col sm={4} xs={12} offset={2} className="StatusBoard">
+              <Col sm={{ span: 3, offset: 2 }} xs={12} className="StatusBoard">
                 <Row>
                   <div>Survivor Name: {this.state.playerName}</div>
                 </Row>
@@ -494,36 +515,122 @@ export default class GridBoard extends React.Component {
                 </Row>
               </Col>
             </Row>
+            <Row className="BotRow">
+              <Col sm={{ span: 5, offset: 1 }} xs={12} className="MessageBoard">
+                <Row className="MessageHistoryTitle" xs={2}>
+                  <Button onClick={this.onClickModalButton}>
+                    Event History
+                  </Button>
+                  <Modal
+                    open={this.state.openModal}
+                    onClose={this.onCloseModal}
+                  >
+                    {this.state.messageHistory.length > 0 ? (
+                      <div>
+                        {this.state.messageHistory.map((message, index) => (
+                          <p key={index}>
+                            Step {index + 1}: {message}
+                          </p>
+                        ))}
+                      </div>
+                    ) : (
+                      <h1> Player has not moved a Single Square yet!</h1>
+                    )}
+                  </Modal>
+                </Row>
+                <Row xs={10} className="Messages">
+                  <div>
+                    {this.state.resultMessage ? (
+                      <div>{this.state.resultMessage}</div>
+                    ) : (
+                      <div>
+                        Your Path will be revealed here.. Once you step on it..
+                      </div>
+                    )}
+                  </div>
+                </Row>
+              </Col>
+              <Col sm={{ span: 3, offset: 2 }} xs={12} className="KeysOverall">
+                <Row className="topKey">
+                  <div>
+                    {this.state.playerPosition.y !== 0 &&
+                    this.state.gameWon === "ongoing" ? (
+                      <Button
+                        onClick={() => this.handleMove("up")}
+                        variant="light"
+                        size="lg"
+                      >
+                        ↑
+                      </Button>
+                    ) : (
+                      <Button disabled variant="light" size="lg">
+                        ↑
+                      </Button>
+                    )}
+                  </div>
+                </Row>
+                <Row className="middleKey">
+                  <Col>
+                    {this.state.playerPosition.x !== 0 &&
+                    this.state.gameWon === "ongoing" ? (
+                      <Button
+                        onClick={() => this.handleMove("left")}
+                        variant="light"
+                        size="lg"
+                      >
+                        ←
+                      </Button>
+                    ) : (
+                      <Button disabled variant="light" size="lg">
+                        ←
+                      </Button>
+                    )}
+                  </Col>
+                  <Col>
+                    <div>
+                      {this.state.playerPosition.x !== 7 &&
+                      this.state.gameWon === "ongoing" ? (
+                        <Button
+                          onClick={() => this.handleMove("right")}
+                          variant="light"
+                          size="lg"
+                        >
+                          →
+                        </Button>
+                      ) : (
+                        <Button disabled variant="light" size="lg">
+                          →
+                        </Button>
+                      )}
+                    </div>
+                  </Col>
+                </Row>
+                <Row className="bottomKey">
+                  <div>
+                    {this.state.playerPosition.y !== 7 &&
+                    this.state.gameWon === "ongoing" ? (
+                      <Button
+                        onClick={() => this.handleMove("down")}
+                        variant="light"
+                        size="lg"
+                      >
+                        ↓
+                      </Button>
+                    ) : (
+                      <Button disabled variant="light" size="lg">
+                        ↓
+                      </Button>
+                    )}
+                  </div>
+                </Row>
+              </Col>
+            </Row>
           </Container>
         </div>
-        <div>
-          {this.state.playerPosition.y !== 0 &&
-          this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("up")}>↑</button>
-          ) : null}
-        </div>
-        <div>
-          {this.state.playerPosition.x !== 0 &&
-          this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("left")}>←</button>
-          ) : null}
-          {this.state.playerPosition.x !== 7 &&
-          this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("right")}>→</button>
-          ) : null}
-        </div>
-        <div>
-          {this.state.playerPosition.y !== 7 &&
-          this.state.gameWon === "ongoing" ? (
-            <button onClick={() => this.handleMove("down")}>↓</button>
-          ) : null}
-        </div>
+
         <div>
           <button onClick={() => this.checkCoordinates()}>Check Coords</button>
           <button onClick={() => this.addLife()}>add hp</button>
-        </div>
-        <div>
-          <div style={{ fontSize: 14 }}>{this.state.resultMessage}</div>
         </div>
       </div>
     );
