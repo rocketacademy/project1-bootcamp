@@ -18,14 +18,14 @@ export default class GridBoard extends React.Component {
       playerName: "",
       resultMessage: "",
       openModal: false,
+      survivedTimes: 0,
     };
   }
   componentDidMount = () => {
-    // let name = prompt("Declare your identity.. Foolish Adventurer..");
-    // if (!name) {
-    //   name = "Nameless Adventurer";
-    // }
-    let name = "TESTING";
+    let name = prompt("Declare your identity.. Foolish Adventurer..");
+    if (!name) {
+      name = "Traveller";
+    }
     document.addEventListener("keydown", this.keyPressed);
     this.setState({
       playerName: name,
@@ -56,9 +56,6 @@ export default class GridBoard extends React.Component {
     if (key) {
       this.handleMove(key);
     }
-  };
-  checkCoordinates = () => {
-    console.log(this.state.playerPosition);
   };
   addLife = () => {
     this.setState(
@@ -198,15 +195,12 @@ export default class GridBoard extends React.Component {
             messageHistory: temporaryHistory,
           });
         } else if (saferSquares.some((tile) => tile.x === x && tile.y === y)) {
-          console.log("safezone");
           this.handleSafeZone();
         } else if (dangerSquares.some((tile) => tile.x === x && tile.y === y)) {
-          console.log("dangerzone");
           this.handleDangerZone();
         } else if (
           neutralSquares.some((tile) => tile.x === x && tile.y === y)
         ) {
-          console.log("neutralzone");
           this.handleNeutralZone();
         }
         this.setState(
@@ -215,9 +209,16 @@ export default class GridBoard extends React.Component {
           },
           () => {
             let health = this.state.healthPoints;
-            console.log(`HP: ${health}`);
+            let deathMessage;
+            if (health < 0) {
+              deathMessage = this.state.resultMessage.concat(
+                ". YOU DIED.. THE END.."
+              );
+            }
             this.setState({
               gameWon: health < 1 ? "gameLost" : gameStatus,
+              resultMessage:
+                health < 1 ? deathMessage : this.state.resultMessage,
             });
           }
         );
@@ -455,10 +456,13 @@ export default class GridBoard extends React.Component {
     }
     let hpBar = hpArray.join(" ");
     let hpStatus;
+    let statusBoardStatus;
     if (hpCount < 8) {
       hpStatus = "Gameboard-Low-HP";
+      statusBoardStatus = "Statusboard-Low-HP";
     } else {
       hpStatus = "Gameboard-High-HP";
+      statusBoardStatus = "Statusboard-High-HP";
     }
     return (
       <div>
@@ -474,7 +478,7 @@ export default class GridBoard extends React.Component {
                       <br />
                       You made it to a Camp.. and may rest for now..
                     </div>
-                    <Button onClick={this.reset} variant="danger">
+                    <Button onClick={this.reset} variant="info">
                       Onto the Next Journey..
                     </Button>
                   </div>
@@ -501,14 +505,28 @@ export default class GridBoard extends React.Component {
                   </table>
                 ) : null}
               </Col>
-              <Col sm={{ span: 3, offset: 2 }} xs={12} className="StatusBoard">
-                <Row>
-                  <div>Survivor Name: {this.state.playerName}</div>
+              <Col
+                sm={{ span: 3, offset: 2 }}
+                xs={12}
+                className={statusBoardStatus}
+              >
+                <Row className="instructions">
+                  <div>
+                    Welcome to Poison Swamp <s>GAMBLING SIMULATOR</s> RPG!
+                    <br />
+                    <strong>Objective:</strong> Survive the Swamp by reaching
+                    the Camp on the top right corner of the grid! <br />
+                    <strong>Legend -</strong>
+                    <br /> YOUR POSITION: 🧍
+                    <br /> YOUR OBJECTIVE: ⛺<br /> ZONES: 🟩🟨🟪 <br />
+                    Each Zone color corresponds to the risk they contain!
+                  </div>
                 </Row>
                 <Row>
+                  <div className="Life">{this.state.playerName}'s Life:</div>
+
                   {this.state.gameWon === "ongoing" ? (
                     <div>
-                      <div className="LifeStatus">Life:</div>
                       <div>{hpBar}</div>
                     </div>
                   ) : null}
@@ -524,6 +542,8 @@ export default class GridBoard extends React.Component {
                   <Modal
                     open={this.state.openModal}
                     onClose={this.onCloseModal}
+                    dialogClassName="Modal"
+                    style={{ borderRadius: "40px" }}
                   >
                     {this.state.messageHistory.length > 0 ? (
                       <div>
@@ -626,11 +646,6 @@ export default class GridBoard extends React.Component {
               </Col>
             </Row>
           </Container>
-        </div>
-
-        <div>
-          <button onClick={() => this.checkCoordinates()}>Check Coords</button>
-          <button onClick={() => this.addLife()}>add hp</button>
         </div>
       </div>
     );

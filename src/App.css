@@ -8,7 +8,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url(./pictures/bg.jpeg);
+  background-size: cover;
+}
+
+.Container {
+  height: 100vh;
+  width: 100vh;
+  padding: 0px;
+}
+@media screen and (min-width: 700px) {
+  .Container {
+    padding: 100px;
+  }
 }
 .TopRow {
   min-height: 50vh;
@@ -28,7 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 40px; */
+  border-radius: 40px 40px 0 0;
   border-color: red;
   border-style: solid;
   font-size: calc(10px + 1vmin);
@@ -42,38 +54,53 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 40px; */
+  border-radius: 40px 40px 0px 0px;
   border-color: purple;
   border-style: solid;
   font-size: calc(10px + 1vmin);
   text-align: center;
   color: white;
+  min-height: 30vh;
 }
 
-.StatusBoard {
-  background-color: blueviolet;
-  /* border-radius: 40px; */
-  justify-content: space-evenly;
+.Statusboard-High-HP {
+  background-image: url(./pictures/bloom.png);
+  background-size: cover;
+  border-radius: 40px 40px 0 0;
+  border-color: brown;
+  border-style: solid;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   display: flex;
-  font-size: calc(10px + 2vmin);
+  min-height: 30vh;
+}
+.Statusboard-Low-HP {
+  background-image: url(./pictures/wilting.png);
+  background-size: cover;
+  border-radius: 40px 40px 0 0;
+  border-color: brown;
+  border-style: solid;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  min-height: 30vh;
 }
 .LifeStatus {
   text-align: center;
 }
 
 .MessageBoard {
-  /* border-radius: 40px; */
+  background-color: #282c34;
+  border-radius: 0 0 40px 40px;
   border-color: white;
   border-style: solid;
   font-size: calc(10px + 1vmin);
-  /* text-align: center; */
   color: white;
-  /* justify-content: center; */
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
+  min-height: 20vh;
 }
 .MessageHistoryTitle {
   text-align: center;
@@ -88,12 +115,12 @@
   height: 250px;
 }
 .KeysOverall {
-  /* border-radius: 40px; */
-  border-color: red;
+  border-radius: 0 0 40px 40px;
+  border-color: blue;
   border-style: solid;
-  /* justify-content: center;
-  align-items: center; */
   text-align: center;
+  background-image: url(./pictures/gameanalog.png);
+  background-size: cover;
 }
 
 .topKey {
@@ -109,4 +136,21 @@
 .bottomKey {
   padding-top: 20px;
   height: 98px;
+}
+
+.Life {
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  background-color: lightgray;
+  opacity: 0.7;
+}
+
+.instructions {
+  font-size: 12 !important;
+  background-color: darkgrey;
+  opacity: 0.9;
+}
+
+.Modal {
+  border-radius: 20px;
 }
