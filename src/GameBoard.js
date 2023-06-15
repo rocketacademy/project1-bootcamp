@@ -57,16 +57,6 @@ export default class GridBoard extends React.Component {
       this.handleMove(key);
     }
   };
-  addLife = () => {
-    this.setState(
-      {
-        healthPoints: this.state.healthPoints + 1,
-      },
-      () => {
-        console.log(`ADDED 1 HP, NEW HP: ${this.state.healthPoints}`);
-      }
-    );
-  };
   reset = () => {
     document.addEventListener("keydown", this.keyPressed);
     this.setState({
@@ -228,7 +218,6 @@ export default class GridBoard extends React.Component {
   handleSafeZone = () => {
     let resultMessage;
     let rngResult = Math.ceil(Math.random() * 100);
-    console.log(`RNG: ${rngResult}`);
     let health = this.state.healthPoints;
     if (rngResult >= 92) {
       resultMessage =
@@ -263,7 +252,6 @@ export default class GridBoard extends React.Component {
   handleNeutralZone = () => {
     let resultMessage;
     let rngResult = Math.ceil(Math.random() * 100);
-    console.log(`RNG: ${rngResult}`);
     let health = this.state.healthPoints;
     if (rngResult >= 94) {
       resultMessage =
@@ -299,7 +287,6 @@ export default class GridBoard extends React.Component {
   handleDangerZone = () => {
     let resultMessage;
     let rngResult = Math.ceil(Math.random() * 100);
-    console.log(`RNG: ${rngResult}`);
     let health = this.state.healthPoints;
     if (rngResult >= 96) {
       resultMessage =
@@ -449,15 +436,15 @@ export default class GridBoard extends React.Component {
     if (this.state.gameWon !== "ongoing") {
       document.removeEventListener("keydown", this.keyPressed);
     }
-    let hpCount = this.state.healthPoints;
+
     let hpArray = [];
-    for (let i = 0; i < hpCount; i++) {
+    for (let i = 0; i < this.state.healthPoints; i++) {
       hpArray.push("❤️");
     }
     let hpBar = hpArray.join(" ");
     let hpStatus;
     let statusBoardStatus;
-    if (hpCount < 8) {
+    if (this.state.healthPoints < 8) {
       hpStatus = "Gameboard-Low-HP";
       statusBoardStatus = "Statusboard-Low-HP";
     } else {
@@ -506,13 +493,13 @@ export default class GridBoard extends React.Component {
                 ) : null}
               </Col>
               <Col
-                sm={{ span: 3, offset: 2 }}
+                sm={{ span: 3, offset: 1 }}
                 xs={12}
                 className={statusBoardStatus}
               >
                 <Row className="instructions">
                   <div>
-                    Welcome to Poison Swamp <s>GAMBLING SIMULATOR</s> RPG!
+                    Welcome to Poison Swamp RPG!
                     <br />
                     <strong>Objective:</strong> Survive the Swamp by reaching
                     the Camp on the top right corner of the grid! <br />
@@ -570,7 +557,7 @@ export default class GridBoard extends React.Component {
                   </div>
                 </Row>
               </Col>
-              <Col sm={{ span: 3, offset: 2 }} xs={12} className="KeysOverall">
+              <Col sm={{ span: 3, offset: 1 }} xs={12} className="KeysOverall">
                 <Row className="topKey">
                   <div>
                     {this.state.playerPosition.y !== 0 &&
