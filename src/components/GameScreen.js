@@ -16,7 +16,7 @@ function GameScreen() {
   }, []);
 
   return (
-    <div ref={mapContainer} style={{ width: "100%", height: "600px" }}></div>
+    <div ref={mapContainer} style={{ width: "100%", height: "100vh" }}></div>
   );
 }
 
