@@ -1,15 +1,16 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# Where Ah
 
-https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
+*Where Ah* is a frontend web app to test and enhance your geographical knowledge of Singapore. This project is [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
 
-## Available Scripts
+## Usage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
+1. **Start the game**: Click on the "Start Game" button from the welcome screen.
+2. **Guess the location**: You'll see a place name. Drop a pin on the Singapore map, and try to get as close as possible to the actual location.
+3. **Submit your guess**: Click on the "Guess" button to confirm your pin location and submit your guess.
+4. **See your score**: After all 5 rounds are completed, see how well you did!
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* HTML, CSS and React with [Create React App](https://create-react-app.dev/)
+* [MapLibre GL JS](https://maplibre.org/projects/maplibre-gl-js/) for the interactive map
+* [Mantine UI](https://ui.mantine.dev/) for UI components
