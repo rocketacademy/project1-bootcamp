@@ -6,8 +6,8 @@
 
 1. **Start the game**: Click on the "Start Game" button from the welcome screen.
 2. **Guess the location**: You'll see a place name. Drop a pin on the Singapore map, and try to get as close as possible to the actual location.
-3. **Submit your guess**: Click on the "Guess" button to confirm your pin location and submit your guess.
-4. **See your score**: After all 5 rounds are completed, see how well you did!
+3. **Submit your guess**: Click on the "Guess" button to confirm your pin location.
+4. **See your score**: The closer your pin to the actual location, the higher your score. You'll see your total score after 5 rounds.
 
 ## Technologies Used
 
