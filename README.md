@@ -1,6 +1,6 @@
 # Where Ah
 
-*Where Ah* is a frontend web app to test and enhance your geographical knowledge of Singapore. This project is [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
+*Where Ah* is a frontend web app to test and improve your geographical knowledge of Singapore. This is [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
 
 ## Usage
 
