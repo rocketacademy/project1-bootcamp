@@ -41,7 +41,7 @@ function GameScreen() {
       m="lg"
     >
       <Paper px="md">
-        <Text align="center" py="sm">
+        <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" py="sm">
           <span id="place-name">{placeName}</span> where ah?
         </Text>
       </Paper>
@@ -52,11 +52,11 @@ function GameScreen() {
 
       <Paper className={classes.bottomPaper}>
         <Flex w="100%" align="center" justify="space-between" px="md" py="sm">
-          <Text size="1.5rem">Question: {currentQuestion}/5</Text>
+          <Text size="lg">Question: {currentQuestion}/5</Text>
 
           <Button
             compact
-            size="1.5rem"
+            size="lg"
             styles={{ root: { padding: "0.5rem" } }}
             onClick={() => {
               // TODO
@@ -65,7 +65,7 @@ function GameScreen() {
             Confirm
           </Button>
 
-          <Text size="1.5rem">Score: {score}</Text>
+          <Text size="lg">Score: {score}</Text>
         </Flex>
       </Paper>
     </Flex>
