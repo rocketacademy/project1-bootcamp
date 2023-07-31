@@ -35,7 +35,7 @@ function GameScreen() {
     <Flex
       w={`calc(100% - 2 * ${theme.spacing.lg})`}
       maw="900px"
-      h="100%"
+      h={`calc(100dvh - 2 * ${theme.spacing.lg})`}
       gap="lg"
       direction="column"
       m="lg"
