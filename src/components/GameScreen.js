@@ -13,13 +13,6 @@ import Map from "./Map.js";
 const useStyles = createStyles((theme) => ({
   mapContainer: {
     flex: 1,
-    borderRadius: `${theme.radius.sm}`,
-    overflow: "hidden",
-  },
-  bottomPaper: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
 }));
 
@@ -32,15 +25,8 @@ function GameScreen() {
   const { classes } = useStyles();
 
   return (
-    <Flex
-      w={`calc(100% - 2 * ${theme.spacing.lg})`}
-      maw="900px"
-      h={`calc(100dvh - 2 * ${theme.spacing.lg})`}
-      gap="lg"
-      direction="column"
-      m="lg"
-    >
-      <Paper px="md">
+    <Flex w="100%" maw="900px" h="100dvh" direction="column">
+      <Paper px="md" radius="0">
         <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" py="sm">
           <span id="place-name">{placeName}</span> where ah?
         </Text>
@@ -50,7 +36,7 @@ function GameScreen() {
         <Map />
       </div>
 
-      <Paper className={classes.bottomPaper}>
+      <Paper radius="0">
         <Flex w="100%" align="center" justify="space-between" px="md" py="sm">
           <Text size="lg">Question: {currentQuestion}/5</Text>
 
