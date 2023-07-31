@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  // Container,
   Flex,
   Paper,
   Button,
@@ -37,21 +36,26 @@ function GameScreen() {
       </div>
 
       <Paper radius="0">
-        <Flex w="100%" align="center" justify="space-between" px="md" py="sm">
-          <Text size="lg">Question: {currentQuestion}/5</Text>
+        <Flex w="100%" align="center" justify="space-between" px="lg" py="sm">
+          <Flex direction="column" align="flex-start">
+            <Text size={`calc(1.25 * ${theme.fontSizes.lg})`}>
+              Question: {currentQuestion}/5
+            </Text>
+            <Text size={`calc(1.25 * ${theme.fontSizes.lg})`}>
+              Score: {score}
+            </Text>
+          </Flex>
 
           <Button
             compact
-            size="lg"
-            styles={{ root: { padding: "0.5rem" } }}
+            size={`calc(1.5 * ${theme.fontSizes.lg})`}
+            styles={{ root: { padding: "0.75rem" } }}
             onClick={() => {
               // TODO
             }}
           >
             Confirm
           </Button>
-
-          <Text size="lg">Score: {score}</Text>
         </Flex>
       </Paper>
     </Flex>
