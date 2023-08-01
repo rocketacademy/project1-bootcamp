@@ -18,13 +18,11 @@ function Map() {
 
     map.dragRotate.disable();
     map.touchZoomRotate.disableRotation();
-    map.fitBounds(
-      [
-        [103.6059, 1.1644],
-        [104.0839, 1.4705],
-      ],
-      { padding: { left: 50, right: -30 } }
-    );
+    map.fitBounds([
+      // Bounding box is [103.6059, 1.1644], [104.0839, 1.4705]
+      [103.5659, 1.1644],
+      [104.0739, 1.4705],
+    ]);
 
     map.on("click", (event) => {
       document.getElementById("info").innerHTML =
