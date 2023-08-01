@@ -26,8 +26,11 @@ function GameScreen() {
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
-        <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" py="sm">
-          <span id="place-name">{placeName}</span> where ah?
+        <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" pt="sm">
+          <span id="place-name">{placeName}</span>
+        </Text>
+        <Text size="md" pb="sm">
+          where ah?
         </Text>
       </Paper>
 

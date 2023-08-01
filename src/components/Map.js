@@ -10,11 +10,21 @@ function Map() {
       container: mapContainer.current,
       style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
       center: [103.8198, 1.3521],
-      zoom: 10,
+      maxBounds: [
+        [103.33, 0.85],
+        [104.31, 1.79],
+      ],
     });
 
     map.dragRotate.disable();
     map.touchZoomRotate.disableRotation();
+    map.fitBounds(
+      [
+        [103.6059, 1.1644],
+        [104.0839, 1.4705],
+      ],
+      { padding: { left: 50, right: -30 } }
+    );
 
     map.on("click", (event) => {
       document.getElementById("info").innerHTML =
@@ -23,7 +33,9 @@ function Map() {
         `${JSON.stringify(event.point)}<br />${
           // e.lngLat is the longitude, latitude geographical position of the event
           JSON.stringify(event.lngLat.wrap())
-        }`;
+        }<br /> zoom:${map.getZoom()}`;
+
+      console.log(JSON.stringify(event.lngLat.wrap()));
 
       if (marker.current) {
         marker.current.remove();
@@ -32,6 +44,8 @@ function Map() {
       marker.current = new maplibregl.Marker({ color: "red" })
         .setLngLat(event.lngLat)
         .addTo(map);
+
+      console.log();
     });
 
     return () => {
