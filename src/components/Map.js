@@ -30,7 +30,7 @@ function Map() {
         // to the top-left corner of the map
         `${JSON.stringify(event.point)}<br />${
           // e.lngLat is the longitude, latitude geographical position of the event
-          JSON.stringify(event.lngLat.wrap())
+          JSON.stringify(event.lngLat)
         }<br /> zoom:${map.getZoom()}`;
 
       console.log(JSON.stringify(event.lngLat.wrap()));
