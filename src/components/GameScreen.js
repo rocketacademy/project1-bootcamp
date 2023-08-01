@@ -38,10 +38,10 @@ function GameScreen() {
       <Paper radius="0">
         <Flex w="100%" align="center" justify="space-between" px="lg" py="sm">
           <Flex direction="column" align="flex-start">
-            <Text size={`calc(1.25 * ${theme.fontSizes.lg})`}>
+            <Text size={`calc(1.0 * ${theme.fontSizes.lg})`}>
               Question: {currentQuestion}/5
             </Text>
-            <Text size={`calc(1.25 * ${theme.fontSizes.lg})`}>
+            <Text size={`calc(1.0 * ${theme.fontSizes.lg})`}>
               Score: {score}
             </Text>
           </Flex>
