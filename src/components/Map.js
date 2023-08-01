@@ -3,6 +3,7 @@ import maplibregl from "maplibre-gl";
 
 function Map() {
   const mapContainer = useRef(null);
+  const marker = useRef(null);
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -12,7 +13,33 @@ function Map() {
       zoom: 10,
     });
 
-    return () => map.remove();
+    map.dragRotate.disable();
+    map.touchZoomRotate.disableRotation();
+
+    map.on("click", (event) => {
+      document.getElementById("info").innerHTML =
+        // e.point is the x, y coordinates of the mousemove event relative
+        // to the top-left corner of the map
+        `${JSON.stringify(event.point)}<br />${
+          // e.lngLat is the longitude, latitude geographical position of the event
+          JSON.stringify(event.lngLat.wrap())
+        }`;
+
+      if (marker.current) {
+        marker.current.remove();
+      }
+
+      marker.current = new maplibregl.Marker({ color: "red" })
+        .setLngLat(event.lngLat)
+        .addTo(map);
+    });
+
+    return () => {
+      if (marker.current) {
+        marker.current.remove();
+      }
+      map.remove();
+    };
   }, []);
 
   return (

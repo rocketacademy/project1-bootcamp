@@ -31,6 +31,12 @@ function GameScreen() {
         </Text>
       </Paper>
 
+      <Paper>
+        <Text size="md">
+          <pre id="info"></pre>
+        </Text>
+      </Paper>
+
       <div className={classes.mapContainer}>
         <Map />
       </div>
