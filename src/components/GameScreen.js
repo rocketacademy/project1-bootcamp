@@ -29,7 +29,7 @@ function GameScreen() {
         <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" pt="sm">
           <span id="place-name">{placeName}</span>
         </Text>
-        <Text size="md" pb="sm">
+        <Text size="lg" pb="sm">
           where ah?
         </Text>
       </Paper>
