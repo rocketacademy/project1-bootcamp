@@ -41,15 +41,9 @@ function Map() {
     });
 
     map.on("click", (event) => {
-      document.getElementById("info").innerHTML =
-        // e.point is the x, y coordinates of the mousemove event relative
-        // to the top-left corner of the map
-        `${JSON.stringify(event.point)}<br />${
-          // e.lngLat is the longitude, latitude geographical position of the event
-          JSON.stringify(event.lngLat)
-        }<br /> zoom:${map.getZoom()}`;
-
+      // Log info for debugging
       console.log(JSON.stringify(event.lngLat.wrap()));
+      console.log(`zoom: ${map.getZoom()}`);
 
       if (marker.current) {
         marker.current.remove();
