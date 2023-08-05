@@ -23,6 +23,10 @@ function GameScreen() {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
+  function handleConfirmClick() {
+    // TODO
+  }
+
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
@@ -53,9 +57,7 @@ function GameScreen() {
             compact
             size={`calc(1.5 * ${theme.fontSizes.lg})`}
             styles={{ root: { padding: "0.75rem" } }}
-            onClick={() => {
-              // TODO
-            }}
+            onClick={handleConfirmClick}
           >
             Confirm
           </Button>

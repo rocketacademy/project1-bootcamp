@@ -7,6 +7,8 @@
     "@emotion/react": "^11.11.1",
     "@mantine/core": "^6.0.17",
     "@mantine/hooks": "^6.0.17",
+    "@turf/distance": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
     "gh-pages": "^5.0.0",
     "maplibre-gl": "^3.2.1",
     "react": "^18.1.0",

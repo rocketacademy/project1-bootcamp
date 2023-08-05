@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useHover } from "@mantine/hooks";
 import maplibregl from "maplibre-gl";
+import distance from "@turf/distance";
+import { point } from "@turf/helpers";
 
 function Map() {
   const mapContainer = useRef(null);
@@ -30,6 +32,8 @@ function Map() {
     ]);
     map.getCanvas().style.cursor = "none";
 
+    const testPoint = point([103.85561, 1.29326]);
+
     map.on("mousemove", (event) => {
       if (aimMarker.current) {
         aimMarker.current.remove();
@@ -41,9 +45,14 @@ function Map() {
     });
 
     map.on("click", (event) => {
+      const eventCoords = event.lngLat.wrap();
+
       // Log info for debugging
-      console.log(JSON.stringify(event.lngLat.wrap()));
+      console.log(JSON.stringify(eventCoords));
       console.log(`zoom: ${map.getZoom()}`);
+      console.log(
+        distance(point([eventCoords.lng, eventCoords.lat]), testPoint)
+      );
 
       if (marker.current) {
         marker.current.remove();
