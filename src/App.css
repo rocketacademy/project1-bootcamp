@@ -15,6 +15,10 @@
   font-weight: bold;
 }
 
+.maplibregl-canvas-container {
+  cursor: url("/public/crosshair.cur"), crosshair !important;
+}
+
 .maplibregl-marker {
-  cursor: none !important;
+  cursor: url("/public/crosshair.cur"), crosshair;
 }

@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { useHover } from "@mantine/hooks";
 import maplibregl from "maplibre-gl";
 import distance from "@turf/distance";
 import { point } from "@turf/helpers";
@@ -7,7 +6,6 @@ import { point } from "@turf/helpers";
 function Map() {
   const mapContainer = useRef(null);
   const marker = useRef(null);
-  const aimMarker = useRef(null);
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -20,8 +18,6 @@ function Map() {
       ],
     });
 
-    const currentMapContainer = mapContainer.current;
-
     // Customise map style and interaction
     map.dragRotate.disable();
     map.touchZoomRotate.disableRotation();
@@ -30,19 +26,8 @@ function Map() {
       [103.5659, 1.1644],
       [104.0739, 1.4705],
     ]);
-    map.getCanvas().style.cursor = "none";
 
     const testPoint = point([103.85561, 1.29326]);
-
-    map.on("mousemove", (event) => {
-      if (aimMarker.current) {
-        aimMarker.current.remove();
-      }
-
-      aimMarker.current = new maplibregl.Marker({ color: "grey" })
-        .setLngLat(event.lngLat)
-        .addTo(map);
-    });
 
     map.on("click", (event) => {
       const eventCoords = event.lngLat.wrap();
@@ -63,25 +48,11 @@ function Map() {
         .addTo(map);
     });
 
-    const handleMouseLeave = () => {
-      console.log("mouseleave");
-      if (aimMarker.current) {
-        aimMarker.current.remove();
-      }
-    };
-
-    currentMapContainer.addEventListener("mouseleave", handleMouseLeave);
-
     return () => {
       if (marker.current) {
         marker.current.remove();
       }
-      if (aimMarker.current) {
-        aimMarker.current.remove();
-      }
-      map.off("mousemove");
       map.off("click");
-      currentMapContainer.removeEventListener("mouseleave", handleMouseLeave);
       map.remove();
     };
   }, []);
