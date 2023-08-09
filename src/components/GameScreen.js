@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Flex,
   Paper,
@@ -28,9 +28,25 @@ function GameScreen() {
   const [guessLnglat, setGuessLnglat] = useState(null);
 
   const placeMarker = useRef(null);
+  const confirmRef = useRef(null);
 
   const theme = useMantineTheme();
   const { classes } = useStyles();
+
+  useEffect(() => {
+    const handleConfirmKey = (event) => {
+      if (event.key === " ") {
+        event.preventDefault();
+        confirmRef.current.click();
+      }
+    };
+
+    window.addEventListener("keydown", handleConfirmKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleConfirmKey);
+    };
+  }, []);
 
   function handleConfirmClick() {
     // Log debug info
@@ -119,6 +135,7 @@ function GameScreen() {
             compact
             size={`calc(1.5 * ${theme.fontSizes.lg})`}
             styles={{ root: { padding: "0.75rem" } }}
+            ref={confirmRef}
             onClick={handleConfirmClick}
           >
             Confirm
