@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
 function GameScreen() {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
-  const placeName = "<<Place Name>>";
+  const [placeName, setPlaceName] = useState("");
 
   const theme = useMantineTheme();
   const { classes } = useStyles();
@@ -31,7 +31,7 @@ function GameScreen() {
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
         <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" pt="sm">
-          <span id="place-name">{placeName}</span>
+          <span id="place-name">{placeName} MRT</span>
         </Text>
         <Text size="lg" pb="sm">
           where ah?
@@ -39,7 +39,7 @@ function GameScreen() {
       </Paper>
 
       <div className={classes.mapContainer}>
-        <Map />
+        <Map setPlaceName={setPlaceName} />
       </div>
 
       <Paper radius="0">

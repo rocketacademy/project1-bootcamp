@@ -2,9 +2,9 @@ import React, { useRef, useEffect } from "react";
 import maplibregl from "maplibre-gl";
 import distance from "@turf/distance";
 import { point } from "@turf/helpers";
-import mrtStations from "../data/mrt_stations.json";
+import places from "../data/mrt_stations.json";
 
-function Map() {
+function Map({ setPlaceName }) {
   const mapContainer = useRef(null);
   const marker = useRef(null);
 
@@ -27,6 +27,9 @@ function Map() {
       [103.5659, 1.1644],
       [104.0739, 1.4705],
     ]);
+
+    const place = places[Math.floor(Math.random() * places.length)];
+    setPlaceName(place.name);
 
     const testPoint = point([103.85561, 1.29326]);
 
