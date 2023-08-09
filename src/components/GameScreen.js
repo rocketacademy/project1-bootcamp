@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Flex,
   Paper,
@@ -7,6 +7,9 @@ import {
   createStyles,
   useMantineTheme,
 } from "@mantine/core";
+import { Marker } from "maplibre-gl";
+import { point } from "@turf/helpers";
+import distance from "@turf/distance";
 import Map from "./Map.js";
 
 const useStyles = createStyles((theme) => ({
@@ -19,12 +22,25 @@ function GameScreen() {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [placeName, setPlaceName] = useState("");
+  const [placeLnglat, setPlaceLnglat] = useState(null);
+  const [guessLnglat, setGuessLnglat] = useState(null);
+
+  const placeMarker = useRef(null);
 
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
   function handleConfirmClick() {
-    // TODO
+    // Log debug info
+    console.log(guessLnglat);
+    console.log(placeLnglat);
+    console.log(
+      `distance: ${distance(
+        point([guessLnglat.lng, guessLnglat.lat]),
+        point([placeLnglat.lng, placeLnglat.lat])
+      )}`
+    );
+    placeMarker.current = new Marker({ color: "blue" }).setLngLat(guessLnglat);
   }
 
   return (
@@ -39,7 +55,11 @@ function GameScreen() {
       </Paper>
 
       <div className={classes.mapContainer}>
-        <Map setPlaceName={setPlaceName} />
+        <Map
+          setPlaceName={setPlaceName}
+          setPlaceLnglat={setPlaceLnglat}
+          setGuessLnglat={setGuessLnglat}
+        />
       </div>
 
       <Paper radius="0">

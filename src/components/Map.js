@@ -1,15 +1,13 @@
-import React, { useRef, useEffect } from "react";
-import maplibregl from "maplibre-gl";
-import distance from "@turf/distance";
-import { point } from "@turf/helpers";
+import React, { useEffect, useRef } from "react";
+import { Map as MaplibreMap, Marker } from "maplibre-gl";
 import places from "../data/mrt_stations.json";
 
-function Map({ setPlaceName }) {
+function Map({ setPlaceName, setPlaceLnglat, setGuessLnglat }) {
   const mapContainer = useRef(null);
-  const marker = useRef(null);
+  const guessMarker = useRef(null);
 
   useEffect(() => {
-    const map = new maplibregl.Map({
+    const map = new MaplibreMap({
       container: mapContainer.current,
       style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
       center: [103.8198, 1.3521],
@@ -29,37 +27,40 @@ function Map({ setPlaceName }) {
     ]);
 
     const place = places[Math.floor(Math.random() * places.length)];
+    const initPlaceLnglat = place.coords;
+
     setPlaceName(place.name);
+    setPlaceLnglat(initPlaceLnglat);
 
-    const testPoint = point([103.85561, 1.29326]);
+    // Handle click on map
+    const handleMapClick = (event) => {
+      const lnglat = event.lngLat.wrap();
 
-    map.on("click", (event) => {
-      const eventCoords = event.lngLat.wrap();
-
-      // Log info for debugging
-      console.log(JSON.stringify(eventCoords));
-      console.log(`zoom: ${map.getZoom()}`);
-      console.log(
-        distance(point([eventCoords.lng, eventCoords.lat]), testPoint)
-      );
-
-      if (marker.current) {
-        marker.current.remove();
+      if (guessMarker.current) {
+        guessMarker.current.remove();
       }
 
-      marker.current = new maplibregl.Marker({ color: "red" })
-        .setLngLat(event.lngLat)
+      guessMarker.current = new Marker({ color: "red" })
+        .setLngLat(lnglat)
         .addTo(map);
-    });
+
+      setGuessLnglat(lnglat);
+
+      // Log debug info
+      console.log(JSON.stringify(lnglat));
+      console.log(`zoom: ${map.getZoom()}`);
+    };
+
+    map.on("click", handleMapClick);
 
     return () => {
-      if (marker.current) {
-        marker.current.remove();
+      if (guessMarker.current) {
+        guessMarker.current.remove();
       }
       map.off("click");
       map.remove();
     };
-  }, []);
+  }, [setPlaceName, setPlaceLnglat, setGuessLnglat]);
 
   return (
     <div
