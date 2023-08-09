@@ -16,9 +16,9 @@
 }
 
 .maplibregl-canvas-container {
-  cursor: url("/public/crosshair.cur"), crosshair !important;
+  cursor: url("crosshair.cur"), crosshair !important;
 }
 
 .maplibregl-marker {
-  cursor: url("/public/crosshair.cur"), crosshair;
+  cursor: url("crosshair.cur"), crosshair;
 }

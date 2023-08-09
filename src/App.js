@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import ".//assets/App.css";
 import GameScreen from "./components/GameScreen";
 
 function App() {

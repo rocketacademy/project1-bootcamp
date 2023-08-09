@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import maplibregl from "maplibre-gl";
 import distance from "@turf/distance";
 import { point } from "@turf/helpers";
+import mrtStations from "../data/mrt_stations.json";
 
 function Map() {
   const mapContainer = useRef(null);
