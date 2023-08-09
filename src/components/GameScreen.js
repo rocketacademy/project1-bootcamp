@@ -50,6 +50,38 @@ function GameScreen() {
     placeMarker.current = new Marker({ color: "blue" })
       .setLngLat(placeLnglat)
       .addTo(map);
+
+    const lineData = {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "LineString",
+        coordinates: [
+          [guessLnglat.lng, guessLnglat.lat],
+          [placeLnglat.lng, placeLnglat.lat],
+        ],
+      },
+    };
+
+    if (map.getSource("line-source")) {
+      map.getSource("line-source").setData(lineData);
+    } else {
+      map.addSource("line-source", {
+        type: "geojson",
+        data: lineData,
+      });
+
+      map.addLayer({
+        id: "line-layer",
+        type: "line",
+        source: "line-source",
+        paint: {
+          "line-color": "blue",
+          "line-width": 3,
+          "line-dasharray": [2, 2],
+        },
+      });
+    }
   }
 
   return (
