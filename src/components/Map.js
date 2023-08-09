@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
 import places from "../data/mrt_stations.json";
 
-function Map({ setPlaceName, setPlaceLnglat, setGuessLnglat }) {
+function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
   const mapContainer = useRef(null);
   const guessMarker = useRef(null);
 
@@ -16,6 +16,8 @@ function Map({ setPlaceName, setPlaceLnglat, setGuessLnglat }) {
         [104.31, 1.79],
       ],
     });
+
+    setMap(map);
 
     // Customise map style and interaction
     map.dragRotate.disable();
@@ -60,7 +62,7 @@ function Map({ setPlaceName, setPlaceLnglat, setGuessLnglat }) {
       map.off("click");
       map.remove();
     };
-  }, [setPlaceName, setPlaceLnglat, setGuessLnglat]);
+  }, [setMap, setPlaceName, setPlaceLnglat, setGuessLnglat]);
 
   return (
     <div

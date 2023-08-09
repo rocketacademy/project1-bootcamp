@@ -21,6 +21,8 @@ const useStyles = createStyles((theme) => ({
 function GameScreen() {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
+
+  const [map, setMap] = useState(null);
   const [placeName, setPlaceName] = useState("");
   const [placeLnglat, setPlaceLnglat] = useState(null);
   const [guessLnglat, setGuessLnglat] = useState(null);
@@ -40,7 +42,14 @@ function GameScreen() {
         point([placeLnglat.lng, placeLnglat.lat])
       )}`
     );
-    placeMarker.current = new Marker({ color: "blue" }).setLngLat(guessLnglat);
+
+    if (placeMarker.current) {
+      placeMarker.current.remove();
+    }
+
+    placeMarker.current = new Marker({ color: "blue" })
+      .setLngLat(placeLnglat)
+      .addTo(map);
   }
 
   return (
@@ -56,6 +65,7 @@ function GameScreen() {
 
       <div className={classes.mapContainer}>
         <Map
+          setMap={setMap}
           setPlaceName={setPlaceName}
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
