@@ -65,7 +65,8 @@ function GameScreen() {
       )
     );
 
-    // Reset map bounds
+    // Reset map view
+    map.setCenter([103.82, map.getCenter().lat]);
     map.fitBounds([
       [103.5659, 1.1644],
       [104.0739, 1.4705],

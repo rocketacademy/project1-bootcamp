@@ -21,16 +21,19 @@ function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
       ],
     });
 
-    setMap(map);
+    map.setCenter([103.82, map.getCenter().lat]);
 
-    // Customise map style and interaction
-    map.dragRotate.disable();
-    map.touchZoomRotate.disableRotation();
     map.fitBounds([
       // Bounding box is [103.6059, 1.1644], [104.0839, 1.4705]
       [103.5659, 1.1644],
       [104.0739, 1.4705],
     ]);
+
+    // Customise map style and interaction
+    map.dragRotate.disable();
+    map.touchZoomRotate.disableRotation();
+
+    setMap(map);
 
     const place = placesRef.current.at(-1);
     const initPlaceLnglat = place.coords;
