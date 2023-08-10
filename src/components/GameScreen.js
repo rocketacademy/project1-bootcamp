@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
 
 function GameScreen() {
   const [totalScore, setTotalScore] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [questionNum, setQuestionNum] = useState(1);
   const [showScoreOverlay, setShowScoreOverlay] = useState(false);
 
   const [map, setMap] = useState(null);
@@ -119,6 +119,8 @@ function GameScreen() {
   }
 
   function handleNextClick() {
+    setQuestionNum((prevNum) => prevNum + 1);
+
     // Hide score overlay
     setShowScoreOverlay(false);
   }
@@ -149,7 +151,7 @@ function GameScreen() {
       <Paper radius="0">
         <Flex w="100%" align="center" justify="space-between" px="lg" py="md">
           <Flex direction="column" align="flex-start">
-            <Text size="md">Question: {currentQuestion} of 5</Text>
+            <Text size="md">Question: {questionNum} of 5</Text>
             <Text size="md">Total Score: {totalScore}</Text>
           </Flex>
 
