@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Overlay, Flex, Text } from "@mantine/core";
-import { findScore } from "../utils";
+import { findScore, writeDistance } from "../utils";
 
 function ScoreOverlay({ distance, setTotalScore }) {
   const score = findScore(distance);
@@ -12,7 +12,7 @@ function ScoreOverlay({ distance, setTotalScore }) {
   return (
     <Overlay>
       <Flex direction="column" pt="md">
-        <Text size="md">Distance: {distance.toFixed(3)} km</Text>
+        <Text size="md">Distance: {writeDistance(distance)}</Text>
         <Text size="md">Score: {score}</Text>
       </Flex>
     </Overlay>
