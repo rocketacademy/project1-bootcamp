@@ -15,6 +15,8 @@ import ScoreOverlay from "./ScoreOverlay.js";
 import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
+const MAX_QUESTION_NUM = 5;
+
 const useStyles = createStyles((theme) => ({
   mapContainer: {
     flex: 1,
@@ -36,9 +38,13 @@ function GameScreen() {
 
   const [distance, setDistance] = useState(-1);
 
+  const [confirmDisabled, setConfirmDisabled] = useState(true);
+  const [nextDisabled, setNextDisabled] = useState(false);
+
   const placeMarker = useRef(null);
   const guessMarker = useRef(null);
   const confirmRef = useRef(null);
+  const nextRef = useRef(null);
 
   const theme = useMantineTheme();
   const { classes } = useStyles();
@@ -53,7 +59,11 @@ function GameScreen() {
     const handleConfirmKey = (event) => {
       if (event.key === " ") {
         event.preventDefault();
-        confirmRef.current.click();
+        if (confirmRef.current) {
+          confirmRef.current.click();
+        } else if (nextRef.current) {
+          nextRef.current.click();
+        }
       }
     };
 
@@ -131,6 +141,10 @@ function GameScreen() {
       });
     }
 
+    if (questionNum >= MAX_QUESTION_NUM) {
+      setNextDisabled(true);
+    }
+
     // Show score overlay
     setShowScoreOverlay(true);
   }
@@ -159,6 +173,8 @@ function GameScreen() {
 
     // Hide score overlay
     setShowScoreOverlay(false);
+
+    setConfirmDisabled(true);
   }
 
   return (
@@ -179,6 +195,7 @@ function GameScreen() {
           setPlaceName={setPlaceName}
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
+          setConfirmDisabled={setConfirmDisabled}
         />
         {showScoreOverlay && (
           <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
@@ -188,7 +205,9 @@ function GameScreen() {
       <Paper radius="0">
         <Flex w="100%" align="center" justify="space-between" px="lg" py="md">
           <Flex direction="column" align="flex-start">
-            <Text size="md">Question: {questionNum} of 5</Text>
+            <Text size="md">
+              Question: {questionNum} of {MAX_QUESTION_NUM}
+            </Text>
             <Text size="md">Total Score: {totalScore}</Text>
           </Flex>
 
@@ -199,6 +218,7 @@ function GameScreen() {
               sx={{ padding: "0.75rem" }}
               ref={confirmRef}
               onClick={handleConfirmClick}
+              disabled={confirmDisabled}
             >
               Confirm
             </Button>
@@ -209,7 +229,9 @@ function GameScreen() {
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
               sx={{ padding: "0.75rem" }}
+              ref={nextRef}
               onClick={handleNextClick}
+              disabled={nextDisabled}
             >
               Next
             </Button>

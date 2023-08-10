@@ -7,6 +7,7 @@ function Map({
   setPlaceName,
   setPlaceLnglat,
   setGuessLnglat,
+  setConfirmDisabled,
 }) {
   const mapContainer = useRef(null);
 
@@ -35,6 +36,8 @@ function Map({
 
     // Handle click on map
     const handleMapClick = (event) => {
+      setConfirmDisabled(false);
+
       const lnglat = event.lngLat.wrap();
 
       if (guessMarker.current) {
