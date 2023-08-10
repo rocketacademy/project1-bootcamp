@@ -145,7 +145,7 @@ function GameScreen() {
             <Button
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
-              styles={{ root: { padding: "0.5rem" } }}
+              sx={{ padding: "0.5rem" }}
               ref={confirmRef}
               onClick={handleConfirmClick}
             >
@@ -157,7 +157,7 @@ function GameScreen() {
             <Button
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
-              styles={{ root: { padding: "0.5rem" } }}
+              sx={{ padding: "0.5rem" }}
               onClick={handleNextClick}
             >
               Next
