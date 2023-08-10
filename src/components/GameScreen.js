@@ -7,7 +7,7 @@ import {
   createStyles,
   useMantineTheme,
 } from "@mantine/core";
-import { Marker } from "maplibre-gl";
+import { Marker, LngLatBounds } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
@@ -65,12 +65,18 @@ function GameScreen() {
       )
     );
 
-    // Reset map view
-    map.setCenter([103.82, map.getCenter().lat]);
-    map.fitBounds([
-      [103.5659, 1.1644],
-      [104.0739, 1.4705],
-    ]);
+    // Reset map bounds
+    if (
+      !(
+        map.getBounds().contains([103.6059, 1.2044]) &
+        map.getBounds().contains([104.0339, 1.4305])
+      )
+    ) {
+      map.fitBounds([
+        [103.5659, 1.1644],
+        [104.0739, 1.4705],
+      ]);
+    }
 
     // Show correct place
     if (placeMarker.current) {

@@ -21,8 +21,6 @@ function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
       ],
     });
 
-    map.setCenter([103.82, map.getCenter().lat]);
-
     map.fitBounds([
       // Bounding box is [103.6059, 1.1644], [104.0839, 1.4705]
       [103.5659, 1.1644],
