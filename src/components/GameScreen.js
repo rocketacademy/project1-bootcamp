@@ -135,7 +135,7 @@ function GameScreen() {
       </div>
 
       <Paper radius="0">
-        <Flex w="100%" align="center" justify="space-between" px="lg" py="sm">
+        <Flex w="100%" align="center" justify="space-between" px="lg" py="md">
           <Flex direction="column" align="flex-start">
             <Text size="md">Question: {currentQuestion}/5</Text>
             <Text size="md">Total Score: {totalScore}</Text>
@@ -145,7 +145,7 @@ function GameScreen() {
             <Button
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
-              sx={{ padding: "0.5rem" }}
+              sx={{ padding: "0.75rem" }}
               ref={confirmRef}
               onClick={handleConfirmClick}
             >
@@ -157,7 +157,7 @@ function GameScreen() {
             <Button
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
-              sx={{ padding: "0.5rem" }}
+              sx={{ padding: "0.75rem" }}
               onClick={handleNextClick}
             >
               Next
