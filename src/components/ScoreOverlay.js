@@ -5,7 +5,7 @@ function ScoreOverlay({ distance }) {
   return (
     <Overlay>
       <Flex direction="column" pt="md">
-        <Text size="md">Distance: {distance}</Text>
+        <Text size="md">Distance: {distance.toFixed(3)} km</Text>
         <Text size="md">Score: {findScore(distance)}</Text>
       </Flex>
     </Overlay>
