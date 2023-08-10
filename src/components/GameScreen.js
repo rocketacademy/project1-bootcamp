@@ -114,10 +114,10 @@ function GameScreen() {
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
-        <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" pt="sm">
+        <Text size="xl" align="center" pt="sm">
           <span id="place-name">{placeName}</span>
         </Text>
-        <Text size="lg" pb="sm">
+        <Text size="md" pb="sm">
           This MRT, where ah?
         </Text>
       </Paper>
@@ -135,17 +135,13 @@ function GameScreen() {
       <Paper radius="0">
         <Flex w="100%" align="center" justify="space-between" px="lg" py="sm">
           <Flex direction="column" align="flex-start">
-            <Text size={`calc(1.0 * ${theme.fontSizes.lg})`}>
-              Question: {currentQuestion}/5
-            </Text>
-            <Text size={`calc(1.0 * ${theme.fontSizes.lg})`}>
-              Total Score: {totalScore}
-            </Text>
+            <Text size="md">Question: {currentQuestion}/5</Text>
+            <Text size="md">Total Score: {totalScore}</Text>
           </Flex>
 
           <Button
             compact
-            size={`calc(1.5 * ${theme.fontSizes.lg})`}
+            size={`calc(1.5 * ${theme.fontSizes.md})`}
             styles={{ root: { padding: "0.75rem" } }}
             ref={confirmRef}
             onClick={handleConfirmClick}
