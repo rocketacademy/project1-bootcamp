@@ -11,16 +11,19 @@ import { Marker } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import distance from "@turf/distance";
 import Map from "./Map.js";
+import ScoreOverlay from "./ScoreOverlay.js";
 
 const useStyles = createStyles((theme) => ({
   mapContainer: {
     flex: 1,
+    position: "relative",
   },
 }));
 
 function GameScreen() {
-  const [score, setScore] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [showScoreOverlay, setShowScoreOverlay] = useState(false);
 
   const [map, setMap] = useState(null);
   const [placeName, setPlaceName] = useState("");
@@ -59,6 +62,7 @@ function GameScreen() {
       )}`
     );
 
+    // Show correct place
     if (placeMarker.current) {
       placeMarker.current.remove();
     }
@@ -67,6 +71,7 @@ function GameScreen() {
       .setLngLat(placeLnglat)
       .addTo(map);
 
+    // Show line from guess to correct place
     const lineData = {
       type: "Feature",
       properties: {},
@@ -98,6 +103,9 @@ function GameScreen() {
         },
       });
     }
+
+    // Show score overlay
+    setShowScoreOverlay(true);
   }
 
   return (
@@ -118,6 +126,7 @@ function GameScreen() {
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
         />
+        {showScoreOverlay && <ScoreOverlay />}
       </div>
 
       <Paper radius="0">
@@ -127,7 +136,7 @@ function GameScreen() {
               Question: {currentQuestion}/5
             </Text>
             <Text size={`calc(1.0 * ${theme.fontSizes.lg})`}>
-              Score: {score}
+              Score: {totalScore}
             </Text>
           </Flex>
 
