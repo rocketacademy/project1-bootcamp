@@ -111,6 +111,8 @@ function GameScreen() {
     setShowScoreOverlay(true);
   }
 
+  function handleNextClick() {}
+
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
@@ -139,15 +141,28 @@ function GameScreen() {
             <Text size="md">Total Score: {totalScore}</Text>
           </Flex>
 
-          <Button
-            compact
-            size={`calc(1.5 * ${theme.fontSizes.md})`}
-            styles={{ root: { padding: "0.75rem" } }}
-            ref={confirmRef}
-            onClick={handleConfirmClick}
-          >
-            Confirm
-          </Button>
+          {!showScoreOverlay && (
+            <Button
+              compact
+              size={`calc(1.5 * ${theme.fontSizes.md})`}
+              styles={{ root: { padding: "0.5rem" } }}
+              ref={confirmRef}
+              onClick={handleConfirmClick}
+            >
+              Confirm
+            </Button>
+          )}
+
+          {showScoreOverlay && (
+            <Button
+              compact
+              size={`calc(1.5 * ${theme.fontSizes.md})`}
+              styles={{ root: { padding: "0.5rem" } }}
+              onClick={handleNextClick}
+            >
+              Next
+            </Button>
+          )}
         </Flex>
       </Paper>
     </Flex>
