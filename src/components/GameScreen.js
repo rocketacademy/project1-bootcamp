@@ -104,10 +104,10 @@ function GameScreen() {
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
         <Text size={`calc(1.5 * ${theme.fontSizes.lg})`} align="center" pt="sm">
-          <span id="place-name">{placeName} MRT</span>
+          <span id="place-name">{placeName}</span>
         </Text>
         <Text size="lg" pb="sm">
-          where ah?
+          This MRT, where ah?
         </Text>
       </Paper>
 
