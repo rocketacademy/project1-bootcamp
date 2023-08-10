@@ -65,6 +65,12 @@ function GameScreen() {
       )
     );
 
+    // Reset map bounds
+    map.fitBounds([
+      [103.5659, 1.1644],
+      [104.0739, 1.4705],
+    ]);
+
     // Show correct place
     if (placeMarker.current) {
       placeMarker.current.remove();
