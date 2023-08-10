@@ -111,7 +111,10 @@ function GameScreen() {
     setShowScoreOverlay(true);
   }
 
-  function handleNextClick() {}
+  function handleNextClick() {
+    // Hide score overlay
+    setShowScoreOverlay(false);
+  }
 
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
@@ -131,7 +134,9 @@ function GameScreen() {
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
         />
-        {showScoreOverlay && <ScoreOverlay distance={distance} />}
+        {showScoreOverlay && (
+          <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
+        )}
       </div>
 
       <Paper radius="0">
