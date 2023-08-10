@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
-import orderedPlaces from "../data/mrt_stations.json";
-import { shuffle } from "../utils";
 
-function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
-  const [places, setPlaces] = useState(shuffle(orderedPlaces));
-  const placesRef = useRef(places);
-
+function Map({
+  guessMarker,
+  setMap,
+  setPlaceName,
+  setPlaceLnglat,
+  setGuessLnglat,
+}) {
   const mapContainer = useRef(null);
-  const guessMarker = useRef(null);
 
   useEffect(() => {
     const map = new MaplibreMap({
@@ -32,16 +32,6 @@ function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
     map.touchZoomRotate.disableRotation();
 
     setMap(map);
-
-    const place = placesRef.current.at(-1);
-    const initPlaceLnglat = place.coords;
-
-    setPlaceName(place.name);
-    setPlaceLnglat(initPlaceLnglat);
-
-    setPlaces((prevPlaces) => {
-      return prevPlaces.slice(0, -1);
-    });
 
     // Handle click on map
     const handleMapClick = (event) => {
@@ -71,7 +61,7 @@ function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
       map.off("click");
       map.remove();
     };
-  }, [setMap, setPlaceName, setPlaceLnglat, setGuessLnglat]);
+  }, [setMap, setPlaceName, setPlaceLnglat, guessMarker, setGuessLnglat]);
 
   return (
     <div

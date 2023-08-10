@@ -7,11 +7,13 @@ import {
   createStyles,
   useMantineTheme,
 } from "@mantine/core";
-import { Marker, LngLatBounds } from "maplibre-gl";
+import { Marker } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
 import ScoreOverlay from "./ScoreOverlay.js";
+import orderedPlaces from "../data/mrt_stations.json";
+import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({
   mapContainer: {
@@ -26,6 +28,8 @@ function GameScreen() {
   const [showScoreOverlay, setShowScoreOverlay] = useState(false);
 
   const [map, setMap] = useState(null);
+  const [places, setPlaces] = useState(shuffle(orderedPlaces));
+  const placesRef = useRef(places);
   const [placeName, setPlaceName] = useState("");
   const [placeLnglat, setPlaceLnglat] = useState(null);
   const [guessLnglat, setGuessLnglat] = useState(null);
@@ -33,12 +37,19 @@ function GameScreen() {
   const [distance, setDistance] = useState(-1);
 
   const placeMarker = useRef(null);
+  const guessMarker = useRef(null);
   const confirmRef = useRef(null);
 
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
   useEffect(() => {
+    const place = placesRef.current.at(-1);
+    setPlaceName(place.name);
+    setPlaceLnglat(place.coords);
+
+    setPlaces((prevPlaces) => prevPlaces.slice(0, -1));
+
     const handleConfirmKey = (event) => {
       if (event.key === " ") {
         event.preventDefault();
@@ -127,6 +138,25 @@ function GameScreen() {
   function handleNextClick() {
     setQuestionNum((prevNum) => prevNum + 1);
 
+    if (placeMarker.current) {
+      placeMarker.current.remove();
+    }
+    if (guessMarker.current) {
+      guessMarker.current.remove();
+    }
+    if (map.getLayer("line-layer")) {
+      map.removeLayer("line-layer");
+    }
+    if (map.getSource("line-source")) {
+      map.removeSource("line-source");
+    }
+
+    const place = places.at(-1);
+    setPlaceName(place.name);
+    setPlaceLnglat(place.coords);
+
+    setPlaces((prevPlaces) => prevPlaces.slice(0, -1));
+
     // Hide score overlay
     setShowScoreOverlay(false);
   }
@@ -144,6 +174,7 @@ function GameScreen() {
 
       <div className={classes.mapContainer}>
         <Map
+          guessMarker={guessMarker}
           setMap={setMap}
           setPlaceName={setPlaceName}
           setPlaceLnglat={setPlaceLnglat}
