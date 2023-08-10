@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 import { Marker } from "maplibre-gl";
 import { point } from "@turf/helpers";
-import distance from "@turf/distance";
+import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
 import ScoreOverlay from "./ScoreOverlay.js";
 
@@ -29,6 +29,8 @@ function GameScreen() {
   const [placeName, setPlaceName] = useState("");
   const [placeLnglat, setPlaceLnglat] = useState(null);
   const [guessLnglat, setGuessLnglat] = useState(null);
+
+  const [distance, setDistance] = useState(-1);
 
   const placeMarker = useRef(null);
   const confirmRef = useRef(null);
@@ -55,11 +57,12 @@ function GameScreen() {
     // Log debug info
     console.log(guessLnglat);
     console.log(placeLnglat);
-    console.log(
-      `distance: ${distance(
+
+    setDistance(
+      findDistance(
         point([guessLnglat.lng, guessLnglat.lat]),
         point([placeLnglat.lng, placeLnglat.lat])
-      )}`
+      )
     );
 
     // Show correct place
@@ -126,7 +129,7 @@ function GameScreen() {
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
         />
-        {showScoreOverlay && <ScoreOverlay />}
+        {showScoreOverlay && <ScoreOverlay distance={distance} />}
       </div>
 
       <Paper radius="0">
@@ -136,7 +139,7 @@ function GameScreen() {
               Question: {currentQuestion}/5
             </Text>
             <Text size={`calc(1.0 * ${theme.fontSizes.lg})`}>
-              Score: {totalScore}
+              Total Score: {totalScore}
             </Text>
           </Flex>
 

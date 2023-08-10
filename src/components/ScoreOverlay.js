@@ -1,11 +1,13 @@
-import { Overlay, Text } from "@mantine/core";
+import { Overlay, Flex, Text } from "@mantine/core";
+import { findScore } from "../utils";
 
-function ScoreOverlay({ score }) {
+function ScoreOverlay({ distance }) {
   return (
     <Overlay>
-      <Text align="center" size="xl">
-        {score} Points
-      </Text>
+      <Flex direction="column" pt="md">
+        <Text size="lg">Distance: {distance}</Text>
+        <Text size="lg">Score: {findScore(distance)}</Text>
+      </Flex>
     </Overlay>
   );
 }

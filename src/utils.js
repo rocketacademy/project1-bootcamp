@@ -7,4 +7,8 @@ const shuffle = (array) => {
   return shuffled;
 };
 
-export { shuffle };
+const findScore = (distance) => {
+  return 50 - distance;
+};
+
+export { shuffle, findScore };
