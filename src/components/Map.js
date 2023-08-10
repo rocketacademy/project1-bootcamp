@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
-import places from "../data/mrt_stations.json";
+import orderedPlaces from "../data/mrt_stations.json";
+import { shuffle } from "../utils";
 
 function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
+  const [places, setPlaces] = useState(shuffle(orderedPlaces));
+  const placesRef = useRef(places);
+
   const mapContainer = useRef(null);
   const guessMarker = useRef(null);
 
@@ -28,11 +32,15 @@ function Map({ setMap, setPlaceName, setPlaceLnglat, setGuessLnglat }) {
       [104.0739, 1.4705],
     ]);
 
-    const place = places[Math.floor(Math.random() * places.length)];
+    const place = placesRef.current.at(-1);
     const initPlaceLnglat = place.coords;
 
     setPlaceName(place.name);
     setPlaceLnglat(initPlaceLnglat);
+
+    setPlaces((prevPlaces) => {
+      return prevPlaces.slice(0, -1);
+    });
 
     // Handle click on map
     const handleMapClick = (event) => {
