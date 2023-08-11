@@ -1,6 +1,6 @@
-# Where's This Ah
+# Where's That Ah
 
-_Where's This Ah_ is a frontend web app to test and improve your geographical knowledge of Singapore. This is [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
+_Where's That Ah_ is a frontend web app to test and improve your geographical knowledge of Singapore. This is [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
 
 ## Usage
 
