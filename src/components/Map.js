@@ -1,63 +1,73 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
 
-function Map({ setGameState, guessMarker, setMap, setGuessLnglat }) {
+function Map({ gameState, setGameState, guessMarker, setMap, setGuessLnglat }) {
   const mapContainer = useRef(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
-    const map = new MaplibreMap({
-      container: mapContainer.current,
-      style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
-      center: [103.8198, 1.3521],
-      maxBounds: [
-        [103.33, 0.85],
-        [104.31, 1.79],
-      ],
-    });
+    if (!mapRef.current) {
+      mapRef.current = new MaplibreMap({
+        container: mapContainer.current,
+        style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
+        center: [103.8198, 1.3521],
+        maxBounds: [
+          [103.33, 0.85],
+          [104.31, 1.79],
+        ],
+      });
 
-    map.fitBounds([
-      // Bounding box is [103.6059, 1.1644], [104.0839, 1.4705]
-      [103.5659, 1.1644],
-      [104.0739, 1.4705],
-    ]);
+      mapRef.current.fitBounds([
+        // Bounding box is [103.6059, 1.1644], [104.0839, 1.4705]
+        [103.5659, 1.1644],
+        [104.0739, 1.4705],
+      ]);
 
-    // Customise map style and interaction
-    map.dragRotate.disable();
-    map.touchZoomRotate.disableRotation();
+      // Customise map style and interaction
+      mapRef.current.dragRotate.disable();
+      mapRef.current.touchZoomRotate.disableRotation();
 
-    // Handle click on map
-    const handleMapClick = (event) => {
+      setMap(mapRef.current);
+    }
+
+    setGameState("GUESSING");
+  }, [setMap, setGameState]);
+
+  const handleMapClick = useCallback(
+    (event) => {
+      console.log("Map clicked");
       const lnglat = event.lngLat.wrap();
 
       if (guessMarker.current) {
         guessMarker.current.remove();
       }
 
+      console.log("Adding marker");
       guessMarker.current = new Marker({ color: "red" })
         .setLngLat(lnglat)
-        .addTo(map);
+        .addTo(mapRef.current);
 
       setGuessLnglat(lnglat);
 
       setGameState("CONFIRMING");
+    },
+    [guessMarker, setGameState, setGuessLnglat]
+  );
 
-      // Log debug info
-      console.log(JSON.stringify(lnglat));
-      console.log(`zoom: ${map.getZoom()}`);
-    };
-
-    map.on("click", handleMapClick);
-
-    setMap(map);
+  useEffect(() => {
+    console.log("Current gameState:", gameState);
+    if (gameState === "GUESSING") {
+      console.log("Attach click handler");
+      mapRef.current.on("click", handleMapClick);
+    } else if (gameState === "SCORING" || gameState === "GAME_OVER") {
+      console.log("Detach click handler");
+      mapRef.current.off("click", handleMapClick);
+    }
 
     return () => {
-      if (guessMarker.current) {
-        guessMarker.current.remove();
-      }
-      map.off("click", handleMapClick);
-      map.remove();
+      mapRef.current.off("click", handleMapClick);
     };
-  }, [guessMarker, setMap, setGameState, setGuessLnglat]);
+  }, [gameState, guessMarker, handleMapClick]);
 
   return (
     <div

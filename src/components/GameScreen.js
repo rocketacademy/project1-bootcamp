@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
 function GameScreen() {
   const [totalScore, setTotalScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(1);
-  const [gameState, setGameState] = useState("GUESSING");
+  const [gameState, setGameState] = useState("");
 
   const [map, setMap] = useState(null);
   const [places, setPlaces] = useState(shuffle(orderedPlaces));
@@ -204,6 +204,7 @@ function GameScreen() {
 
       <div className={classes.mapContainer}>
         <Map
+          gameState={gameState}
           setGameState={setGameState}
           guessMarker={guessMarker}
           setMap={setMap}
