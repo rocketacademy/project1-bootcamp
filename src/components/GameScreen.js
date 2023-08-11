@@ -42,6 +42,7 @@ function GameScreen() {
   const guessMarker = useRef(null);
   const confirmRef = useRef(null);
   const nextRef = useRef(null);
+  const againRef = useRef(null);
 
   const theme = useMantineTheme();
   const { classes } = useStyles();
@@ -60,6 +61,8 @@ function GameScreen() {
           confirmRef.current.click();
         } else if (nextRef.current) {
           nextRef.current.click();
+        } else if (againRef.current) {
+          againRef.current.click();
         }
       }
     };
@@ -140,10 +143,9 @@ function GameScreen() {
 
     if (questionNum >= MAX_QUESTION_NUM) {
       setGameState("GAME_OVER");
+    } else {
+      setGameState("SCORING");
     }
-
-    // Show score overlay
-    setGameState("SCORING");
   }
 
   function handleNextClick() {
@@ -168,8 +170,11 @@ function GameScreen() {
 
     setPlaces((prevPlaces) => prevPlaces.slice(0, -1));
 
-    // Hide score overlay
     setGameState("GUESSING");
+  }
+
+  function handleAgainClick() {
+    // TODO
   }
 
   return (
@@ -208,9 +213,8 @@ function GameScreen() {
 
           {(gameState === "GUESSING" || gameState === "CONFIRMING") && (
             <Button
-              compact
-              size={`calc(1.5 * ${theme.fontSizes.md})`}
-              sx={{ padding: "0.75rem" }}
+              size="lg"
+              px="1rem"
               ref={confirmRef}
               onClick={handleConfirmClick}
               disabled={gameState === "GUESSING"}
@@ -220,14 +224,19 @@ function GameScreen() {
           )}
 
           {gameState === "SCORING" && (
-            <Button
-              compact
-              size={`calc(1.5 * ${theme.fontSizes.md})`}
-              sx={{ padding: "0.75rem" }}
-              ref={nextRef}
-              onClick={handleNextClick}
-            >
+            <Button size="lg" px="1rem" ref={nextRef} onClick={handleNextClick}>
               Next
+            </Button>
+          )}
+
+          {gameState === "GAME_OVER" && (
+            <Button
+              size="lg"
+              px="1rem"
+              ref={againRef}
+              onClick={handleAgainClick}
+            >
+              Again?
             </Button>
           )}
         </Flex>
