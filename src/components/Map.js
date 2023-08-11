@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
 
 function Map({
+  setGameState,
   guessMarker,
   setMap,
   setPlaceName,
   setPlaceLnglat,
   setGuessLnglat,
-  setConfirmDisabled,
 }) {
   const mapContainer = useRef(null);
 
@@ -36,7 +36,7 @@ function Map({
 
     // Handle click on map
     const handleMapClick = (event) => {
-      setConfirmDisabled(false);
+      setGameState("CONFIRMING");
 
       const lnglat = event.lngLat.wrap();
 
@@ -64,7 +64,14 @@ function Map({
       map.off("click");
       map.remove();
     };
-  }, [setMap, setPlaceName, setPlaceLnglat, guessMarker, setGuessLnglat]);
+  }, [
+    setGameState,
+    guessMarker,
+    setMap,
+    setPlaceName,
+    setPlaceLnglat,
+    setGuessLnglat,
+  ]);
 
   return (
     <div

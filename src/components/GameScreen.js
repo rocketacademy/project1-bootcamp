@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
 function GameScreen() {
   const [totalScore, setTotalScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(1);
-  const [showScoreOverlay, setShowScoreOverlay] = useState(false);
+  const [gameState, setGameState] = useState("GUESSING");
 
   const [map, setMap] = useState(null);
   const [places, setPlaces] = useState(shuffle(orderedPlaces));
@@ -37,9 +37,6 @@ function GameScreen() {
   const [guessLnglat, setGuessLnglat] = useState(null);
 
   const [distance, setDistance] = useState(-1);
-
-  const [confirmDisabled, setConfirmDisabled] = useState(true);
-  const [nextDisabled, setNextDisabled] = useState(false);
 
   const placeMarker = useRef(null);
   const guessMarker = useRef(null);
@@ -142,11 +139,11 @@ function GameScreen() {
     }
 
     if (questionNum >= MAX_QUESTION_NUM) {
-      setNextDisabled(true);
+      setGameState("GAME_OVER");
     }
 
     // Show score overlay
-    setShowScoreOverlay(true);
+    setGameState("SCORING");
   }
 
   function handleNextClick() {
@@ -172,9 +169,7 @@ function GameScreen() {
     setPlaces((prevPlaces) => prevPlaces.slice(0, -1));
 
     // Hide score overlay
-    setShowScoreOverlay(false);
-
-    setConfirmDisabled(true);
+    setGameState("GUESSING");
   }
 
   return (
@@ -190,14 +185,14 @@ function GameScreen() {
 
       <div className={classes.mapContainer}>
         <Map
+          setGameState={setGameState}
           guessMarker={guessMarker}
           setMap={setMap}
           setPlaceName={setPlaceName}
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
-          setConfirmDisabled={setConfirmDisabled}
         />
-        {showScoreOverlay && (
+        {gameState === "SCORING" && (
           <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
         )}
       </div>
@@ -211,27 +206,26 @@ function GameScreen() {
             <Text size="md">Total Score: {totalScore}</Text>
           </Flex>
 
-          {!showScoreOverlay && (
+          {(gameState === "GUESSING" || gameState === "CONFIRMING") && (
             <Button
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
               sx={{ padding: "0.75rem" }}
               ref={confirmRef}
               onClick={handleConfirmClick}
-              disabled={confirmDisabled}
+              disabled={gameState === "GUESSING"}
             >
               Confirm
             </Button>
           )}
 
-          {showScoreOverlay && (
+          {gameState === "SCORING" && (
             <Button
               compact
               size={`calc(1.5 * ${theme.fontSizes.md})`}
               sx={{ padding: "0.75rem" }}
               ref={nextRef}
               onClick={handleNextClick}
-              disabled={nextDisabled}
             >
               Next
             </Button>
