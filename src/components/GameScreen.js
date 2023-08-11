@@ -44,7 +44,6 @@ function GameScreen() {
   const nextRef = useRef(null);
   const againRef = useRef(null);
 
-  const theme = useMantineTheme();
   const { classes } = useStyles();
 
   useEffect(() => {
@@ -148,9 +147,7 @@ function GameScreen() {
     }
   }
 
-  function handleNextClick() {
-    setQuestionNum((prevNum) => prevNum + 1);
-
+  function cleanMapMarkers() {
     if (placeMarker.current) {
       placeMarker.current.remove();
     }
@@ -163,6 +160,12 @@ function GameScreen() {
     if (map.getSource("line-source")) {
       map.removeSource("line-source");
     }
+  }
+
+  function handleNextClick() {
+    setQuestionNum((prevNum) => prevNum + 1);
+
+    cleanMapMarkers();
 
     const place = places.at(-1);
     setPlaceName(place.name);
@@ -178,19 +181,7 @@ function GameScreen() {
     setQuestionNum(1);
     setPlaces(shuffle(orderedPlaces));
 
-    // TODO: Refactor this repeated code
-    if (placeMarker.current) {
-      placeMarker.current.remove();
-    }
-    if (guessMarker.current) {
-      guessMarker.current.remove();
-    }
-    if (map.getLayer("line-layer")) {
-      map.removeLayer("line-layer");
-    }
-    if (map.getSource("line-source")) {
-      map.removeSource("line-source");
-    }
+    cleanMapMarkers();
 
     const place = places.at(-1);
     setPlaceName(place.name);
