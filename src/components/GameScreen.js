@@ -73,10 +73,6 @@ function GameScreen() {
   }, []);
 
   function handleConfirmClick() {
-    // Log debug info
-    console.log(guessLnglat);
-    console.log(placeLnglat);
-
     setDistance(
       findDistance(
         point([guessLnglat.lng, guessLnglat.lat]),

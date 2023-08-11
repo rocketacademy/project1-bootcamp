@@ -35,14 +35,12 @@ function Map({ gameState, setGameState, guessMarker, setMap, setGuessLnglat }) {
 
   const handleMapClick = useCallback(
     (event) => {
-      console.log("Map clicked");
       const lnglat = event.lngLat.wrap();
 
       if (guessMarker.current) {
         guessMarker.current.remove();
       }
 
-      console.log("Adding marker");
       guessMarker.current = new Marker({ color: "red" })
         .setLngLat(lnglat)
         .addTo(mapRef.current);
@@ -51,23 +49,18 @@ function Map({ gameState, setGameState, guessMarker, setMap, setGuessLnglat }) {
 
       setGameState("CONFIRMING");
     },
-    [guessMarker, setGameState, setGuessLnglat]
+    [guessMarker, setGuessLnglat, setGameState]
   );
 
   useEffect(() => {
-    console.log("Current gameState:", gameState);
-    if (gameState === "GUESSING") {
-      console.log("Attach click handler");
+    if ((gameState === "GUESSING") | (gameState === "CONFIRMING")) {
       mapRef.current.on("click", handleMapClick);
-    } else if (gameState === "SCORING" || gameState === "GAME_OVER") {
-      console.log("Detach click handler");
-      mapRef.current.off("click", handleMapClick);
     }
 
     return () => {
       mapRef.current.off("click", handleMapClick);
     };
-  }, [gameState, guessMarker, handleMapClick]);
+  }, [gameState, handleMapClick]);
 
   return (
     <div
