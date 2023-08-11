@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
 
 function Map({ setGameState, guessMarker, setMap, setGuessLnglat }) {
@@ -27,8 +27,6 @@ function Map({ setGameState, guessMarker, setMap, setGuessLnglat }) {
 
     // Handle click on map
     const handleMapClick = (event) => {
-      setGameState("CONFIRMING");
-
       const lnglat = event.lngLat.wrap();
 
       if (guessMarker.current) {
@@ -40,6 +38,8 @@ function Map({ setGameState, guessMarker, setMap, setGuessLnglat }) {
         .addTo(map);
 
       setGuessLnglat(lnglat);
+
+      setGameState("CONFIRMING");
 
       // Log debug info
       console.log(JSON.stringify(lnglat));

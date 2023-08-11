@@ -29,7 +29,6 @@ function GameScreen() {
   const [gameState, setGameState] = useState("GUESSING");
 
   const [map, setMap] = useState(null);
-  const [mapIsClickable, setMapIsClickable] = useState(true);
   const [places, setPlaces] = useState(shuffle(orderedPlaces));
   const placesRef = useRef(places);
   const [placeName, setPlaceName] = useState("");
@@ -205,7 +204,6 @@ function GameScreen() {
 
       <div className={classes.mapContainer}>
         <Map
-          mapIsClickable={mapIsClickable}
           setGameState={setGameState}
           guessMarker={guessMarker}
           setMap={setMap}
