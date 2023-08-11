@@ -205,7 +205,7 @@ function GameScreen() {
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
         <Text size="md" pt="sm">
-          Where's this MRT ah?
+          Where's this MRT station ah?
         </Text>
         <Text size="xl" align="center" pb="sm">
           <span id="place-name">{placeName}</span>
