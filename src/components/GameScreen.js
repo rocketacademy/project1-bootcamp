@@ -180,11 +180,11 @@ function GameScreen() {
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
-        <Text size="xl" align="center" pt="sm">
-          <span id="place-name">{placeName}</span>
+        <Text size="md" pt="sm">
+          Where's this MRT ah?
         </Text>
-        <Text size="md" pb="sm">
-          This MRT, where ah?
+        <Text size="xl" align="center" pb="sm">
+          <span id="place-name">{placeName}</span>
         </Text>
       </Paper>
 
