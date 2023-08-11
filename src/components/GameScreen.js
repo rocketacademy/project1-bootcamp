@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Flex,
-  Paper,
-  Button,
-  Text,
-  createStyles,
-  useMantineTheme,
-} from "@mantine/core";
+import { Flex, Paper, Button, Text, createStyles } from "@mantine/core";
 import { Marker } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
@@ -21,6 +14,12 @@ const useStyles = createStyles((theme) => ({
   mapContainer: {
     flex: 1,
     position: "relative",
+  },
+  scoreOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
   },
 }));
 
@@ -212,8 +211,11 @@ function GameScreen() {
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
         />
+
         {(gameState === "SCORING" || gameState === "GAME_OVER") && (
-          <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
+          <div className={classes.scoreOverlay}>
+            <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
+          </div>
         )}
       </div>
 
