@@ -212,7 +212,7 @@ function GameScreen() {
           setPlaceLnglat={setPlaceLnglat}
           setGuessLnglat={setGuessLnglat}
         />
-        {gameState === "SCORING" && (
+        {(gameState === "SCORING" || gameState === "GAME_OVER") && (
           <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
         )}
       </div>
