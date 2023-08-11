@@ -1,14 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
 
-function Map({
-  setGameState,
-  guessMarker,
-  setMap,
-  setPlaceName,
-  setPlaceLnglat,
-  setGuessLnglat,
-}) {
+function Map({ setGameState, guessMarker, setMap, setGuessLnglat }) {
   const mapContainer = useRef(null);
 
   useEffect(() => {
@@ -31,8 +24,6 @@ function Map({
     // Customise map style and interaction
     map.dragRotate.disable();
     map.touchZoomRotate.disableRotation();
-
-    setMap(map);
 
     // Handle click on map
     const handleMapClick = (event) => {
@@ -57,21 +48,16 @@ function Map({
 
     map.on("click", handleMapClick);
 
+    setMap(map);
+
     return () => {
       if (guessMarker.current) {
         guessMarker.current.remove();
       }
-      map.off("click");
+      map.off("click", handleMapClick);
       map.remove();
     };
-  }, [
-    setGameState,
-    guessMarker,
-    setMap,
-    setPlaceName,
-    setPlaceLnglat,
-    setGuessLnglat,
-  ]);
+  }, [guessMarker, setMap, setGameState, setGuessLnglat]);
 
   return (
     <div
