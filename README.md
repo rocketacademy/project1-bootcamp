@@ -20,4 +20,12 @@ Try it out [**here**](https://chengwaikoo.github.io/project1-bootcamp/)!
 - [Mantine UI](https://ui.mantine.dev/) for UI components
 - [Turf](https://turfjs.org/) for distance calculation
 
-## Development
+## Running the App
+
+To run the app on your local machine:
+
+1. **Clone the repo**:
+
+```
+git clone https://github.com/chengwaikoo/wheres-that.git
+```
