@@ -1,6 +1,6 @@
-# Where's That Ah
+# Where's That Ah?
 
-_Where's That Ah_ is a game inspired by [GeoGuessr](https://www.geoguessr.com/) that tests and improves your geographical knowledge of places around Singapore. I built this front-end web app as [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
+_Where's That Ah?_ is a game inspired by [GeoGuessr](https://www.geoguessr.com/) that tests and improves your geographical knowledge of places around Singapore. I built this front-end web app as [Project 1](https://bootcamp.rocketacademy.co/1-frontend/1.p-frontend-app) for the [Rocket Academy Coding Bootcamp](https://www.rocketacademy.co/courses/coding-bootcamp).
 
 Try it out [**here**](https://chengwaikoo.github.io/project1-bootcamp/)!
 
