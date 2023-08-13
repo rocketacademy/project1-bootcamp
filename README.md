@@ -26,17 +26,17 @@ To run the app on your local machine:
 
 1. **Clone the repo**:
 
-    ```bash
-    git clone https://github.com/chengwaikoo/wheres-that.git
-    ```
-    
+   ```bash
+   git clone https://github.com/chengwaikoo/wheres-that.git
+   ```
+
 2. **Add your API key**: To access the MapTiler Cloud API, open `src/components/Map.js` and find this line:
 
-    ```javascript
-    style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
-    ```
-    
-    Replace `${process.env.REACT_APP_MAPTILER_KEY}` with your own API key. Alternatively, create a `.env.local` file in the project directory, and define `REACT_APP_MAPTILER_KEY` as an environment variable there.
+   ```javascript
+   style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
+   ```
+
+   Replace `${process.env.REACT_APP_MAPTILER_KEY}` with your own API key. Alternatively, create a `.env.local` file in the project directory, and define `REACT_APP_MAPTILER_KEY` as an environment variable there.
 
 3. **Install dependencies**: Run `npm install` from the project directory.
-4. **Start the app**: Run `npm start` from the project directory.
+4. **Start the app**: Run `npm start` from the project directory. The app opens in your web browser, and is accessible at [http://localhost:3000](http://localhost:3000).
