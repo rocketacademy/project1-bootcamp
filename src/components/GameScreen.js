@@ -5,6 +5,7 @@ import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
 import ScoreOverlay from "./ScoreOverlay.js";
+import DoneOverlay from "./DoneOverlay.js";
 import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
@@ -16,6 +17,12 @@ const useStyles = createStyles((theme) => ({
     position: "relative",
   },
   scoreOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+  },
+  doneOverlay: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -41,6 +48,7 @@ function GameScreen() {
   const guessMarker = useRef(null);
   const confirmRef = useRef(null);
   const nextRef = useRef(null);
+  const doneRef = useRef(null);
   const againRef = useRef(null);
 
   const { classes } = useStyles();
@@ -59,6 +67,8 @@ function GameScreen() {
           confirmRef.current.click();
         } else if (nextRef.current) {
           nextRef.current.click();
+        } else if (doneRef.current) {
+          doneRef.current.click();
         } else if (againRef.current) {
           againRef.current.click();
         }
@@ -136,7 +146,7 @@ function GameScreen() {
     }
 
     if (questionNum >= MAX_QUESTION_NUM) {
-      setGameState("GAME_OVER");
+      setGameState("SCORING_LAST");
     } else {
       setGameState("SCORING");
     }
@@ -169,6 +179,10 @@ function GameScreen() {
     setPlaces((prevPlaces) => prevPlaces.slice(0, -1));
 
     setGameState("GUESSING");
+  }
+
+  function handleDoneClick() {
+    setGameState("GAME_OVER");
   }
 
   function handleAgainClick() {
@@ -207,9 +221,20 @@ function GameScreen() {
           setGuessLnglat={setGuessLnglat}
         />
 
-        {(gameState === "SCORING" || gameState === "GAME_OVER") && (
+        {(gameState === "SCORING" || gameState === "SCORING_LAST") && (
           <div className={classes.scoreOverlay}>
             <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
+          </div>
+        )}
+
+        {gameState === "GAME_OVER" && (
+          <div className={classes.doneOverlay}>
+            <DoneOverlay
+              totalScore={totalScore}
+              gameState={gameState}
+              againRef={againRef}
+              handleAgainClick={handleAgainClick}
+            />
           </div>
         )}
       </div>
@@ -220,7 +245,7 @@ function GameScreen() {
             <Text size="md">
               Question: {questionNum} of {MAX_QUESTION_NUM}
             </Text>
-            <Text size="md">Total Score: {totalScore}</Text>
+            <Text size="md">Total score: {totalScore}</Text>
           </Flex>
 
           {(gameState === "GUESSING" || gameState === "CONFIRMING") && (
@@ -241,14 +266,9 @@ function GameScreen() {
             </Button>
           )}
 
-          {gameState === "GAME_OVER" && (
-            <Button
-              size="lg"
-              px="1rem"
-              ref={againRef}
-              onClick={handleAgainClick}
-            >
-              Again?
+          {gameState === "SCORING_LAST" && (
+            <Button size="lg" px="1rem" ref={doneRef} onClick={handleDoneClick}>
+              Done!
             </Button>
           )}
         </Flex>
