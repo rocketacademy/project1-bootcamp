@@ -144,7 +144,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
         source: "line-source",
         paint: {
           "line-color": "blue",
-          "line-width": 3,
+          "line-width": 2.5,
           "line-dasharray": [2, 2],
         },
       });
