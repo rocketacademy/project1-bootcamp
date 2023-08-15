@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Flex, Paper, Button, Text, createStyles } from "@mantine/core";
-import { Marker } from "maplibre-gl";
+import { LngLatBounds, Marker, Padding } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
@@ -78,24 +78,25 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
   }, []);
 
   function handleConfirmClick() {
-    setDistance(
-      findDistance(
-        point([guessLnglat.lng, guessLnglat.lat]),
-        point([placeLnglat.lng, placeLnglat.lat])
-      )
-    );
+    const guessCoords = [guessLnglat.lng, guessLnglat.lat];
+    const placeCoords = [placeLnglat.lng, placeLnglat.lat];
+
+    setDistance(findDistance(point(guessCoords), point(placeCoords)));
 
     // Reset map bounds
     if (
       !(
-        map.getBounds().contains([103.6059, 1.2044]) &
-        map.getBounds().contains([104.0339, 1.4305])
+        map.getBounds().contains(guessCoords) &
+        map.getBounds().contains(placeCoords)
       )
     ) {
-      map.fitBounds([
-        [103.5659, 1.1644],
-        [104.0739, 1.4705],
-      ]);
+      const guessPlaceBounds = new LngLatBounds();
+      guessPlaceBounds.extend(guessCoords);
+      guessPlaceBounds.extend(placeCoords);
+
+      map.fitBounds(guessPlaceBounds, {
+        padding: { top: 160, bottom: 80, left: 80, right: 80 },
+      });
     }
 
     // Show correct place
@@ -167,6 +168,19 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
 
     cleanMapMarkers();
 
+    // Reset map bounds
+    if (
+      !(
+        map.getBounds().contains([103.6059, 1.2044]) &
+        map.getBounds().contains([104.0339, 1.4305])
+      )
+    ) {
+      map.fitBounds([
+        [103.5659, 1.1644],
+        [104.0739, 1.4705],
+      ]);
+    }
+
     const place = places.at(-1);
     setPlaceName(place.name);
     setPlaceLnglat(place.coords);
@@ -202,7 +216,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
         <Text size="md" pt="sm">
           Where's this MRT station ah?
         </Text>
-        <Text size="xl" align="center" pb="sm">
+        <Text size="xl" pb="sm">
           <span id="place-name">{placeName}</span>
         </Text>
       </Paper>
