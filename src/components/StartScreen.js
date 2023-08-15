@@ -1,6 +1,15 @@
 import { useEffect, useRef } from "react";
 
-import { Flex, Paper, Button, Text, Title, Radio, Group } from "@mantine/core";
+import {
+  Flex,
+  Paper,
+  Button,
+  Text,
+  Title,
+  Radio,
+  Group,
+  Space,
+} from "@mantine/core";
 
 function StartScreen({ setGameState, setMaxQuestionNum }) {
   const startRef = useRef(null);
@@ -32,14 +41,18 @@ function StartScreen({ setGameState, setMaxQuestionNum }) {
 
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column" justify="center">
-      <Paper px="md" radius="0">
-        <Title order={1}>Where's That Ah?</Title>
-        <Text size="md" align="left">
+      <Paper p="md" radius="0">
+        <Title order={1} mb="xs">
+          Where's That Ah?
+        </Title>
+        <Text size="md" mb="xs" align="left">
           Test and improve your geographical knowledge of places around
           Singapore!
         </Text>
 
         <Radio.Group
+          size="md"
+          mb="lg"
           onChange={setMaxQuestionNum}
           label="Select how many places:"
           defaultValue="5"
@@ -51,7 +64,13 @@ function StartScreen({ setGameState, setMaxQuestionNum }) {
           </Group>
         </Radio.Group>
 
-        <Button size="lg" px="1rem" ref={startRef} onClick={handleStartClick}>
+        <Button
+          size="lg"
+          my="xs"
+          px="1rem"
+          ref={startRef}
+          onClick={handleStartClick}
+        >
           Start
         </Button>
       </Paper>
