@@ -16,6 +16,7 @@ const theme = {
 
 function App() {
   const [gameState, setGameState] = useState("STARTING");
+  // Possible values: STARTING, GUESSING, CONFIRMING, SCORING, SCORING_LAST, GAME_OVER
   const [maxQuestionNum, setMaxQuestionNum] = useState(5);
 
   return (
