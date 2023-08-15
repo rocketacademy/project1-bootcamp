@@ -17,7 +17,7 @@ function StartScreen({ setGameState, setMaxQuestionNum }) {
         <Title order={1} mb="xs">
           Where's That Ah?
         </Title>
-        <Text size="md" mb="xs" align="left">
+        <Text size="md" mb="sm" align="left">
           Test and improve your geographical knowledge of places around
           Singapore!
         </Text>
