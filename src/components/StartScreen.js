@@ -24,7 +24,7 @@ function StartScreen({ setGameState, setMaxQuestionNum }) {
 
         <Radio.Group
           size="md"
-          mb="lg"
+          mb="xl"
           onChange={setMaxQuestionNum}
           label="Select how many places:"
           defaultValue="5"
