@@ -1,36 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
-import {
-  Flex,
-  Paper,
-  Button,
-  Text,
-  Title,
-  Radio,
-  Group,
-  Space,
-} from "@mantine/core";
+import { Flex, Paper, Button, Text, Title, Radio, Group } from "@mantine/core";
 
 function StartScreen({ setGameState, setMaxQuestionNum }) {
-  const startRef = useRef(null);
-
-  useEffect(() => {
-    const handleConfirmKey = (event) => {
-      if (event.key === " ") {
-        event.preventDefault();
-        if (startRef.current) {
-          startRef.current.click();
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleConfirmKey);
-
-    return () => {
-      window.removeEventListener("keydown", handleConfirmKey);
-    };
-  }, []);
-
   useEffect(() => {
     setMaxQuestionNum(5);
   }, [setMaxQuestionNum]);
@@ -64,13 +36,7 @@ function StartScreen({ setGameState, setMaxQuestionNum }) {
           </Group>
         </Radio.Group>
 
-        <Button
-          size="lg"
-          my="xs"
-          px="1rem"
-          ref={startRef}
-          onClick={handleStartClick}
-        >
+        <Button size="lg" my="xs" px="1rem" onClick={handleStartClick}>
           Start
         </Button>
       </Paper>
