@@ -23,7 +23,7 @@ function DoneOverlay({ totalScore, setGameState, againRef, handleAgainClick }) {
         </Button>
 
         <Button size="md" px="1rem" ref={againRef} onClick={handleOptionsClick}>
-          Back to Options
+          Back to options
         </Button>
       </Stack>
     </Paper>

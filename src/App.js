@@ -16,16 +16,24 @@ const theme = {
 
 function App() {
   const [gameState, setGameState] = useState("STARTING");
+  const [maxQuestionNum, setMaxQuestionNum] = useState(5);
 
   return (
     <div className="App">
       <header className="App-header">
         <MantineProvider theme={theme}>
           {gameState === "STARTING" && (
-            <StartScreen setGameState={setGameState} />
+            <StartScreen
+              setGameState={setGameState}
+              setMaxQuestionNum={setMaxQuestionNum}
+            />
           )}
           {gameState !== "STARTING" && (
-            <GameScreen gameState={gameState} setGameState={setGameState} />
+            <GameScreen
+              gameState={gameState}
+              setGameState={setGameState}
+              maxQuestionNum={maxQuestionNum}
+            />
           )}
         </MantineProvider>
       </header>

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
-import { Flex, Paper, Button, Text, Title } from "@mantine/core";
+import { Flex, Paper, Button, Text, Title, Radio, Group } from "@mantine/core";
 
-function StartScreen({ setGameState }) {
+function StartScreen({ setGameState, setMaxQuestionNum }) {
   const startRef = useRef(null);
 
   useEffect(() => {
@@ -22,6 +22,10 @@ function StartScreen({ setGameState }) {
     };
   }, []);
 
+  useEffect(() => {
+    setMaxQuestionNum(5);
+  }, [setMaxQuestionNum]);
+
   function handleStartClick() {
     setGameState("GUESSING");
   }
@@ -34,6 +38,18 @@ function StartScreen({ setGameState }) {
           Test and improve your geographical knowledge of places around
           Singapore!
         </Text>
+
+        <Radio.Group
+          onChange={setMaxQuestionNum}
+          label="Select how many places:"
+          defaultValue="5"
+        >
+          <Group position="center">
+            <Radio value="5" label="5" />
+            <Radio value="10" label="10" />
+            <Radio value="20" label="20" />
+          </Group>
+        </Radio.Group>
 
         <Button size="lg" px="1rem" ref={startRef} onClick={handleStartClick}>
           Start

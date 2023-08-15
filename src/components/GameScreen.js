@@ -9,8 +9,6 @@ import DoneOverlay from "./DoneOverlay.js";
 import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
-const MAX_QUESTION_NUM = 5;
-
 const useStyles = createStyles((theme) => ({
   mapContainer: {
     flex: 1,
@@ -30,7 +28,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function GameScreen({ gameState, setGameState }) {
+function GameScreen({ gameState, setGameState, maxQuestionNum }) {
   const [totalScore, setTotalScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(1);
 
@@ -142,7 +140,7 @@ function GameScreen({ gameState, setGameState }) {
       });
     }
 
-    if (questionNum >= MAX_QUESTION_NUM) {
+    if (questionNum >= maxQuestionNum) {
       setGameState("SCORING_LAST");
     } else {
       setGameState("SCORING");
@@ -240,7 +238,7 @@ function GameScreen({ gameState, setGameState }) {
         <Flex w="100%" align="center" justify="space-between" px="lg" py="md">
           <Flex direction="column" align="flex-start">
             <Text size="md">
-              Question: {questionNum} of {MAX_QUESTION_NUM}
+              Question: {questionNum} of {maxQuestionNum}
             </Text>
             <Text size="md">Total score: {totalScore}</Text>
           </Flex>
