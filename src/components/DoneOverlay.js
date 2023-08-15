@@ -1,4 +1,4 @@
-import { Paper, Text, Button, Stack } from "@mantine/core";
+import { Paper, Text, Button } from "@mantine/core";
 
 function DoneOverlay({ totalScore, againRef, handleAgainClick }) {
   return (
@@ -6,17 +6,16 @@ function DoneOverlay({ totalScore, againRef, handleAgainClick }) {
       <Text size="lg">
         Total score: <span id="total-score">{totalScore}</span>
       </Text>
-      <Stack align="center" spacing="md" mt="sm">
-        <Button
-          size="md"
-          px="1rem"
-          variant="light"
-          ref={againRef}
-          onClick={handleAgainClick}
-        >
-          Again?
-        </Button>
-      </Stack>
+      <Button
+        size="md"
+        mt="sm"
+        px="1rem"
+        variant="light"
+        ref={againRef}
+        onClick={handleAgainClick}
+      >
+        Again?
+      </Button>
     </Paper>
   );
 }

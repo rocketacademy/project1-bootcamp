@@ -233,6 +233,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
               px="1rem"
               ref={againRef}
               onClick={handleResetClick}
+              variant="outline"
             >
               Reset
             </Button>
