@@ -11,6 +11,15 @@ import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({
+  header: {
+    position: "relative",
+  },
+  backButton: {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    lineHeight: 1,
+  },
   mapContainer: {
     flex: 1,
     position: "relative",
@@ -212,21 +221,27 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
-        {gameState !== "GAME_OVER" && (
-          <Question
-            placeName={placeName}
-            againRef={againRef}
-            handleResetClick={handleResetClick}
-          />
-        )}
-
-        {gameState === "GAME_OVER" && (
-          <GameOver
-            totalScore={totalScore}
-            againRef={againRef}
-            handleAgainClick={handleAgainClick}
-          />
-        )}
+        <div className={classes.header}>
+          <div className={classes.backButton}>
+            <Button
+              size="md"
+              px="1rem"
+              ref={againRef}
+              onClick={handleResetClick}
+              variant="outline"
+            >
+              Reset
+            </Button>
+          </div>
+          {gameState !== "GAME_OVER" && <Question placeName={placeName} />}
+          {gameState === "GAME_OVER" && (
+            <GameOver
+              totalScore={totalScore}
+              againRef={againRef}
+              handleAgainClick={handleAgainClick}
+            />
+          )}
+        </div>
       </Paper>
 
       <div className={classes.mapContainer}>
