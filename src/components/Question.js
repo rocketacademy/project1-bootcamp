@@ -1,15 +1,13 @@
-import { Text } from "@mantine/core";
+import { Flex, Text } from "@mantine/core";
 
 function Question({ placeName }) {
   return (
-    <>
-      <Text size="md" mt="sm">
-        Where's this MRT station ah?
-      </Text>
-      <Text size="xl" mb="sm">
+    <Flex direction="column" align="flex-start">
+      <Text size="md">Where's this MRT station ah?</Text>
+      <Text size="xl">
         <span id="place-name">{placeName}</span>
       </Text>
-    </>
+    </Flex>
   );
 }
 

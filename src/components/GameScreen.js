@@ -11,18 +11,10 @@ import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({
-  header: {
-    position: "relative",
-  },
-  backButton: {
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    lineHeight: 1,
-  },
   mapContainer: {
     flex: 1,
     position: "relative",
+    display: "flex",
   },
   scoreOverlay: {
     position: "absolute",
@@ -30,6 +22,7 @@ const useStyles = createStyles((theme) => ({
     left: 0,
     width: "100%",
   },
+  gameOver: { height: "100%" },
 }));
 
 function GameScreen({ gameState, setGameState, maxQuestionNum }) {
@@ -220,8 +213,10 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
 
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
-      <Paper px="md" radius="0" className={classes.header}>
-        <div className={classes.backButton}>
+      <Paper radius="0">
+        <Flex w="100%" align="center" justify="space-between" px="lg" py="md">
+          <Question placeName={placeName} />
+
           <Button
             size="md"
             px="1rem"
@@ -231,15 +226,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
           >
             Reset
           </Button>
-        </div>
-        {gameState !== "GAME_OVER" && <Question placeName={placeName} />}
-        {gameState === "GAME_OVER" && (
-          <GameOver
-            totalScore={totalScore}
-            againRef={againRef}
-            handleAgainClick={handleAgainClick}
-          />
-        )}
+        </Flex>
       </Paper>
 
       <div className={classes.mapContainer}>
@@ -254,6 +241,16 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
         {(gameState === "SCORING" || gameState === "SCORING_LAST") && (
           <div className={classes.scoreOverlay}>
             <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
+          </div>
+        )}
+
+        {gameState === "GAME_OVER" && (
+          <div className={`${classes.scoreOverlay} ${classes.gameOver}`}>
+            <GameOver
+              totalScore={totalScore}
+              againRef={againRef}
+              handleAgainClick={handleAgainClick}
+            />
           </div>
         )}
       </div>
