@@ -1,10 +1,6 @@
 import { Paper, Text, Button, Stack } from "@mantine/core";
 
-function DoneOverlay({ totalScore, setGameState, againRef, handleAgainClick }) {
-  function handleOptionsClick() {
-    setGameState("STARTING");
-  }
-
+function DoneOverlay({ totalScore, againRef, handleAgainClick }) {
   return (
     <Paper pt="xs" pb="md" radius="0" c="white" bg="rgba(0, 0, 0, 0.6)">
       <Text size="lg">
@@ -19,10 +15,6 @@ function DoneOverlay({ totalScore, setGameState, againRef, handleAgainClick }) {
           onClick={handleAgainClick}
         >
           Again?
-        </Button>
-
-        <Button size="md" px="1rem" ref={againRef} onClick={handleOptionsClick}>
-          Back to options
         </Button>
       </Stack>
     </Paper>

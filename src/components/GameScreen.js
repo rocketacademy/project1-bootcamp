@@ -10,6 +10,15 @@ import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({
+  questionContainer: {
+    position: "relative",
+  },
+  backButton: {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    lineHeight: 1,
+  },
   mapContainer: {
     flex: 1,
     position: "relative",
@@ -95,7 +104,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
       guessPlaceBounds.extend(placeCoords);
 
       map.fitBounds(guessPlaceBounds, {
-        padding: { top: 160, bottom: 80, left: 80, right: 80 },
+        padding: { top: 200, bottom: 80, left: 80, right: 80 },
       });
     }
 
@@ -210,15 +219,31 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
     setGameState("GUESSING");
   }
 
+  function handleResetClick() {
+    setGameState("STARTING");
+  }
+
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
-        <Text size="md" pt="sm">
-          Where's this MRT station ah?
-        </Text>
-        <Text size="xl" pb="sm">
-          <span id="place-name">{placeName}</span>
-        </Text>
+        <div className={classes.questionContainer}>
+          <div className={classes.backButton}>
+            <Button
+              size="md"
+              px="1rem"
+              ref={againRef}
+              onClick={handleResetClick}
+            >
+              Reset
+            </Button>
+          </div>
+          <Text size="md" pt="sm">
+            Where's this MRT station ah?
+          </Text>
+          <Text size="xl" pb="sm">
+            <span id="place-name">{placeName}</span>
+          </Text>
+        </div>
       </Paper>
 
       <div className={classes.mapContainer}>
@@ -240,7 +265,6 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
           <div className={classes.doneOverlay}>
             <DoneOverlay
               totalScore={totalScore}
-              setGameState={setGameState}
               againRef={againRef}
               handleAgainClick={handleAgainClick}
             />
