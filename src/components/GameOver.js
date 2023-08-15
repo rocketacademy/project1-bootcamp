@@ -6,15 +6,23 @@ function GameOver({ totalScore, againRef, handleAgainClick }) {
       direction="column"
       align="center"
       justify="center"
-      gap="xl"
       c="white"
-      bg="rgba(0, 0, 0, 0.6)"
+      bg="rgba(0, 0, 0, 0.7)"
       h="100%"
     >
-      <Text size="xl">
+      <Text size="lg" mb="md">
+        Game over!
+      </Text>
+      <Text size="xl" mb="xl">
         Total score: <span id="total-score">{totalScore}</span>
       </Text>
-      <Button size="lg" px="1rem" ref={againRef} onClick={handleAgainClick}>
+      <Button
+        size="lg"
+        mt="sm"
+        px="1rem"
+        ref={againRef}
+        onClick={handleAgainClick}
+      >
         Again?
       </Button>
     </Flex>
