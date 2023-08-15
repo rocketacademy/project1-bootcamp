@@ -21,7 +21,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <MantineProvider theme={theme}>
-          {gameState === "STARTING" && <StartScreen />}
+          {gameState === "STARTING" && (
+            <StartScreen setGameState={setGameState} />
+          )}
           {gameState !== "STARTING" && (
             <GameScreen gameState={gameState} setGameState={setGameState} />
           )}

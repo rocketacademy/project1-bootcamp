@@ -68,8 +68,6 @@ function GameScreen({ gameState, setGameState }) {
           nextRef.current.click();
         } else if (doneRef.current) {
           doneRef.current.click();
-        } else if (againRef.current) {
-          againRef.current.click();
         }
       }
     };
@@ -230,7 +228,7 @@ function GameScreen({ gameState, setGameState }) {
           <div className={classes.doneOverlay}>
             <DoneOverlay
               totalScore={totalScore}
-              gameState={gameState}
+              setGameState={setGameState}
               againRef={againRef}
               handleAgainClick={handleAgainClick}
             />
