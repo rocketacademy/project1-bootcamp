@@ -104,7 +104,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
       guessPlaceBounds.extend(placeCoords);
 
       map.fitBounds(guessPlaceBounds, {
-        padding: { top: 200, bottom: 80, left: 80, right: 80 },
+        padding: { top: 204, bottom: 80, left: 80, right: 80 },
       });
     }
 
