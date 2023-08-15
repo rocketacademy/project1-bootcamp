@@ -15,14 +15,16 @@ const theme = {
 };
 
 function App() {
-  const [gameState, setGameState] = useState("");
+  const [gameState, setGameState] = useState("STARTING");
 
   return (
     <div className="App">
       <header className="App-header">
         <MantineProvider theme={theme}>
-          <GameScreen gameState={gameState} setGameState={setGameState} />
-          <StartScreen />
+          {gameState === "STARTING" && <StartScreen />}
+          {gameState !== "STARTING" && (
+            <GameScreen gameState={gameState} setGameState={setGameState} />
+          )}
         </MantineProvider>
       </header>
     </div>
