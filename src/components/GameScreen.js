@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Flex, Paper, Button, Text, createStyles } from "@mantine/core";
-import { LngLatBounds, Marker, Padding } from "maplibre-gl";
+import { LngLatBounds, Marker } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
