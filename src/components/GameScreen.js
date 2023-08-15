@@ -5,31 +5,17 @@ import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
 import Map from "./Map.js";
 import ScoreOverlay from "./ScoreOverlay.js";
-import DoneOverlay from "./DoneOverlay.js";
+import Question from "./Question.js";
+import GameOver from "./GameOver.js";
 import orderedPlaces from "../data/mrt_stations.json";
 import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({
-  questionContainer: {
-    position: "relative",
-  },
-  backButton: {
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    lineHeight: 1,
-  },
   mapContainer: {
     flex: 1,
     position: "relative",
   },
   scoreOverlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-  },
-  doneOverlay: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -226,25 +212,21 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
       <Paper px="md" radius="0">
-        <div className={classes.questionContainer}>
-          <div className={classes.backButton}>
-            <Button
-              size="md"
-              px="1rem"
-              ref={againRef}
-              onClick={handleResetClick}
-              variant="outline"
-            >
-              Reset
-            </Button>
-          </div>
-          <Text size="md" pt="sm">
-            Where's this MRT station ah?
-          </Text>
-          <Text size="xl" pb="sm">
-            <span id="place-name">{placeName}</span>
-          </Text>
-        </div>
+        {gameState !== "GAME_OVER" && (
+          <Question
+            placeName={placeName}
+            againRef={againRef}
+            handleResetClick={handleResetClick}
+          />
+        )}
+
+        {gameState === "GAME_OVER" && (
+          <GameOver
+            totalScore={totalScore}
+            againRef={againRef}
+            handleAgainClick={handleAgainClick}
+          />
+        )}
       </Paper>
 
       <div className={classes.mapContainer}>
@@ -259,16 +241,6 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
         {(gameState === "SCORING" || gameState === "SCORING_LAST") && (
           <div className={classes.scoreOverlay}>
             <ScoreOverlay distance={distance} setTotalScore={setTotalScore} />
-          </div>
-        )}
-
-        {gameState === "GAME_OVER" && (
-          <div className={classes.doneOverlay}>
-            <DoneOverlay
-              totalScore={totalScore}
-              againRef={againRef}
-              handleAgainClick={handleAgainClick}
-            />
           </div>
         )}
       </div>

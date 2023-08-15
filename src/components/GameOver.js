@@ -1,8 +1,8 @@
-import { Paper, Text, Button } from "@mantine/core";
+import { Text, Button } from "@mantine/core";
 
-function DoneOverlay({ totalScore, againRef, handleAgainClick }) {
+function GameOver({ totalScore, againRef, handleAgainClick }) {
   return (
-    <Paper pt="xs" pb="lg" radius="0" c="white" bg="rgba(0, 0, 0, 0.6)">
+    <>
       <Text size="lg">
         Total score: <span id="total-score">{totalScore}</span>
       </Text>
@@ -16,8 +16,8 @@ function DoneOverlay({ totalScore, againRef, handleAgainClick }) {
       >
         Again?
       </Button>
-    </Paper>
+    </>
   );
 }
 
-export default DoneOverlay;
+export default GameOver;
