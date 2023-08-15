@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ".//assets/App.css";
 import { MantineProvider } from "@mantine/core";
 import GameScreen from "./components/GameScreen";
+import StartScreen from "./components/StartScreen";
 
 const theme = {
   fontSizes: {
@@ -14,11 +15,14 @@ const theme = {
 };
 
 function App() {
+  const [gameState, setGameState] = useState("");
+
   return (
     <div className="App">
       <header className="App-header">
         <MantineProvider theme={theme}>
-          <GameScreen />
+          <GameScreen gameState={gameState} setGameState={setGameState} />
+          <StartScreen />
         </MantineProvider>
       </header>
     </div>

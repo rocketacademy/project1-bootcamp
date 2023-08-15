@@ -30,10 +30,9 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function GameScreen() {
+function GameScreen({ gameState, setGameState }) {
   const [totalScore, setTotalScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(1);
-  const [gameState, setGameState] = useState("");
 
   const [map, setMap] = useState(null);
   const [places, setPlaces] = useState(shuffle(orderedPlaces));
