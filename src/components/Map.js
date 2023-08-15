@@ -26,6 +26,7 @@ function Map({ gameState, setGameState, guessMarker, setMap, setGuessLnglat }) {
       // Customise map style and interaction
       mapRef.current.dragRotate.disable();
       mapRef.current.touchZoomRotate.disableRotation();
+      mapRef.current.touchPitch.disable();
 
       setMap(mapRef.current);
     }
