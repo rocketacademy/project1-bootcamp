@@ -99,7 +99,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
       guessPlaceBounds.extend(placeCoords);
 
       map.fitBounds(guessPlaceBounds, {
-        padding: { top: 204, bottom: 80, left: 80, right: 80 },
+        padding: { top: 150, bottom: 75, left: 75, right: 75 },
       });
     }
 
@@ -220,28 +220,26 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
 
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column">
-      <Paper px="md" radius="0">
-        <div className={classes.header}>
-          <div className={classes.backButton}>
-            <Button
-              size="md"
-              px="1rem"
-              ref={againRef}
-              onClick={handleResetClick}
-              variant="outline"
-            >
-              Reset
-            </Button>
-          </div>
-          {gameState !== "GAME_OVER" && <Question placeName={placeName} />}
-          {gameState === "GAME_OVER" && (
-            <GameOver
-              totalScore={totalScore}
-              againRef={againRef}
-              handleAgainClick={handleAgainClick}
-            />
-          )}
+      <Paper px="md" radius="0" className={classes.header}>
+        <div className={classes.backButton}>
+          <Button
+            size="md"
+            px="1rem"
+            ref={againRef}
+            onClick={handleResetClick}
+            variant="outline"
+          >
+            Reset
+          </Button>
         </div>
+        {gameState !== "GAME_OVER" && <Question placeName={placeName} />}
+        {gameState === "GAME_OVER" && (
+          <GameOver
+            totalScore={totalScore}
+            againRef={againRef}
+            handleAgainClick={handleAgainClick}
+          />
+        )}
       </Paper>
 
       <div className={classes.mapContainer}>

@@ -3,13 +3,13 @@ import { Text, Button } from "@mantine/core";
 function GameOver({ totalScore, againRef, handleAgainClick }) {
   return (
     <>
-      <Text size="lg">
+      <Text size="lg" mt="sm">
         Total score: <span id="total-score">{totalScore}</span>
       </Text>
       <Button
         size="md"
-        mt="sm"
         px="1rem"
+        mb="md"
         variant="light"
         ref={againRef}
         onClick={handleAgainClick}
