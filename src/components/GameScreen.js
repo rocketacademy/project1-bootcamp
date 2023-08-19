@@ -109,7 +109,9 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
       placeMarker.current.remove();
     }
 
-    placeMarker.current = new Marker({ color: theme.colors.teal[7] })
+    placeMarker.current = new Marker({
+      color: dark ? theme.colors.teal[8] : theme.colors.teal[7],
+    })
       .setLngLat(placeLnglat)
       .addTo(map);
 
@@ -139,7 +141,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
         type: "line",
         source: "line-source",
         paint: {
-          "line-color": theme.colors.gray[7],
+          "line-color": dark ? theme.colors.gray[3] : theme.colors.gray[7],
           "line-width": 2.5,
           "line-dasharray": [2, 2],
         },

@@ -56,7 +56,9 @@ function Map({
         guessMarker.current.remove();
       }
 
-      guessMarker.current = new Marker({ color: theme.colors.red[7] })
+      guessMarker.current = new Marker({
+        color: dark ? theme.colors.red[8] : theme.colors.red[7],
+      })
         .setLngLat(lnglat)
         .addTo(mapRef.current);
 
@@ -64,7 +66,7 @@ function Map({
 
       setGameState("CONFIRMING");
     },
-    [guessMarker, setGuessLnglat, setGameState, theme.colors.red]
+    [guessMarker, setGuessLnglat, setGameState, dark, theme.colors.red]
   );
 
   useEffect(() => {
