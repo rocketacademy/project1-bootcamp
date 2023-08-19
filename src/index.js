@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import ".//assets/index.css";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
 import App from "./App";
 
 const theme = {
-  // colorScheme: "dark",
   fontSizes: {
     xs: "0.75rem",
     sm: "1rem",
@@ -13,13 +12,32 @@ const theme = {
     lg: "1.625rem",
     xl: "1.875rem",
   },
+  primaryColor: "teal",
 };
 
+function Root() {
+  const [colorScheme, setColorScheme] = useState("light");
+  const toggleColorScheme = () => {
+    setColorScheme(colorScheme === "dark" ? "light" : "dark");
+  };
+
+  return (
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+    >
+      <MantineProvider
+        theme={{ ...theme, colorScheme }}
+        withGlobalStyles
+        withNormalizeCSS
+      >
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </MantineProvider>
+    </ColorSchemeProvider>
+  );
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </MantineProvider>
-);
+root.render(<Root />);

@@ -1,8 +1,23 @@
 import { useEffect } from "react";
+import { IconSun, IconMoonStars } from "@tabler/icons-react";
 
-import { Flex, Paper, Button, Text, Title, Radio, Group } from "@mantine/core";
+import {
+  Flex,
+  Paper,
+  Button,
+  Text,
+  Title,
+  Radio,
+  Group,
+  ActionIcon,
+} from "@mantine/core";
 
-function StartScreen({ setGameState, setMaxQuestionNum }) {
+function StartScreen({
+  setGameState,
+  setMaxQuestionNum,
+  toggleColorScheme,
+  dark,
+}) {
   useEffect(() => {
     setMaxQuestionNum(5);
   }, [setMaxQuestionNum]);
@@ -35,6 +50,19 @@ function StartScreen({ setGameState, setMaxQuestionNum }) {
             <Radio value="20" label="20" />
           </Group>
         </Radio.Group>
+
+        <Flex justify="center" align="center" gap="xs" py="xs" mb="xl">
+          <Text size="md" fw="500">
+            Toggle dark mode:
+          </Text>
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            onClick={() => toggleColorScheme()}
+          >
+            {dark ? <IconSun /> : <IconMoonStars />}
+          </ActionIcon>
+        </Flex>
 
         <Button size="lg" my="xs" px="1rem" onClick={handleStartClick}>
           Start
