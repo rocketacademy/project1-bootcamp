@@ -29,10 +29,10 @@ function StartScreen({
   return (
     <Flex w="100%" maw="900px" h="100dvh" direction="column" justify="center">
       <Paper p="md" radius="0">
-        <Title order={1} mb="xs">
+        <Title order={1} mb="sm">
           Where's That Ah?
         </Title>
-        <Text size="md" mb="sm" align="left">
+        <Text size="md" mb="xl" align="left">
           Test and improve your geographical knowledge of places around
           Singapore!
         </Text>
@@ -51,7 +51,7 @@ function StartScreen({
           </Group>
         </Radio.Group>
 
-        <Flex justify="center" align="center" gap="xs" py="xs" mb="xl">
+        <Flex justify="center" align="center" gap="xs" py="sm" mb="xl">
           <Text size="md" fw="500">
             Toggle dark mode:
           </Text>
@@ -64,7 +64,7 @@ function StartScreen({
           </ActionIcon>
         </Flex>
 
-        <Button size="lg" my="xs" px="1rem" onClick={handleStartClick}>
+        <Button size="lg" my="md" px="1rem" onClick={handleStartClick}>
           Start
         </Button>
       </Paper>
