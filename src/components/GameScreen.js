@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
   gameOver: { height: "100%" },
 }));
 
-function GameScreen({ gameState, setGameState, maxQuestionNum }) {
+function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const [totalScore, setTotalScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(1);
 
@@ -236,6 +236,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum }) {
           guessMarker={guessMarker}
           setMap={setMap}
           setGuessLnglat={setGuessLnglat}
+          dark={dark}
         />
 
         {(gameState === "SCORING" || gameState === "SCORING_LAST") && (

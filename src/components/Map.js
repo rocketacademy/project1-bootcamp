@@ -1,15 +1,26 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
 
-function Map({ gameState, setGameState, guessMarker, setMap, setGuessLnglat }) {
+function Map({
+  gameState,
+  setGameState,
+  guessMarker,
+  setMap,
+  setGuessLnglat,
+  dark,
+}) {
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
 
   useEffect(() => {
     if (!mapRef.current) {
+      const style = dark
+        ? `https://api.maptiler.com/maps/5ce9ecb1-20f5-4443-94a5-7735c2e227e6/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`
+        : `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`;
+
       mapRef.current = new MaplibreMap({
         container: mapContainer.current,
-        style: `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`,
+        style: style,
         center: [103.8198, 1.3521],
         maxBounds: [
           [103.33, 0.85],

@@ -28,6 +28,7 @@ function App() {
             gameState={gameState}
             setGameState={setGameState}
             maxQuestionNum={maxQuestionNum}
+            dark={dark}
           />
         )}
       </header>
