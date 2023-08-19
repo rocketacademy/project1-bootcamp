@@ -3,7 +3,6 @@ import { useMantineTheme } from "@mantine/core";
 
 function GameOver({ totalScore, againRef, handleAgainClick }) {
   const theme = useMantineTheme();
-  console.log(theme);
 
   return (
     <Paper
