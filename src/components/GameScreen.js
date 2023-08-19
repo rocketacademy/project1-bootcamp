@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Flex, Paper, Button, Text, createStyles } from "@mantine/core";
+import {
+  Flex,
+  Paper,
+  Button,
+  Text,
+  createStyles,
+  useMantineTheme,
+} from "@mantine/core";
 import { LngLatBounds, Marker } from "maplibre-gl";
 import { point } from "@turf/helpers";
 import { default as findDistance } from "@turf/distance";
@@ -45,6 +52,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const doneRef = useRef(null);
   const againRef = useRef(null);
 
+  const theme = useMantineTheme();
   const { classes } = useStyles();
 
   useEffect(() => {
@@ -101,7 +109,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
       placeMarker.current.remove();
     }
 
-    placeMarker.current = new Marker({ color: "blue" })
+    placeMarker.current = new Marker({ color: theme.colors.teal[7] })
       .setLngLat(placeLnglat)
       .addTo(map);
 
@@ -131,7 +139,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
         type: "line",
         source: "line-source",
         paint: {
-          "line-color": "blue",
+          "line-color": theme.colors.gray[7],
           "line-width": 2.5,
           "line-dasharray": [2, 2],
         },

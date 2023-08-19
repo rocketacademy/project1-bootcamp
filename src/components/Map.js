@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { Map as MaplibreMap, Marker } from "maplibre-gl";
+import { useMantineTheme } from "@mantine/core";
 
 function Map({
   gameState,
@@ -9,6 +10,8 @@ function Map({
   setGuessLnglat,
   dark,
 }) {
+  const theme = useMantineTheme();
+
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
 
@@ -53,7 +56,7 @@ function Map({
         guessMarker.current.remove();
       }
 
-      guessMarker.current = new Marker({ color: "red" })
+      guessMarker.current = new Marker({ color: theme.colors.red[7] })
         .setLngLat(lnglat)
         .addTo(mapRef.current);
 
@@ -61,7 +64,7 @@ function Map({
 
       setGameState("CONFIRMING");
     },
-    [guessMarker, setGuessLnglat, setGameState]
+    [guessMarker, setGuessLnglat, setGameState, theme.colors.red]
   );
 
   useEffect(() => {
