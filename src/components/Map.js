@@ -43,7 +43,7 @@ function Map({
     }
 
     setGameState("GUESSING");
-  }, [setMap, setGameState]);
+  }, [setMap, setGameState, dark]);
 
   const handleMapClick = useCallback(
     (event) => {
