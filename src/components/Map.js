@@ -15,7 +15,7 @@ function Map({
   useEffect(() => {
     if (!mapRef.current) {
       const style = dark
-        ? `https://api.maptiler.com/maps/5ce9ecb1-20f5-4443-94a5-7735c2e227e6/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`
+        ? `https://api.maptiler.com/maps/6684d375-2346-4a5c-b6e9-fc4183e64cf5/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`
         : `https://api.maptiler.com/maps/363b3c4e-0ad0-4a51-b858-c019423b9d2c/style.json?key=${process.env.REACT_APP_MAPTILER_KEY}`;
 
       mapRef.current = new MaplibreMap({
