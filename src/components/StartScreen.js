@@ -61,7 +61,7 @@ function StartScreen({
         <Radio.Group
           size="md"
           mb="xl"
-          value={maxQuestionNum}
+          value={Number(maxQuestionNum)}
           onChange={setMaxQuestionNum}
           label="Choose how many questions:"
         >
