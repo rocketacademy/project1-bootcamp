@@ -66,9 +66,9 @@ function StartScreen({
           label="Choose how many questions:"
         >
           <Group position="center">
-            <Radio checked value="5" label="5" />
-            <Radio value="10" label="10" />
-            <Radio value="20" label="20" />
+            <Radio value={5} label="5" />
+            <Radio value={10} label="10" />
+            <Radio value={20} label="20" />
           </Group>
         </Radio.Group>
 
