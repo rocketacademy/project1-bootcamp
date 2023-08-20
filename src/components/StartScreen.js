@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { IconSun, IconMoonStars } from "@tabler/icons-react";
-
 import {
   Flex,
   Paper,
@@ -13,17 +10,17 @@ import {
   Select,
   ActionIcon,
 } from "@mantine/core";
+import { IconSun, IconMoonStars } from "@tabler/icons-react";
 
 function StartScreen({
   setGameState,
+  placesFile,
+  setPlacesFile,
+  maxQuestionNum,
   setMaxQuestionNum,
   toggleColorScheme,
   dark,
 }) {
-  useEffect(() => {
-    setMaxQuestionNum(5);
-  }, [setMaxQuestionNum]);
-
   function handleStartClick() {
     setGameState("GUESSING");
   }
@@ -45,6 +42,8 @@ function StartScreen({
           <Select
             size="md"
             label="Choose which places:"
+            value={placesFile}
+            onChange={setPlacesFile}
             data={[
               {
                 value: "mrt-stations-operating",
@@ -55,7 +54,6 @@ function StartScreen({
                 label: "MRT stations (all)",
               },
             ]}
-            defaultValue="mrt-stations-operating"
             miw="17.5rem"
           ></Select>
         </Group>
@@ -63,12 +61,12 @@ function StartScreen({
         <Radio.Group
           size="md"
           mb="xl"
+          value={maxQuestionNum}
           onChange={setMaxQuestionNum}
           label="Choose how many questions:"
-          defaultValue="5"
         >
           <Group position="center">
-            <Radio value="5" label="5" />
+            <Radio checked value="5" label="5" />
             <Radio value="10" label="10" />
             <Radio value="20" label="20" />
           </Group>

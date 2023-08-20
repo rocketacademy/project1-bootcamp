@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Flex,
   Paper,
@@ -31,7 +31,13 @@ const useStyles = createStyles((theme) => ({
   gameOver: { height: "100%" },
 }));
 
-function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
+function GameScreen({
+  gameState,
+  setGameState,
+  placesFile,
+  maxQuestionNum,
+  dark,
+}) {
   const [totalScore, setTotalScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(1);
 
@@ -53,9 +59,9 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
-  const loadPlaces = async () => {
+  const loadPlaces = useCallback(async () => {
     try {
-      const orderedPlaces = await import(`../data/mrt-stations-all.json`);
+      const orderedPlaces = await import(`../data/${placesFile}.json`);
       const shuffledPlaces = shuffle(orderedPlaces.default);
       const place = shuffledPlaces.at(-1);
       setPlaceName(place.name);
@@ -64,11 +70,11 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
     } catch (error) {
       console.error("Failed to load places:", error);
     }
-  };
+  }, [placesFile]);
 
   useEffect(() => {
     loadPlaces();
-  }, []);
+  }, [loadPlaces]);
 
   useEffect(() => {
     const handleConfirmKey = (event) => {

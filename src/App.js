@@ -7,6 +7,8 @@ import StartScreen from "./components/StartScreen";
 function App() {
   const [gameState, setGameState] = useState("STARTING");
   // Possible values: STARTING, GUESSING, CONFIRMING, SCORING, SCORING_LAST, GAME_OVER
+
+  const [placesFile, setPlacesFile] = useState("mrt-stations-operating");
   const [maxQuestionNum, setMaxQuestionNum] = useState(5);
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -18,6 +20,9 @@ function App() {
         {gameState === "STARTING" && (
           <StartScreen
             setGameState={setGameState}
+            placesFile={placesFile}
+            setPlacesFile={setPlacesFile}
+            maxQuestionNum={maxQuestionNum}
             setMaxQuestionNum={setMaxQuestionNum}
             toggleColorScheme={toggleColorScheme}
             dark={dark}
@@ -27,6 +32,7 @@ function App() {
           <GameScreen
             gameState={gameState}
             setGameState={setGameState}
+            placesFile={placesFile}
             maxQuestionNum={maxQuestionNum}
             dark={dark}
           />
