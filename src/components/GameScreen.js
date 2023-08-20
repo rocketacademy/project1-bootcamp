@@ -14,7 +14,7 @@ import Map from "./Map.js";
 import ScoreOverlay from "./ScoreOverlay.js";
 import Question from "./Question.js";
 import GameOver from "./GameOver.js";
-import orderedPlaces from "../data/mrt_stations.json";
+import orderedPlaces from "../data/mrt-stations.json";
 import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({

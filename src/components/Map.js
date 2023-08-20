@@ -29,6 +29,7 @@ function Map({
           [103.33, 0.85],
           [104.31, 1.79],
         ],
+        class: dark ? "dark" : "light",
       });
 
       mapRef.current.fitBounds([
@@ -43,6 +44,12 @@ function Map({
       mapRef.current.touchPitch.disable();
 
       setMap(mapRef.current);
+    }
+
+    const container = document.querySelector(".maplibregl-canvas-container");
+    if (container) {
+      container.classList.remove("cursor-dark", "cursor-light");
+      container.classList.add(dark ? "cursor-dark" : "cursor-light");
     }
 
     setGameState("GUESSING");
@@ -61,6 +68,12 @@ function Map({
       })
         .setLngLat(lnglat)
         .addTo(mapRef.current);
+
+      const markerRendered = document.querySelector(".maplibregl-marker");
+      if (markerRendered) {
+        markerRendered.classList.remove("cursor-dark", "cursor-light");
+        markerRendered.classList.add(dark ? "cursor-dark" : "cursor-light");
+      }
 
       setGuessLnglat(lnglat);
 
