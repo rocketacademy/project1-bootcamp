@@ -14,7 +14,6 @@ import Map from "./Map.js";
 import ScoreOverlay from "./ScoreOverlay.js";
 import Question from "./Question.js";
 import GameOver from "./GameOver.js";
-import orderedPlaces from "../data/mrt-stations-all.json";
 import { shuffle } from "../utils";
 
 const useStyles = createStyles((theme) => ({
@@ -37,7 +36,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const [questionNum, setQuestionNum] = useState(1);
 
   const [map, setMap] = useState(null);
-  const [places, setPlaces] = useState(orderedPlaces);
+  const [places, setPlaces] = useState([]);
   const [placeName, setPlaceName] = useState("");
   const [placeLnglat, setPlaceLnglat] = useState(null);
   const [guessLnglat, setGuessLnglat] = useState(null);
@@ -54,14 +53,24 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const theme = useMantineTheme();
   const { classes } = useStyles();
 
+  const loadPlaces = async () => {
+    try {
+      const orderedPlaces = await import(`../data/mrt-stations-all.json`);
+      const shuffledPlaces = shuffle(orderedPlaces.default);
+      const place = shuffledPlaces.at(-1);
+      setPlaceName(place.name);
+      setPlaceLnglat(place.coords);
+      setPlaces(shuffledPlaces.slice(0, -1));
+    } catch (error) {
+      console.error("Failed to load places:", error);
+    }
+  };
+
   useEffect(() => {
-    const shuffledPlaces = shuffle(orderedPlaces);
-    const place = shuffledPlaces.at(-1);
-    setPlaceName(place.name);
-    setPlaceLnglat(place.coords);
+    loadPlaces();
+  }, []);
 
-    setPlaces(shuffledPlaces.slice(0, -1));
-
+  useEffect(() => {
     const handleConfirmKey = (event) => {
       if (event.key === " ") {
         event.preventDefault();
@@ -204,7 +213,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   function handleAgainClick() {
     setTotalScore(0);
     setQuestionNum(1);
-    setPlaces(shuffle(orderedPlaces));
+    loadPlaces();
 
     cleanMapMarkers();
 
