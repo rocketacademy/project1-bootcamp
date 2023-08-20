@@ -37,8 +37,7 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const [questionNum, setQuestionNum] = useState(1);
 
   const [map, setMap] = useState(null);
-  const [places, setPlaces] = useState(shuffle(orderedPlaces));
-  const placesRef = useRef(places);
+  const [places, setPlaces] = useState(orderedPlaces);
   const [placeName, setPlaceName] = useState("");
   const [placeLnglat, setPlaceLnglat] = useState(null);
   const [guessLnglat, setGuessLnglat] = useState(null);
@@ -56,11 +55,12 @@ function GameScreen({ gameState, setGameState, maxQuestionNum, dark }) {
   const { classes } = useStyles();
 
   useEffect(() => {
-    const place = placesRef.current.at(-1);
+    const shuffledPlaces = shuffle(orderedPlaces);
+    const place = shuffledPlaces.at(-1);
     setPlaceName(place.name);
     setPlaceLnglat(place.coords);
 
-    setPlaces((prevPlaces) => prevPlaces.slice(0, -1));
+    setPlaces(shuffledPlaces.slice(0, -1));
 
     const handleConfirmKey = (event) => {
       if (event.key === " ") {
