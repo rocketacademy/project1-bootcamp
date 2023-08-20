@@ -87,9 +87,26 @@ function StartScreen({
 
         <Space h="xs" />
 
-        <Button size="lg" my="md" px="1rem" onClick={handleStartClick}>
+        <Button size="lg" mt="md" mb="xl" onClick={handleStartClick}>
           Start
         </Button>
+
+        <Space h="xl" />
+
+        <Text size="sm" ta="left" fs="italic">
+          Contains information from{" "}
+          <span style={{ fontStyle: "normal" }}>
+            <a href="https://beta.data.gov.sg/datasets/2110/view">
+              Amendment to Master Plan 2019 Rail Station layer
+            </a>
+          </span>{" "}
+          accessed on 20 August 2023 from Urban Redevelopment Authority (URA)
+          which is made available under the terms of the{" "}
+          <a href="https://beta.data.gov.sg/open-data-license">
+            Singapore Open Data Licence version 1.0
+          </a>
+          .
+        </Text>
       </Paper>
     </Flex>
   );

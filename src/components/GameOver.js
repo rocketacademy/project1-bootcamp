@@ -17,7 +17,7 @@ function GameOver({ totalScore, againRef, handleAgainClick }) {
           Game over!
         </Text>
         <Text size="xl" mb="xl">
-          Total score: <span id="total-score">{totalScore}</span>
+          Total score: <span style={{ fontWeight: "bold" }}>{totalScore}</span>
         </Text>
         <Button
           size="lg"

@@ -7,7 +7,7 @@ import App from "./App";
 const theme = {
   fontSizes: {
     xs: "0.75rem",
-    sm: "1rem",
+    sm: "0.9rem",
     md: "1.125rem",
     lg: "1.625rem",
     xl: "1.875rem",

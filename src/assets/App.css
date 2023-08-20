@@ -9,14 +9,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-#place-name {
-  font-weight: bold;
-}
-
-#total-score {
-  font-weight: bold;
-}
-
 .maplibregl-canvas-container.cursor-light {
   cursor: url("crosshair.cur"), crosshair !important;
 }

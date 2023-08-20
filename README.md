@@ -20,6 +20,10 @@ Try it out [**here**](https://chengwaikoo.github.io/wheres-that/)!
 - [Mantine UI](https://ui.mantine.dev/) for UI components
 - [Turf](https://turfjs.org/) for distance calculation
 
+## Data Sources
+
+Contains information from _[Amendment to Master Plan 2019 Rail Station layer](https://beta.data.gov.sg/datasets/2110/view)_ accessed on 20 August 2023 from Urban Redevelopment Authority (URA) which is made available under the terms of the [Singapore Open Data Licence version 1.0](https://beta.data.gov.sg/open-data-license).
+
 ## Running the App
 
 To run the app on your local machine:
