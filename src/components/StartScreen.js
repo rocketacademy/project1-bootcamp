@@ -7,8 +7,10 @@ import {
   Button,
   Text,
   Title,
+  Space,
   Radio,
   Group,
+  Select,
   ActionIcon,
 } from "@mantine/core";
 
@@ -37,11 +39,32 @@ function StartScreen({
           Singapore!
         </Text>
 
+        <Space h="md" />
+
+        <Group position="center" mb="xl">
+          <Select
+            size="md"
+            label="Choose which places:"
+            data={[
+              {
+                value: "mrt-stations-operating",
+                label: "MRT stations (in operation)",
+              },
+              {
+                value: "mrt-stations-all",
+                label: "MRT stations (all)",
+              },
+            ]}
+            defaultValue="mrt-stations-operating"
+            miw="17.5rem"
+          ></Select>
+        </Group>
+
         <Radio.Group
           size="md"
           mb="xl"
           onChange={setMaxQuestionNum}
-          label="Select how many places:"
+          label="Choose how many questions:"
           defaultValue="5"
         >
           <Group position="center">
@@ -63,6 +86,8 @@ function StartScreen({
             {dark ? <IconSun /> : <IconMoonStars />}
           </ActionIcon>
         </Flex>
+
+        <Space h="xs" />
 
         <Button size="lg" my="md" px="1rem" onClick={handleStartClick}>
           Start
