@@ -1,20 +1,45 @@
-import React from "react";
-import logo from "./logo.png";
-import "./App.css";
+import React, { useState } from "react";
+import { useMantineColorScheme } from "@mantine/core";
+import ".//assets/App.css";
+import GameScreen from "./components/GameScreen";
+import StartScreen from "./components/StartScreen";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  const [gameState, setGameState] = useState("STARTING");
+  // Possible values: STARTING, GUESSING, CONFIRMING, SCORING, SCORING_LAST, GAME_OVER
+
+  const [placesFile, setPlacesFile] = useState("mrt-stations-operating");
+  const [maxQuestionNum, setMaxQuestionNum] = useState(5);
+
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {gameState === "STARTING" && (
+          <StartScreen
+            setGameState={setGameState}
+            placesFile={placesFile}
+            setPlacesFile={setPlacesFile}
+            maxQuestionNum={maxQuestionNum}
+            setMaxQuestionNum={setMaxQuestionNum}
+            toggleColorScheme={toggleColorScheme}
+            dark={dark}
+          />
+        )}
+        {gameState !== "STARTING" && (
+          <GameScreen
+            gameState={gameState}
+            setGameState={setGameState}
+            placesFile={placesFile}
+            maxQuestionNum={maxQuestionNum}
+            dark={dark}
+          />
+        )}
+      </header>
+    </div>
+  );
 }
 
 export default App;

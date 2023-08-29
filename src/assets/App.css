@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.maplibregl-canvas-container.cursor-light {
+  cursor: url("crosshair.cur"), crosshair !important;
+}
+
+.maplibregl-canvas-container.cursor-dark {
+  cursor: url("crosshair-dark.cur"), crosshair !important;
+}
+
+.maplibregl-marker.cursor-light {
+  cursor: url("crosshair.cur"), crosshair;
+}
+
+.maplibregl-marker.cursor-dark {
+  cursor: url("crosshair-dark.cur"), crosshair;
+}
