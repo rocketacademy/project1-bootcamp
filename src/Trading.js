@@ -1,15 +1,21 @@
 import React, { Component } from "react";
-import newsData from "./news-bitcoin.json";
+import newsData from "./news/news-index.json";
 
 class Trading extends Component {
-  state = {
-    stockName: "Bitcoin",
-    currentPrice: 25000,
-    news: [],
-    tradeAmount: 1000,
-    buyingPower: 10000,
-    newsType: null, // Track if the news was positive or negative
-  };
+  constructor(props) {
+    super(props);
+
+    const { ticker, price } = this.props;
+
+    this.state = {
+      stockName: ticker,
+      currentPrice: parseFloat(price),
+      news: [],
+      tradeAmount: 1000,
+      buyingPower: 10000,
+      newsType: null, // Track if the news was positive or negative
+    };
+  }
 
   componentDidMount() {
     this.pushRandomNews();
@@ -17,7 +23,7 @@ class Trading extends Component {
 
   pushRandomNews = () => {
     let type = Math.random() > 0.5 ? "positive" : "negative";
-    let newsList = newsData[type];
+    let newsList = newsData[this.state.stockName][type];
     let randomNews = newsList[Math.floor(Math.random() * newsList.length)];
 
     this.setState((prevState) => ({
@@ -29,20 +35,26 @@ class Trading extends Component {
   handleTrade = (action) => {
     // Determine price effect based on newsType and player action
     let priceEffect = 1;
-    if (
-      (this.state.newsType === "positive" && action === "call") ||
-      (this.state.newsType === "negative" && action === "put")
-    ) {
-      priceEffect = 1 + Math.random() * 0.2; // random increase between 0.1 to 50%
-    } else {
-      priceEffect = 1 - Math.random() * 0.2; // random decrease between 0.1 to 50%
+    // Price effect based on news
+    if (this.state.newsType === "positive") {
+      priceEffect = 1 + Math.random() * 0.2; // random increase
+    } else if (this.state.newsType === "negative") {
+      priceEffect = 1 - Math.random() * 0.2; // random decrease
     }
 
     let newPrice = this.state.currentPrice * priceEffect;
-    let newBuyingPower =
-      this.state.buyingPower +
-      ((newPrice - this.state.currentPrice) * this.state.tradeAmount) /
-        this.state.currentPrice;
+
+    // Determine the change in buying power based on player's action and price change
+    let priceDifference = newPrice - this.state.currentPrice;
+    let profitOrLoss =
+      (priceDifference * this.state.tradeAmount) / this.state.currentPrice;
+
+    let newBuyingPower;
+    if (action === "call") {
+      newBuyingPower = this.state.buyingPower + profitOrLoss; // gain if price increased, loss if decreased
+    } else {
+      newBuyingPower = this.state.buyingPower - profitOrLoss; // loss if price increased, gain if decreased
+    }
 
     this.setState(
       {
