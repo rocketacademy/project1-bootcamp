@@ -1,11 +1,22 @@
+import {
+  Box,
+  Button,
+  Flex,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import React, { Component } from "react";
 
 class Stock extends Component {
   render() {
     return (
-      <div>
+      <Flex direction="column" w="100%">
         <StockList navigateTo={this.props.navigateTo} />
-      </div>
+      </Flex>
     );
   }
 }
@@ -51,22 +62,35 @@ class StockList extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.stocks.map((stock) => (
-          <div key={stock.ticker}>
-            {stock.name} -
-            <a
-              href={`/trading?ticker=${stock.ticker}`}
-              onClick={(event) =>
-                this.handleLinkClick(stock.ticker, stock.price, event)
-              }
-            >
-              {stock.ticker}
-            </a>
-            - ${stock.price}
-          </div>
-        ))}
-      </div>
+      <Table variant="simple" size="md">
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Ticker</Th>
+            <Th>Price</Th>
+            <Th></Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {this.state.stocks.map((stock) => (
+            <Tr key={stock.ticker}>
+              <Td>{stock.name}</Td>
+              <Td>{stock.ticker}</Td>
+              <Td>${stock.price}</Td>
+              <Td>
+                <Button
+                  colorScheme="blue"
+                  onClick={(event) =>
+                    this.handleLinkClick(stock.ticker, stock.price, event)
+                  }
+                >
+                  Trade Now
+                </Button>
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     );
   }
 }

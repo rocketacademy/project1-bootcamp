@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react";
 import React, { Component } from "react";
 import Start from "./getstarted";
 import Stock from "./stock";
@@ -36,10 +37,12 @@ class App extends Component {
     }
 
     return (
-      <div>
+      <Flex direction="column" align="center" p={4}>
+        <Flex flex={1} w="100%">
+          {CurrentComponent && <CurrentComponent />}
+        </Flex>
         <Navigation navigateTo={this.navigateTo} />
-        {CurrentComponent && <CurrentComponent />}
-      </div>
+      </Flex>
     );
   }
 }

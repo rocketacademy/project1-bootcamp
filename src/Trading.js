@@ -1,3 +1,12 @@
+import {
+  Button,
+  Flex,
+  Heading,
+  List,
+  ListItem,
+  VStack,
+  Box,
+} from "@chakra-ui/react";
 import React, { Component } from "react";
 import newsData from "./news/news-index.json";
 
@@ -67,28 +76,38 @@ class Trading extends Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.state.stockName}</h2>
-        <p>Current Price: ${this.state.currentPrice.toFixed(2)}</p>
+      <VStack spacing={6}>
+        <Flex justify="space-between" w="100%">
+          <Heading>{this.state.stockName}</Heading>
+          <Heading size="md">
+            Current Price: ${this.state.currentPrice.toFixed(2)}
+          </Heading>
+        </Flex>
 
-        <div>
-          <h3>News Alerts</h3>
-          <ul>
+        <Box>
+          <Heading size="lg">News Alerts</Heading>
+          <List spacing={3}>
             {this.state.news.map((newsItem, index) => (
-              <li key={index}>{newsItem}</li>
+              <ListItem key={index}>{newsItem}</ListItem>
             ))}
-          </ul>
-        </div>
+          </List>
+        </Box>
 
-        <div>
-          <button onClick={() => this.handleTrade("call")}>Call</button>
-          <button onClick={() => this.handleTrade("put")}>Put</button>
-        </div>
+        <Flex direction="row" justify="space-between" w="100%">
+          <Button colorScheme="green" onClick={() => this.handleTrade("call")}>
+            Call
+          </Button>
+          <Button colorScheme="red" onClick={() => this.handleTrade("put")}>
+            Put
+          </Button>
+        </Flex>
 
-        <div>
-          <p>Buying Power: ${this.state.buyingPower.toFixed(2)}</p>
-        </div>
-      </div>
+        <Flex direction="row" justify="space-between" w="100%">
+          <Heading size="md">
+            Buying Power: ${this.state.buyingPower.toFixed(2)}
+          </Heading>
+        </Flex>
+      </VStack>
     );
   }
 }
