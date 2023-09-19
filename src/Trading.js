@@ -7,6 +7,7 @@ import {
   VStack,
   Box,
   Text,
+  Badge,
 } from "@chakra-ui/react";
 import React, { Component } from "react";
 import newsData from "./news/news-index.json";
@@ -41,7 +42,13 @@ class Trading extends Component {
     let randomNews = newsList[Math.floor(Math.random() * newsList.length)];
 
     this.setState((prevState) => ({
-      news: [randomNews, ...prevState.news.slice(0, 2)],
+      news: [
+        randomNews,
+        prevState.news[0],
+        prevState.news[1],
+        prevState.news[2],
+        prevState.news[3],
+      ],
       newsType: type,
     }));
   };
@@ -71,17 +78,14 @@ class Trading extends Component {
     const percentageChange = (profitOrLoss / this.state.buyingPower) * 100;
     const currentTopNews = this.state.news[0];
 
-    this.setState(
-      {
-        currentPrice: newPrice,
-        buyingPower: newBuyingPower,
-        tradeResult: profitOrLoss > 0 ? "gain" : "loss",
-        profitOrLoss: profitOrLoss,
-        percentageChange: percentageChange,
-        tradedOnNews: currentTopNews, // Set the current top news
-      },
-      this.pushRandomNews
-    ); // Generate a new news item after the trade
+    this.setState({
+      currentPrice: newPrice,
+      buyingPower: newBuyingPower,
+      tradeResult: profitOrLoss > 0 ? "gain" : "loss",
+      profitOrLoss: profitOrLoss,
+      percentageChange: percentageChange,
+      tradedOnNews: currentTopNews, // Set the current top news
+    });
   };
 
   handleTradeAgain = () => {
@@ -98,19 +102,55 @@ class Trading extends Component {
   renderSuccessScreen = () => {
     return (
       <VStack spacing={6}>
-        <Text fontSize="xl">
-          You've {this.state.tradeResult === "gain" ? "gained" : "lost"} 💰
-          {Math.abs(this.state.profitOrLoss).toFixed(2)} (
-          {Math.abs(this.state.percentageChange).toFixed(2)}%)
-          {this.state.tradeResult === "gain" ? "🚀" : "😢"}
-        </Text>
+        <Flex justify="space-between" w="100%">
+          <Heading size="2xl">{this.state.stockName}</Heading>
+        </Flex>
+        <Flex direction="row" justify="space-between" w="100%">
+          <Heading size="lg">
+            Current Price: ${this.state.currentPrice.toFixed(2)}
+          </Heading>
+        </Flex>
+        <Flex direction="row" justify="space-between" w="100%">
+          <Heading size="md">
+            Buying Power: ${this.state.buyingPower.toFixed(2)}
+          </Heading>
+        </Flex>
+        <Flex direction="row" justify="space-around" w="100%">
+          <Button
+            bgColor="primary"
+            color="text"
+            onClick={this.handleTradeAgain}
+          >
+            Trade Again 💰
+          </Button>
+        </Flex>
 
-        <Text fontSize="lg">Based on the news:</Text>
-        <Text fontSize="md">{this.state.tradedOnNews}</Text>
-
-        <Button colorScheme="blue" onClick={this.handleTradeAgain}>
-          Trade Again
-        </Button>
+        <Box
+          p={4}
+          w="100%"
+          backgroundColor="primary"
+          borderRadius="md"
+          color="text"
+        >
+          <Text fontSize="xl">
+            {this.state.tradeResult === "gain"
+              ? "Great! You've made"
+              : "Shoot! You've lost"}{" "}
+            ${Math.abs(this.state.profitOrLoss).toFixed(2)} (
+            {Math.abs(this.state.percentageChange).toFixed(2)}%){"  "}
+            {this.state.tradeResult === "gain" ? "🚀" : "😢"}
+          </Text>
+        </Box>
+        <Box
+          p={4}
+          w="100%"
+          backgroundColor="secondary"
+          borderRadius="md"
+          color="text"
+        >
+          <Text fontSize="lg">Previous Headline:</Text>
+          <Text fontSize="md">{this.state.tradedOnNews}</Text>
+        </Box>
       </VStack>
     );
   };
@@ -119,42 +159,48 @@ class Trading extends Component {
     return (
       <VStack spacing={6}>
         <Flex justify="space-between" w="100%">
-          <Heading>{this.state.stockName}</Heading>
-          <Heading size="md">
+          <Heading size="2xl">{this.state.stockName}</Heading>
+        </Flex>
+        <Flex direction="row" justify="space-between" w="100%">
+          <Heading size="lg">
             Current Price: ${this.state.currentPrice.toFixed(2)}
           </Heading>
         </Flex>
+        <Flex direction="row" justify="space-between" w="100%">
+          <Heading size="md">
+            Buying Power: ${this.state.buyingPower.toFixed(2)}
+          </Heading>
+        </Flex>
 
-        <Box>
-          <Heading size="lg">News Alerts</Heading>
+        <Flex direction="row" justify="space-around" w="100%">
+          <Button colorScheme="green" onClick={() => this.handleTrade("call")}>
+            Call ⬆️
+          </Button>
+          <Button colorScheme="red" onClick={() => this.handleTrade("put")}>
+            Put ⬇️
+          </Button>
+        </Flex>
+        <Box
+          p={4}
+          w="100%"
+          backgroundColor="secondary"
+          borderRadius="md"
+          color="text"
+        >
+          <Heading size="lg">Latest Headlines</Heading>
           <List spacing={3}>
             {this.state.news.map((newsItem, index) => (
               <ListItem key={index}>{newsItem}</ListItem>
             ))}
           </List>
         </Box>
-
-        <Flex direction="row" justify="space-between" w="100%">
-          <Button colorScheme="green" onClick={() => this.handleTrade("call")}>
-            Call
-          </Button>
-          <Button colorScheme="red" onClick={() => this.handleTrade("put")}>
-            Put
-          </Button>
-        </Flex>
-
-        <Flex direction="row" justify="space-between" w="100%">
-          <Heading size="md">
-            Buying Power: ${this.state.buyingPower.toFixed(2)}
-          </Heading>
-        </Flex>
       </VStack>
     );
   };
 
   render() {
     return (
-      <Box overflowX="auto">
+      <Box overflowX="auto" color="text">
         {this.state.tradeResult
           ? this.renderSuccessScreen()
           : this.renderTradingScreen()}

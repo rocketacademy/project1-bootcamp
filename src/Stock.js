@@ -63,11 +63,11 @@ class StockList extends Component {
   render() {
     return (
       <Box overflowX="auto">
-        <Table variant="striped" colorScheme="teal">
+        <Table variant="simple" bgColor="background" color="text">
           <Thead>
             <Tr>
-              <Th>Name</Th>
-              <Th>Ticker</Th>
+              <Th color="text">Name</Th>
+              <Th color="text">Ticker</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -78,7 +78,8 @@ class StockList extends Component {
                 <Td>{stock.ticker}</Td>
                 <Td>
                   <Button
-                    colorScheme="green"
+                    bgColor="primary"
+                    color="text"
                     onClick={(event) =>
                       this.handleLinkClick(stock.ticker, stock.price, event)
                     }
