@@ -1,10 +1,10 @@
-import { Flex } from "@chakra-ui/react";
 import React, { Component } from "react";
+import { Flex } from "@chakra-ui/react";
 import Start from "./getstarted";
 import Stock from "./stock";
 import Trading from "./trading";
-import Portfolio from "./portfolio";
 import Navigation from "./navigation";
+import GetStarted from "./getstarted";
 
 class App extends Component {
   state = {
@@ -16,32 +16,28 @@ class App extends Component {
     this.setState({ currentRoute: route, tradingParams: params });
   };
 
-  render() {
-    let CurrentComponent = null;
+  renderCurrentComponent = () => {
     switch (this.state.currentRoute) {
       case "/getstarted":
-        CurrentComponent = Start;
-        break;
+        return <GetStarted navigateTo={this.navigateTo} />;
       case "/stock":
-        CurrentComponent = () => <Stock navigateTo={this.navigateTo} />;
-        break;
+        return <Stock navigateTo={this.navigateTo} />;
       case "/trading":
-        CurrentComponent = () => <Trading {...this.state.tradingParams} />;
-        break;
-      case "/portfolio":
-        CurrentComponent = Portfolio;
-        break;
+        return <Trading {...this.state.tradingParams} />;
       default:
-        // handle default case
-        break;
+        return <GetStarted navigateTo={this.navigateTo} />; // handle default case
     }
+  };
 
+  render() {
     return (
-      <Flex direction="column" align="center" p={4}>
-        <Flex flex={1} w="100%">
-          {CurrentComponent && <CurrentComponent />}
-        </Flex>
+      <Flex direction="column" flex="1">
         <Navigation navigateTo={this.navigateTo} />
+        <Flex direction="column" align="center" p={4} flex="1">
+          <Flex flex={1} w="100%">
+            {this.renderCurrentComponent()}
+          </Flex>
+        </Flex>
       </Flex>
     );
   }

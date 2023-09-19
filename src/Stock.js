@@ -62,35 +62,35 @@ class StockList extends Component {
 
   render() {
     return (
-      <Table variant="simple" size="md">
-        <Thead>
-          <Tr>
-            <Th>Name</Th>
-            <Th>Ticker</Th>
-            <Th>Price</Th>
-            <Th></Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {this.state.stocks.map((stock) => (
-            <Tr key={stock.ticker}>
-              <Td>{stock.name}</Td>
-              <Td>{stock.ticker}</Td>
-              <Td>${stock.price}</Td>
-              <Td>
-                <Button
-                  colorScheme="blue"
-                  onClick={(event) =>
-                    this.handleLinkClick(stock.ticker, stock.price, event)
-                  }
-                >
-                  Trade Now
-                </Button>
-              </Td>
+      <Box overflowX="auto">
+        <Table variant="striped" colorScheme="teal">
+          <Thead>
+            <Tr>
+              <Th>Name</Th>
+              <Th>Ticker</Th>
+              <Th></Th>
             </Tr>
-          ))}
-        </Tbody>
-      </Table>
+          </Thead>
+          <Tbody>
+            {this.state.stocks.map((stock) => (
+              <Tr key={stock.ticker}>
+                <Td>{stock.name}</Td>
+                <Td>{stock.ticker}</Td>
+                <Td>
+                  <Button
+                    colorScheme="green"
+                    onClick={(event) =>
+                      this.handleLinkClick(stock.ticker, stock.price, event)
+                    }
+                  >
+                    Trade
+                  </Button>
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
     );
   }
 }

@@ -6,6 +6,7 @@ import {
   ListItem,
   VStack,
   Box,
+  Text,
 } from "@chakra-ui/react";
 import React, { Component } from "react";
 import newsData from "./news/news-index.json";
@@ -23,6 +24,10 @@ class Trading extends Component {
       tradeAmount: 1000,
       buyingPower: 10000,
       newsType: null, // Track if the news was positive or negative
+      tradeResult: null, // New state to track the trade result
+      profitOrLoss: 0, // New state to track profit or loss amount
+      percentageChange: 0, // New state to track percentage change
+      tradedOnNews: "", // Initialize the tradedOnNews state
     };
   }
 
@@ -53,28 +58,64 @@ class Trading extends Component {
 
     let newPrice = this.state.currentPrice * priceEffect;
 
-    // Determine the change in buying power based on player's action and price change
+    // Calculate price difference and P&L
     let priceDifference = newPrice - this.state.currentPrice;
     let profitOrLoss =
       (priceDifference * this.state.tradeAmount) / this.state.currentPrice;
 
-    let newBuyingPower;
-    if (action === "call") {
-      newBuyingPower = this.state.buyingPower + profitOrLoss; // gain if price increased, loss if decreased
-    } else {
-      newBuyingPower = this.state.buyingPower - profitOrLoss; // loss if price increased, gain if decreased
+    if (action === "put") {
+      profitOrLoss = -profitOrLoss;
     }
+
+    let newBuyingPower = this.state.buyingPower + profitOrLoss;
+    const percentageChange = (profitOrLoss / this.state.buyingPower) * 100;
+    const currentTopNews = this.state.news[0];
 
     this.setState(
       {
         currentPrice: newPrice,
         buyingPower: newBuyingPower,
+        tradeResult: profitOrLoss > 0 ? "gain" : "loss",
+        profitOrLoss: profitOrLoss,
+        percentageChange: percentageChange,
+        tradedOnNews: currentTopNews, // Set the current top news
       },
       this.pushRandomNews
     ); // Generate a new news item after the trade
   };
 
-  render() {
+  handleTradeAgain = () => {
+    this.setState(
+      {
+        tradeResult: null,
+        profitOrLoss: 0,
+        percentageChange: 0,
+      },
+      this.pushRandomNews
+    );
+  };
+
+  renderSuccessScreen = () => {
+    return (
+      <VStack spacing={6}>
+        <Text fontSize="xl">
+          You've {this.state.tradeResult === "gain" ? "gained" : "lost"} 💰
+          {Math.abs(this.state.profitOrLoss).toFixed(2)} (
+          {Math.abs(this.state.percentageChange).toFixed(2)}%)
+          {this.state.tradeResult === "gain" ? "🚀" : "😢"}
+        </Text>
+
+        <Text fontSize="lg">Based on the news:</Text>
+        <Text fontSize="md">{this.state.tradedOnNews}</Text>
+
+        <Button colorScheme="blue" onClick={this.handleTradeAgain}>
+          Trade Again
+        </Button>
+      </VStack>
+    );
+  };
+
+  renderTradingScreen = () => {
     return (
       <VStack spacing={6}>
         <Flex justify="space-between" w="100%">
@@ -108,6 +149,16 @@ class Trading extends Component {
           </Heading>
         </Flex>
       </VStack>
+    );
+  };
+
+  render() {
+    return (
+      <Box overflowX="auto">
+        {this.state.tradeResult
+          ? this.renderSuccessScreen()
+          : this.renderTradingScreen()}
+      </Box>
     );
   }
 }
