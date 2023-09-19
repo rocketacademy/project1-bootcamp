@@ -5,20 +5,20 @@ class Navigation extends Component {
   render() {
     return (
       <Box bg="primary" p={4} rounded="md" mt={4} w="100%">
-        <Flex justify="space-between">
+        <Flex justify="space-around">
           <Button
             color="text"
             variant="ghost"
             onClick={() => this.props.navigateTo("/getstarted")}
           >
-            Start
+            Home
           </Button>
           <Button
             color="text"
             variant="ghost"
             onClick={() => this.props.navigateTo("/stock")}
           >
-            Trade
+            Trading Game
           </Button>
         </Flex>
       </Box>
