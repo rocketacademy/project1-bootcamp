@@ -12,6 +12,11 @@ import {
 import React, { Component } from "react";
 import newsData from "./news/news-index.json";
 
+/**
+ * The Trading component represents a trading platform screen
+ * where the user can perform trade actions based on asset news (stock, crypto, bonds, commodities).
+ */
+
 class Trading extends Component {
   constructor(props) {
     super(props);
@@ -37,8 +42,8 @@ class Trading extends Component {
   }
   /**
    * A function to push a new news item to stimulate headlines
-   * @param  type {string} to represent positive or negative nature of news
-   * @param  randomNews {string} to represent the new headline
+   * @param {string} [type] - Represents positive or negative nature of news.
+   * @param {string} [randomNews] - Represents the new headline.
    */
 
   pushRandomNews = () => {
@@ -59,10 +64,9 @@ class Trading extends Component {
   };
 
   /**
-   * A function that handles the trade, based on the action of call or put that the user input
-   * @param  priceEffect {number} to determine the price effect based on newsType and player's action
-   * @param  newPrice {number} to determine the new price after the price effect
-   * @return {number}   new price of the asset, new buying power, trade result, P&L, % change and new headline
+   * A function that handles the trade, based on the action of call or put that the user input.
+   * @param {string} action - User's decision (whether to call or put).
+   * @return {Object} - The updated state after the trade: new price of the asset, new buying power, trade result, P&L, % change and new headline
    */
 
   handleTrade = (action) => {
@@ -101,7 +105,7 @@ class Trading extends Component {
   };
 
   /**
-   * A function that preps for the user's next trade after being notified of the outcome of the previous
+   * Prepare for the user's next trade after being notified of the outcome of the previous
    */
 
   handleTradeAgain = () => {
@@ -114,6 +118,11 @@ class Trading extends Component {
       this.pushRandomNews
     );
   };
+
+  /**
+   * Render the success screen UI.
+   * @return {JSX.Element} - The rendered success screen.
+   */
 
   renderSuccessScreen = () => {
     return (
@@ -171,6 +180,11 @@ class Trading extends Component {
     );
   };
 
+  /**
+   * Render the trading screen UI.
+   * @return {JSX.Element} - The rendered trading screen.
+   */
+
   renderTradingScreen = () => {
     return (
       <VStack spacing={6}>
@@ -213,6 +227,11 @@ class Trading extends Component {
       </VStack>
     );
   };
+
+  /**
+   * The main render method of the Trading component.
+   * @return {JSX.Element} - The rendered component.
+   */
 
   render() {
     return (

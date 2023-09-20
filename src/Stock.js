@@ -30,27 +30,7 @@ class StockList extends Component {
   };
 
   state = {
-    stocks: [
-      // Stocks
-      { name: "Apple", ticker: "AAPL", price: 150 },
-      { name: "Microsoft", ticker: "MSFT", price: 280 },
-      { name: "Tesla", ticker: "TSLA", price: 650 },
-      { name: "Amazon", ticker: "AMZN", price: 3400 },
-      { name: "Facebook", ticker: "FB", price: 355 },
-      { name: "Netflix", ticker: "NFLX", price: 520 },
-      { name: "Google", ticker: "GOOGL", price: 2800 },
-      { name: "NVIDIA", ticker: "NVDA", price: 700 },
-
-      // Cryptocurrencies
-      { name: "Bitcoin", ticker: "BTC", price: 25000 },
-      { name: "Ethereum", ticker: "ETH", price: 1600 },
-
-      // Commodities
-      { name: "Gold", ticker: "GOLD", price: 1800 },
-
-      // Bonds
-      { name: "US Treasury Bond", ticker: "BOND", price: 100 },
-    ],
+    stocks: assetData,
   };
 
   /**
