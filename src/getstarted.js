@@ -11,12 +11,16 @@ import React from "react";
 import Logo from "./logo-biquidity.svg";
 
 /**
- * A function that forms the start page
- * Describe the game rules
- * Navigate to the trading page
+ * The GetStarted component is the start page of the application.
+ * It provides a description of the game rules and offers a navigation option to the trading page.
  */
 
 function GetStarted(props) {
+  /**
+   * Renders the GetStarted component with branding, a start button, and FAQs.
+   * @return {JSX.Element} - Rendered GetStarted component.
+   */
+
   return (
     <Stack spacing={6} align="center" w="100%">
       <Text fontSize="5xl" fontWeight="bold" color="text">

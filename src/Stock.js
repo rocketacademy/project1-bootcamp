@@ -12,6 +12,10 @@ import {
 import React, { Component } from "react";
 import assetData from "./stocks/assets.json";
 
+/**
+ * The Stock component represents an asset selector screen with name, ticker and action.
+ */
+
 class Stock extends Component {
   render() {
     return (
