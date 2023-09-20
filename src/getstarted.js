@@ -10,6 +10,12 @@ import {
 import React from "react";
 import Logo from "./logo-biquidity.svg";
 
+/**
+ * A function that forms the start page
+ * Describe the game rules
+ * Navigate to the trading page
+ */
+
 function GetStarted(props) {
   return (
     <Stack spacing={6} align="center" w="100%">

@@ -1,5 +1,10 @@
 import { extendTheme } from "@chakra-ui/react";
 
+/**
+ * Default theme colors, generated using UIColor for friendly consistency.
+ * Change values here to effect change for entire app.
+ */
+
 const theme = extendTheme({
   colors: {
     primary: "#810CA8", // Set primary color

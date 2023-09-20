@@ -22,12 +22,12 @@ class Trading extends Component {
       stockName: ticker,
       currentPrice: parseFloat(price),
       news: [],
-      tradeAmount: 1000,
-      buyingPower: 10000,
+      tradeAmount: 1000, // Set every trade to be $1000
+      buyingPower: 10000, // Set initial portfolio value and buying power to $10,000
       newsType: null, // Track if the news was positive or negative
-      tradeResult: null, // New state to track the trade result
-      profitOrLoss: 0, // New state to track profit or loss amount
-      percentageChange: 0, // New state to track percentage change
+      tradeResult: null, // Track the trade result
+      profitOrLoss: 0, // Track profit or loss amount
+      percentageChange: 0, // Track percentage change
       tradedOnNews: "", // Initialize the tradedOnNews state
     };
   }
@@ -35,6 +35,11 @@ class Trading extends Component {
   componentDidMount() {
     this.pushRandomNews();
   }
+  /**
+   * A function to push a new news item to stimulate headlines
+   * @param  type {string} to represent positive or negative nature of news
+   * @param  randomNews {string} to represent the new headline
+   */
 
   pushRandomNews = () => {
     let type = Math.random() > 0.5 ? "positive" : "negative";
@@ -53,14 +58,21 @@ class Trading extends Component {
     }));
   };
 
+  /**
+   * A function that handles the trade, based on the action of call or put that the user input
+   * @param  priceEffect {number} to determine the price effect based on newsType and player's action
+   * @param  newPrice {number} to determine the new price after the price effect
+   * @return {number}   new price of the asset, new buying power, trade result, P&L, % change and new headline
+   */
+
   handleTrade = (action) => {
     // Determine price effect based on newsType and player action
     let priceEffect = 1;
     // Price effect based on news
     if (this.state.newsType === "positive") {
-      priceEffect = 1 + Math.random() * 0.2; // random increase
+      priceEffect = 1 + Math.random() * 0.2; // random increase of 0-20%
     } else if (this.state.newsType === "negative") {
-      priceEffect = 1 - Math.random() * 0.2; // random decrease
+      priceEffect = 1 - Math.random() * 0.2; // random decrease of 0-20%
     }
 
     let newPrice = this.state.currentPrice * priceEffect;
@@ -87,6 +99,10 @@ class Trading extends Component {
       tradedOnNews: currentTopNews, // Set the current top news
     });
   };
+
+  /**
+   * A function that preps for the user's next trade after being notified of the outcome of the previous
+   */
 
   handleTradeAgain = () => {
     this.setState(

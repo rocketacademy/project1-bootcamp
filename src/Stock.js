@@ -10,6 +10,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { Component } from "react";
+import assetData from "./stocks/assets.json";
 
 class Stock extends Component {
   render() {
@@ -31,18 +32,18 @@ class StockList extends Component {
   state = {
     stocks: [
       // Stocks
-      { name: "Apple", ticker: "AAPL", price: 150 }, // Done
-      { name: "Microsoft", ticker: "MSFT", price: 280 }, // Done
-      { name: "Tesla", ticker: "TSLA", price: 650 }, // Done
-      { name: "Amazon", ticker: "AMZN", price: 3400 }, // Done
-      { name: "Facebook", ticker: "FB", price: 355 }, // Done
-      { name: "Netflix", ticker: "NFLX", price: 520 }, // Done
-      { name: "Google", ticker: "GOOGL", price: 2800 }, // Done
-      { name: "NVIDIA", ticker: "NVDA", price: 700 }, // Done
+      { name: "Apple", ticker: "AAPL", price: 150 },
+      { name: "Microsoft", ticker: "MSFT", price: 280 },
+      { name: "Tesla", ticker: "TSLA", price: 650 },
+      { name: "Amazon", ticker: "AMZN", price: 3400 },
+      { name: "Facebook", ticker: "FB", price: 355 },
+      { name: "Netflix", ticker: "NFLX", price: 520 },
+      { name: "Google", ticker: "GOOGL", price: 2800 },
+      { name: "NVIDIA", ticker: "NVDA", price: 700 },
 
       // Cryptocurrencies
-      { name: "Bitcoin", ticker: "BTC", price: 25000 }, // Done
-      { name: "Ethereum", ticker: "ETH", price: 1600 }, // Done
+      { name: "Bitcoin", ticker: "BTC", price: 25000 },
+      { name: "Ethereum", ticker: "ETH", price: 1600 },
 
       // Commodities
       { name: "Gold", ticker: "GOLD", price: 1800 },
@@ -51,6 +52,10 @@ class StockList extends Component {
       { name: "US Treasury Bond", ticker: "BOND", price: 100 },
     ],
   };
+
+  /**
+   * Navigate to trading page of particular ticker
+   */
 
   handleLinkClick = (ticker, price, event) => {
     event.preventDefault(); // Prevent the default behavior of the anchor tag

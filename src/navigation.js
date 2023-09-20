@@ -1,6 +1,10 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
 import React, { Component } from "react";
 
+/**
+ * Navigation bar with 2 main pages - GetStarted and Stock which contains the main app components.
+ */
+
 class Navigation extends Component {
   render() {
     return (
