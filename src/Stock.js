@@ -13,7 +13,7 @@ import React, { Component } from "react";
 import assetData from "./stocks/assets.json";
 
 /**
- * The Stock component represents an asset selector screen with name, ticker and action.
+ * The Stock component represents the main container for the asset selector screen.
  */
 
 class Stock extends Component {
@@ -25,6 +25,10 @@ class Stock extends Component {
     );
   }
 }
+
+/**
+ * The StockList component displays a list of stocks with options to trade.
+ */
 
 class StockList extends Component {
   static defaultProps = {
@@ -38,7 +42,10 @@ class StockList extends Component {
   };
 
   /**
-   * Navigate to trading page of particular ticker
+   * Handles the link click and navigates to the trading page of the selected ticker.
+   * @param {string} ticker - The ticker of the stock.
+   * @param {number} price - The price of the stock.
+   * @param {Event} event - The click event.
    */
 
   handleLinkClick = (ticker, price, event) => {
@@ -48,6 +55,11 @@ class StockList extends Component {
       price: price,
     });
   };
+
+  /**
+   * Render method for the StockList component.
+   * @return {JSX.Element} - Rendered StockList component.
+   */
 
   render() {
     return (
