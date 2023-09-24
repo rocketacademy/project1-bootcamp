@@ -1,0 +1,32 @@
+.index {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.AmGm-Buttons {
+  align-items: flex-start;
+  display: inline-flex;
+  gap: 25px;
+  position: absolute;
+  left: 65px;
+  top: 25px;
+}
+
+.index .button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-family: "Libre Franklin", Helvetica;
+  font-size: 30px;
+  font-weight: 400;
+  height: 46px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 38px;
+}
