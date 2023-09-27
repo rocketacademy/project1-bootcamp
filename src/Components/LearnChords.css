@@ -1,0 +1,30 @@
+.index-page2 {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.index-page2 .overlap-wrapper {
+  background-color: black;
+  background-image: url("images/acoustic guitar.jpg");
+  background-size: cover;
+  position: absolute;
+  height: 320px;
+  width: 568px;
+  flex-wrap: wrap;
+}
+
+.Menu-button {
+  background: none;
+  border: 0;
+  color: white;
+  top: 270px;
+  font-family: "Kavoon", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  height: 30px;
+  width: 80px;
+  position: absolute;
+  left: 50px;
+}

@@ -1,0 +1,93 @@
+.index-AG {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.AG-Buttons {
+  align-items: flex-start;
+  display: inline-flex;
+  gap: 25px;
+  justify-content: center;
+  position: absolute;
+  top: 25px;
+}
+
+.index-AG .button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-family: "Libre Franklin", Helvetica;
+  font-size: 30px;
+  font-weight: 400;
+  height: 46px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 38px;
+}
+
+.index-AG .a-chord {
+  height: 92px;
+  left: 402px;
+  position: absolute;
+  top: 118px;
+  width: 61px;
+}
+
+.fingering {
+  position: absolute;
+  left: -75px;
+}
+
+.index-AG .b-chord {
+  height: 92px;
+  left: 182px;
+  position: absolute;
+  top: 120px;
+  width: 281px;
+}
+
+.index-AG .c-chord {
+  height: 92px;
+  left: 251px;
+  position: absolute;
+  top: 118px;
+  width: 281px;
+}
+
+.index-AG .d-chord {
+  height: 92px;
+  left: 251px;
+  position: absolute;
+  top: 118px;
+  width: 281px;
+}
+
+.index-AG .e-chord {
+  height: 92px;
+  left: 325px;
+  position: absolute;
+  top: 118px;
+  width: 281px;
+}
+
+.index-AG .f-chord {
+  height: 92px;
+  left: 251px;
+  position: absolute;
+  top: 118px;
+  width: 281px;
+}
+
+.index-AG .g-chord {
+  height: 92px;
+  left: 325px;
+  position: absolute;
+  top: 118px;
+  width: 281px;
+}

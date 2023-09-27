@@ -1,0 +1,40 @@
+.index-MM {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.MM-Buttons {
+  align-items: flex-start;
+  display: inline-flex;
+  gap: 25px;
+  justify-content: center;
+  position: absolute;
+  top: 85px;
+  width: 584px;
+  height: 320px;
+}
+
+.index-MM .major-minor-button {
+  background: none;
+  border: none;
+  border-radius: 30px;
+  color: darkgrey;
+  font-family: "Libre Franklin", Helvetica;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 38px;
+  height: 35px;
+  width: 90px;
+}
+
+.index-MM .selected-button {
+  color: white;
+}

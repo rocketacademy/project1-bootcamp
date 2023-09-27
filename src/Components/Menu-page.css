@@ -1,0 +1,58 @@
+.index-MP {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.index-MP .overlap-group-wrapper-MP {
+  background-color: #ffffff;
+  height: 320px;
+  overflow: hidden;
+  width: 568px;
+}
+
+.index-MP .overlap-group-MP {
+  background-image: url("images/menu guitar.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 334px;
+  left: -37px;
+  position: relative;
+  top: -7px;
+  width: 666px;
+}
+
+.index-MP .guitar-you {
+  height: 143px;
+  left: 54px;
+  object-fit: cover;
+  position: absolute;
+  top: 19px;
+  width: 367px;
+}
+
+.index-MP .overlap-MP {
+  height: 41px;
+  left: 115px;
+  position: absolute;
+  top: 200px;
+  width: 179px;
+}
+
+.index-MP .learn-chords {
+  background: none;
+  height: 40px;
+  left: 0;
+  opacity: 0.9;
+  width: 250px;
+  color: white;
+  font-family: "Kavoon", Helvetica;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  border: 0;
+}

@@ -1,0 +1,463 @@
+.index {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.index .ma-overlap-group {
+  height: 98px;
+  left: 173px;
+  position: absolute;
+  top: 143px;
+  width: 281px;
+}
+
+.index .a-chord {
+  height: 92px;
+  left: 144px;
+  position: absolute;
+  top: 3px;
+  width: 137px;
+}
+
+.index .ma-ellipse {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 29px;
+  width: 16px;
+}
+
+.index .ma-ellipse-2 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 46px;
+  width: 16px;
+}
+
+.index .ma-ellipse-3 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 63px;
+  width: 16px;
+}
+
+.index .ma-group {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 120px;
+  position: absolute;
+  top: 15px;
+  width: 17px;
+}
+
+.index .ma-ellipse-4 {
+  background-color: #255c27;
+  border-radius: 5.5px;
+  height: 11px;
+  left: 3px;
+  position: relative;
+  top: 3px;
+  width: 11px;
+}
+
+.index .ma-ellipse-wrapper {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 120px;
+  position: absolute;
+  top: 75px;
+  width: 17px;
+}
+
+.index .overlap-group-wrapper {
+  height: 15px;
+  left: 120px;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .img-wrapper {
+  background-image: url(https://cdn.animaapp.com/projects/6507b36226ab18e0ca06ce51/releases/6507b3f96842c13feb4f4fd4/img/line-2.svg);
+  background-size: 100% 100%;
+  height: 17px;
+  position: relative;
+  top: -2px;
+}
+
+.index .img {
+  height: 17px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .b-chord {
+  height: 92px;
+  left: 0;
+  position: absolute;
+  top: 3px;
+  width: 281px;
+}
+
+.index .ma-rectangle {
+  background-color: #58e75e;
+  border-radius: 15px;
+  height: 77px;
+  left: 142px;
+  position: absolute;
+  top: 15px;
+  width: 16px;
+}
+
+.index .ma-ellipse-5 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 28px;
+  width: 16px;
+}
+
+.index .ma-ellipse-6 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 64px;
+  width: 16px;
+}
+
+.index .div-wrapper {
+  height: 15px;
+  left: 264px;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .c-chord {
+  height: 92px;
+  left: 68px;
+  position: absolute;
+  top: 3px;
+  width: 212px;
+}
+
+.index .ma-ellipse-7 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 13px;
+  width: 16px;
+}
+
+.index .ma-ellipse-8 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 74px;
+  position: absolute;
+  top: 29px;
+  width: 16px;
+}
+
+.index .ma-ellipse-9 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 151px;
+  position: absolute;
+  top: 63px;
+  width: 16px;
+}
+
+.index .ma-group-2 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 195px;
+  position: absolute;
+  top: 45px;
+  width: 17px;
+}
+
+.index .ma-group-3 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 195px;
+  position: absolute;
+  top: 75px;
+  width: 17px;
+}
+
+.index .ma-group-4 {
+  height: 15px;
+  left: 195px;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .d-chord {
+  height: 94px;
+  left: 69px;
+  position: absolute;
+  top: 3px;
+  width: 211px;
+}
+
+.index .ma-ellipse-10 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 62px;
+  width: 16px;
+}
+
+.index .ma-ellipse-11 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 73px;
+  position: absolute;
+  top: 46px;
+  width: 16px;
+}
+
+.index .ma-ellipse-12 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 73px;
+  position: absolute;
+  top: 78px;
+  width: 16px;
+}
+
+.index .ma-group-5 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 194px;
+  position: absolute;
+  top: 32px;
+  width: 17px;
+}
+
+.index .ma-group-6 {
+  height: 32px;
+  left: 194px;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .ma-cross {
+  height: 15px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .ma-cross-2 {
+  height: 15px;
+  left: 0;
+  position: absolute;
+  top: 17px;
+  width: 17px;
+}
+
+.index .e-chord {
+  height: 96px;
+  left: 142px;
+  position: absolute;
+  top: 2px;
+  width: 138px;
+}
+
+.index .ma-ellipse-13 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 14px;
+  width: 16px;
+}
+
+.index .ma-ellipse-14 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 31px;
+  width: 16px;
+}
+
+.index .ma-ellipse-15 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 77px;
+  position: absolute;
+  top: 47px;
+  width: 16px;
+}
+
+.index .ma-group-7 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 121px;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
+
+.index .ma-group-8 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 121px;
+  position: absolute;
+  top: 61px;
+  width: 17px;
+}
+
+.index .ma-group-9 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 121px;
+  position: absolute;
+  top: 79px;
+  width: 17px;
+}
+
+.index .f-chord {
+  height: 92px;
+  left: 68px;
+  position: absolute;
+  top: 3px;
+  width: 167px;
+}
+
+.index .ma-rectangle-2 {
+  background-color: #58e75e;
+  border-radius: 15px;
+  height: 92px;
+  left: 151px;
+  position: absolute;
+  top: 0;
+  width: 16px;
+}
+
+.index .ma-ellipse-16 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 11px;
+  width: 16px;
+}
+
+.index .ma-ellipse-17 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 74px;
+  position: absolute;
+  top: 45px;
+  width: 16px;
+}
+
+.index .g-chord {
+  height: 97px;
+  left: 142px;
+  position: absolute;
+  top: 0;
+  width: 138px;
+}
+
+.index .ma-ellipse-18 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 16px;
+}
+
+.index .ma-ellipse-19 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 81px;
+  width: 16px;
+}
+
+.index .ma-ellipse-20 {
+  background-color: #58e65e;
+  border-radius: 8px;
+  height: 16px;
+  left: 77px;
+  position: absolute;
+  top: 17px;
+  width: 16px;
+}
+
+.index .overlap-2 {
+  height: 33px;
+  left: 121px;
+  position: absolute;
+  top: 33px;
+  width: 17px;
+}
+
+.index .ma-group-10 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 0;
+  position: absolute;
+  top: 16px;
+  width: 17px;
+}
+
+.index .ma-group-11 {
+  background-color: #58e65e;
+  border-radius: 8.5px;
+  height: 17px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 17px;
+}
