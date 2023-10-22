@@ -15,9 +15,14 @@ class OurNav extends React.Component {
   };
   render() {
     return (
-      <Navbar expand="lg" className="bg-body-tertiary navbar navbar--fixed-top">
-        <Container>
-          <Navbar.Brand>Intimate Suppers</Navbar.Brand>
+      <Navbar
+        expand="lg"
+        className="bg-body-tertiary navbar navbar--fixed-top px-0"
+      >
+        <Container fluid>
+          <Link to="/project1-bootcamp" className="navbar-brand">
+            Intimate Suppers
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">
             <Nav>
@@ -59,9 +64,10 @@ class OurNav extends React.Component {
               >
                 Contact Us
               </Link>
-              <Nav.Link href="/project1-bootcamp#book" className="btn btn-dark">
-                Book Now
-              </Nav.Link>
+
+              <Link to="/project1-bootcamp/book" className="btn">
+                Book Now!
+              </Link>
             </Nav>
           </NavbarCollapse>
         </Container>

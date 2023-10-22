@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PastMenus from "./Pages/PastMenus";
+import Book from "./Pages/Book";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/project1-bootcamp/past-menus",
     element: <PastMenus />,
+  },
+  {
+    path: "/project1-bootcamp/book",
+    element: <Book />,
   },
 ]);
 
