@@ -1,11 +1,13 @@
 //React Components
 import React from "react";
 import OurNav from "./Components/OurNav.js";
+import About from "./Components/About.js";
+import ImgDivider from "./Components/ImgDivider.js";
 
 //Images
-import teleQR from "./images/teleQR.jpg";
 import backgroundWide1 from "./images/backgroundWide1.jpg";
 import brulePork from "./images/brule-pork-belly.jpg";
+import placeholder from "./images/placeholder.jpg";
 
 //CSS
 import "./App.css";
@@ -19,6 +21,10 @@ class App extends React.Component {
 
       document.querySelector(`#${id}`).scrollIntoView();
     }
+  };
+
+  moveTo = (id) => {
+    document.querySelector(`#${id}`).scrollIntoView();
   };
 
   render() {
@@ -35,37 +41,44 @@ class App extends React.Component {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-          ></div>
+          >
+            <div className="col-lg-5 col-sm-12 welcome-msg">
+              <h2>Welcome to the Supper Place!</h2>
+              <p className="welcome-msg-text">
+                Kok and Celina have been cooking up delicious fusion quisine
+                since 2009 at Celina's Gastrobar along Duxton Road
+              </p>
+              <p className="welcome-msg-text">
+                After it's closure in 2009, Kok and Celina's love for food could
+                not be quelled and returned in the form of Intimate Suppers in
+                2017
+              </p>
+              <p className="welcome-msg-text">
+                Since then, every menu has been crafted with a love for food and
+                a passion to create. So come and enjoy our creations together
+                with us today!
+              </p>
+              <button
+                className="btn btn-dark"
+                onClick={() => this.moveTo("curr-menu")}
+              >
+                Our current menu
+              </button>
+            </div>
+          </div>
         </div>
         <div className="row" id="about">
-          <div className="col-lg-6">
-            <h2>About Us</h2>
-            <p>
-              Intimate suppers celebrates the world of fine dining in a cozy
-              home environment. Join us at our hideout for a gastronomical
-              experience you will never forget.
-            </p>
-            <a href="https://t.me/+51G0to4dOdM4YTBl">
-              <img
-                className="col-lg-5 col-sm-4 col-4"
-                src={teleQR}
-                href="https://t.me/+51G0to4dOdM4YTBl"
-                alt="QR code to join Telegram channel"
-              />
-            </a>
-            <p>Click me to get the latest updates</p>
-          </div>
-          <div
-            className="col-lg-6 section-img"
-            style={{
-              backgroundImage: `url(${brulePork})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          ></div>
+          <About />
+          <ImgDivider img={brulePork} />
         </div>
-        <div id="curr-menu">
-          <h1>Current Menu</h1>
+        <div className="row" id="curr-menu">
+          <div className="test col-lg-6 col-sm-12 d-lg-none">
+            <h1>Our Current Menu</h1>
+          </div>
+          <ImgDivider img={placeholder} />
+          <div className="test col-lg-6 col-sm-12 d-lg-block d-none">
+            <h1>Our Current Menu</h1>
+          </div>
         </div>
         <div id="faq">
           <h1>FAQ</h1>

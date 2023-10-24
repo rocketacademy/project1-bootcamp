@@ -1,10 +1,16 @@
 .App {
   text-align: center;
 }
-.section-img {
-  height: 400px;
-}
 
 .welcome {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-msg {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 30px 50px;
 }
