@@ -9,9 +9,7 @@ import { Link } from "react-router-dom";
 
 class OurNav extends React.Component {
   onClick = (id) => {
-    if (window.location.href.includes("#")) {
-      document.querySelector(`#${id}`).scrollIntoView();
-    }
+    document.querySelector(`#${id}`).scrollIntoView();
   };
   render() {
     return (

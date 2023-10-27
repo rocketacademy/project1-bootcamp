@@ -33,7 +33,7 @@ class Book extends React.Component {
           </h2>
           <a href="https://t.me/+51G0to4dOdM4YTBl">
             <img
-              className="col-lg-2 col-sm-4 col-4"
+              className="col-lg-2 col-sm-3 col-3"
               src={teleQR}
               href="https://t.me/+51G0to4dOdM4YTBl"
               alt="QR code to join Telegram channel"
