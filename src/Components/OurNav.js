@@ -7,6 +7,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
+import isLogoWide from "../images/is-logo-wide-cropped.jpeg";
+
 class OurNav extends React.Component {
   onClick = (id) => {
     document.querySelector(`#${id}`).scrollIntoView();
@@ -19,7 +21,7 @@ class OurNav extends React.Component {
       >
         <Container fluid>
           <Link to="/project1-bootcamp" className="navbar-brand">
-            intimatesuppers
+            <img src={isLogoWide} alt="intimatesuppers logo" />
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">

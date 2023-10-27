@@ -84,17 +84,19 @@ class App extends React.Component {
           ></div>
         </div>
         <div className="row" id="about">
-          <div className="col-lg-6">
+          <div className="col-lg-6 p-0">
             <About />
           </div>
           <ImgDivider img={rendangCrostini} />
         </div>
         <div className="row" id="curr-menu">
-          <div className="col-lg-6 col-sm-12 d-lg-none">{this.currDates}</div>
+          <div className="col-lg-6 col-sm-12 d-lg-none p-0">
+            {this.currDates}
+          </div>
           <div className="col-lg-6 p-0">
             <CurrMenu />
           </div>
-          <div className="col-lg-6 col-sm-12 d-lg-block d-none">
+          <div className="col-lg-6 col-sm-12 d-lg-block d-none p-0">
             {this.currDates}
           </div>
         </div>
