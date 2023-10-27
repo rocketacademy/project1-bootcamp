@@ -70,7 +70,7 @@ class FAQ extends React.Component {
     return (
       <>
         <div className="col-lg-6 col-12 questions">
-          <h1>Frequently Asked Questions</h1>
+          <h1 className="faq-header">Frequently Asked Questions</h1>
           {Object.keys(this.faqAns).map((questions, number) => (
             <>
               <p

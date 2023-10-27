@@ -60,7 +60,7 @@ class OurNav extends React.Component {
                 className="nav-link"
                 onClick={() => this.onClick("contact")}
               >
-                Contact Us
+                Follow Us
               </Link>
 
               <Link to="/project1-bootcamp/book" className="btn">

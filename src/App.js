@@ -103,7 +103,7 @@ class App extends React.Component {
         </div>
 
         <div id="contact">
-          <h1>Contact Us</h1>
+          <h1>Follow us below for the latest updates!</h1>
         </div>
       </div>
     );

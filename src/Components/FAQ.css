@@ -6,6 +6,10 @@
   padding: 50px 0;
 }
 
+.faq-header {
+  margin-bottom: 30px;
+}
+
 .answers {
   background-color: #f0f0f0;
   height: 100%;
