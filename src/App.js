@@ -69,7 +69,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App container-fluid">
+      <div className="App container-fluid p-0 m-0">
         <div className="row">
           <OurNav />
         </div>
@@ -104,7 +104,7 @@ class App extends React.Component {
           <FAQ />
         </div>
 
-        <div id="contact">
+        <div id="follow">
           <h1>Follow us below for the latest updates!</h1>
         </div>
       </div>

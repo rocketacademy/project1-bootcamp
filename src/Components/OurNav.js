@@ -58,9 +58,9 @@ class OurNav extends React.Component {
                 FAQ
               </Link>
               <Link
-                to="/project1-bootcamp#contact"
+                to="/project1-bootcamp#follow"
                 className="nav-link"
-                onClick={() => this.onClick("contact")}
+                onClick={() => this.onClick("follow")}
               >
                 Follow Us
               </Link>
