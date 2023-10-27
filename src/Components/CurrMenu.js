@@ -4,7 +4,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 //images
 import festMenu from "../images/festive-menu.png";
-import brulePork from "../images/brule-pork-belly.jpg";
+import bruleePork from "../images/brulee-pork-belly.jpg";
 import yellowCurryBakedFish from "../images/yellow-curry-baked-fish.jpg";
 import asianTrifle from "../images/asian-trifle.jpg";
 
@@ -21,11 +21,11 @@ class CurrMenu extends React.Component {
         <Carousel.Item>
           <div
             className="car-item"
-            style={{ backgroundImage: `url(${brulePork})` }}
+            style={{ backgroundImage: `url(${bruleePork})` }}
           ></div>
           <Carousel.Caption>
             <div className="car-caption">
-              <h3>Brule Pork Belly</h3>
+              <h3>Brulee Pork Belly</h3>
               <p>
                 Plump pork belly with brule skin, served with homemade kimchi.
               </p>

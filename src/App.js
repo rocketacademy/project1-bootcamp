@@ -5,6 +5,7 @@ import About from "./Components/About.js";
 import ImgDivider from "./Components/ImgDivider.js";
 import CurrMenu from "./Components/CurrMenu.js";
 import { Link } from "react-router-dom";
+import FAQ from "./Components/FAQ.js";
 
 //Images
 import backgroundWide1 from "./images/backgroundWide1.jpg";
@@ -97,8 +98,8 @@ class App extends React.Component {
             {this.currDates}
           </div>
         </div>
-        <div id="faq">
-          <h1>FAQ</h1>
+        <div className="row" id="faq">
+          <FAQ />
         </div>
 
         <div id="contact">

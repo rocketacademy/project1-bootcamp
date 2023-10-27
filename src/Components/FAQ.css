@@ -1,0 +1,20 @@
+.faq-item:hover {
+  text-decoration: underline;
+}
+
+.questions {
+  padding: 50px 0;
+}
+
+.answers {
+  background-color: #f0f0f0;
+  height: 100%;
+  padding: 0 5%;
+}
+
+.side-answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
