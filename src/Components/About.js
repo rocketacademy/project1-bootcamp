@@ -1,27 +1,32 @@
 //React Components
 import React from "react";
-//Images
-import teleQR from "../images/teleQR.jpg";
 
 class About extends React.Component {
   render() {
     return (
-      <div className="section-text-container">
-        <h2>About Us</h2>
+      <div className="section-text-container about">
+        <h1>About Us</h1>
         <p>
-          Intimate suppers celebrates the world of fine dining in a cozy home
-          environment. Join us at our hideout for a gastronomical experience you
-          will never forget.
+          Welcome to our home in Upper Thomson where I, Celina and my Hubs, Kok
+          will cook for you! Our food is inspired by the big bold flavours of
+          Asia, and fueled by our passion for cooking and creating.
         </p>
-        <a href="https://t.me/+51G0to4dOdM4YTBl">
-          <img
-            className="col-lg-5 col-sm-4 col-4"
-            src={teleQR}
-            href="https://t.me/+51G0to4dOdM4YTBl"
-            alt="QR code to join Telegram channel"
-          />
-        </a>
-        <p>Click me to get the latest updates</p>
+        <p>
+          Each menu is designed to highlight specific regions in Asia like
+          Indonesia, South Asia, Indochina and North Asia. The process starts
+          with researching the cuisine, then cooking, adapting and reinventing
+          the dish to a version we like. There is a large variety and abundance
+          of fresh Asian herbs and spices in our local markets and it’s a joy
+          finding new ways of using them. We focus on dishes less common among
+          the local restaurants, so that your experience here can be a
+          refreshing, food adventure!
+        </p>
+        <p>
+          We host intimatesuppers in our home near Old Upper Thomson Road, among
+          the lush greenery of Pierce Reservoir. Guests can sit out on our patio
+          to enjoy their drinks before dinner begins.
+        </p>
+        <p>We hope to see you here soon!</p>
       </div>
     );
   }

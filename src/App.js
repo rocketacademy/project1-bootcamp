@@ -80,31 +80,7 @@ class App extends React.Component {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-          >
-            <div className="col-lg-5 col-sm-12 welcome-msg">
-              <h2>Welcome to the Supper Place!</h2>
-              <p className="welcome-msg-text">
-                Kok and Celina have been cooking up delicious fusion quisine
-                since 2009 at Celina's Gastrobar along Duxton Road
-              </p>
-              <p className="welcome-msg-text">
-                After it's closure in 2009, Kok and Celina's love for food could
-                not be quelled and returned in the form of Intimate Suppers in
-                2017
-              </p>
-              <p className="welcome-msg-text">
-                Since then, every menu has been crafted with a love for food and
-                a passion to create. So come and enjoy our creations together
-                with us today!
-              </p>
-              <button
-                className="btn btn-dark"
-                onClick={() => this.moveTo("curr-menu")}
-              >
-                Our current menu
-              </button>
-            </div>
-          </div>
+          ></div>
         </div>
         <div className="row" id="about">
           <div className="col-lg-6">
