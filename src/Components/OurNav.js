@@ -21,7 +21,7 @@ class OurNav extends React.Component {
       >
         <Container fluid>
           <Link to="/project1-bootcamp" className="navbar-brand">
-            Intimate Suppers
+            intimatesuppers
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">

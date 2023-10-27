@@ -6,7 +6,7 @@ import teleQR from "../images/teleQR.jpg";
 class About extends React.Component {
   render() {
     return (
-      <div className="col-lg-6">
+      <div className="section-text-container">
         <h2>About Us</h2>
         <p>
           Intimate suppers celebrates the world of fine dining in a cozy home

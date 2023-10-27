@@ -6,12 +6,12 @@ class ImgDivider extends React.Component {
   render() {
     return (
       <div
-        className="col-lg-6 section-img"
+        className="col-lg-6"
         style={{
           backgroundImage: `url(${this.imgObj})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "250px",
+          minHeight: "150px",
         }}
       ></div>
     );

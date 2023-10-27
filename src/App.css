@@ -9,8 +9,37 @@
   align-items: center;
 }
 
+.section-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px 0;
+}
+
 .welcome-msg {
   background-color: #ffffff;
   border-radius: 15px;
   padding: 30px 50px;
+}
+
+.car-item {
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+}
+
+.car-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 40px;
+}
+
+.date-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.date-col {
+  width: 40%;
 }
