@@ -73,6 +73,10 @@ class FAQ extends React.Component {
       <>
         <div className="col-lg-6 col-12 questions">
           <h1 className="faq-header">Frequently Asked Questions</h1>
+          <h5>
+            {window.innerWidth < 992 ? "Tap " : "Click "}the questions below to
+            see the answers.
+          </h5>
           {Object.keys(this.faqAns).map((questions, number) => (
             <>
               <div
