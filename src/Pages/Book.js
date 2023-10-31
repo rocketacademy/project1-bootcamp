@@ -22,7 +22,7 @@ class Book extends React.Component {
               className="col-lg-4 col-sm-5 col-5 book-link"
               src={teleBook}
               href="https://t.me/+51G0to4dOdM4YTBl"
-              alt="QR code to join Telegram channel"
+              alt="QR code to book with Celina"
             />
           </a>
         </div>
