@@ -1,3 +1,6 @@
+.faq-item {
+  padding: 10px 20px;
+}
 .faq-item:hover {
   text-decoration: underline;
 }
@@ -11,7 +14,8 @@
 }
 
 .answers {
-  background-color: #f0f0f0;
+  background-color: #777777;
+  color: white;
   height: 100%;
   padding: 0 5%;
 }
@@ -21,4 +25,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.answer-topline {
+  margin-top: 15px;
 }

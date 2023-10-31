@@ -2,8 +2,17 @@
   text-align: center;
 }
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.collapsed {
+  margin-right: 20px;
+}
+
 .navbar-brand {
-  padding-left: 20px;
+  margin-left: 20px;
 }
 
 .welcome {

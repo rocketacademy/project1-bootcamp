@@ -19,7 +19,7 @@ class OurNav extends React.Component {
         expand="lg"
         className="bg-body-tertiary navbar navbar--fixed-top px-0"
       >
-        <Container fluid>
+        <Container fluid className="p-0">
           <Link to="/project1-bootcamp" className="navbar-brand">
             <img src={isLogoWide} alt="intimatesuppers logo" />
           </Link>

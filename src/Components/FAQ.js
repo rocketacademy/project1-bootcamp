@@ -13,7 +13,7 @@ class FAQ extends React.Component {
   faqAns = {
     "What is the price and structure of each dinner and how do I book?": (
       <div className="side-answers answers">
-        <p>
+        <p className="answer-topline">
           Our menu starts from $118/pax for 4 starters, 2 to 3 mains, sides and
           a dessert. Reservations are only confirmed upon receipt of your
           payment to Celina Tan via PayNow 98360223. PayNow within 5 days from
@@ -26,7 +26,9 @@ class FAQ extends React.Component {
     ),
     "Can I make adjustments to the menu?": (
       <div className="side-answers answers">
-        <p>We serve 1 menu for the whole group, no kids menu or pricing.</p>
+        <p className="answer-topline">
+          We serve 1 menu for the whole group, no kids menu or pricing.
+        </p>
         <p>
           If you have dietary restrictions, let us know prior to reservations.
         </p>
@@ -38,7 +40,7 @@ class FAQ extends React.Component {
     ),
     "Is there any corkage charges if I bring my own drinks?": (
       <div className="side-answers answers">
-        <p>
+        <p className="answer-topline">
           BYOB no corkage. We only provide 1 wine glass per guest and enough ice
           for 1 wine ice bucket. If you need more ice, please BYO.
         </p>
@@ -46,7 +48,7 @@ class FAQ extends React.Component {
     ),
     "Can we change our reservation or get a refund?": (
       <div className="side-answers answers">
-        <p>
+        <p className="answer-topline">
           No refunds. Rescheduling is accepted more than 5 weeks in advance.
           After that time, if you are not able to make it, please find a
           replacement to take your date. You can change group size until 2 weeks
@@ -73,20 +75,15 @@ class FAQ extends React.Component {
           <h1 className="faq-header">Frequently Asked Questions</h1>
           {Object.keys(this.faqAns).map((questions, number) => (
             <>
-              <p
+              <div
                 key={"a" + number}
                 className="faq-item"
                 onClick={this.clickHandler}
               >
                 {questions}
-              </p>
+              </div>
               <div key={"b" + number} className="d-lg-none">
-                <div className="answers">
-                  <p>
-                    {questions === this.state.faq &&
-                      this.faqAns[this.state.faq]}
-                  </p>
-                </div>
+                {questions === this.state.faq && this.faqAns[this.state.faq]}
               </div>
             </>
           ))}
