@@ -17,3 +17,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.navbar {
+  top: 0;
+  position: sticky;
+}
