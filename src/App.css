@@ -7,8 +7,13 @@
   margin-right: 0;
 }
 
-.collapsed {
+.collapsed,
+.navbar-toggler {
   margin-right: 20px;
+}
+
+.dropdown-item {
+  text-align: center;
 }
 
 .navbar-brand {

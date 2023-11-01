@@ -9,56 +9,49 @@ import yellowCurryBakedFish from "../images/yellow-curry-baked-fish.jpg";
 import asianTrifle from "../images/asian-trifle.jpg";
 
 class CurrMenu extends React.Component {
+  currMenuTitleList = [
+    {
+      image: festMenu, //image item here
+      caption: false,
+    },
+    {
+      image: bruleePork, //image item here
+      caption: true,
+      title: "Brulee Pork Belly",
+      description:
+        "Plump pork belly with brule skin, served with homemade kimchi.",
+    },
+    {
+      image: yellowCurryBakedFish, //image item here
+      caption: true,
+      title: "yellowCurryBakedFish",
+      description:
+        "This fish is backed to lock in the flavours and moisture resulting in a juicy and flavourful fish each time.",
+    },
+    {
+      image: asianTrifle, //image item here
+      caption: true,
+      title: "Asian Trifle",
+      description: "Our unique asian style trifle to finish of the meal.",
+    },
+  ];
   render() {
     return (
-      <Carousel interval={null}>
-        <Carousel.Item>
-          <div
-            className="car-item"
-            style={{ backgroundImage: `url(${festMenu})` }}
-          ></div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="car-item"
-            style={{ backgroundImage: `url(${bruleePork})` }}
-          ></div>
-          <Carousel.Caption>
-            <div className="car-caption">
-              <h3>Brulee Pork Belly</h3>
-              <p>
-                Plump pork belly with brule skin, served with homemade kimchi.
-              </p>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="car-item"
-            style={{ backgroundImage: `url(${yellowCurryBakedFish})` }}
-          ></div>
-          <Carousel.Caption>
-            <div className="car-caption">
-              <h3>Yellow Curry Baked Fish</h3>
-              <p>
-                This fish is backed to lock in the flavours and mosture
-                resulting in a juicy and flavourful fish each time.
-              </p>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div
-            className="car-item"
-            style={{ backgroundImage: `url(${asianTrifle})` }}
-          ></div>
-          <Carousel.Caption>
-            <div className="car-caption">
-              <h3>Asian Trifle</h3>
-              <p>Our unique asian style trifle to finish of the meal.</p>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
+      <Carousel interval={10000}>
+        {this.currMenuTitleList.map((object, index) => (
+          <Carousel.Item key={index}>
+            <div
+              className="car-item"
+              style={{ backgroundImage: `url(${object.image})` }}
+            ></div>
+            {object.caption && (
+              <Carousel.Caption className="car-caption">
+                <h3>{object.title}</h3>
+                <p>{object.description}</p>
+              </Carousel.Caption>
+            )}
+          </Carousel.Item>
+        ))}
       </Carousel>
     );
   }
