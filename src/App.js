@@ -1,17 +1,37 @@
 import React from "react";
-import logo from "./logo.png";
+// import logo from "./logo.png";
 import "./App.css";
+import UserInput from "./Components/UserInput";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInput: "",
+      updatedUserInput: null,
+      itemsArray: [],
+      itemInCart: false,
+      itemHasBeenDeleted: false,
+    };
+  }
+  handleChange = (e) => {
+    this.setState = { userInput: e.targe.value };
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+        <legend>
+          <h1>Today's shopping list</h1>
+        </legend>
+
+        <div className="userInput">
+          {" "}
+          <UserInput>
+            value={this.state.userInput}
+            onChange={() => this.handleChange()}
+          </UserInput>
+        </div>
       </div>
     );
   }
