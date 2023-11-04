@@ -1,20 +1,21 @@
 import React from "react";
-import logo from "./logo.png";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
+
 import "./App.css";
 
-class App extends React.Component {
-  render() {
-    return (
+const App = () => {
+  return (
+    <>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+        </Routes>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
 export default App;
