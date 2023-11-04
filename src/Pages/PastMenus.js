@@ -46,7 +46,7 @@ class PastMenus extends React.Component {
           Browse the gallery below and click on the menu that you wish to see in
           detail
         </p>
-        {/* Insert onclick in the carousel to change state */}
+        {/* Carousel with past menus, onclick handler to change state */}
         <div className="row">
           <Carousel interval={null} className="col-lg-8 col-sm-12">
             {this.pastMenuTitleList.map((object) => (
