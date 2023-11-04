@@ -5,6 +5,7 @@ import Timer from "../components/Timer";
 import Greetings from "./Greetings";
 
 import Form from "./Form";
+import Button from "./Button";
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -23,7 +24,7 @@ const Dashboard = () => {
 
       <h3>What would you like to do today?</h3>
       {}
-      <button onClick={() => setShow(true)}>Add a Trip</button>
+      <Button onClick={() => setShow(true)} value="Add a Trip" />
 
       <h6>Ongoing trips</h6>
       {!show ? (
