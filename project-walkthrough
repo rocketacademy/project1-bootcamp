@@ -1,0 +1,74 @@
+// Updating the first task in the this.state.tasks array
+
+/** TaskUpdate Component Modifications
+ * In TaskUpdate.js, our constructor is modified as follows */
+class TaskUpdate {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: this.props.title,
+      task: this.props.task,
+    };
+    // we initialize local state of 'TaskUpdate' with the 'title' and 'task' from the props
+    // this ensures that the input fields in the update form display the current values of the task being updated
+  }
+}
+
+// handleSubmit function
+handleSubmit = (e) => {
+  e.preventDefault();
+
+  const updatedTask = {
+    title: this.state.title,
+    task: this.state.task,
+  };
+
+  this.props.updateTask(this.props.id, updatedTask);
+
+  this.props.updateTask(this.props.id, updatedTask);
+
+  // Close the update form by calling the callback function
+  this.props.onUpdateComplete();
+};
+/** Everytime the update button is clicked and the update form is submitted, we create an 'updatedTask' object with the new 'title' and 'task' values from the local state
+ *
+ */
+
+// Delete Logic
+
+/** Defining handleDeleteClick Method in Task.js
+ * handleDeleteClick = () =>{
+ *  this.props.deleteTask(this.props.id)
+ * }
+ * Inside the handleDeleteClick function, you can call a deleteTask function that is passed as a prop from  TaskList.js
+ */
+
+/** Passing the deleteTask function as a prop in the render method
+ * <Task
+      key={task.id}
+      {...task}
+      updateTask={this.updateTask}
+      deleteTask={this.deleteTask}
+    />
+ */
+
+/** Handling deletion in deleteTask function
+ * deleteTask = (id) => {
+      this.setState((prevState)=>{
+        const updatedTasks = prevState.tasks.filter((task)=>{
+          task.id !== id
+          return { tasks: updatedTasks }
+        })
+      })
+  }
+
+  deleteTask takes in the id argument which is the id of the task to be deleted
+
+  this.setState() method is called to update the state in the TaskList Component and it takes the previous state (prevState) as an argument to update the current state based on its previous value
+
+  we declare an updatedTasks variable which is assigned the result of the filter method applied to the prevState.tasks array 
+    filter() creates a new array by iterating over the original array's elements and including only those that meet a certain condition (excludes task with specific id -> task.id !== id)
+
+  Finally, this.setState returns an object with property tasks set to updatedTasks, which does not have the deleted task
+ */
