@@ -16,11 +16,11 @@ You may also see any lint errors in the console.
 
 ### User stories
 
-Kayla - A working woman in her 40s wanting to find a place to host her husband's 50th birthdaay at someplace special. She likes asian food and is adventerous when it comes to trying new things. She wants to determine whether initmate suppers is a good place to host her husband's 50th birthday party and if she decides whe likes the place, she needs to book a slot.
+Kayla - A working woman in her 40s wanting to find a place to host her husband's 50th birthday at someplace special. She likes asian food and is adventerous when it comes to trying new things. She wants to determine whether initmatesuppers is a good place to host her husband's 50th birthday party and if she decides she likes the place, she will contact intimatesuppers for further enquiries.
 
-Mike - A working adult who has found out about initmate suppers from a friend, he wants to know more about how this private dining operates. He wants to determine if he can host his family there for dinner with 3 children below 5 years old for his family's Christmas dinner on the 25th December.
+Mike - A working adult who has found out about initmatesuppers from a friend, he wants to know more about how this private dining operates. He wants to determine if he can host his family there for dinner with 3 children below 5 years old for his family's Christmas dinner on the 25th of December.
 
-Celina - The owner of intimate suppers, she gets asked many questions about similar topics. She would like a place where she can refer potential customers to view information about the private dining and see answers to frequently asked questions.
+Celina - The owner of intimatesuppers, she gets asked many questions about similar topics. She would like a place where she can refer potential customers to view information about the private dining and see answers to frequently asked questions.
 
 ### Wireframe
 
