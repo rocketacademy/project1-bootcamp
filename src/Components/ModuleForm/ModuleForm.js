@@ -5,41 +5,58 @@ class ModuleForm extends Component {
     super(props);
     this.state = {
       enabled: "1",
-      userAction: "",
+      userAction: "Add",
       moduleName: "",
       moduleList: [],
-      grade: "",
+      grade: "A",
     };
   }
-
-  handleActionChange = (event) => {
-    this.setState({
-      userAction: event.target.value,
-    });
-  };
 
   handleSubmit = (event) => {
     const { userAction, moduleList, moduleName, grade } = this.state;
 
+    console.log("handleSubmit");
+
     if (userAction === "Add") {
       //Add a new module to the list
       const newModule = { moduleName, grade };
-      this.setState({
-        moduleList: [...moduleList, newModule],
-        moduleName: "",
-        grade: "",
-      });
+      console.log("Add Module");
+      this.setState(
+        {
+          moduleList: [...moduleList, newModule],
+          moduleName: "",
+          grade: "",
+          userAction: "Add",
+        },
+        () => {
+          localStorage.setItem(
+            "moduleList",
+            JSON.stringify(this.state.moduleList)
+          );
+        }
+      );
     } else if (userAction === "Update") {
+      console.log("Update Module");
+
       // Add logic for updating modules
     } else if (userAction === "Delete") {
       // Add logic for deleting modules
+      console.log("Delete Module");
     }
 
     event.preventDefault();
   };
 
+  handleActionChange = (event) => {
+    this.setState({
+      userAction: event.target.value,
+    });
+    console.log("Action Change");
+    event.preventDefault();
+  };
+
   render() {
-    const { enabled, moduleName, grade, userAction, moduleList } = this.state;
+    const { enabled, userAction, moduleName, moduleList, grade } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <select value={userAction} onChange={this.handleActionChange}>
@@ -81,11 +98,12 @@ class ModuleForm extends Component {
         <div>
           <h2>Module List</h2>
           <ul>
-            {moduleList.map((module, index) => (
-              <li key={index}>
-                {moduleName} - {grade}
-              </li>
-            ))}
+            {moduleList &&
+              moduleList.map((module, index) => (
+                <li key={index}>
+                  {module.moduleName} - {module.grade}
+                </li>
+              ))}
           </ul>
         </div>
       </form>
