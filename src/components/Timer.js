@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = () => {
-  const today = new Date();
-
-  const [currentTimeDate, setCurrentTimeDate] = useState(today);
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const currentTime = `${currentDate.getHours()} : ${currentDate.getMinutes()} : ${currentDate.getSeconds()}`;
 
   useEffect(() => {
-    setInterval(() => {
-      setCurrentTimeDate(today);
-    }, 1000);
+    setInterval(() => setCurrentDate(new Date()), 1000);
   });
-  return <>{currentTimeDate.toDateString()}</>;
+
+  return (
+    <>
+      <p>{`${currentDate.toDateString()}, ${currentTime}`}</p>
+    </>
+  );
 };
 
 export default Timer;
