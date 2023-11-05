@@ -3,8 +3,7 @@ export const DoseCalculator = ({ drugList, selectedDrug, weightInput }) => {
   const dose = [];
 
   for (let i = 0; i < selectedDrug.length; i += 1) {
-    const drugSel = selectedDrug[i];
-    const drug = drugList.find((drug) => drug.drugName === drugSel);
+    const drug = drugList.find((drug) => drug.drugName === selectedDrug[i]);
     console.log(drug);
     console.log(weightInput);
     const minDose = weightInput * drug.minDoseMgPerKg;
@@ -14,6 +13,7 @@ export const DoseCalculator = ({ drugList, selectedDrug, weightInput }) => {
       drug: selectedDrug[i],
       minDose: minDose,
       maxDose: maxDose,
+      freq: drug.freq,
     });
     console.log(dose);
   }
@@ -23,16 +23,34 @@ export const DoseCalculator = ({ drugList, selectedDrug, weightInput }) => {
       <thead>
         <tr>
           <th>Drug Name</th>
-          <th>Min Dose (mg/kg)</th>
-          <th>Max Dose (mg/kg)</th>
+          <th>Min Dose (mg)</th>
+          <th>Max Dose (mg)</th>
+          <th>Freq</th>
         </tr>
       </thead>
       <tbody>
         {dose.map((drug) => (
           <tr key={drug.drug}>
-            <td>{drug.drug}</td>
-            <td>{drug.minDose}</td>
-            <td>{drug.maxDose}</td>
+            <td>{drug.drug.toUpperCase()}</td>
+            <td>
+              {drug.freq === "BD"
+                ? (drug.minDose / 2).toFixed(2)
+                : drug.freq === "TDS"
+                ? (drug.minDose / 3).toFixed(2)
+                : drug.freq === "QDS"
+                ? (drug.minDose / 4).toFixed(2)
+                : drug.minDose + " /day"}
+            </td>
+            <td>
+              {drug.freq === "BD"
+                ? (drug.maxDose / 2).toFixed(2)
+                : drug.freq === "TDS"
+                ? (drug.maxDose / 3).toFixed(2)
+                : drug.freq === "QDS"
+                ? (drug.maxDose / 4).toFixed(2)
+                : drug.maxDose + " /day"}
+            </td>
+            <td>{drug.freq}</td>
           </tr>
         ))}
       </tbody>
