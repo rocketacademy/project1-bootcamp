@@ -2,7 +2,8 @@ import React from "react";
 
 class DrugSearch extends React.Component {
   handleChange = (e) => {
-    this.props.updateDrugSearch(e.target.value);
+    const newDrugSearch = e.target.value.toLowerCase();
+    this.props.updateDrugSearch(newDrugSearch);
   };
 
   render() {
