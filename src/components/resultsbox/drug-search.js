@@ -1,6 +1,6 @@
 import React from "react";
 
-class SearchInput extends React.Component {
+class DrugSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -20,4 +20,4 @@ class SearchInput extends React.Component {
   }
 }
 
-export default SearchInput;
+export default DrugSearch;

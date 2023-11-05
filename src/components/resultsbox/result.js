@@ -1,11 +1,14 @@
 import React from "react";
-import SearchInput from "./drug-search";
+import DrugSearch from "./drug-search";
+import ResultDisplay from "./result-display";
 
-export const ResultDisplay = () => {
+export const Result = () => {
   return (
     <div className="result-box">
-      <SearchInput />
-      <div className="result-display"></div>
+      <DrugSearch />
+      <div className="result-display">
+        <ResultDisplay />
+      </div>
     </div>
   );
 };
