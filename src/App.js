@@ -1,7 +1,8 @@
 import React from "react";
-// import logo from "./logo.png";
 import "./App.css";
-import UserInput from "./Components/UserInput";
+import ItemsList from "./Components/ItemsList";
+
+// import ItemsList from "./Components/ItemsList";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,9 +15,6 @@ class App extends React.Component {
       itemHasBeenDeleted: false,
     };
   }
-  handleChange = (e) => {
-    this.setState = { userInput: e.targe.value };
-  };
 
   render() {
     return (
@@ -24,13 +22,8 @@ class App extends React.Component {
         <legend>
           <h1>Today's shopping list</h1>
         </legend>
-
-        <div className="userInput">
-          {" "}
-          <UserInput>
-            value={this.state.userInput}
-            onChange={() => this.handleChange()}
-          </UserInput>
+        <div>
+          <ItemsList />
         </div>
       </div>
     );
