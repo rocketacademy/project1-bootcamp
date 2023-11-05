@@ -12,10 +12,14 @@ export default class UserInput extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     // const inputValue = this.state;
-    this.props.addItem(this.state.inputValue);
-    this.setState({
-      inputValue: "",
-    });
+    if (this.state.inputValue) {
+      this.props.addItem(this.state.inputValue);
+      this.setState({
+        inputValue: "",
+      });
+    } else {
+      alert("Please input the name of your item 😁");
+    }
   };
   render() {
     console.log(this.state.inputValue);
