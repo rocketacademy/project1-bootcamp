@@ -22,7 +22,7 @@ class DrugSearch extends React.Component {
     return (
       <div className="input-box">
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label htmlFor="search-input">
             Drug Search
             <input
               type="text"

@@ -3,7 +3,6 @@ import "./App.css";
 import { Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
-import { DoseCalculator } from "./components/resultsbox/calculator";
 
 const drugList = [
   {
@@ -76,11 +75,6 @@ class App extends React.Component {
           selectedDrug={this.state.selectedDrug}
           weightInput={this.state.weightInput}
         />
-        {/* <DoseCalculator
-          drugList={drugList}
-          selectedDrug={this.state.selectedDrug}
-          weightInput={this.state.weightInput}
-        /> */}
       </div>
     );
   }
