@@ -29,6 +29,7 @@ class App extends React.Component {
       ageInput: 0,
       weightInput: 0,
       drugSearch: "",
+      selectedDrug: [],
     };
   }
 
@@ -47,10 +48,15 @@ class App extends React.Component {
   };
 
   updateDrugSearch = (newDrugSearch) => {
+    const drug = drugList.find((drug) => drug.drugName === newDrugSearch);
     this.setState({
       drugSearch: newDrugSearch,
+      selectedDrug: drug
+        ? [...this.state.selectedDrug, drug.drugName]
+        : this.state.selectedDrug,
     });
     console.log(`drug search: ${this.state.drugSearch}`);
+    console.log(`selected drug: ${this.state.selectedDrug}`);
   };
 
   render() {
