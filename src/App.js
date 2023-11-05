@@ -25,10 +25,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      ageInput: 0,
+      weightInput: 0,
+      drugSearch: "",
+    };
   }
 
-  doseCalculator = () => {};
+  updateAgeInput = (newAgeInput) => {
+    this.setState({
+      ageInput: newAgeInput,
+    });
+    console.log(`age: ${this.state.ageInput}`);
+  };
+
+  updateWeightInput = (newWeightInput) => {
+    this.setState({
+      weightInput: newWeightInput,
+    });
+    console.log(`weight: ${this.state.weightInput}`);
+  };
 
   render() {
     return (
@@ -36,7 +52,10 @@ class App extends React.Component {
         <header className="App-header">
           <Title />
         </header>
-        <Demographic />
+        <Demographic
+          updateAgeInput={this.updateAgeInput}
+          updateWeightInput={this.updateWeightInput}
+        />
         <Result />
       </div>
     );

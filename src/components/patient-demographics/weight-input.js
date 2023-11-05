@@ -1,10 +1,9 @@
 import React from "react";
 
 class WeightInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  handleChange = (e) => {
+    this.props.updateWeightInput(e.target.value);
+  };
 
   render() {
     return (
@@ -12,7 +11,11 @@ class WeightInput extends React.Component {
         <form>
           <label>
             Weight
-            <input type="text" name="weight-input" />
+            <input
+              type="text"
+              name="weight-input"
+              onChange={this.handleChange}
+            />
           </label>
         </form>
       </div>

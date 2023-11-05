@@ -1,10 +1,9 @@
 import React from "react";
 
 class AgeInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  handleChange = (e) => {
+    this.props.updateAgeInput(e.target.value);
+  };
 
   render() {
     return (
@@ -12,7 +11,7 @@ class AgeInput extends React.Component {
         <form>
           <label>
             Age
-            <input type="text" name="age-input" />
+            <input type="text" name="age-input" onChange={this.handleChange} />
           </label>
         </form>
       </div>
