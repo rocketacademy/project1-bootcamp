@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
 import { Title } from "./components/title/title";
+import { Demographic } from "./components/patient-demographics/patient-demo";
 
 class App extends React.Component {
   render() {
@@ -10,6 +10,7 @@ class App extends React.Component {
         <header className="App-header">
           <Title />
         </header>
+        <Demographic />
       </div>
     );
   }
