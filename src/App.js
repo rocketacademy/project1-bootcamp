@@ -46,6 +46,13 @@ class App extends React.Component {
     console.log(`weight: ${this.state.weightInput}`);
   };
 
+  updateDrugSearch = (newDrugSearch) => {
+    this.setState({
+      drugSearch: newDrugSearch,
+    });
+    console.log(`drug search: ${this.state.drugSearch}`);
+  };
+
   render() {
     return (
       <div className="App">
@@ -56,7 +63,7 @@ class App extends React.Component {
           updateAgeInput={this.updateAgeInput}
           updateWeightInput={this.updateWeightInput}
         />
-        <Result />
+        <Result updateDrugSearch={this.updateDrugSearch} />
       </div>
     );
   }

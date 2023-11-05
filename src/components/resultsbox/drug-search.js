@@ -1,10 +1,9 @@
 import React from "react";
 
 class DrugSearch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  handleChange = (e) => {
+    this.props.updateDrugSearch(e.target.value);
+  };
 
   render() {
     return (
@@ -12,7 +11,11 @@ class DrugSearch extends React.Component {
         <form>
           <label>
             Drug Search
-            <input type="text" name="search-input" />
+            <input
+              type="text"
+              name="search-input"
+              onChange={this.handleChange}
+            />
           </label>
         </form>
       </div>
