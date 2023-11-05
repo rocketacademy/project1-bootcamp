@@ -18,7 +18,8 @@ const Greetings = ({ username }) => {
   };
   return (
     <>
-      <h3>{`${greet()} ${username}!`}</h3>
+      <h3>{`${greet()} ${username}! `}</h3>
+      <h3>What would you like to do today?</h3>
     </>
   );
 };
