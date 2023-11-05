@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
+import { ResultDisplay } from "./components/resultsbox/result";
 
 class App extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class App extends React.Component {
           <Title />
         </header>
         <Demographic />
+        <ResultDisplay />
       </div>
     );
   }

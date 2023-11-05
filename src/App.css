@@ -27,3 +27,21 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.result-box {
+  background-color: #ffecdb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  padding: 30px;
+}
+
+.result-display {
+  background-color: #ffecdb;
+  display: row;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+}
