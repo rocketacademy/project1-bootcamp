@@ -1,8 +1,9 @@
 import React from "react";
 
-const Greetings = () => {
+const Greetings = ({ username }) => {
   const today = new Date();
   const currHour = today.getHours();
+
   let greetings;
 
   const greet = () => {
@@ -17,7 +18,7 @@ const Greetings = () => {
   };
   return (
     <>
-      <h4>{greet()}</h4>
+      <h3>{`${greet()} ${username}!`}</h3>
     </>
   );
 };
