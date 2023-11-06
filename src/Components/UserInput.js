@@ -13,7 +13,7 @@ export default class UserInput extends React.Component {
     event.preventDefault();
     // const inputValue = this.state;
     if (this.state.inputValue) {
-      this.props.addItem(this.state.inputValue);
+      this.props.addItem(this.state.inputValue.toLowerCase());
       this.setState({
         inputValue: "",
       });
