@@ -1,39 +1,57 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
 import Timer from "../components/Timer";
 import Greetings from "./Greetings";
 
 import Form from "./Form";
+
 import Button from "./Button";
+import CreatedForm from "./CreatedForm";
 
 const Dashboard = () => {
-  const [show, setShow] = useState(false);
-  console.log(show);
-  const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(false);
+  const [showCreatedForm, setShowCreatedForm] = useState(false);
 
-  const getName = () => {
+  const getUsername = () => {
     return JSON.parse(localStorage.getItem("user"));
   };
 
+  const getCreatedFormNames = () => {
+    return JSON.parse(localStorage.getItem("stateObject"));
+  };
+
+  // useEffect(() => {
+  //   return ()=> setShowForm(false);
+  // // });
+  // if (showCreatedForm) {
+  //   return setShowForm(false);
+  // }
+
   return (
     <>
-      <h2>{getName()}</h2>
+      <h2>{getUsername()}</h2>
       <Timer />
-      <Greetings />
-
-      <h3>What would you like to do today?</h3>
-      {}
-      <Button onClick={() => setShow(true)} value="Add a Trip" />
-
-      <h6>Ongoing trips</h6>
-      {!show ? (
-        <p>This space is currently empty! Add a trip to start.</p>
+      <Greetings username={getUsername()} />
+      <h5>Ongoing Trips</h5>
+      {!showForm && !showCreatedForm ? (
+        <>
+          <Button onClick={() => setShowForm(true)}>Add a trip</Button>
+          <p>This space is currently empty! Add a trip to start</p>
+        </>
+      ) : showForm && !showCreatedForm ? (
+        <>
+          <Form />
+          <Button
+            onClick={() => {
+              setShowCreatedForm(true);
+            }}
+          >
+            Create Trip
+          </Button>
+        </>
       ) : (
-        <Form />
+        <CreatedForm getNames={getCreatedFormNames()} />
       )}
-
-      <button onClick={() => navigate(-1)}>Back</button>
     </>
   );
 };
