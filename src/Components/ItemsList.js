@@ -1,5 +1,6 @@
 import React from "react";
 import UserInput from "./UserInput";
+// import DeleteItemButton from "./DeleteItemButton";
 export default class ItemsList extends React.Component {
   constructor(props) {
     super(props);
@@ -11,10 +12,25 @@ export default class ItemsList extends React.Component {
     let newItemsList = [...this.state.itemsList, inputValue];
     this.setState({ itemsList: newItemsList });
   };
+
+  deleteItem = (index) => {
+    let itemsList = [...this.state.itemsList];
+    console.log(itemsList);
+    itemsList.splice(index, 1);
+    this.setState({ itemsList: itemsList });
+  };
   render() {
     console.log(this.state.itemsList);
     const newArray = this.state.itemsList.map((item, index) => {
-      return <p key={index}>{item}</p>;
+      return (
+        <p key={index}>
+          <input type="checkbox" name="item" value={item}></input> {item}{" "}
+          <button type="button">Edit</button>
+          <button type="button" onClick={() => this.deleteItem(index)}>
+            Delete
+          </button>
+        </p>
+      );
     });
 
     return (
