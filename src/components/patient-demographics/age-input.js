@@ -1,4 +1,7 @@
 import React from "react";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import { InputAdornment } from "@mui/material";
 
 class AgeInput extends React.Component {
   handleChange = (e) => {
@@ -13,12 +16,23 @@ class AgeInput extends React.Component {
   render() {
     return (
       <div className="input-box">
-        <form onSubmit={this.handleSubmit}>
+        {/* <form onSubmit={this.handleSubmit}>
           <label>
             Age
             <input type="text" name="age-input" onChange={this.handleChange} />
           </label>
-        </form>
+        </form> */}
+        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+          <TextField
+            id="age-input"
+            label="Age"
+            variant="standard"
+            onChange={this.handleChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">yo</InputAdornment>,
+            }}
+          />
+        </Box>
       </div>
     );
   }

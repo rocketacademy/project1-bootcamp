@@ -58,7 +58,7 @@ class DrugSearch extends React.Component {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Search input"
+                label="Enter drug name..."
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
