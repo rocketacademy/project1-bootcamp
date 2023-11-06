@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
-import ToDoList from "./TodoList";
+import FriendList from "./FriendList";
 
 const Form = () => {
   const [tripname, setTripname] = useState("");
@@ -14,10 +14,19 @@ const Form = () => {
     }
   };
 
-  const deleteFriends = (todoIndex) => {
-    const newTodos = items.filter((_, index) => index !== todoIndex);
-    setItems(newTodos);
+  const deleteFriends = (itemIndex) => {
+    const newItem = items.filter((_, index) => index !== itemIndex);
+    setItems(newItem);
   };
+
+  useEffect(() => {
+    let stateObject = {
+      tripname: tripname,
+      items: items,
+    };
+
+    localStorage.setItem("stateObject", JSON.stringify(stateObject));
+  }, [tripname, items]);
 
   return (
     <>
@@ -39,9 +48,8 @@ const Form = () => {
           value={friends}
           placeholder="Enter friends' name"
         />
-        <Button value="Add" onClick={addFriends} />
-        <ToDoList toDoList={items} deleteFriends={deleteFriends} />
-        <Button value="Create trip!" />
+        <Button onClick={addFriends}>Add</Button>
+        <FriendList friendList={items} deleteFriends={deleteFriends} />
       </form>
     </>
   );
