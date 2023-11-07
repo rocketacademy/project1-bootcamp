@@ -153,9 +153,15 @@ class PastMenu extends React.Component {
     return (
       <div className="row justify-content-center">
         <h1>{this.props.menu}</h1>
-        <p>{this.pastMenuDict[this.props.menu].description}</p>
+        <p className="col-lg-10 col-12">
+          {this.pastMenuDict[this.props.menu].description}
+        </p>
         <div className="align-center background">
           <h1 className="section-header">Starters</h1>
+          <p className="col-lg-10 col-12">
+            The starters for this menu, the starters are served on a shared
+            plate for all to indulge in.
+          </p>
           <Carousel interval={null} className="col-lg-8 col-12">
             {this.pastMenuDict[this.props.menu].starters.map((starter) => (
               <Carousel.Item key={starter.title}>
@@ -175,6 +181,10 @@ class PastMenu extends React.Component {
         </div>
         <div className="align-center">
           <h1 className="section-header">Mains</h1>
+          <p className="col-lg-10 col-12">
+            For large groups (8-12pax) we will have additional main served as
+            indicated on the main with "(8-12pax)" in the title.
+          </p>
           <Carousel interval={null} className="col-lg-8 col-12">
             {this.pastMenuDict[this.props.menu].mains.map((main) => (
               <Carousel.Item key={main.title}>
@@ -194,6 +204,9 @@ class PastMenu extends React.Component {
         </div>
         <div className="align-center background">
           <h1 className="section-header">Dessert</h1>
+          <p className="col-lg-10 col-12">
+            There is only one dessert choice to round of the meal.
+          </p>
           <div
             className="past-menu car-item dessert-container col-lg-8 col-12"
             style={{

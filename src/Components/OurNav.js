@@ -7,6 +7,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
+import "./Nav.css";
+
 import isLogoWide from "../images/is-logo-wide-cropped.jpeg";
 
 class OurNav extends React.Component {
@@ -15,10 +17,7 @@ class OurNav extends React.Component {
   };
   render() {
     return (
-      <Navbar
-        expand="lg"
-        className="bg-body-tertiary navbar navbar--fixed-top px-0"
-      >
+      <Navbar expand="lg" className="navbar navbar--fixed-top px-0">
         <Container fluid className="p-0">
           <Link to="/project1-bootcamp" className="navbar-brand">
             <img src={isLogoWide} alt="intimatesuppers logo" />
