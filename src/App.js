@@ -3,30 +3,7 @@ import "./App.css";
 import { Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
-
-const drugList = [
-  {
-    drugName: "paracetamol",
-    minDoseMgPerKg: 10,
-    maxDoseMgPerKg: 15,
-    freq: "QDS",
-    ageRange: [1],
-  },
-  {
-    drugName: "ibuprofen",
-    minDoseMgPerKg: 5,
-    maxDoseMgPerKg: 10,
-    freq: "TDS",
-    ageRange: [5],
-  },
-  {
-    drugName: "chlorpheniramine",
-    minDoseMgPerKg: 0.1,
-    maxDoseMgPerKg: 0.1,
-    freq: "TDS",
-    ageRange: [1, 2, 6],
-  },
-];
+import { DrugList } from "./components/druglist";
 
 class App extends React.Component {
   constructor(props) {
@@ -55,7 +32,7 @@ class App extends React.Component {
   };
 
   updateDrugSearch = (newDrugSearch) => {
-    const drug = drugList.find((drug) => drug.drugName === newDrugSearch);
+    const drug = DrugList.find((drug) => drug.drugName === newDrugSearch);
     this.setState({
       drugSearch: newDrugSearch,
       selectedDrug: drug
@@ -78,7 +55,6 @@ class App extends React.Component {
         />
         <Result
           updateDrugSearch={this.updateDrugSearch}
-          drugList={drugList}
           selectedDrug={this.state.selectedDrug}
           weightInput={this.state.weightInput}
         />

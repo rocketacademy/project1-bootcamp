@@ -6,13 +6,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { DrugList } from "../druglist";
 
-export const DoseCalculator = ({ drugList, selectedDrug, weightInput }) => {
+export const DoseCalculator = ({ selectedDrug, weightInput }) => {
   //reference selected drug to drugList
   const dose = [];
 
   for (let i = 0; i < selectedDrug.length; i += 1) {
-    const drug = drugList.find((drug) => drug.drugName === selectedDrug[i]);
+    const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]);
     console.log(drug);
     console.log(weightInput);
     const minDose = weightInput * drug.minDoseMgPerKg;

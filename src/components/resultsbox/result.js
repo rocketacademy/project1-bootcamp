@@ -12,11 +12,7 @@ export const Result = ({
     <div className="result-box">
       <DrugSearch updateDrugSearch={updateDrugSearch} />
       <div className="result-display">
-        <DoseCalculator
-          drugList={drugList}
-          selectedDrug={selectedDrug}
-          weightInput={weightInput}
-        />
+        <DoseCalculator selectedDrug={selectedDrug} weightInput={weightInput} />
       </div>
     </div>
   );
