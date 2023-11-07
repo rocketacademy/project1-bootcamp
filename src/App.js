@@ -39,11 +39,11 @@ class App extends React.Component {
         ? [...this.state.selectedDrug, drug.drugName]
         : this.state.selectedDrug,
     });
-    console.log(`drug search: ${this.state.drugSearch}`);
-    console.log(`selected drug: ${this.state.selectedDrug}`);
   };
 
   render() {
+    console.log(`drug search: ${this.state.drugSearch}`);
+    console.log(`selected drug: ${this.state.selectedDrug}`);
     return (
       <div className="App">
         <header className="App-header">

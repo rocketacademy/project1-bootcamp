@@ -6,21 +6,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { DrugList } from "../druglist";
 
 class DrugSearch extends React.Component {
-  handleChange = (e) => {
-    const newDrugSearch = e.target.value.toLowerCase();
-    this.props.updateDrugSearch(newDrugSearch);
-  };
-
-  //not sure why this does not work
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const newDrugSearch = e.target.value.toLowerCase();
-  //   this.props.updateDrugSearch(newDrugSearch);
-  // };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.updateDrugSearch(e.target.value);
+  handleDrugSelect = (event, newValue) => {
+    const newDrugSearch = newValue.toLowerCase();
+    if (newDrugSearch) {
+      this.props.updateDrugSearch(newDrugSearch);
+    }
   };
 
   render() {
@@ -54,7 +44,7 @@ class DrugSearch extends React.Component {
             sx={{ width: "200px" }}
             disableClearable
             options={DrugList.map((option) => option.drugName)}
-            onChange={this.handleChange}
+            onChange={this.handleDrugSelect}
             renderInput={(params) => (
               <TextField
                 {...params}
