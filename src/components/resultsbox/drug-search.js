@@ -26,15 +26,6 @@ class DrugSearch extends React.Component {
             />
           </label>
         </form> */}
-        {/* <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-          <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-          <TextField
-            id="search-input"
-            label="Drug Search"
-            variant="standard"
-            onChange={this.handleChange}
-          />
-        </Box> */}
 
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
           <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
