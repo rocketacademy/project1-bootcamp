@@ -7,8 +7,9 @@ class ModuleForm extends Component {
       enabled: "1",
       userAction: "Add",
       moduleName: "",
-      moduleList: [],
+      moduleList: JSON.parse(localStorage.getItem("moduleList")) || [],
       grade: "A",
+      error: null,
     };
   }
 
@@ -17,15 +18,30 @@ class ModuleForm extends Component {
 
     console.log("handleSubmit");
 
+    // Add logic for adding modules
     if (userAction === "Add") {
-      //Add a new module to the list
       const newModule = { moduleName, grade };
+      const searchTerm = moduleName;
+      const existingModuleList = moduleList.filter(
+        (module) => module.moduleName === searchTerm
+      );
+      if (existingModuleList.length > 0) {
+        console.log("Remove duplicated module");
+        this.setState({
+          error: "Duplicate Module Name",
+          moduleList: [...moduleList],
+        });
+        return;
+      } else {
+        this.setState({ error: null });
+      }
+
       console.log("Add Module");
       this.setState(
         {
           moduleList: [...moduleList, newModule],
           moduleName: "",
-          grade: "",
+          grade: this.state.grade,
           userAction: "Add",
         },
         () => {
@@ -35,11 +51,50 @@ class ModuleForm extends Component {
           );
         }
       );
-    } else if (userAction === "Update") {
-      console.log("Update Module");
 
       // Add logic for updating modules
+    } else if (userAction === "Update") {
+      const newModule = { moduleName, grade };
+      const updatedModuleList = moduleList.map((module) => {
+        if (module.moduleName === newModule.moduleName) {
+          return newModule;
+        } else {
+          return module;
+        }
+      });
+
+      this.setState(
+        {
+          moduleList: updatedModuleList,
+          moduleName: "",
+          grade: "",
+          userAction: "Update",
+        },
+        () => {
+          localStorage.setItem(
+            "moduleList",
+            JSON.stringify(this.state.moduleList)
+          );
+        }
+      );
+
+      // Add logic for deleting modules
     } else if (userAction === "Delete") {
+      const newModule = { moduleName, grade };
+      const updatedModuleList = moduleList.filter(
+        (module) => module.moduleName !== newModule.moduleName
+      );
+      this.setState(
+        {
+          moduleList: [...updatedModuleList],
+          moduleName: "",
+          grade: this.state.grade,
+          userAction: "Delete",
+        },
+        () => {
+          localStorage.removeItem("moduleList");
+        }
+      );
       // Add logic for deleting modules
       console.log("Delete Module");
     }
@@ -56,7 +111,8 @@ class ModuleForm extends Component {
   };
 
   render() {
-    const { enabled, userAction, moduleName, moduleList, grade } = this.state;
+    const { enabled, userAction, moduleName, moduleList, grade, error } =
+      this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <select value={userAction} onChange={this.handleActionChange}>
@@ -70,6 +126,7 @@ class ModuleForm extends Component {
           onChange={(e) => this.setState({ moduleName: e.target.value })}
           placeholder="Module Name"
         />
+
         <select
           type="text"
           value={grade}
@@ -93,7 +150,7 @@ class ModuleForm extends Component {
         >
           Let's go!
         </button>
-
+        {error && <div style={{ color: "red" }}>{error}</div>}
         {/* Display the module list */}
         <div>
           <h2>Module List</h2>
