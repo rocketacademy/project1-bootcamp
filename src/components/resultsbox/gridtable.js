@@ -10,16 +10,14 @@ const columns = [
 
 const GridTable = ({ dose }) => {
   return (
-    <div>
-      <DataGrid
-        rows={dose}
-        columns={columns}
-        getRowId={(row) => row.drug}
-        pageSize={5}
-        autoHeight
-        checkboxSelection
-      />
-    </div>
+    <DataGrid
+      rows={dose}
+      columns={columns}
+      getRowId={(row) => row.drug}
+      pageSize={5}
+      autoHeight
+      checkboxSelection
+    />
   );
 };
 
