@@ -5,7 +5,8 @@ import OurNav from "../Components/OurNav.js";
 import PastMenu from "../Components/PastMenu.js";
 
 //images
-import bruleePork from "../images/brulee-pork-belly.jpg";
+import nasiLiwet from "../images/nusantara/mains/nasi-liwet.jpg";
+import PanaengDuckCurry from "../images/indochine/mains/panaeng-duck-curry.jpg";
 
 // CSS
 import "./PastMenus.css";
@@ -20,14 +21,14 @@ class PastMenus extends React.Component {
 
   pastMenuTitleList = [
     {
-      image: bruleePork, //image item here
+      image: PanaengDuckCurry, //image item here
       title: "Indochine Menu",
       description: "Indochine description",
     },
     {
-      image: bruleePork, //image item here
-      title: "South Asia Menu",
-      description: "South Asia description",
+      image: nasiLiwet, //image item here
+      title: "Nusantara Menu",
+      description: "Nusatara description",
     },
   ];
 

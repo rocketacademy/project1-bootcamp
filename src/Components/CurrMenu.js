@@ -3,10 +3,10 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
 //images
-import festMenu from "../images/festive-menu.png";
-import bruleePork from "../images/brulee-pork-belly.jpg";
-import yellowCurryBakedFish from "../images/yellow-curry-baked-fish.jpg";
-import asianTrifle from "../images/asian-trifle.jpg";
+import festMenu from "../images/current-menu/festive-menu.png";
+import bruleePork from "../images/current-menu/brulee-pork-belly.jpg";
+import yellowCurryBakedFish from "../images/current-menu/yellow-curry-baked-fish.jpg";
+import asianTrifle from "../images/current-menu/asian-trifle.jpg";
 
 class CurrMenu extends React.Component {
   currMenuTitleList = [

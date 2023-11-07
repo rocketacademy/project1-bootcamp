@@ -2,7 +2,36 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-//images
+//indochine images
+import chickpeaTofuSalad from "../images/indochine/starters/chickpea-tofu-salad.jpg";
+import gallopingHorses from "../images/indochine/starters/galloping-horses.jpg";
+import grilledNumAnsom from "../images/indochine/starters/grilled-num-ansom.jpg";
+import miniBanhMi from "../images/indochine/starters/mini-banh-mi.jpg";
+
+import cauliflowerLaab from "../images/indochine/mains/cauliflower-laab.jpg";
+import greenCurryOfFish from "../images/indochine/mains/green-curry-of-fish.jpg";
+import PanaengDuckCurry from "../images/indochine/mains/panaeng-duck-curry.jpg";
+import saiOuaPorkSausage from "../images/indochine/mains/sai-oua-pork-sausages.jpg";
+import shrimpPasteRelish from "../images/indochine/mains/shrimp-paste-relish.jpg";
+
+import smokedIceCreamWithCakeCroutons from "../images/indochine/smoked-ice-cream-with-cake-croutons.jpg";
+
+//nusantara images
+import bandungSiomay from "../images/nusantara/starters/bandung-siomay.jpg";
+import nasibal from "../images/nusantara/starters/nasibal.jpg";
+import pepesTahuJamur from "../images/nusantara/starters/pepes-tahu-jamur.jpg";
+import sotoAyamIstimewa from "../images/nusantara/starters/soto-ayam-istimewa.jpg";
+
+import babiRawon from "../images/nusantara/mains/babi-rawon.jpg";
+import bebekBetutu from "../images/nusantara/mains/bebek-betutu.jpg";
+import ikanPesmol from "../images/nusantara/mains/ikan-pesmol.jpg";
+import nasiLiwet from "../images/nusantara/mains/nasi-liwet.jpg";
+import plecingSayur from "../images/nusantara/mains/plecing-sayur.jpg";
+import sambalHijau from "../images/nusantara/mains/sambal-hijau.jpg";
+
+import notKlepon from "../images/nusantara/not-klepon.jpg";
+
+//placeholder image
 import bruleePork from "../images/brulee-pork-belly.jpg";
 
 class PastMenu extends React.Component {
@@ -12,49 +41,49 @@ class PastMenu extends React.Component {
         "Drawing inspirations from all parts of Southeast Asia, this menu features some familiar dishes from our past menu as well as a new star of the evening, our very own Panaeng Duck Curry.",
       starters: [
         {
-          image: bruleePork,
+          image: gallopingHorses,
           title: "Galloping Horses",
           description: "Galloping Horses description",
         },
         {
-          image: bruleePork,
+          image: miniBanhMi,
           title: "Mini Banh Mi",
           description: "Mini Banh Mi description",
         },
         {
-          image: bruleePork,
+          image: grilledNumAnsom,
           title: "Grilled Num Ansom",
           description: "Grilled Num Ansom description",
         },
         {
-          image: bruleePork,
+          image: chickpeaTofuSalad,
           title: "Chickpea Tofu Salad",
           description: "Chickpea Tofu Salad description",
         },
       ],
       mains: [
         {
-          image: bruleePork,
+          image: PanaengDuckCurry,
           title: "Panaeng Duck Curry",
           description: "Panaeng Duck Curry description",
         },
         {
-          image: bruleePork,
+          image: saiOuaPorkSausage,
           title: "Sai Oua Pork Sausages",
           description: "Sai Oua Pork Sausages description",
         },
         {
-          image: bruleePork,
+          image: greenCurryOfFish,
           title: "Green Curry of Fish (8-12 pax)",
           description: "Green Curry of Fish (8-12 pax) description",
         },
         {
-          image: bruleePork,
+          image: cauliflowerLaab,
           title: "Cauliflower Laab",
           description: "Cauliflower Laab description",
         },
         {
-          image: bruleePork,
+          image: shrimpPasteRelish,
           title: "Shrimp Paste Relish",
           description: "Shrimp Paste Relish description",
         },
@@ -66,63 +95,63 @@ class PastMenu extends React.Component {
       ],
       desserts: [
         {
-          image: bruleePork,
+          image: smokedIceCreamWithCakeCroutons,
           title: "Smoked Coconut Ice Cream with Cake Croutons",
           description:
             "Smoked Coconut Ice Cream with Cake Croutons description",
         },
       ],
     },
-    "South Asia Menu": {
+    "Nusantara Menu": {
       description:
-        "Fromj the south of Asia, we explore some lesser eaten foods in Singapore. The aromatic spices and flavours of this menu are top notch!",
+        "From the south of Asia, we explore some lesser eaten foods in Singapore. The aromatic spices and flavours of this menu are top notch!",
       starters: [
         {
-          image: bruleePork,
-          title: "Pani Puri",
-          description: "Pani Puri description",
+          image: bandungSiomay,
+          title: "Bandun Siomay",
+          description: "Bandun Siomay description",
         },
         {
-          image: bruleePork,
-          title: "Aloo Tikki",
-          description: "Aloo Tikki description",
+          image: pepesTahuJamur,
+          title: "Pepes Tahu Jamur",
+          description: "Pepes Tahu Jamur description",
         },
         {
-          image: bruleePork,
-          title: "Doh Kleh Salad",
-          description: "Doh Kleh Salad description",
+          image: nasibal,
+          title: "Nasibal",
+          description: "Nasibal description",
         },
         {
-          image: bruleePork,
-          title: "Murgh Kofta",
-          description: "Murgh Kofta description",
+          image: sotoAyamIstimewa,
+          title: "Soto Ayam Istimewa",
+          description: "Soto Ayam Istimewa description",
         },
       ],
       mains: [
         {
-          image: bruleePork,
-          title: "Slow Roasted Yoghurt Duck",
-          description: "Slow Roasted Yoghurt Duck description",
+          image: bebekBetutu,
+          title: "Bebek Betutu",
+          description: "Bebek Betutu description",
         },
         {
-          image: bruleePork,
-          title: "Keralan Fried Fish with Corn & Mango Salad",
-          description: "Keralan Fried Fish with Corn & Mango Salad description",
+          image: ikanPesmol,
+          title: "Ikan Pesmol",
+          description: "Ikan Pesmol description",
         },
         {
-          image: bruleePork,
-          title: "Sri Lankan Black Pork Curry (8-12 pax)",
-          description: "Sri Lankan Black Pork Curry (8-12 pax) description",
+          image: babiRawon,
+          title: "Babi Rawon (8-12 pax)",
+          description: "Babi Rawon (8-12 pax) description",
         },
         {
-          image: bruleePork,
-          title: "Gotu Kola Sambal",
-          description: "Gotu Kola Sambal description",
+          image: plecingSayur,
+          title: "Plecing Sayur",
+          description: "Plecing Sayur description",
         },
         {
-          image: bruleePork,
-          title: "Seeni Sambal",
-          description: "Seeni Sambal description",
+          image: sambalHijau,
+          title: "Sambal Hijau",
+          description: "Sambal Hijau description",
         },
         {
           image: bruleePork,
@@ -130,21 +159,16 @@ class PastMenu extends React.Component {
           description: "Vegetable Sodhi description",
         },
         {
-          image: bruleePork,
-          title: "String Hoppers",
-          description: "String Hoppers description",
-        },
-        {
-          image: bruleePork,
-          title: "Spiced Basmati Rice",
-          description: "Slow Rpiced Basmati Rice description",
+          image: nasiLiwet,
+          title: "Nasi Liwet",
+          description: "Nasi Liwet description",
         },
       ],
       desserts: [
         {
-          image: bruleePork,
-          title: "Saffron Kulfi",
-          description: "Saffron Kulfi description",
+          image: notKlepon,
+          title: "Not Klepon",
+          description: "Not Klepon description",
         },
       ],
     },
