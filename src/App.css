@@ -46,8 +46,11 @@
   padding: inherit 3%;
 }
 
-.car-item {
+.curr-menu {
   min-height: 600px;
+}
+
+.car-item {
   background-size: cover;
   background-position: center;
 }

@@ -24,7 +24,7 @@ class CurrMenu extends React.Component {
     {
       image: yellowCurryBakedFish, //image item here
       caption: true,
-      title: "yellowCurryBakedFish",
+      title: "yellow Curry Baked Fish",
       description:
         "This fish is backed to lock in the flavours and moisture resulting in a juicy and flavourful fish each time.",
     },
@@ -41,7 +41,7 @@ class CurrMenu extends React.Component {
         {this.currMenuTitleList.map((object, index) => (
           <Carousel.Item key={index}>
             <div
-              className="car-item"
+              className="curr-menu car-item"
               style={{ backgroundImage: `url(${object.image})` }}
             ></div>
             {object.caption && (

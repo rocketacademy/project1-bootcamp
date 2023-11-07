@@ -1,0 +1,43 @@
+.past-menus {
+  height: 300px;
+}
+
+.past-menus-carousel {
+  background-color: #888888;
+}
+
+.past-menu-caption {
+  background-color: white;
+  color: black;
+  padding: 10px 40px;
+}
+
+.past-menu {
+  height: 500px;
+}
+
+.background {
+  background-color: #888888;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.section-header {
+  padding: 10px 0;
+}
+
+.dessert-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 0 15% 40px;
+}
+
+.dessert-caption {
+  color: black;
+}
