@@ -8,6 +8,12 @@ class AgeInput extends React.Component {
     this.props.updateAgeInput(e.target.value);
   };
 
+  // handleMthChange = (e) => {
+  //   const inputMth = e.target.value;
+  //   const inputYr = inputMth / 12;
+  //   this.props.updateAgeInput(inputYr);
+  // };
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.updateAgeInput(e.target.value);
@@ -33,6 +39,20 @@ class AgeInput extends React.Component {
             }}
           />
         </Box>
+
+        {/* <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+          <TextField
+            id="age-input"
+            label="Age"
+            variant="standard"
+            onChange={this.handleMthChange}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">mth old</InputAdornment>
+              ),
+            }}
+          />
+        </Box> */}
       </div>
     );
   }

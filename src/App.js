@@ -44,6 +44,7 @@ class App extends React.Component {
   render() {
     console.log(`drug search: ${this.state.drugSearch}`);
     console.log(`selected drug: ${this.state.selectedDrug}`);
+    console.log(`selected drug: ${this.state.ageInput}`);
     return (
       <div className="App">
         <header className="App-header">
@@ -57,6 +58,7 @@ class App extends React.Component {
           updateDrugSearch={this.updateDrugSearch}
           selectedDrug={this.state.selectedDrug}
           weightInput={this.state.weightInput}
+          ageInput={this.state.ageInput}
         />
       </div>
     );
