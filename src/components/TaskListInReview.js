@@ -78,7 +78,7 @@ export default class TaskListInReview extends React.Component {
     const { tasks } = this.state;
     const numberOfTasks = tasks.length;
     return (
-      <div>
+      <div className="task-in-review">
         <h1>Tasks In Review</h1>
         <h2>{numberOfTasks}</h2>
         <TaskComposer

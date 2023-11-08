@@ -11,13 +11,13 @@ import TaskListInReview from "./components/TaskListInReview";
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Header />
+      <div className="app-container">
+        <Header className="header" />
+        <div className="task-container">
           <TaskList />
           <TaskListInProgress />
           <TaskListInReview />
-        </header>
+        </div>
       </div>
     );
   }

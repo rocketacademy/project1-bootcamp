@@ -92,7 +92,7 @@ export default class TaskListInProgress extends React.Component {
     const { tasks } = this.state;
     const numberOfTasks = tasks.length;
     return (
-      <div>
+      <div className="task-in-progress">
         <h1>Tasks In Progress</h1>
         <h2>{numberOfTasks}</h2>
         <TaskComposer

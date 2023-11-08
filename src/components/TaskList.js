@@ -96,7 +96,7 @@ export default class TaskList extends React.Component {
     const { tasks } = this.state;
     const numberOfTasks = tasks.length;
     return (
-      <div>
+      <div className="task-list">
         <h1>Open Tasks</h1>
         <h2>{numberOfTasks}</h2>
         <TaskComposer
