@@ -40,4 +40,5 @@ const themeOptions = {
     },
   },
 };
-export const globalTheme = createTheme({ themeOptions });
+
+export const globalTheme = createTheme(themeOptions);
