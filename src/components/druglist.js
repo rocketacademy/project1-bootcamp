@@ -44,4 +44,13 @@ export const DrugList = [
     ageRange: [0, 1, 2],
     notes: "Test5",
   },
+  {
+    drugName: "prometazine",
+    minDoseMgPerKg: 0.75,
+    maxDoseMgPerKg: 1.5,
+    maxDailyDose: 75,
+    freq: "TDS",
+    ageRange: [2],
+    notes: "Test5",
+  },
 ];

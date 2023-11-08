@@ -24,14 +24,26 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
     if (drug.ageRange.length !== 1) {
       for (let j = 0; j < drug.ageRange.length; j += 1) {
         if (ageInput >= drug.ageRange[j]) {
-          minDose = weightInput * drug.minDoseMgPerKg[j];
-          maxDose = weightInput * drug.maxDoseMgPerKg[j];
+          minDose =
+            weightInput * drug.minDoseMgPerKg[j] >= drug.maxDailyDose[j]
+              ? drug.maxDailyDose[j]
+              : weightInput * drug.minDoseMgPerKg[j];
+          maxDose =
+            weightInput * drug.maxDoseMgPerKg[j] >= drug.maxDailyDose[j]
+              ? drug.maxDailyDose[j]
+              : weightInput * drug.maxDoseMgPerKg[j];
           freq = drug.freq[j];
         }
       }
     } else {
-      minDose = weightInput * drug.minDoseMgPerKg;
-      maxDose = weightInput * drug.maxDoseMgPerKg;
+      minDose =
+        weightInput * drug.minDoseMgPerKg >= drug.maxDailyDose
+          ? drug.maxDailyDose
+          : weightInput * drug.minDoseMgPerKg;
+      maxDose =
+        weightInput * drug.maxDoseMgPerKg >= drug.maxDailyDose
+          ? drug.maxDailyDose
+          : weightInput * drug.maxDoseMgPerKg;
       freq = drug.freq;
     }
 
@@ -44,25 +56,6 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
     });
     console.log(dose);
   }
-
-  // for (let i = 0; i < selectedDrug.length; i += 1) {
-  //   const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]);
-  //   const minDose =
-  //     weightInput * drug.minDoseMgPerKg >= drug.maxDailyDose
-  //       ? drug.maxDailyDose
-  //       : weightInput * drug.minDoseMgPerKg;
-  //   const maxDose =
-  //     weightInput * drug.maxDoseMgPerKg >= drug.maxDailyDose
-  //       ? drug.maxDailyDose
-  //       : weightInput * drug.maxDoseMgPerKg;
-
-  //   dose.push({
-  //     drug: selectedDrug[i],
-  //     minDose: minDose,
-  //     maxDose: maxDose,
-  //     freq: drug.freq,
-  //   });
-  // }
 
   return (
     <div>
