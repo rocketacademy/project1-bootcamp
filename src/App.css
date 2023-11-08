@@ -11,7 +11,7 @@
 
 .App-header {
   font-family: "Hind", sans-serif;
-  background-color: #282c34;
+  background-color: #79849f;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,7 @@
 }
 
 .demographic {
-  background-color: #ffdbdb;
+  background-color: #cfdbde;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,7 +39,7 @@
 }
 
 .result-box {
-  background-color: #ffecdb;
+  background-color: #cfdbde;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +49,7 @@
 }
 
 .result-display {
-  background-color: #ffecdb;
+  background-color: #fff;
   display: row;
   flex-direction: column;
   justify-content: center;
@@ -64,10 +64,10 @@ input {
   text-align: center;
 }
 
-table,
+/* table,
 th,
 td {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 15px;
-}
+} */

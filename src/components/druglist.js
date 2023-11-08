@@ -6,7 +6,7 @@ export const DrugList = [
     maxDailyDose: 4000,
     freq: "QDS",
     ageRange: [0],
-    notes: "Test1",
+    notes: "Avoid use under 3 months, neonatal pyrexia may warrant referral",
   },
   {
     drugName: "ibuprofen",
