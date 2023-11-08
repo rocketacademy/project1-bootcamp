@@ -1,8 +1,8 @@
 export const DrugList = [
   {
     drugName: "paracetamol",
-    minDoseMgPerKg: 10,
-    maxDoseMgPerKg: 15,
+    minDoseMgPerKg: 40,
+    maxDoseMgPerKg: 60,
     maxDailyDose: 4000,
     freq: "QDS",
     ageRange: [0],
@@ -10,8 +10,8 @@ export const DrugList = [
   },
   {
     drugName: "ibuprofen",
-    minDoseMgPerKg: 5,
-    maxDoseMgPerKg: 10,
+    minDoseMgPerKg: 15,
+    maxDoseMgPerKg: 30,
     maxDailyDose: 1200,
     freq: "TDS",
     ageRange: [0],

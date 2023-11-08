@@ -46,6 +46,17 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
           : weightInput * drug.maxDoseMgPerKg;
       freq = drug.freq;
     }
+    //before pushing into array, divide by frequency
+    if (freq === "BD") {
+      minDose = (minDose / 2).toFixed(2);
+      maxDose = (maxDose / 2).toFixed(2);
+    } else if (freq === "TDS") {
+      minDose = (minDose / 3).toFixed(2);
+      maxDose = (maxDose / 3).toFixed(2);
+    } else if (freq === "QDS") {
+      minDose = (minDose / 4).toFixed(2);
+      maxDose = (maxDose / 4).toFixed(2);
+    }
 
     dose.push({
       drug: selectedDrug[i],
