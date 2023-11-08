@@ -1,6 +1,7 @@
 import React from "react";
 import DrugSearch from "./drug-search";
 import { DoseCalculator } from "./calculator";
+import Stack from "@mui/material/Stack";
 
 export const Result = ({
   updateDrugSearch,
@@ -9,15 +10,18 @@ export const Result = ({
   ageInput,
 }) => {
   return (
-    <div className="result-box">
+    <Stack
+      className="result-box"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <DrugSearch updateDrugSearch={updateDrugSearch} />
-      <div className="result-display">
-        <DoseCalculator
-          selectedDrug={selectedDrug}
-          weightInput={weightInput}
-          ageInput={ageInput}
-        />
-      </div>
-    </div>
+      <DoseCalculator
+        selectedDrug={selectedDrug}
+        weightInput={weightInput}
+        ageInput={ageInput}
+      />
+    </Stack>
   );
 };
