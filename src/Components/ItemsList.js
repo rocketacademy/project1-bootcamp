@@ -1,5 +1,6 @@
 import React from "react";
 import UserInput from "./UserInput";
+import { BsTrash3Fill } from "react-icons/bs";
 
 export default class ItemsList extends React.Component {
   constructor(props) {
@@ -36,7 +37,12 @@ export default class ItemsList extends React.Component {
     const itemsList = this.state.itemsList.map((item, key) => {
       return (
         <div key={item.key}>
-          <input type="checkbox" name="item" value={item}></input>
+          <input
+            className="input"
+            type="checkbox"
+            name="item"
+            value={item}
+          ></input>
           <span>
             <input
               type="text"
@@ -47,18 +53,13 @@ export default class ItemsList extends React.Component {
               }
             ></input>
           </span>
-          {/* <img
-            id="edit_icon"
-            // onClick={()=> ()}
-            src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png"
-            alt="edit_icon"
-          /> */}
-          <img
-            id="delete_icon"
-            onClick={() => this.deleteItem(key)}
-            src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
-            alt="delete_icon"
-          />
+          <span>
+            <BsTrash3Fill
+              className="icons"
+              id="trashbin"
+              onClick={() => this.deleteItem(key)}
+            />
+          </span>
         </div>
       );
     });
