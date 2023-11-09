@@ -7,15 +7,30 @@ import { DrugList } from "../druglist";
 import { Button } from "@mui/material";
 
 class DrugSearch extends React.Component {
-  handleDrugSelect = (event, newValue) => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      drugSearchValue: "",
+    };
+  }
+
+  handleDrugSelect = (e, newValue) => {
     const newDrugSearch = newValue.toLowerCase();
     if (newDrugSearch) {
       this.props.updateDrugSearch(newDrugSearch);
+      this.setState({ drugSearchValue: "" });
     }
   };
 
   handleResetSearch = (e) => {
     this.props.resetSearch();
+    this.setState({ drugSearchValue: "" });
+  };
+
+  handleInputChange = (e, newInputValue) => {
+    this.setState({
+      drugSearchValue: newInputValue,
+    });
   };
 
   render() {
@@ -30,6 +45,8 @@ class DrugSearch extends React.Component {
             disableClearable
             options={DrugList.map((option) => option.drugName)}
             onChange={this.handleDrugSelect}
+            inputValue={this.state.drugSearchValue}
+            onInputChange={this.handleInputChange}
             renderInput={(params) => (
               <TextField
                 {...params}
