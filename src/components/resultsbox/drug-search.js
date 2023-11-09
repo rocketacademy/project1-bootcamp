@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import { DrugList } from "../druglist";
+import { Button } from "@mui/material";
 
 class DrugSearch extends React.Component {
   handleDrugSelect = (event, newValue) => {
@@ -11,6 +12,10 @@ class DrugSearch extends React.Component {
     if (newDrugSearch) {
       this.props.updateDrugSearch(newDrugSearch);
     }
+  };
+
+  handleResetSearch = (e) => {
+    this.props.resetSearch();
   };
 
   render() {
@@ -38,6 +43,7 @@ class DrugSearch extends React.Component {
             )}
           />
         </Box>
+        <Button onClick={this.handleResetSearch}>Reset</Button>
       </>
     );
   }

@@ -2,7 +2,6 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { InputAdornment } from "@mui/material";
-import { Grid } from "@mui/material";
 
 class AgeInput extends React.Component {
   handleChange = (e) => {

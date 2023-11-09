@@ -8,11 +8,15 @@ export const Result = ({
   selectedDrug,
   weightInput,
   ageInput,
+  resetSearch,
 }) => {
   return (
     <Grid container direction="column" alignItems="center" spacing={2}>
       <Grid item xs={10}>
-        <DrugSearch updateDrugSearch={updateDrugSearch} />
+        <DrugSearch
+          updateDrugSearch={updateDrugSearch}
+          resetSearch={resetSearch}
+        />
       </Grid>
       <Grid item xs={10}>
         <DoseCalculator

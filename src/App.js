@@ -42,19 +42,16 @@ class App extends React.Component {
     });
   };
 
-  resetAllInputs = () => {
-    this.setState = {
-      ageInput: 0,
-      weightInput: 0,
-      drugSearch: "",
+  resetSearch = () => {
+    this.setState({
       selectedDrug: [],
-    };
+    });
   };
 
   render() {
     console.log(`drug search: ${this.state.drugSearch}`);
     console.log(`selected drug: ${this.state.selectedDrug}`);
-    console.log(`selected drug: ${this.state.ageInput}`);
+    console.log(`age: ${this.state.ageInput}`);
     return (
       <Grid container>
         <Grid item xs={10}>
@@ -73,6 +70,7 @@ class App extends React.Component {
             selectedDrug={this.state.selectedDrug}
             weightInput={this.state.weightInput}
             ageInput={this.state.ageInput}
+            resetSearch={this.resetSearch}
           />
         </Grid>
       </Grid>
