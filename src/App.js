@@ -4,7 +4,8 @@ import { Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
 import { DrugList } from "./components/druglist";
-import { Grid } from "@mui/material";
+import { Stack, Grid } from "@mui/material";
+import { Container } from "@mui/system";
 
 class App extends React.Component {
   constructor(props) {
@@ -53,18 +54,15 @@ class App extends React.Component {
     console.log(`selected drug: ${this.state.selectedDrug}`);
     console.log(`age: ${this.state.ageInput}`);
     return (
-      <Grid container>
-        <Grid item xs={10}>
+      <Container>
+        <Stack>
           <Title />
-        </Grid>
-        <Grid item xs={10}>
+
           <Demographic
             updateAgeInput={this.updateAgeInput}
             updateWeightInput={this.updateWeightInput}
           />
-        </Grid>
-        <Grid item xs={10}></Grid>
-        <Grid item xs={10}>
+
           <Result
             updateDrugSearch={this.updateDrugSearch}
             selectedDrug={this.state.selectedDrug}
@@ -72,8 +70,8 @@ class App extends React.Component {
             ageInput={this.state.ageInput}
             resetSearch={this.resetSearch}
           />
-        </Grid>
-      </Grid>
+        </Stack>
+      </Container>
     );
   }
 }

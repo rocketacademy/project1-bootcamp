@@ -57,6 +57,12 @@ const themeOptions = {
         justifyContent: "center", // Default horizontal alignment
       },
     },
+    MuiStack: {
+      defaultProps: {
+        spacing: 2, // Default spacing between items
+        justifyContent: "center", // Default horizontal alignment
+      },
+    },
   },
 };
 
