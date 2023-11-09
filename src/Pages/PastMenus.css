@@ -34,7 +34,7 @@
 .dessert-container {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 0 15% 40px;
 }
 
