@@ -52,13 +52,15 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
       maxDose = (maxDose / 4).toFixed(2);
     }
 
-    dose.push({
-      drug: selectedDrug[i],
-      minDose: minDose,
-      maxDose: maxDose,
-      freq: freq,
-      notes: drug.notes,
-    });
+    const duplicateDrug = dose.find((drug) => drug.drug === selectedDrug[i]);
+    !duplicateDrug &&
+      dose.push({
+        drug: selectedDrug[i],
+        minDose: minDose,
+        maxDose: maxDose,
+        freq: freq,
+        notes: drug.notes,
+      });
     console.log(dose);
   }
 
