@@ -4,7 +4,7 @@ import { Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
 import { DrugList } from "./components/druglist";
-import { Stack, Grid } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Container } from "@mui/system";
 
 class App extends React.Component {
@@ -62,7 +62,6 @@ class App extends React.Component {
             updateAgeInput={this.updateAgeInput}
             updateWeightInput={this.updateWeightInput}
           />
-
           <Result
             updateDrugSearch={this.updateDrugSearch}
             selectedDrug={this.state.selectedDrug}
