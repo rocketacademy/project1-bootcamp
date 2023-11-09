@@ -1,5 +1,13 @@
+body {
+  background-color: #ffab40;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
 }
 
 .App-logo {
