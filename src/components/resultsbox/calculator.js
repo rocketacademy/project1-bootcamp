@@ -63,8 +63,8 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
   }
 
   return (
-    <div>
+    <>
       <GridTable dose={dose} />
-    </div>
+    </>
   );
 };

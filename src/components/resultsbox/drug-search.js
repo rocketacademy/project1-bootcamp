@@ -15,18 +15,7 @@ class DrugSearch extends React.Component {
 
   render() {
     return (
-      <div className="input-box">
-        {/* <form onSubmit={this.handleSubmit}>
-          <label htmlFor="search-input">
-            Drug Search
-            <input
-              type="text"
-              name="search-input"
-              onChange={this.handleChange}
-            />
-          </label>
-        </form> */}
-
+      <>
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
           <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
           <Autocomplete
@@ -49,7 +38,7 @@ class DrugSearch extends React.Component {
             )}
           />
         </Box>
-      </div>
+      </>
     );
   }
 }

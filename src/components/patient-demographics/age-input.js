@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { InputAdornment } from "@mui/material";
+import { Grid } from "@mui/material";
 
 class AgeInput extends React.Component {
   handleChange = (e) => {
@@ -21,7 +22,7 @@ class AgeInput extends React.Component {
 
   render() {
     return (
-      <div className="input-box">
+      <>
         {/* <form onSubmit={this.handleSubmit}>
           <label>
             Age
@@ -39,21 +40,7 @@ class AgeInput extends React.Component {
             }}
           />
         </Box>
-
-        {/* <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-          <TextField
-            id="age-input"
-            label="Age"
-            variant="standard"
-            onChange={this.handleMthChange}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">mth old</InputAdornment>
-              ),
-            }}
-          />
-        </Box> */}
-      </div>
+      </>
     );
   }
 }

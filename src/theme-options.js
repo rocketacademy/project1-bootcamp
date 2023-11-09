@@ -48,6 +48,16 @@ const themeOptions = {
       xl: 1920,
     },
   },
+  components: {
+    MuiGrid: {
+      defaultProps: {
+        container: true, // Default value for container prop
+        spacing: 0, // Default spacing between items
+        alignItems: "center", // Default vertical alignment
+        justifyContent: "center", // Default horizontal alignment
+      },
+    },
+  },
 };
 
 export const globalTheme = createTheme(themeOptions);

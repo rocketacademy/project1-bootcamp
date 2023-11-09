@@ -4,6 +4,7 @@ import { Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
 import { DrugList } from "./components/druglist";
+import { Grid } from "@mui/material";
 
 class App extends React.Component {
   constructor(props) {
@@ -41,26 +42,40 @@ class App extends React.Component {
     });
   };
 
+  resetAllInputs = () => {
+    this.setState = {
+      ageInput: 0,
+      weightInput: 0,
+      drugSearch: "",
+      selectedDrug: [],
+    };
+  };
+
   render() {
     console.log(`drug search: ${this.state.drugSearch}`);
     console.log(`selected drug: ${this.state.selectedDrug}`);
     console.log(`selected drug: ${this.state.ageInput}`);
     return (
-      <div className="App">
-        <header className="App-header">
+      <Grid container>
+        <Grid item xs={10}>
           <Title />
-        </header>
-        <Demographic
-          updateAgeInput={this.updateAgeInput}
-          updateWeightInput={this.updateWeightInput}
-        />
-        <Result
-          updateDrugSearch={this.updateDrugSearch}
-          selectedDrug={this.state.selectedDrug}
-          weightInput={this.state.weightInput}
-          ageInput={this.state.ageInput}
-        />
-      </div>
+        </Grid>
+        <Grid item xs={10}>
+          <Demographic
+            updateAgeInput={this.updateAgeInput}
+            updateWeightInput={this.updateWeightInput}
+          />
+        </Grid>
+        <Grid item xs={10}></Grid>
+        <Grid item xs={10}>
+          <Result
+            updateDrugSearch={this.updateDrugSearch}
+            selectedDrug={this.state.selectedDrug}
+            weightInput={this.state.weightInput}
+            ageInput={this.state.ageInput}
+          />
+        </Grid>
+      </Grid>
     );
   }
 }
