@@ -4,26 +4,28 @@ const themeOptions = {
   palette: {
     mode: "light",
     primary: {
-      main: "#79849f",
+      main: "#c6a99e",
     },
     secondary: {
-      main: "#cfdbde",
-    },
-    error: {
-      main: "#9f7984",
-    },
-    warning: {
-      main: "#95799f",
-    },
-    info: {
-      main: "#82799f",
-    },
-    success: {
-      main: "#79979f",
+      main: "#9fa28d",
     },
     background: {
-      default: "#e7e9ee",
+      default: "#ded6c9",
+      paper: "#f7f2ed",
     },
+    error: {
+      main: "#bc7245",
+    },
+    warning: {
+      main: "#9fa28d",
+    },
+    info: {
+      main: "#d4ac6f",
+    },
+    success: {
+      main: "#b2c7c8",
+    },
+    divider: "#424242",
   },
   typography: {
     fontFamily: "Hind",

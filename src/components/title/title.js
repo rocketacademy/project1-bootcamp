@@ -1,23 +1,42 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Stack, Paper, Typography } from "@mui/material";
 
 export const Title = () => {
   return (
     <>
-      <Grid>
-        <Grid item xs={10}>
-          <h1>Pediatric Dose Calculator</h1>
-        </Grid>
-        <Grid item xs={10}>
-          <h2>Instructions</h2>
-        </Grid>
-        <Grid item xs={10}>
-          <ol>
-            <li>Enter patient’s age and weight</li>
-            <li>Select the drug to view the dose</li>
-          </ol>
-        </Grid>
-      </Grid>
+      <Stack>
+        <Paper>
+          <Typography
+            variant="h4"
+            align="center"
+            color="textSecondary"
+            fontWeight="bold"
+            sx={{
+              letterSpacing: 10,
+              lineHeight: 2,
+              padding: 2,
+            }}
+          >
+            PEDIATRIC DOSE CALCULATOR
+          </Typography>
+
+          <Typography variant="h5" align="center" color="textSecondary">
+            Instructions
+          </Typography>
+          <Typography
+            variant="body1"
+            align="center"
+            color="textSecondary"
+            sx={{
+              padding: 2,
+            }}
+          >
+            1. Enter patient’s age and weight
+            <br />
+            2. Select the drug to view the dose
+          </Typography>
+        </Paper>
+      </Stack>
     </>
   );
 };
