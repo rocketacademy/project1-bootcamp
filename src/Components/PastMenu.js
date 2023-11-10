@@ -13,6 +13,7 @@ import greenCurryOfFish from "../images/indochine/mains/green-curry-of-fish.jpg"
 import PanaengDuckCurry from "../images/indochine/mains/panaeng-duck-curry.jpg";
 import saiOuaPorkSausage from "../images/indochine/mains/sai-oua-pork-sausages.jpg";
 import shrimpPasteRelish from "../images/indochine/mains/shrimp-paste-relish.jpg";
+import lemongrassJasmineRice from "../images/indochine/mains/lemongrass-jasmine-rice.jpg";
 
 import smokedIceCreamWithCakeCroutons from "../images/indochine/smoked-ice-cream-with-cake-croutons.jpg";
 
@@ -28,11 +29,9 @@ import ikanPesmol from "../images/nusantara/mains/ikan-pesmol.jpg";
 import nasiLiwet from "../images/nusantara/mains/nasi-liwet.jpg";
 import plecingSayur from "../images/nusantara/mains/plecing-sayur.jpg";
 import sambalHijau from "../images/nusantara/mains/sambal-hijau.jpg";
+import vegetableSodhi from "../images/nusantara/mains/vegetable-sodhi.png";
 
 import notKlepon from "../images/nusantara/not-klepon.jpg";
-
-//placeholder image
-import bruleePork from "../images/brulee-pork-belly.jpg";
 
 class PastMenu extends React.Component {
   pastMenuDict = {
@@ -88,7 +87,7 @@ class PastMenu extends React.Component {
           description: "Shrimp Paste Relish description",
         },
         {
-          image: bruleePork,
+          image: lemongrassJasmineRice,
           title: "Lemongrass Jasmine Rice",
           description: "Lemongrass Jasmine Rice description",
         },
@@ -154,7 +153,7 @@ class PastMenu extends React.Component {
           description: "Sambal Hijau description",
         },
         {
-          image: bruleePork,
+          image: vegetableSodhi,
           title: "Vegetable Sodhi",
           description: "Vegetable Sodhi description",
         },

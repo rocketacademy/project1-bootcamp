@@ -1,0 +1,16 @@
+.links-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.follow-link {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  justify-content: center;
+  margin: 0 40px;
+  text-decoration: none;
+  color: inherit;
+}

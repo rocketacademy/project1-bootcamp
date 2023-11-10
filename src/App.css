@@ -69,7 +69,8 @@
   width: 50%;
 }
 
-#follow {
+.follow {
   background-color: #a6a6a6;
-  padding: 0;
+  padding: 30px 0;
+  margin-bottom: -10px;
 }

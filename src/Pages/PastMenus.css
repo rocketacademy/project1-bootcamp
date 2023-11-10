@@ -2,6 +2,11 @@
   height: 300px;
 }
 
+.past-menu-filler {
+  margin: 40px 0 100px;
+  font-size: large;
+}
+
 .past-menus-carousel {
   background-color: #a6a6a6;
 }

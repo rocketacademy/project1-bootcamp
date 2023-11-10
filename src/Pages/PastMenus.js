@@ -3,6 +3,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import OurNav from "../Components/OurNav.js";
 import PastMenu from "../Components/PastMenu.js";
+import Follow from "../Components/Follow.js";
 
 //images
 import nasiLiwet from "../images/nusantara/mains/nasi-liwet.jpg";
@@ -73,7 +74,16 @@ class PastMenus extends React.Component {
           </Carousel>
         </div>
         {/* pass the menu props into the PastMenu component to display the menu discription and carousel of images */}
-        {this.state.menu === null ? null : <PastMenu menu={this.state.menu} />}
+        {this.state.menu === null ? (
+          <p className="past-menu-filler">
+            Click a menu above to see the detailed dishes!
+          </p>
+        ) : (
+          <PastMenu menu={this.state.menu} />
+        )}
+        <div className="follow">
+          <Follow />
+        </div>
       </div>
     );
   }

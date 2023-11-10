@@ -6,6 +6,7 @@ import ImgDivider from "./Components/ImgDivider.js";
 import CurrMenu from "./Components/CurrMenu.js";
 import { Link } from "react-router-dom";
 import FAQ from "./Components/FAQ.js";
+import Follow from "./Components/Follow.js";
 
 //Images
 import backgroundWide1 from "./images/backgroundWide1.jpg";
@@ -104,8 +105,8 @@ class App extends React.Component {
           <FAQ />
         </div>
 
-        <div id="follow">
-          <h1>Follow us below for the latest updates!</h1>
+        <div id="follow" className="follow">
+          <Follow />
         </div>
       </div>
     );
