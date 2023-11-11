@@ -91,10 +91,11 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
     !duplicateDrug &&
       dose.push({
         drug: selectedDrug[i],
-        minDose: minDose,
-        minSyrup: minSyrup,
-        maxDose: maxDose,
-        maxSyrup: maxSyrup,
+        strength: drug.strength + " MG/ML",
+        minDose: minDose + " MG",
+        minSyrup: minSyrup + " ML",
+        maxDose: maxDose + " MG",
+        maxSyrup: maxSyrup + " ML",
         freq: freq,
         notes: drug.notes,
       });
