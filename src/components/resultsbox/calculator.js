@@ -32,17 +32,22 @@ const divideDoseByFreq = (freq, dose) => {
   return dividedDose;
 };
 
+const convertToSyrup = (strength, mg) => {
+  // = 1 divide by mgPerMl * mg
+  let convertToMl = ((1 / strength) * mg).toFixed(2);
+  return convertToMl;
+};
+
 export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
   const dose = [];
   let minDose = 0;
   let maxDose = 0;
   let freq = "";
+  let minSyrup = 0;
+  let maxSyrup = 0;
 
   for (let i = 0; i < selectedDrug.length; i += 1) {
     const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]); //find drug in master drug list
-    minDose = 0;
-    maxDose = 0;
-    freq = "";
     //if there are no age variations, no need to loop
     if (drug.ageRange.length !== 1) {
       for (let j = 0; j < drug.ageRange.length; j += 1) {
@@ -60,6 +65,8 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
             drug.maxDailyDose[j],
             freq
           );
+          minSyrup = convertToSyrup(drug.strength, minDose);
+          maxSyrup = convertToSyrup(drug.strength, maxDose);
         }
       }
     } else {
@@ -76,6 +83,8 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
         drug.maxDailyDose,
         freq
       );
+      minSyrup = convertToSyrup(drug.strength, minDose);
+      maxSyrup = convertToSyrup(drug.strength, maxDose);
     }
 
     const duplicateDrug = dose.find((drug) => drug.drug === selectedDrug[i]);
@@ -83,7 +92,9 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
       dose.push({
         drug: selectedDrug[i],
         minDose: minDose,
+        minSyrup: minSyrup,
         maxDose: maxDose,
+        maxSyrup: maxSyrup,
         freq: freq,
         notes: drug.notes,
       });
