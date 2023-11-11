@@ -2,15 +2,44 @@ import React from "react";
 import { DrugList } from "../druglist";
 import GridTable from "./gridtable";
 
+const determineMinDose = (weightInput, minDosePerKg, maxDailyDose, freq) => {
+  const minDosePerDay =
+    weightInput * minDosePerKg >= maxDailyDose
+      ? maxDailyDose
+      : weightInput * minDosePerKg;
+  const minDose = divideDoseByFreq(freq, minDosePerDay);
+  return minDose;
+};
+
+const determineMaxDose = (weightInput, maxDosePerKg, maxDailyDose, freq) => {
+  const maxDosePerDay =
+    weightInput * maxDosePerKg >= maxDailyDose
+      ? maxDailyDose
+      : weightInput * maxDosePerKg;
+  const maxDose = divideDoseByFreq(freq, maxDosePerDay);
+  return maxDose;
+};
+
+const divideDoseByFreq = (freq, dose) => {
+  let dividedDose = 0;
+  if (freq === "BD") {
+    dividedDose = (dose / 2).toFixed(2);
+  } else if (freq === "TDS") {
+    dividedDose = (dose / 3).toFixed(2);
+  } else if (freq === "QDS") {
+    dividedDose = (dose / 4).toFixed(2);
+  }
+  return dividedDose;
+};
+
 export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
   const dose = [];
   let minDose = 0;
   let maxDose = 0;
   let freq = "";
 
-  // if ageRange.length ===1 then no need to do anything
   for (let i = 0; i < selectedDrug.length; i += 1) {
-    const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]);
+    const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]); //find drug in master drug list
     minDose = 0;
     maxDose = 0;
     freq = "";
@@ -18,38 +47,35 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
     if (drug.ageRange.length !== 1) {
       for (let j = 0; j < drug.ageRange.length; j += 1) {
         if (ageInput >= drug.ageRange[j]) {
-          minDose =
-            weightInput * drug.minDoseMgPerKg[j] >= drug.maxDailyDose[j]
-              ? drug.maxDailyDose[j]
-              : weightInput * drug.minDoseMgPerKg[j];
-          maxDose =
-            weightInput * drug.maxDoseMgPerKg[j] >= drug.maxDailyDose[j]
-              ? drug.maxDailyDose[j]
-              : weightInput * drug.maxDoseMgPerKg[j];
           freq = drug.freq[j];
+          minDose = determineMinDose(
+            weightInput,
+            drug.minDoseMgPerKg[j],
+            drug.maxDailyDose[j],
+            freq
+          );
+          maxDose = determineMaxDose(
+            weightInput,
+            drug.maxDoseMgPerKg[j],
+            drug.maxDailyDose[j],
+            freq
+          );
         }
       }
     } else {
-      minDose =
-        weightInput * drug.minDoseMgPerKg >= drug.maxDailyDose
-          ? drug.maxDailyDose
-          : weightInput * drug.minDoseMgPerKg;
-      maxDose =
-        weightInput * drug.maxDoseMgPerKg >= drug.maxDailyDose
-          ? drug.maxDailyDose
-          : weightInput * drug.maxDoseMgPerKg;
       freq = drug.freq;
-    }
-    //before pushing into array, divide by frequency
-    if (freq === "BD") {
-      minDose = (minDose / 2).toFixed(2);
-      maxDose = (maxDose / 2).toFixed(2);
-    } else if (freq === "TDS") {
-      minDose = (minDose / 3).toFixed(2);
-      maxDose = (maxDose / 3).toFixed(2);
-    } else if (freq === "QDS") {
-      minDose = (minDose / 4).toFixed(2);
-      maxDose = (maxDose / 4).toFixed(2);
+      minDose = determineMinDose(
+        weightInput,
+        drug.minDoseMgPerKg,
+        drug.maxDailyDose,
+        freq
+      );
+      maxDose = determineMaxDose(
+        weightInput,
+        drug.maxDoseMgPerKg,
+        drug.maxDailyDose,
+        freq
+      );
     }
 
     const duplicateDrug = dose.find((drug) => drug.drug === selectedDrug[i]);
