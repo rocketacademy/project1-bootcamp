@@ -3,21 +3,12 @@ import React from "react";
 function Header() {
   return (
     <div className="header">
-      <nav className="nav-container">
-        <a
-          className="header-link"
-          href="https://schedules.rocketacademy.co/#/ptbc9"
-        >
-          Home
-        </a>
-      </nav>
-
-      <nav className="nav-container-2">
+      <nav>
         <a
           className="header-link"
           href="https://github.com/ianthehamster/project1-bootcamp"
         >
-          Task Management App by Ian
+          Welcome to the Task Management App!
         </a>
       </nav>
     </div>

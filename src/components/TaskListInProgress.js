@@ -7,6 +7,7 @@ export default class TaskListInProgress extends React.Component {
     super(props);
 
     this.state = {
+      tasksInProgress: [],
       tasks: [
         {
           id: 0,
@@ -86,6 +87,41 @@ export default class TaskListInProgress extends React.Component {
       });
     }
   }
+  resetLocalStorage = () => {
+    localStorage.clear();
+    // You may also want to reinitialize the state to the default values here
+    this.setState({
+      tasks: [
+        {
+          id: 0,
+          title: "React Website - ORION Project",
+          task: "Coding a frontend website for Doctor Halsey",
+        },
+      ],
+    });
+  };
+
+  moveTaskToOpen = (task) => {
+    // Remove task from "Tasks in Progress"
+    const updatedInProgressTasks = this.state.tasks.filter(
+      (t) => t.id !== task.id
+    );
+
+    // Add task to "Open Tasks"
+    this.setState(
+      (prevState) => ({
+        tasksInProgress: updatedInProgressTasks,
+        tasks: [...prevState.tasks, task],
+      }),
+      () => {
+        localStorage.setItem(
+          "tasksInProgress",
+          JSON.stringify(this.state.tasksInProgress)
+        );
+        localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
+      }
+    );
+  };
 
   render() {
     console.log(this.state.tasks);
@@ -93,8 +129,13 @@ export default class TaskListInProgress extends React.Component {
     const numberOfTasks = tasks.length;
     return (
       <div className="task-in-progress">
-        <h1>Tasks In Progress</h1>
+        <h1>
+          <strong>Tasks In Progress</strong>
+        </h1>
         <h2>{numberOfTasks}</h2>
+        <div>
+          <button onClick={this.resetLocalStorage}>Reset Local Storage</button>
+        </div>
         <TaskComposer
           addTask={this.addTaskToDo}
           taskLength={this.state.tasks.length}
@@ -107,6 +148,7 @@ export default class TaskListInProgress extends React.Component {
                 {...task}
                 updateTask={this.updateTask} // Pass the updateTask function
                 deleteTask={this.deleteTask} // Pass the deleteTask function
+                moveTaskToOpen={() => this.moveTaskToOpen(task)}
               />
             ))}
           </ul>

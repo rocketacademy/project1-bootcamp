@@ -79,7 +79,9 @@ export default class TaskListInReview extends React.Component {
     const numberOfTasks = tasks.length;
     return (
       <div className="task-in-review">
-        <h1>Tasks In Review</h1>
+        <h1>
+          <strong>Tasks In Review</strong>
+        </h1>
         <h2>{numberOfTasks}</h2>
         <TaskComposer
           addTask={this.addTaskToDo}

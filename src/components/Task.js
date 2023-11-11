@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+
 import TaskUpdate from "./TaskUpdate";
 
 class Task extends React.Component {
@@ -42,8 +45,17 @@ class Task extends React.Component {
       <div>
         <h1>Title: {this.props.title}</h1>
         <h2>Task: {this.props.task}</h2>
-        <button onClick={this.handleUpdateClick}>Update</button>
-        <button onClick={this.handleDeleteClick}>Delete</button>
+        <button onClick={this.handleUpdateClick}>
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+        <button onClick={this.handleDeleteClick}>
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
+        {this.props.additionalButton && (
+          <button onClick={this.props.additionalButtonClick}>
+            {this.props.additionalButtonLabel}
+          </button>
+        )}
       </div>
     );
   }

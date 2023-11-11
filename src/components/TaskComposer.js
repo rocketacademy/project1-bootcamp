@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 class TaskComposer extends React.Component {
@@ -34,7 +36,7 @@ class TaskComposer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="task-composer">
         <form onSubmit={this.handleSubmit}>
           <br />
           <h4>Title</h4>
@@ -54,6 +56,7 @@ class TaskComposer extends React.Component {
           />
           <br />
           <input name="submit" type="submit" value="submit" />
+          <FontAwesomeIcon icon={faCheck} className="icon" />
         </form>
       </div>
     );

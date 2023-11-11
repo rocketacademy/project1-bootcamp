@@ -19,6 +19,7 @@ export default class TaskList extends React.Component {
           task: "Fixing coding bugs on the software for Machine Learning AI",
         },
       ],
+      tasksInProgress: [],
     };
   }
 
@@ -91,14 +92,58 @@ export default class TaskList extends React.Component {
     }
   }
 
+  resetLocalStorage = () => {
+    localStorage.clear();
+    // You may also want to reinitialize the state to the default values here
+    this.setState({
+      tasks: [
+        {
+          id: 0,
+          title: "Reverse Engineer the Needler",
+          task: "Coding a software to reverse engineer the Needler for Miranda Keyes",
+        },
+        {
+          id: 1,
+          title: "Fixing bugs",
+          task: "Fixing coding bugs on the software for Machine Learning AI",
+        },
+      ],
+    });
+  };
+
+  moveTaskToInProgress = (task) => {
+    // Removing task from TaskList
+    const updatedOpenTasks = this.state.tasks.filter((t) => t.id !== task.id);
+
+    // Add task to "Tasks In Progress"
+    this.setState(
+      (prevState) => ({
+        tasksInProgress: [...prevState.tasksInProgress, task],
+        tasks: updatedOpenTasks,
+      }),
+      () => {
+        localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
+        localStorage.setItem(
+          "tasksInProgress",
+          JSON.stringify(this.state.tasksInProgress)
+        );
+      }
+    );
+  };
+
   render() {
     console.log(this.state.tasks);
     const { tasks } = this.state;
     const numberOfTasks = tasks.length;
     return (
       <div className="task-list">
-        <h1>Open Tasks</h1>
+        <h1>
+          <strong>Open Tasks</strong>
+        </h1>
         <h2>{numberOfTasks}</h2>
+        <div>
+          <button onClick={this.resetLocalStorage}>Reset Local Storage</button>
+        </div>
         <TaskComposer
           addTask={this.addTaskToDo}
           taskLength={this.state.tasks.length}
@@ -111,6 +156,10 @@ export default class TaskList extends React.Component {
                 {...task}
                 updateTask={this.updateTask} // Pass the updateTask function
                 deleteTask={this.deleteTask} // Pass the deleteTask function
+                moveTaskToInProgress={() => this.moveTaskToInProgress(task)} // Pass the moveTaskToInProgress function
+                additionalButton={true}
+                additionalButtonLabel="Move to In Progress"
+                additionalButtonClick={() => this.moveTaskToInProgress(task)}
               />
             ))}
           </ul>

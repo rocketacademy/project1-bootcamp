@@ -5,41 +5,47 @@
   height: 100vh; /* height of 100vh ensures that the layout spans the full height */
 }
 
+.task-list,
+.task-in-progress,
+.task-in-review {
+  flex: 1; /* Equal distribution of space */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  width: calc(33.33% - 40px); /* 33.33% width with 20px margin on each side */
+  margin: 0 20px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+}
+
 .task-container {
   display: flex;
   flex: 1; /* This allows the task components to take up the available space */
 }
 
 .task-list {
-  margin: 0 20px;
+  background: #de0c0c;
 }
 
 .task-in-progress {
-  margin: 0 20px;
+  background: yellow;
 }
 
 .task-in-review {
-  margin: 0 20px;
+  background: rgb(17, 219, 31);
+}
+
+.task-composer {
+  margin: 20px 0px 50px;
 }
 
 /* Style the Header as you need it. For example: */
 .header {
   background: #333;
   color: #fff;
-  display: flex;
+  display: flex; /* flex container to enable */
   padding: 10px;
-  /* position: fixed; */
-  /* justify-content: center; */
-}
-
-.nav-container {
-  display: flex;
-  margin-right: 50px;
-}
-
-.nav-container-2 {
-  display: flex;
-  margin-left: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-link {
