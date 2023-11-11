@@ -12,7 +12,7 @@ export const Result = ({
 }) => {
   return (
     <Container>
-      <Grid direction="column" alignItems="center" spacing={2}>
+      <Grid container direction="column" alignItems="center" spacing={2}>
         <Grid item xs={10}>
           <DrugSearch
             updateDrugSearch={updateDrugSearch}
