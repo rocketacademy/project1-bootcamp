@@ -101,7 +101,6 @@ class App extends React.Component {
             task: "Fixing coding bugs on the software for Machine Learning AI",
           },
         ],
-        tasksInProgress: [],
       },
       this.updateLocalStorage
     );
@@ -197,7 +196,7 @@ class App extends React.Component {
   deleteTaskInReview = (id) => {
     this.setState(
       (prevState) => ({
-        tasks: prevState.tasksInReview.filter((task) => task.id !== id),
+        tasksInReview: prevState.tasksInReview.filter((task) => task.id !== id),
       }),
       this.updateLocalStorage
     );
