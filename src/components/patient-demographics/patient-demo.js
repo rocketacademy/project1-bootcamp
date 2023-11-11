@@ -18,10 +18,10 @@ export const Demographic = ({ updateAgeInput, updateWeightInput }) => {
           Patient Demographics
         </Typography>
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={10} sm={5}>
         <AgeInput updateAgeInput={updateAgeInput} />
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={10} sm={5}>
         <WeightInput updateWeightInput={updateWeightInput} />
       </Grid>
     </Grid>
