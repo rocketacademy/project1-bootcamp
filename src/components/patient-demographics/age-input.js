@@ -8,12 +8,6 @@ class AgeInput extends React.Component {
     this.props.updateAgeInput(e.target.value);
   };
 
-  // handleMthChange = (e) => {
-  //   const inputMth = e.target.value;
-  //   const inputYr = inputMth / 12;
-  //   this.props.updateAgeInput(inputYr);
-  // };
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.updateAgeInput(e.target.value);
