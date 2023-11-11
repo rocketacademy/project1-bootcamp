@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import "./ModuleForm.css";
+import { Button, ListGroup } from "react-bootstrap";
+import ListGroupItem from "react-bootstrap";
 
 class ModuleForm extends Component {
   constructor(props) {
@@ -92,7 +95,10 @@ class ModuleForm extends Component {
           userAction: "Delete",
         },
         () => {
-          localStorage.removeItem("moduleList");
+          localStorage.setItem(
+            "moduleList",
+            JSON.stringify(this.state.moduleList)
+          );
         }
       );
       // Add logic for deleting modules
@@ -110,60 +116,106 @@ class ModuleForm extends Component {
     event.preventDefault();
   };
 
+  calculateGPA = () => {
+    const { moduleList } = this.state;
+    const totalModules = moduleList.length;
+    if (totalModules === 0) {
+      return 0;
+    }
+    const totalGrades = moduleList.reduce((acc, module) => {
+      switch (module.grade) {
+        case "A":
+          return acc + 5.0;
+        case "A-":
+          return acc + 4.5;
+        case "B+":
+          return acc + 4.0;
+        case "B":
+          return acc + 3.5;
+        case "B-":
+          return acc + 3.0;
+        case "C+":
+          return acc + 2.5;
+        case "C":
+          return acc + 2.0;
+        case "D":
+          return acc + 1.5;
+        default:
+          return acc;
+      }
+    }, 0);
+    return totalGrades / totalModules;
+  };
+
   render() {
     const { enabled, userAction, moduleName, moduleList, grade, error } =
       this.state;
+    const gpa = this.calculateGPA();
     return (
-      <form onSubmit={this.handleSubmit}>
-        <select value={userAction} onChange={this.handleActionChange}>
-          <option value="Add">Add Module</option>
-          <option value="Update">Update Module</option>
-          <option value="Delete">Delete Module</option>
-        </select>
-        <input
-          type="text"
-          value={moduleName}
-          onChange={(e) => this.setState({ moduleName: e.target.value })}
-          placeholder="Module Name"
-        />
+      <div className="module-form-card">
+        <form onSubmit={this.handleSubmit} className="module-form">
+          <input
+            type="text"
+            value={moduleName}
+            onChange={(e) => this.setState({ moduleName: e.target.value })}
+            className="module-name"
+            placeholder="Module Name"
+          />
 
-        <select
-          type="text"
-          value={grade}
-          onChange={(e) => this.setState({ grade: e.target.value })}
-          placeholder="Grade"
-        >
-          Grade
-          <option value="A">A: 5.00</option>
-          <option value="A-">A-: 4.50</option>
-          <option value="B+">B+: 4.00</option>
-          <option value="B">B: 3.50</option>
-          <option value="B-">B-: 3.00</option>
-          <option value="C+">C+: 2.50</option>
-          <option value="C">C: 2.00</option>
-          <option value="D">D: 1.50</option>
-        </select>
-        <button
-          type="submit"
-          className={enabled > 0 ? "button-enabled" : "button-disabled"}
-          onClick={this.handleSubmit}
-        >
-          Let's go!
-        </button>
-        {error && <div style={{ color: "red" }}>{error}</div>}
-        {/* Display the module list */}
+          <select
+            type="text"
+            value={grade}
+            onChange={(e) => this.setState({ grade: e.target.value })}
+            placeholder="Grade"
+            className="grade-selector"
+          >
+            Grade
+            <option value="A">A: 5.00</option>
+            <option value="A-">A-: 4.50</option>
+            <option value="B+">B+: 4.00</option>
+            <option value="B">B: 3.50</option>
+            <option value="B-">B-: 3.00</option>
+            <option value="C+">C+: 2.50</option>
+            <option value="C">C: 2.00</option>
+            <option value="D">D: 1.50</option>
+          </select>
+          <select
+            value={userAction}
+            onChange={this.handleActionChange}
+            className="action-selector"
+          >
+            <option value="Add">Add Module</option>
+            <option value="Update">Update Module</option>
+            <option value="Delete">Delete Module</option>
+          </select>
+          <Button
+            type="submit"
+            className={enabled > 0 ? "button-enabled" : "button-disabled"}
+            onClick={this.handleSubmit}
+          >
+            Let's go!
+          </Button>
+          {/* Display the module list */}
+        </form>
+        {error && <div className="error-message">{error}</div>}
+        <h2 className="module-list-title"> Module List</h2>
         <div>
-          <h2>Module List</h2>
-          <ul>
+          <ListGroup className="module-list-item">
             {moduleList &&
               moduleList.map((module, index) => (
-                <li key={index}>
-                  {module.moduleName} - {module.grade}
-                </li>
+                <ListGroup.Item key={index}>{module.moduleName}</ListGroup.Item>
               ))}
-          </ul>
+            {moduleList &&
+              moduleList.map((module, index) => (
+                <ListGroup.Item key={index}>{module.grade}</ListGroup.Item>
+              ))}
+          </ListGroup>
         </div>
-      </form>
+        {/* Display the GPA */}
+        <div className="gpa-result">
+          <h2>GPA: {gpa.toFixed(2)}</h2>
+        </div>
+      </div>
     );
   }
 }
