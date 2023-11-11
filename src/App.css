@@ -1,5 +1,14 @@
+body {
+  background-color: #f0b86e;
+}
 .App {
   text-align: center;
+  background-color: #c674f2;
+  min-height: 500px;
+  width: 400px;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .App-logo {
@@ -16,4 +25,46 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.main-input-field {
+  background-color: #fffc98;
+  width: 200px;
+  height: 40px;
+  margin: 20px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.main-input-field:focus {
+  outline: none;
+}
+.add-item-button {
+  background-color: #8829ba;
+  width: 100px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+}
+
+.list {
+  background-color: rgb(255, 222, 10);
+  height: 30px;
+  width: 250px;
+  margin: 10px auto;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  position: relative;
+}
+
+.list:focus {
+  outline: none;
+}
+
+#trashbin {
+  font-size: 20px;
 }
