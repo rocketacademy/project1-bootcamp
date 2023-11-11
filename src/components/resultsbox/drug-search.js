@@ -46,7 +46,7 @@ class DrugSearch extends React.Component {
             id="search-input"
             sx={{ width: "200px" }}
             disableClearable
-            options={DrugList.map((option) => option.drugName)}
+            options={DrugList.map((option) => option.drugName).sort()}
             onChange={this.handleDrugSelect}
             inputValue={this.state.drugSearchValue}
             onInputChange={this.handleInputChange}
