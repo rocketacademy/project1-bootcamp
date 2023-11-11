@@ -5,7 +5,7 @@ export const Title = () => {
   return (
     <>
       <Stack>
-        <Paper>
+        <Paper square={false}>
           <Typography
             variant="h4"
             align="center"

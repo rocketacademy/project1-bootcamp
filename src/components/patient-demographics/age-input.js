@@ -22,12 +22,6 @@ class AgeInput extends React.Component {
   render() {
     return (
       <>
-        {/* <form onSubmit={this.handleSubmit}>
-          <label>
-            Age
-            <input type="text" name="age-input" onChange={this.handleChange} />
-          </label>
-        </form> */}
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
           <TextField
             id="age-input"

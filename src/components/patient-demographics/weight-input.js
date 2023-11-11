@@ -16,16 +16,6 @@ class WeightInput extends React.Component {
   render() {
     return (
       <div className="input-box">
-        {/* <form onSubmit={this.handleSubmit}>
-          <label>
-            Weight
-            <input
-              type="text"
-              name="weight-input"
-              onChange={this.handleChange}
-            />
-          </label>
-        </form> */}
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
           <TextField
             id="weight-input"
