@@ -6,7 +6,7 @@ const columns = [
   { field: "minDose", headerName: "Min Dose (mg)", width: 150 },
   { field: "maxDose", headerName: "Max Dose (mg)", width: 150 },
   { field: "freq", headerName: "Freq", width: 100 },
-  { field: "notes", headerName: "Notes", width: 600 },
+  { field: "notes", headerName: "Notes", width: 300 },
 ];
 
 const GridTable = ({ dose }) => {
@@ -17,6 +17,7 @@ const GridTable = ({ dose }) => {
       getRowId={(row) => row.drug}
       pageSize={5}
       autoHeight
+      getRowHeight={() => "auto"}
       checkboxSelection
     />
   );
