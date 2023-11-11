@@ -45,6 +45,7 @@ export default class ItemsList extends React.Component {
           ></input>
           <span>
             <input
+              className="list"
               type="text"
               id={item.key}
               value={item.name}
