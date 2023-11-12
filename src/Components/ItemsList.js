@@ -1,6 +1,5 @@
 import React from "react";
 import UserInput from "./UserInput";
-// import { BsTrash3Fill } from "react-icons/bs";
 import Items from "./Items";
 
 export default class ItemsList extends React.Component {
@@ -10,6 +9,7 @@ export default class ItemsList extends React.Component {
       itemsList: [],
     };
   }
+
   addItem = (inputValue) => {
     let newItem = { name: " ", key: " ", isChecked: false };
     newItem.name = inputValue;
@@ -44,7 +44,6 @@ export default class ItemsList extends React.Component {
       // }
       if (item.key === key) {
         item.isChecked = !item.isChecked;
-        console.log(item.isChecked);
       }
 
       return <span>{item.name}</span>;
@@ -74,4 +73,6 @@ export default class ItemsList extends React.Component {
 //We need to be able to add items to the list
 //Items are added in the UserInput component: when user inputs something into the input field and then clicks "add item" , the item should get added into the itemsArray
 //Each item can be deleted
-//Each item can be changed/edited.
+//Each item can be changed
+//Each item can be edited
+//Each item has checkbox, once the user got the item, they may tick the checkbox and the item will get crossed out
