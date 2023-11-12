@@ -27,6 +27,7 @@ export default class TaskListInReview extends React.Component {
               <Task
                 key={task.id}
                 {...task}
+                showButton={false}
                 updateTask={updateTask} // Pass the updateTask function
                 deleteTask={deleteTask} // Pass the deleteTask function
               />

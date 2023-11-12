@@ -42,6 +42,45 @@ class App extends React.Component {
     };
   }
 
+  // Transfer tasks from Open Tasks to Tasks In Progress
+  moveTaskOpen = (id) => {
+    // Find the task in state.tasks using the find method
+    const taskToMove = this.state.tasks.find((task) => task.id === id);
+    /** find()
+     * find() method loops through the array elements and returns the first element that is true for task.id === id
+     */
+
+    // if there is a taskToMove
+    if (taskToMove) {
+      this.setState(
+        (prevState) => ({
+          // Wrap the arrow function in () to represent object literal and not function block!
+          tasks: prevState.tasks.filter((task) => task.id !== id),
+          tasksInProgress: [...prevState.tasksInProgress, taskToMove],
+        }),
+        this.updateLocalStorage
+      );
+    }
+  };
+
+  // Transfer tasks from In Progress to In Review
+  moveTaskInProgress = (id) => {
+    const taskToMove = this.state.tasksInProgress.find(
+      (task) => task.id === id
+    );
+    if (taskToMove) {
+      this.setState(
+        (prevState) => ({
+          tasksInProgress: prevState.tasksInProgress.filter(
+            (task) => task.id !== id
+          ),
+          tasksInReview: [...prevState.tasksInReview, taskToMove],
+        }),
+        this.updateLocalStorage
+      );
+    }
+  };
+
   // OPEN TASKS SECTION
   updateTask = (id, updatedTask) => {
     this.setState((prevState) => {
@@ -229,6 +268,7 @@ class App extends React.Component {
             addTaskToDo={this.addTaskToDo}
             deleteTask={this.deleteTask}
             resetLocalStorage={this.resetLocalStorage}
+            moveTaskOpen={this.moveTaskOpen}
           />
           <TaskListInProgress
             tasksInProgress={this.state.tasksInProgress}
@@ -236,6 +276,7 @@ class App extends React.Component {
             addTaskToDo={this.addTaskToDoInProgress}
             deleteTask={this.deleteTaskInProgress}
             resetLocalStorage={this.resetLocalStorageInProgress}
+            moveTaskInProgress={this.moveTaskInProgress}
           />
           <TaskListInReview
             tasksInReview={this.state.tasksInReview}
