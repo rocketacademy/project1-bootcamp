@@ -1,6 +1,7 @@
 import React from "react";
 import UserInput from "./UserInput";
-import { BsTrash3Fill } from "react-icons/bs";
+// import { BsTrash3Fill } from "react-icons/bs";
+import Items from "./Items";
 
 export default class ItemsList extends React.Component {
   constructor(props) {
@@ -52,82 +53,20 @@ export default class ItemsList extends React.Component {
     this.setState({ itemsList: this.state.itemsList });
   };
 
-  displayItemsList = () => {
-    const itemsList = this.state.itemsList.map((item, key) => {
-      return (
-        <div key={item.key}>
-          <input
-            className="input"
-            type="checkbox"
-            id={item.key}
-            value={this.state.isChecked}
-            onChange={() => this.checkItem(item.key)}
-          ></input>
-          <span>
-            <input
-              className={item.isChecked ? "purchased-items" : "items-to-buy"}
-              type="text"
-              id={item.key}
-              value={item.name}
-              onChange={(event) =>
-                this.updateItem(event.target.value, item.key)
-              }
-            ></input>
-          </span>
-          <span>
-            <BsTrash3Fill
-              className="icons"
-              id="trashbin"
-              onClick={() => this.deleteItem(key)}
-            />
-          </span>
-        </div>
-      );
-    });
-    return itemsList;
-  };
-
   render() {
-    // const itemsList = this.state.itemsList.map((item, key) => {
-    //   return (
-    //     <div key={item.key}>
-    //       <input
-    //         className="input"
-    //         type="checkbox"
-    //         id={item.key}
-    //         value={item.isChecked}
-    //         onChange={() => this.checkItem(item.key)}
-    //       ></input>
-
-    //       <span>
-    //         <input
-    //           className={item.isChecked ? "purchased-items" : "items-to-buy"}
-    //           type="text"
-    //           id={item.key}
-    //           value={item.name}
-    //           onChange={(event) =>
-    //             this.updateItem(event.target.value, item.key)
-    //           }
-    //         ></input>
-    //       </span>
-
-    //       <span>
-    //         <BsTrash3Fill
-    //           className="icons"
-    //           id="trashbin"
-    //           onClick={() => this.deleteItem(key)}
-    //         />
-    //       </span>
-    //     </div>
-    //   );
-    // });
     return (
       <div>
         <div>
           <UserInput addItem={this.addItem} />
         </div>
-        {/* <>{itemsList}</> */}
-        <div>{this.displayItemsList()}</div>
+        <div>
+          <Items
+            itemsList={this.state.itemsList}
+            checkItem={this.checkItem}
+            updateItem={this.updateItem}
+            deleteItem={this.deleteItem}
+          />
+        </div>
       </div>
     );
   }
