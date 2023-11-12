@@ -23,7 +23,7 @@ const CreateForm = ({ setTripDetails, setshowTransactionForm }) => {
     setItems(newItem);
   };
   const handleSubmit = () => {
-    if (!tripname) {
+    if (!tripname || !items) {
       return;
     }
 
