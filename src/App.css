@@ -1,9 +1,13 @@
 body {
-  background-color: #f0b86e;
+  background: linear-gradient(90deg, #19cfd9 0%, #7bf0d1 100%);
 }
 .App {
-  text-align: center;
-  background-color: #c674f2;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(90deg, #494848, #2a2929);
   min-height: 500px;
   width: 400px;
   margin: 40px auto;
@@ -11,24 +15,11 @@ body {
   padding: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+h1 {
   color: white;
 }
-
 .main-input-field {
-  background-color: #fffc98;
+  background-color: #fffffd;
   width: 200px;
   height: 40px;
   margin: 20px;
@@ -36,22 +27,27 @@ body {
   border: 0;
   border-radius: 10px;
   font-size: 20px;
+  /* display: flex;
+  flex-direction: row;
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
 }
 .main-input-field:focus {
   outline: none;
 }
 .add-item-button {
-  background-color: #8829ba;
+  background: linear-gradient(90deg, #78dda1, #37b8f0);
   width: 100px;
   height: 40px;
   border: 0;
   border-radius: 10px;
   color: white;
+  font-weight: bold;
   font-size: 18px;
 }
 
-.items-to-buy {
-  background-color: rgb(255, 222, 10);
+.item-to-buy-row {
+  background: linear-gradient(90deg, #62d3d9, #35e1ae);
   height: 30px;
   width: 250px;
   margin: 10px auto;
@@ -62,16 +58,18 @@ body {
   position: relative;
 }
 
-.items-to-buy:focus {
+.item-to-buy-row:focus {
   outline: none;
 }
 
 #trashbin {
   font-size: 20px;
+  color: white;
+  position: relative;
 }
 
-.purchased-items {
-  background-color: rgb(255, 222, 10);
+.purchased-item-row {
+  background: linear-gradient(90deg, #62d3d9, #35e1ae);
   height: 30px;
   width: 250px;
   margin: 10px auto;
@@ -81,7 +79,8 @@ body {
   padding: 10px;
   position: relative;
   text-decoration: line-through;
+  opacity: 0.5;
 }
-.purchased-items:focus {
+.purchased-item-row:focus {
   outline: none;
 }
