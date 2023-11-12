@@ -10,7 +10,7 @@ export default class ItemsList extends React.Component {
     };
   }
   addItem = (inputValue) => {
-    let newItem = { name: " ", key: " " };
+    let newItem = { name: " ", key: " ", isChecked: false };
     newItem.name = inputValue;
     newItem.key = Date.now();
     let newItemsList = [...this.state.itemsList, newItem];
@@ -19,7 +19,6 @@ export default class ItemsList extends React.Component {
 
   deleteItem = (index) => {
     let itemsList = [...this.state.itemsList];
-    console.log(itemsList);
     itemsList.splice(index, 1);
     this.setState({ itemsList: itemsList });
   };
@@ -33,6 +32,26 @@ export default class ItemsList extends React.Component {
     this.setState({ itemsList: this.state.itemsList });
   };
 
+  checkItem = (key) => {
+    this.state.itemsList.map((item) => {
+      // if (item.key === key && !item.isChecked) {
+      //   item.isChecked = true;
+      //   console.log(item.isChecked);
+      // } else if (item.key === key && item.isChecked) {
+      //   item.isChecked = false;
+      //   console.log(item.isChecked);
+      // }
+      if (item.key === key) {
+        item.isChecked = !item.isChecked;
+        console.log(item.isChecked);
+      }
+
+      return <span>{item.name}</span>;
+    });
+
+    this.setState({ itemsList: this.state.itemsList });
+  };
+
   displayItemsList = () => {
     const itemsList = this.state.itemsList.map((item, key) => {
       return (
@@ -40,12 +59,13 @@ export default class ItemsList extends React.Component {
           <input
             className="input"
             type="checkbox"
-            name="item"
-            value={item}
+            id={item.key}
+            value={this.state.isChecked}
+            onChange={() => this.checkItem(item.key)}
           ></input>
           <span>
             <input
-              className="list"
+              className={item.isChecked ? "purchased-items" : "items-to-buy"}
               type="text"
               id={item.key}
               value={item.name}
@@ -66,18 +86,52 @@ export default class ItemsList extends React.Component {
     });
     return itemsList;
   };
+
   render() {
+    // const itemsList = this.state.itemsList.map((item, key) => {
+    //   return (
+    //     <div key={item.key}>
+    //       <input
+    //         className="input"
+    //         type="checkbox"
+    //         id={item.key}
+    //         value={item.isChecked}
+    //         onChange={() => this.checkItem(item.key)}
+    //       ></input>
+
+    //       <span>
+    //         <input
+    //           className={item.isChecked ? "purchased-items" : "items-to-buy"}
+    //           type="text"
+    //           id={item.key}
+    //           value={item.name}
+    //           onChange={(event) =>
+    //             this.updateItem(event.target.value, item.key)
+    //           }
+    //         ></input>
+    //       </span>
+
+    //       <span>
+    //         <BsTrash3Fill
+    //           className="icons"
+    //           id="trashbin"
+    //           onClick={() => this.deleteItem(key)}
+    //         />
+    //       </span>
+    //     </div>
+    //   );
+    // });
     return (
       <div>
         <div>
           <UserInput addItem={this.addItem} />
         </div>
+        {/* <>{itemsList}</> */}
         <div>{this.displayItemsList()}</div>
       </div>
     );
   }
 }
-
 //We need to be able to add items to the list
 //Items are added in the UserInput component: when user inputs something into the input field and then clicks "add item" , the item should get added into the itemsArray
 //Each item can be deleted
