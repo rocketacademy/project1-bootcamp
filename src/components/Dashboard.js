@@ -1,59 +1,65 @@
 import React, { useState } from "react";
-
-import Timer from "../components/Timer";
 import Greetings from "./Greetings";
-
-import Form from "./Form";
-
-import Button from "./Button";
-import CreatedForm from "./CreatedForm";
+import { Stack, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import Forms from "./Forms";
 
 const Dashboard = () => {
-  const [showForm, setShowForm] = useState(false);
-  const [showCreatedForm, setShowCreatedForm] = useState(false);
+  const [showCreateTripForm, setShowCreateTripForm] = useState(false);
 
-  const getUsername = () => {
-    return JSON.parse(localStorage.getItem("user"));
-  };
+  const navigate = useNavigate();
 
-  const getCreatedFormNames = () => {
-    return JSON.parse(localStorage.getItem("stateObject"));
-  };
+  const username = JSON.parse(localStorage.getItem("user"));
 
-  // useEffect(() => {
-  //   return ()=> setShowForm(false);
-  // // });
-  // if (showCreatedForm) {
-  //   return setShowForm(false);
-  // }
+  const getTripData = JSON.parse(localStorage.getItem("tripDetails"));
 
   return (
     <>
-      <h2>{getUsername()}</h2>
-      <Timer />
-      <Greetings username={getUsername()} />
-      <h5>Ongoing Trips</h5>
-      {!showForm && !showCreatedForm ? (
-        <>
-          <Button onClick={() => setShowForm(true)}>Add a trip</Button>
-          <p>This space is currently empty! Add a trip to start</p>
-        </>
-      ) : showForm && !showCreatedForm ? (
-        <>
-          <Form />
+      <Stack spacing={8}>
+        <Greetings username={username} />
+        <Stack spacing={6}>
+          {!showCreateTripForm && !getTripData ? (
+            <>
+              <Button
+                onClick={() => {
+                  setShowCreateTripForm(true);
+                }}
+                variant="contained"
+                size="small"
+                style={{
+                  backgroundColor: "#c6ff00",
+                  color: "black",
+                  fontWeight: "bold",
+                }}
+                disableRipple
+              >
+                Add a Trip
+              </Button>
+            </>
+          ) : (
+            <Forms />
+          )}
           <Button
             onClick={() => {
-              setShowCreatedForm(true);
+              navigate("/past-trips");
             }}
+            variant="contained"
+            size="small"
+            color="primary"
+            disableRipple
           >
-            Create Trip
+            Browse Past Trips
           </Button>
-        </>
-      ) : (
-        <CreatedForm getNames={getCreatedFormNames()} />
-      )}
+        </Stack>
+      </Stack>
     </>
   );
 };
 
 export default Dashboard;
+
+// no tripname no transactions = add a trip and browse past trips buttons
+
+// once i click onto add a trip, createform appears and create a trip button appears
+//
+//
