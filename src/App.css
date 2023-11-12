@@ -1,55 +1,57 @@
 body {
-  background: linear-gradient(90deg, #19cfd9 0%, #7bf0d1 100%);
+  background: linear-gradient(90deg, #19cfd9 30%, #7bf0d1 70%);
+  cursor: auto;
 }
 .App {
   /* text-align: center; */
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  background: linear-gradient(90deg, #494848, #2a2929);
+  justify-content: flex-start; */
+  background: linear-gradient(80deg, #494848 10%, #2a2929 90%);
   min-height: 500px;
-  width: 400px;
+  max-width: 400px;
   margin: 40px auto;
   border-radius: 10px;
   padding: 10px;
 }
 
-h1 {
+.header {
   color: white;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
 }
-.main-input-field {
+
+/*MAIN INPUT FIELD CSS
+/* .main-input-field {
   background-color: #fffffd;
   width: 200px;
   height: 40px;
   margin: 20px;
   padding: 0 20px;
-  border: 0;
+border: 0;
   border-radius: 10px;
   font-size: 20px;
-  /* display: flex;
-  flex-direction: row;
-  /* align-items: flex-start; */
-  /* justify-content: flex-start; */
 }
 .main-input-field:focus {
   outline: none;
-}
-.add-item-button {
+} */
+
+#add-item-button {
   background: linear-gradient(90deg, #78dda1, #37b8f0);
-  width: 100px;
-  height: 40px;
+  /* width: 100px;
+  height: 40px; */
   border: 0;
-  border-radius: 10px;
   color: white;
-  font-weight: bold;
   font-size: 18px;
 }
 
 .item-to-buy-row {
   background: linear-gradient(90deg, #62d3d9, #35e1ae);
-  height: 30px;
-  width: 250px;
+  /* height: 30px;
+  width: 250px; */
   margin: 10px auto;
   border: 0;
   border-radius: 10px;
@@ -66,12 +68,13 @@ h1 {
   font-size: 20px;
   color: white;
   position: relative;
+  cursor: pointer;
 }
 
 .purchased-item-row {
   background: linear-gradient(90deg, #62d3d9, #35e1ae);
-  height: 30px;
-  width: 250px;
+  /* height: 30px;
+  width: 250px; */
   margin: 10px auto;
   border: 0;
   border-radius: 10px;
