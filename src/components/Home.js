@@ -1,63 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  TextField,
-  Typography,
-  Stack,
-  InputAdornment,
-} from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { Button, TextField, Stack, InputAdornment } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#00c853",
-    },
-  },
-});
+import EastIcon from "@mui/icons-material/East";
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setUsername(event.target.value);
-  };
-
   const handleClick = () => {
     if (username === "") {
       return;
     }
+    setUsername(username);
     // store username in local storage
     localStorage.setItem("user", JSON.stringify(username));
+
     navigate("/dashboard");
   };
 
-  useEffect(() => {
-    const userData = localStorage.getItem("user");
-    if (userData !== null) {
-      setUsername(JSON.parse(userData));
-    }
-  }, []);
-
   return (
     <>
-      <Stack spacing={4} direction="column">
-        <Typography
-          variant="h4"
-          sx={{ fontFamily: "Raleway", fontWeight: "bold" }}
+      <Stack spacing={3}>
+        <p
+          style={{
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "28px",
+            letterSpacing: "4px",
+          }}
         >
-          Hey there!
-        </Typography>
-        <Stack>
+          Hey there,
+        </p>
+        <Stack direction="row" spacing={2}>
           <TextField
             placeholder="Your name goes here"
             value={username}
-            onChange={handleChange}
-            variant="outlined"
-            sx={{ fontStyle: "italic" }}
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+            style={{
+              backgroundColor: "white",
+              fontStyle: "italic",
+            }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -66,15 +51,13 @@ const Home = () => {
               ),
             }}
           ></TextField>
-        </Stack>
-        <Stack>
           <Button
-            variant="contained"
-            size="medium"
+            size="small"
             onClick={handleClick}
-            theme={theme}
+            style={{ backgroundColor: "#ffc400", color: "black" }}
+            disableRipple
           >
-            Get Started
+            <EastIcon />
           </Button>
         </Stack>
       </Stack>
