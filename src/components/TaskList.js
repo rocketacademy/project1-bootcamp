@@ -4,8 +4,14 @@ import TaskComposer from "./TaskComposer";
 
 export default class TaskList extends React.Component {
   render() {
-    const { tasks, updateTask, addTaskToDo, deleteTask, resetLocalStorage } =
-      this.props;
+    const {
+      tasks,
+      updateTask,
+      addTaskToDo,
+      deleteTask,
+      resetLocalStorage,
+      moveTaskOpen,
+    } = this.props;
 
     return (
       <div className="task-list">
@@ -23,8 +29,10 @@ export default class TaskList extends React.Component {
               <Task
                 key={task.id}
                 {...task}
+                showButton={true}
                 updateTask={updateTask} // Pass the updateTask function
                 deleteTask={deleteTask} // Pass the deleteTask function
+                moveTaskOpen={moveTaskOpen}
               />
             ))}
           </ul>

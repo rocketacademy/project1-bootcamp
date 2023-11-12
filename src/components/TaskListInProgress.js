@@ -10,6 +10,7 @@ export default class TaskListInProgress extends React.Component {
       addTaskToDo,
       deleteTask,
       resetLocalStorage,
+      moveTaskInProgress,
     } = this.props;
     return (
       <div className="task-in-progress">
@@ -30,8 +31,11 @@ export default class TaskListInProgress extends React.Component {
               <Task
                 key={task.id}
                 {...task}
+                showButton={false}
+                showButtonInProgress={true}
                 updateTask={updateTask} // Pass the updateTask function
                 deleteTask={deleteTask} // Pass the deleteTask function
+                moveTaskInProgress={moveTaskInProgress}
               />
             ))}
           </ul>
