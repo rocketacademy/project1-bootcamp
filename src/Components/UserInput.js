@@ -1,4 +1,9 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Container from "react-bootstrap/Container";
 
 export default class UserInput extends React.Component {
   constructor(props) {
@@ -13,7 +18,7 @@ export default class UserInput extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    // const inputValue = this.state;
+
     if (this.state.inputValue) {
       this.props.addItem(this.state.inputValue.toLowerCase());
       this.setState({
@@ -24,16 +29,25 @@ export default class UserInput extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            className="main-input-field"
-            type="text"
-            placeholder="type in your item"
-            value={this.state.inputValue}
-            onChange={this.handleChange}
-          />
-          <input className="add-item-button" type="submit" value="Add Item" />
-        </form>
+        <Container>
+          <InputGroup id="main-input-field" className="mb-3 mt-4">
+            <Form.Control
+              placeholder="type in your item"
+              aria-label="type in your item"
+              aria-describedby="basic-addon1"
+              onChange={this.handleChange}
+              value={this.state.inputValue}
+            />
+
+            <Button
+              variant="outline-secondary"
+              id="add-item-button"
+              onClick={this.handleSubmit}
+            >
+              Add item
+            </Button>
+          </InputGroup>
+        </Container>
       </div>
     );
   }
