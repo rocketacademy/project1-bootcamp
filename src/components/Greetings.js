@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Stack } from "@mui/material";
 
 const Greetings = ({ username }) => {
-  const today = new Date();
-  const currHour = today.getHours();
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const currentTime = `${currentDate.getHours()} : ${currentDate.getMinutes()} : ${currentDate.getSeconds()}`;
+  const currHour = currentDate.getHours();
 
-  let greetings;
+  useEffect(() => {
+    setInterval(() => setCurrentDate(new Date()), 1000);
+  });
 
   const greet = () => {
+    let greetings;
     if (currHour >= 6 && currHour < 12) {
-      greetings = "Good Morning";
+      greetings = "Good morning";
     } else if (currHour >= 12 && currHour < 17) {
-      greetings = "Good Afternoon";
+      greetings = "Good afternoon";
     } else {
-      greetings = "Good Evening";
+      greetings = "Good evening";
     }
     return greetings;
   };
+
+  let greetMessage = `${greet()} ${username},`;
+
   return (
     <>
-      <h3>{`${greet()} ${username}! `}</h3>
-      <h3>What would you like to do today?</h3>
+      <Stack spacing={7}>
+        <p>{`${currentDate.toDateString()}, ${currentTime}`}</p>
+
+        <h2 style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
+          {greetMessage}
+        </h2>
+      </Stack>
     </>
   );
 };
