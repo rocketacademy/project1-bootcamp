@@ -1,22 +1,22 @@
 import React from "react";
 import "./App.css";
 import ItemsList from "./Components/ItemsList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Container from "react-bootstrap/Container";
+import Stack from "react-bootstrap/Stack";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <div className="App">
-        <div className="Header">
-          <h1>Today's shopping list</h1>
-        </div>
-        <div className="ItemsList">
-          <ItemsList />
-        </div>
+        <Container>
+          <Stack gap={2}>
+            <div className="header">Today's shopping list</div>
+            <div className="ItemsList">
+              <ItemsList />
+            </div>
+          </Stack>
+        </Container>
       </div>
     );
   }
