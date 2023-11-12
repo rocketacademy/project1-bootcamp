@@ -47,9 +47,10 @@ body {
   border: 0;
   border-radius: 10px;
   color: white;
+  font-size: 18px;
 }
 
-.list {
+.items-to-buy {
   background-color: rgb(255, 222, 10);
   height: 30px;
   width: 250px;
@@ -61,10 +62,26 @@ body {
   position: relative;
 }
 
-.list:focus {
+.items-to-buy:focus {
   outline: none;
 }
 
 #trashbin {
   font-size: 20px;
+}
+
+.purchased-items {
+  background-color: rgb(255, 222, 10);
+  height: 30px;
+  width: 250px;
+  margin: 10px auto;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  position: relative;
+  text-decoration: line-through;
+}
+.purchased-items:focus {
+  outline: none;
 }
