@@ -16,11 +16,18 @@ class WeightInput extends React.Component {
   render() {
     return (
       <div className="input-box">
-        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "flex-end",
+            padding: 4,
+            width: "120px",
+          }}
+        >
           <TextField
             id="weight-input"
-            label="Weight"
             variant="standard"
+            color="info"
             onChange={this.handleChange}
             InputProps={{
               endAdornment: <InputAdornment position="end">kg</InputAdornment>,

@@ -1,28 +1,30 @@
 import React from "react";
 import AgeInput from "./age-input";
 import WeightInput from "./weight-input";
-import { Grid, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
+
+const cardFormat = ({ label }) => (
+  <CardContent>
+    <Typography variant="h5" component="div">
+      {label}
+    </Typography>
+  </CardContent>
+);
 
 export const Demographic = ({ updateAgeInput, updateWeightInput }) => {
   return (
-    <Grid>
-      <Grid item xs={10}>
-        <Typography
-          variant="h5"
-          textAlign="center"
-          color="textSecondary"
-          sx={{
-            paddingTop: 2,
-          }}
-        >
-          Patient Demographics
-        </Typography>
+    <Grid spacing={0}>
+      <Grid item xs={6}>
+        <Card sx={{ backgroundColor: "#B2B4A3" }}>
+          {cardFormat({ label: "AGE" })}
+          <AgeInput updateAgeInput={updateAgeInput} />
+        </Card>
       </Grid>
-      <Grid item xs={10} sm={5}>
-        <AgeInput updateAgeInput={updateAgeInput} />
-      </Grid>
-      <Grid item xs={10} sm={5}>
-        <WeightInput updateWeightInput={updateWeightInput} />
+      <Grid item xs={6}>
+        <Card sx={{ backgroundColor: "#DCBC8B" }}>
+          {cardFormat({ label: "WEIGHT" })}
+          <WeightInput updateWeightInput={updateWeightInput} />
+        </Card>
       </Grid>
     </Grid>
   );

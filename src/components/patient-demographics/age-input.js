@@ -16,11 +16,18 @@ class AgeInput extends React.Component {
   render() {
     return (
       <>
-        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "flex-end",
+            padding: 4,
+            width: "120px",
+          }}
+        >
           <TextField
             id="age-input"
-            label="Age"
             variant="standard"
+            color="warning"
             onChange={this.handleChange}
             InputProps={{
               endAdornment: <InputAdornment position="end">yo</InputAdornment>,
