@@ -62,8 +62,11 @@ class DrugSearch extends React.Component {
               />
             )}
           />
+
+          <Button onClick={this.handleResetSearch} color="secondary">
+            Reset
+          </Button>
         </Box>
-        <Button onClick={this.handleResetSearch}>Reset</Button>
       </>
     );
   }

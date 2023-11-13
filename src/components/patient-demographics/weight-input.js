@@ -19,7 +19,7 @@ class WeightInput extends React.Component {
         <Box
           sx={{
             padding: "0px 32px 32px 32px",
-            minWidth: "90px",
+            minWidth: "80px",
           }}
         >
           <TextField
