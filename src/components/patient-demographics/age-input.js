@@ -18,7 +18,7 @@ class AgeInput extends React.Component {
       <>
         <Box
           sx={{
-            padding: 4,
+            padding: "0px 32px 32px 32px",
             minWidth: "90px",
           }}
         >
@@ -29,6 +29,7 @@ class AgeInput extends React.Component {
             onChange={this.handleChange}
             InputProps={{
               endAdornment: <InputAdornment position="end">yo</InputAdornment>,
+              style: { fontSize: "42px", fontWeight: "bold" },
             }}
           />
         </Box>

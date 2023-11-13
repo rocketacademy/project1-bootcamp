@@ -18,7 +18,7 @@ class WeightInput extends React.Component {
       <div className="input-box">
         <Box
           sx={{
-            padding: 4,
+            padding: "0px 32px 32px 32px",
             minWidth: "90px",
           }}
         >
@@ -29,6 +29,7 @@ class WeightInput extends React.Component {
             onChange={this.handleChange}
             InputProps={{
               endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+              style: { fontSize: "42px", fontWeight: "bold" },
             }}
           />
         </Box>

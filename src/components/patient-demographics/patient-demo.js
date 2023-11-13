@@ -4,10 +4,8 @@ import WeightInput from "./weight-input";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 
 const cardFormat = ({ label }) => (
-  <CardContent>
-    <Typography variant="h5" component="div">
-      {label}
-    </Typography>
+  <CardContent sx={{ padding: "16px 16px 0px 16px" }}>
+    <Typography variant="h5">{label}</Typography>
   </CardContent>
 );
 
