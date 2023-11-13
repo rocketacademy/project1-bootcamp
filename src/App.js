@@ -1,10 +1,10 @@
 import React from "react";
 // import "./App.css";
-import { Title } from "./components/title/title";
+import { Instructions, Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
 import { DrugList } from "./components/druglist";
-import { Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 
 class App extends React.Component {
@@ -55,21 +55,30 @@ class App extends React.Component {
     console.log(`age: ${this.state.ageInput}`);
     return (
       <Container>
-        <Stack>
-          <Title />
+        <Grid spacing={4}>
+          <Grid item xs={12}>
+            <Title />
+          </Grid>
+          <Grid item xs={4} justifyContent="left">
+            <Instructions />
+          </Grid>
 
-          <Demographic
-            updateAgeInput={this.updateAgeInput}
-            updateWeightInput={this.updateWeightInput}
-          />
-          <Result
-            updateDrugSearch={this.updateDrugSearch}
-            selectedDrug={this.state.selectedDrug}
-            weightInput={this.state.weightInput}
-            ageInput={this.state.ageInput}
-            resetSearch={this.resetSearch}
-          />
-        </Stack>
+          <Grid item xs={8}>
+            <Demographic
+              updateAgeInput={this.updateAgeInput}
+              updateWeightInput={this.updateWeightInput}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Result
+              updateDrugSearch={this.updateDrugSearch}
+              selectedDrug={this.state.selectedDrug}
+              weightInput={this.state.weightInput}
+              ageInput={this.state.ageInput}
+              resetSearch={this.resetSearch}
+            />
+          </Grid>
+        </Grid>
       </Container>
     );
   }

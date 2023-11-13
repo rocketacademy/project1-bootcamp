@@ -3,22 +3,26 @@ import { Stack, Typography } from "@mui/material";
 
 export const Title = () => {
   return (
+    <Typography
+      variant="h4"
+      align="left"
+      color="textSecondary"
+      fontWeight="bold"
+      sx={{
+        letterSpacing: 10,
+        lineHeight: 2,
+        padding: 2,
+      }}
+    >
+      PEDIATRIC DOSE CALCULATOR
+    </Typography>
+  );
+};
+
+export const Instructions = () => {
+  return (
     <>
       <Stack>
-        <Typography
-          variant="h4"
-          align="left"
-          color="textSecondary"
-          fontWeight="bold"
-          sx={{
-            letterSpacing: 10,
-            lineHeight: 2,
-            padding: 2,
-          }}
-        >
-          PEDIATRIC DOSE CALCULATOR
-        </Typography>
-
         <Typography
           variant="h5"
           align="left"

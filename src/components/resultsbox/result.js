@@ -13,7 +13,7 @@ export const Result = ({
   return (
     <Container>
       <Grid container direction="column" alignItems="center" spacing={2}>
-        <Grid item xs={10}>
+        <Grid item xs={10} justifyContent="right">
           <DrugSearch
             updateDrugSearch={updateDrugSearch}
             resetSearch={resetSearch}
