@@ -41,9 +41,9 @@ export const Instructions = () => {
             paddingLeft: 3,
           }}
         >
-          1. Enter patient’s age and weight
+          Enter patient’s age and weight
           <br />
-          2. Select the drug to view the dose
+          Select the drug to view the dose
         </Typography>
       </Stack>
     </>
