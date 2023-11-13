@@ -5,7 +5,7 @@ export const Title = () => {
   return (
     <Typography
       variant="h4"
-      align="left"
+      align="center"
       color="textSecondary"
       fontWeight="bold"
       sx={{
@@ -28,7 +28,7 @@ export const Instructions = () => {
           align="left"
           color="textSecondary"
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
           }}
         >
           Instructions
@@ -38,7 +38,7 @@ export const Instructions = () => {
           align="left"
           color="textSecondary"
           sx={{
-            paddingLeft: 2,
+            paddingLeft: 3,
           }}
         >
           1. Enter patient’s age and weight

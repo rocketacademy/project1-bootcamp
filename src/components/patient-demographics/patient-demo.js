@@ -13,14 +13,14 @@ const cardFormat = ({ label }) => (
 
 export const Demographic = ({ updateAgeInput, updateWeightInput }) => {
   return (
-    <Grid spacing={0} justifyContent="right">
-      <Grid item xs={4}>
+    <Grid spacing={2}>
+      <Grid item xs={6}>
         <Card sx={{ backgroundColor: "#B2B4A3" }}>
           {cardFormat({ label: "AGE" })}
           <AgeInput updateAgeInput={updateAgeInput} />
         </Card>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
         <Card sx={{ backgroundColor: "#DCBC8B" }}>
           {cardFormat({ label: "WEIGHT" })}
           <WeightInput updateWeightInput={updateWeightInput} />

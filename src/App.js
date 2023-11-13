@@ -55,15 +55,15 @@ class App extends React.Component {
     console.log(`age: ${this.state.ageInput}`);
     return (
       <Container>
-        <Grid spacing={4}>
+        <Grid spacing={4} justifyContent="space-between">
           <Grid item xs={12}>
             <Title />
           </Grid>
-          <Grid item xs={4} justifyContent="left">
+          <Grid item xs={10} sm={4} justifyContent="flex-start">
             <Instructions />
           </Grid>
 
-          <Grid item xs={8}>
+          <Grid item xs={10} sm={5}>
             <Demographic
               updateAgeInput={this.updateAgeInput}
               updateWeightInput={this.updateWeightInput}
