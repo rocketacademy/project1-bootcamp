@@ -18,10 +18,8 @@ class WeightInput extends React.Component {
       <div className="input-box">
         <Box
           sx={{
-            display: "flex",
-            alignItems: "flex-end",
             padding: 4,
-            width: "120px",
+            minWidth: "90px",
           }}
         >
           <TextField

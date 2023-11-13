@@ -18,10 +18,8 @@ class AgeInput extends React.Component {
       <>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "flex-end",
             padding: 4,
-            width: "120px",
+            minWidth: "90px",
           }}
         >
           <TextField

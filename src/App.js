@@ -59,11 +59,11 @@ class App extends React.Component {
           <Grid item xs={12}>
             <Title />
           </Grid>
-          <Grid item xs={10} sm={4} justifyContent="flex-start">
+          <Grid item xs={10} sm={5} justifyContent="flex-start">
             <Instructions />
           </Grid>
 
-          <Grid item xs={10} sm={5}>
+          <Grid item xs={10} sm={6}>
             <Demographic
               updateAgeInput={this.updateAgeInput}
               updateWeightInput={this.updateWeightInput}
