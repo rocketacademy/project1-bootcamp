@@ -15,7 +15,9 @@ div {
 }
 
 .book-container {
-  background-color: #a6a6a6;
-  color: white;
   padding: 20px 0 50px;
+}
+
+.book-background {
+  color: white;
 }
