@@ -23,3 +23,7 @@ As someone who hangs out mostly in groups, I want to create an app for users to 
 1. Create a trip by inputting trip name and companions
 2. Add the item, price and payer for each transaction
 3. Click on calculate to derive how much each person owes one another
+
+# Wireframe
+
+https://www.figma.com/file/oMHth5a8YZe8xgdXRjtEdS/Equals?type=design&node-id=1-2&mode=design&t=u6hTR1s1sMhXVTEQ-0
