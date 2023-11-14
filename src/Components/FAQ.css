@@ -5,6 +5,12 @@
   text-decoration: underline;
 }
 
+.faq-placeholder {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
 .questions {
   padding: 50px 0;
 }

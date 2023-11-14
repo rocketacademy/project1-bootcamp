@@ -91,14 +91,11 @@ class FAQ extends React.Component {
 
         <div className="col-lg-6 d-lg-block d-none p-0">
           <div
+            className="faq-placeholder"
             style={{
               backgroundImage: `url(${backgroundWide2})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-
-              overflow: "hidden",
-              height: "100%",
-              width: "100%",
             }}
           >
             {this.faqAns[this.state.faq] && this.faqAns[this.state.faq]}
