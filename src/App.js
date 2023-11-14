@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import TaskListInProgress from "./components/TaskListInProgress";
 import TaskListInReview from "./components/TaskListInReview";
+import TaskListCompleted from "./components/TaskListCompleted";
 
 class App extends React.Component {
   constructor(props) {
@@ -39,6 +40,20 @@ class App extends React.Component {
           task: "Implementing a MongoDB Database for Spartan Locke",
         },
       ],
+      tasksCompleted: [
+        {
+          id: 0,
+          title: "Improved M-41 SPNKER with upgrades to tracking",
+          task: "Added tracking to lock on to targets with greater distance and speed of the payload",
+          timeTaken: "",
+          keyTakeaways: "",
+        },
+        {
+          id: 1,
+          title: "Fixed software",
+          task: "Fixing coding bugs on the software for Machine Learning AI",
+        },
+      ],
     };
   }
 
@@ -52,11 +67,14 @@ class App extends React.Component {
 
     // if there is a taskToMove
     if (taskToMove) {
+      const newId = this.state.tasksInProgress.length + 1;
+      const updatedTask = { ...taskToMove, id: newId };
+
       this.setState(
         (prevState) => ({
           // Wrap the arrow function in () to represent object literal and not function block!
           tasks: prevState.tasks.filter((task) => task.id !== id),
-          tasksInProgress: [...prevState.tasksInProgress, taskToMove],
+          tasksInProgress: [...prevState.tasksInProgress, updatedTask],
         }),
         this.updateLocalStorage
       );
@@ -69,12 +87,14 @@ class App extends React.Component {
       (task) => task.id === id
     );
     if (taskToMove) {
+      const newId = this.state.tasksInReview.length + 1;
+      const updatedTask = { ...taskToMove, id: newId };
       this.setState(
         (prevState) => ({
           tasksInProgress: prevState.tasksInProgress.filter(
             (task) => task.id !== id
           ),
-          tasksInReview: [...prevState.tasksInReview, taskToMove],
+          tasksInReview: [...prevState.tasksInReview, updatedTask],
         }),
         this.updateLocalStorage
       );
@@ -121,6 +141,10 @@ class App extends React.Component {
     localStorage.setItem(
       "tasksInReview",
       JSON.stringify(this.state.tasksInReview)
+    );
+    localStorage.setItem(
+      "tasksCompleted",
+      JSON.stringify(this.state.tasksCompleted)
     );
   };
 
@@ -257,6 +281,41 @@ class App extends React.Component {
     );
   };
 
+  // Tasks Completed
+  resetLocalStorageCompleted = () => {
+    localStorage.removeItem("tasksCompleted");
+    this.setState(
+      {
+        tasksCompleted: [
+          {
+            id: 0,
+            title: "Improved M-41 SPNKER with upgrades to tracking",
+            tasksCompleted:
+              "Added tracking to lock on to targets with greater distance and speed of the payload",
+          },
+        ],
+      },
+      this.updateLocalStorage
+    );
+  };
+
+  reflectionToDo = (id, timeTaken, keyTakeaways) => {
+    this.setState((prevState) => {
+      const reflectedTasks = prevState.tasksCompleted.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            timeTaken: timeTaken !== undefined ? timeTaken : task.timeTaken,
+            keyTakeaways:
+              keyTakeaways !== undefined ? keyTakeaways : task.keyTakeaways,
+          };
+        }
+        return task;
+      });
+      return { tasksCompleted: reflectedTasks };
+    }, this.updateLocalStorage);
+  };
+
   render() {
     return (
       <div className="app-container">
@@ -284,6 +343,11 @@ class App extends React.Component {
             addTaskToDo={this.addTaskToDoInReview}
             deleteTask={this.deleteTaskInReview}
             resetLocalStorage={this.resetLocalStorageInReview}
+          />
+          <TaskListCompleted
+            tasksCompleted={this.state.tasksCompleted}
+            reflectionToDo={this.reflectionToDo}
+            resetLocalStorage={this.resetLocalStorageCompleted}
           />
         </div>
       </div>

@@ -14,13 +14,13 @@ export default class TaskList extends React.Component {
     } = this.props;
 
     return (
-      <div className="task-list">
+      <div className="task-list content">
         <h1>
           <strong>Open Tasks</strong>
         </h1>
         <h2>{tasks.length}</h2>
         <div>
-          <button onClick={resetLocalStorage}>Reset Local Storage</button>
+          <button onClick={resetLocalStorage}>Reset to Default</button>
         </div>
         <TaskComposer addTask={addTaskToDo} taskLength={tasks.length} />
         {tasks && tasks.length > 0 ? (

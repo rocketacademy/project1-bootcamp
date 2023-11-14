@@ -36,7 +36,7 @@ class TaskComposer extends React.Component {
 
   render() {
     return (
-      <div className="task-composer">
+      <div className="task-composer content">
         <form onSubmit={this.handleSubmit}>
           <br />
           <h4>Title</h4>
@@ -55,7 +55,9 @@ class TaskComposer extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          <input name="submit" type="submit" value="submit" />
+          <button type="submit" className="button">
+            Add Task!
+          </button>
           <FontAwesomeIcon icon={faCheck} className="icon" />
         </form>
       </div>

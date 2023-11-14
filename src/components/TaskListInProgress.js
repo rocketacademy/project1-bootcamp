@@ -13,13 +13,13 @@ export default class TaskListInProgress extends React.Component {
       moveTaskInProgress,
     } = this.props;
     return (
-      <div className="task-in-progress">
+      <div className="task-in-progress content">
         <h1>
           <strong>Tasks In Progress</strong>
         </h1>
         <h2>{tasksInProgress.length}</h2>
         <div>
-          <button onClick={resetLocalStorage}>Reset Local Storage</button>
+          <button onClick={resetLocalStorage}>Reset Default</button>
         </div>
         <TaskComposer
           addTask={addTaskToDo}
