@@ -78,18 +78,14 @@ class FAQ extends React.Component {
             see the answers.
           </h5>
           {Object.keys(this.faqAns).map((questions, number) => (
-            <>
-              <div
-                key={"a" + number}
-                className="faq-item"
-                onClick={this.clickHandler}
-              >
+            <div key={"question " + number}>
+              <div className="faq-item" onClick={this.clickHandler}>
                 {questions}
               </div>
-              <div key={"b" + number} className="d-lg-none">
+              <div className="d-lg-none">
                 {questions === this.state.faq && this.faqAns[this.state.faq]}
               </div>
-            </>
+            </div>
           ))}
         </div>
 
