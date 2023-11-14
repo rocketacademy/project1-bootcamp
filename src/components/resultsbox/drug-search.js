@@ -39,11 +39,14 @@ class DrugSearch extends React.Component {
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
           <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
           <Autocomplete
-            freeSolo
             id="search-input"
             sx={{ width: "200px" }}
             disableClearable
-            options={DrugList.map((option) => option.drugName).sort()}
+            options={DrugList.map(
+              (option) =>
+                option.drugName.charAt(0).toUpperCase() +
+                option.drugName.slice(1)
+            ).sort()}
             onChange={this.handleDrugSelect}
             value={this.state.drugSearchValue}
             inputValue={this.state.drugSearchValue}

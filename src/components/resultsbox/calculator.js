@@ -90,7 +90,7 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
     const duplicateDrug = dose.find((drug) => drug.drug === selectedDrug[i]);
     !duplicateDrug &&
       dose.push({
-        drug: selectedDrug[i],
+        drug: drug.drugName.charAt(0).toUpperCase() + drug.drugName.slice(1),
         strength: drug.strength + " MG/ML",
         minDose: minDose + " MG",
         minSyrup: minSyrup + " ML",
