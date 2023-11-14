@@ -14,3 +14,8 @@
   text-decoration: none;
   color: inherit;
 }
+
+.fa-brands {
+  display: flex;
+  align-items: center;
+}
