@@ -4,6 +4,7 @@ import Carousel from "react-bootstrap/Carousel";
 import OurNav from "../Components/OurNav.js";
 import PastMenu from "../Components/PastMenu.js";
 import Follow from "../Components/Follow.js";
+import { Link } from "react-router-dom";
 
 //images
 import nasiLiwet from "../images/nusantara/mains/nasi-liwet.jpg";
@@ -51,6 +52,12 @@ class PastMenus extends React.Component {
           <p>
             Browse the gallery below and click on the menu that you wish to see
             in detail.
+          </p>
+          <p>Like what you see? Book now!</p>
+          <p>
+            <Link to="/project1-bootcamp/book" className="btn btn-dark">
+              Book Now!
+            </Link>
           </p>
         </div>
         {/* Carousel with past menus, onclick handler to change state */}
