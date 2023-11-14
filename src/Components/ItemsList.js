@@ -9,56 +9,75 @@ export default class ItemsList extends React.Component {
       itemsList: [],
     };
   }
+  //We need to be able to add items to the list
+  //Items are added in the UserInput component: when user inputs something into the input field and then clicks "add item" , the item should get added into the itemsArray
+  //Each item can be deleted
+  //Each item can be changed
+  //Each item can be edited
+  //Each item has checkbox, once the user got the item, they may tick the checkbox and the item will get crossed out
 
+  //1) adding items logic
+  //this function is passed as props to UserInput
   addItem = (inputValue) => {
     let newItem = { name: " ", key: " ", isChecked: false };
     newItem.name = inputValue;
     newItem.key = Date.now();
     let newItemsList = [...this.state.itemsList, newItem];
     this.setState({ itemsList: newItemsList });
+    localStorage.setItem("itemsList", JSON.stringify(newItemsList));
   };
 
+  //2) deleting items logic
+  //this function is passed as props to Items
   deleteItem = (index) => {
-    let itemsList = [...this.state.itemsList];
+    const itemsList = [...this.state.itemsList];
     itemsList.splice(index, 1);
     this.setState({ itemsList: itemsList });
+    localStorage.setItem("itemsList", JSON.stringify(itemsList));
   };
+
+  //3) editing items logic
+  //this function is passed as props to Items
   updateItem = (name, key) => {
-    this.state.itemsList.map((item) => {
+    const itemsList = this.state.itemsList.map((item) => {
       if (item.key === key) {
         item.name = name;
       }
-      return <span>{item.name}</span>;
+      return { ...item };
     });
-    this.setState({ itemsList: this.state.itemsList });
+    // const itemsList = this.state.itemsList;
+    this.setState({ itemsList: itemsList });
+    localStorage.setItem("itemsList", JSON.stringify(itemsList));
   };
 
+  //4) crossing items out logic
+  //this function is passed as props to Items
   checkItem = (key) => {
-    this.state.itemsList.map((item) => {
-      // if (item.key === key && !item.isChecked) {
-      //   item.isChecked = true;
-      //   console.log(item.isChecked);
-      // } else if (item.key === key && item.isChecked) {
-      //   item.isChecked = false;
-      //   console.log(item.isChecked);
-      // }
+    const itemsList = this.state.itemsList.map((item) => {
       if (item.key === key) {
         item.isChecked = !item.isChecked;
       }
-
-      return <span>{item.name}</span>;
+      return { ...item };
     });
 
-    this.setState({ itemsList: this.state.itemsList });
+    this.setState({ itemsList: itemsList });
+    localStorage.setItem("itemsList", JSON.stringify(itemsList));
   };
-
+  componentDidMount() {
+    const itemsList = localStorage.getItem("itemsList");
+    if (itemsList) {
+      this.setState({
+        itemsList: JSON.parse(itemsList),
+      });
+    }
+  }
   render() {
     return (
       <div>
-        <div>
+        <div className="user-input-component">
           <UserInput addItem={this.addItem} />
         </div>
-        <div>
+        <div className="class-component">
           <Items
             itemsList={this.state.itemsList}
             checkItem={this.checkItem}
@@ -70,9 +89,3 @@ export default class ItemsList extends React.Component {
     );
   }
 }
-//We need to be able to add items to the list
-//Items are added in the UserInput component: when user inputs something into the input field and then clicks "add item" , the item should get added into the itemsArray
-//Each item can be deleted
-//Each item can be changed
-//Each item can be edited
-//Each item has checkbox, once the user got the item, they may tick the checkbox and the item will get crossed out
