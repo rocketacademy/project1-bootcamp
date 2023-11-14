@@ -16,7 +16,6 @@ class DrugSearch extends React.Component {
 
   handleDrugSelect = (e, newValue) => {
     const newDrugSearch = newValue.toLowerCase();
-    console.log(`handleDrugSelect: ${newDrugSearch}`);
     if (newDrugSearch) {
       this.props.updateDrugSearch(newDrugSearch);
       this.setState({ drugSearchValue: "" });
@@ -29,14 +28,12 @@ class DrugSearch extends React.Component {
   };
 
   handleInputChange = (e, newInputValue) => {
-    console.log(`handleInputChange: ${newInputValue}`);
     this.setState({
       drugSearchValue: newInputValue,
     });
   };
 
   render() {
-    console.log(`drugSearchValue: ${this.state.drugSearchValue}`);
     return (
       <>
         <Box sx={{ display: "flex", alignItems: "flex-end" }}>
@@ -48,6 +45,7 @@ class DrugSearch extends React.Component {
             disableClearable
             options={DrugList.map((option) => option.drugName).sort()}
             onChange={this.handleDrugSelect}
+            value={this.state.drugSearchValue}
             inputValue={this.state.drugSearchValue}
             onInputChange={this.handleInputChange}
             renderInput={(params) => (
