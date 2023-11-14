@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./ModuleForm.css";
-import { Button, ListGroup } from "react-bootstrap";
-import ListGroupItem from "react-bootstrap";
+import { Button, ListGroup, Card } from "react-bootstrap";
 
 class ModuleForm extends Component {
   constructor(props) {
@@ -161,175 +160,123 @@ class ModuleForm extends Component {
     const gpa = this.calculateGPA();
     return (
       <div className="module-form-card">
-        <form onSubmit={this.handleSubmit} className="module-form">
-          <input
-            type="text"
-            value={moduleName}
-            onChange={(e) => this.setState({ moduleName: e.target.value })}
-            className="module-name"
-            placeholder="Module Name"
-          />
+        <Card>
+          <form onSubmit={this.handleSubmit} className="module-form">
+            <input
+              type="text"
+              value={moduleName}
+              onChange={(e) => this.setState({ moduleName: e.target.value })}
+              className="module-name"
+              placeholder="Module Name"
+            />
 
-          <select
-            type="text"
-            value={grade}
-            onChange={(e) => this.setState({ grade: e.target.value })}
-            placeholder="Grade"
-            className="grade-selector"
-          >
-            Grade
-            <option value="A">A: 5.00</option>
-            <option value="A-">A-: 4.50</option>
-            <option value="B+">B+: 4.00</option>
-            <option value="B">B: 3.50</option>
-            <option value="B-">B-: 3.00</option>
-            <option value="C+">C+: 2.50</option>
-            <option value="C">C: 2.00</option>
-            <option value="D">D: 1.50</option>
-          </select>
-          <select
-            value={userAction}
-            onChange={this.handleActionChange}
-            className="action-selector"
-          >
-            <option value="Add">Add Module</option>
-            <option value="Update">Update Module</option>
-            <option value="Delete">Delete Module</option>
-          </select>
-          <Button
-            type="submit"
-            className={enabled > 0 ? "button-enabled" : "button-disabled"}
-            onClick={this.handleSubmit}
-          >
-            Let's go!
-          </Button>
-          {/* Display the module list */}
-        </form>
+            <select
+              type="text"
+              value={grade}
+              onChange={(e) => this.setState({ grade: e.target.value })}
+              placeholder="Grade"
+              className="grade-selector"
+            >
+              Grade
+              <option value="A">A: 5.00</option>
+              <option value="A-">A-: 4.50</option>
+              <option value="B+">B+: 4.00</option>
+              <option value="B">B: 3.50</option>
+              <option value="B-">B-: 3.00</option>
+              <option value="C+">C+: 2.50</option>
+              <option value="C">C: 2.00</option>
+              <option value="D">D: 1.50</option>
+            </select>
+            <select
+              value={userAction}
+              onChange={this.handleActionChange}
+              className="action-selector"
+            >
+              <option value="Add">Add Module</option>
+              <option value="Update">Update Module</option>
+              <option value="Delete">Delete Module</option>
+            </select>
+            <Button
+              type="submit"
+              className={enabled > 0 ? "button-enabled" : "button-disabled"}
+              onClick={this.handleSubmit}
+            >
+              Let's go!
+            </Button>
+            {/* Display the module list */}
+          </form>
+        </Card>
         {error ? <div className="error-message">{error}</div> : <div></div>}
         <h2 className="module-list-title"> Module List</h2>
-        <table>
-          <th className="module-list-name">
-            <td>
-              {" "}
-              Modules
-              <tr className="module-table-row-item">
-                <ListGroup>
-                  {moduleList &&
-                    moduleList.map((module, index) => (
-                      <ListGroup.Item key={index}>
-                        {module.moduleName}
-                      </ListGroup.Item>
-                    ))}
-                </ListGroup>
-              </tr>
-            </td>
-            <td>
-              {" "}
-              Grades
-              <tr>
-                <ListGroup>
-                  {moduleList &&
-                    moduleList.map((module, index) => (
-                      <ListGroup.Item key={index}>
-                        {module.grade}
-                      </ListGroup.Item>
-                    ))}
-                </ListGroup>
-              </tr>
-            </td>
-            <td>
-              {" "}
-              Action
-              <tr>
-                <ListGroup>
-                  {moduleList &&
-                    moduleList.map((module, index) => (
-                      <ListGroup.Item key={index}>
-                        <Button
-                          type="remove"
-                          className="remove-button"
-                          onClick={() => {
-                            this.setState(
-                              {
-                                userAction: "Delete",
-                                moduleName: module.moduleName,
-                              },
-                              () => {
-                                this.handleSubmit({
-                                  preventDefault: () => {
-                                    console.log("Prevent Default");
-                                  },
-                                });
-                              }
-                            );
-                          }}
-                        >
-                          {" "}
-                          Delete Module
-                        </Button>
-                      </ListGroup.Item>
-                    ))}
-                </ListGroup>
-              </tr>
-            </td>
-          </th>
-
-          {/*</th>
-          Modules
-          <tr className="module-table-row-item">
-            <ListGroup>
-              {moduleList &&
-                moduleList.map((module, index) => (
-                  <ListGroup.Item key={index}>
-                    {module.moduleName}
-                  </ListGroup.Item>
-                ))}
-            </ListGroup>
-          </tr>
-          <th className="module-list-grade">
-            Grades
-            <tr>
-              <ListGroup>
-                {moduleList &&
-                  moduleList.map((module, index) => (
-                    <ListGroup.Item key={index}>{module.grade}</ListGroup.Item>
-                  ))}
-              </ListGroup>
-            </tr>
-          </th>
-          <th>
-            Action
-            <ListGroup>
-              {moduleList &&
-                moduleList.map((module, index) => (
-                  <ListGroup.Item key={index}>
-                    <Button
-                      type="remove"
-                      className="remove-button"
-                      onClick={() => {
-                        this.setState(
-                          {
-                            userAction: "Delete",
-                            moduleName: module.moduleName,
-                          },
-                          () => {
-                            this.handleSubmit({
-                              preventDefault: () => {
-                                console.log("Prevent Default");
-                              },
-                            });
-                          }
-                        );
-                      }}
-                    >
-                      {" "}
-                      Delete Module
-                    </Button>
-                  </ListGroup.Item>
-                ))}
-            </ListGroup>
-          </th>*/}
-        </table>
+        <Card>
+          <table>
+            <th className="module-list-name">
+              <td>
+                {" "}
+                <h3>Modules</h3>
+                <tr className="module-table-row-item">
+                  <ListGroup>
+                    {moduleList &&
+                      moduleList.map((module, index) => (
+                        <ListGroup.Item key={index}>
+                          {module.moduleName}
+                        </ListGroup.Item>
+                      ))}
+                  </ListGroup>
+                </tr>
+              </td>
+              <td>
+                {" "}
+                <h3>Grades</h3>
+                <tr>
+                  <ListGroup>
+                    {moduleList &&
+                      moduleList.map((module, index) => (
+                        <ListGroup.Item key={index}>
+                          {module.grade}
+                        </ListGroup.Item>
+                      ))}
+                  </ListGroup>
+                </tr>
+              </td>
+              <td>
+                {" "}
+                <h3>Action</h3>
+                <tr>
+                  <ListGroup>
+                    {moduleList &&
+                      moduleList.map((module, index) => (
+                        <ListGroup.Item key={index}>
+                          <Button
+                            type="remove"
+                            className="remove-button"
+                            onClick={() => {
+                              this.setState(
+                                {
+                                  userAction: "Delete",
+                                  moduleName: module.moduleName,
+                                },
+                                () => {
+                                  this.handleSubmit({
+                                    preventDefault: () => {
+                                      console.log("Prevent Default");
+                                    },
+                                  });
+                                }
+                              );
+                            }}
+                          >
+                            {" "}
+                            Delete
+                          </Button>
+                        </ListGroup.Item>
+                      ))}
+                  </ListGroup>
+                </tr>
+              </td>
+            </th>
+          </table>
+        </Card>
         {/* Display the GPA */}
         <div className="gpa-result">
           <h2>GPA: {gpa.toFixed(2)}</h2>
