@@ -12,7 +12,7 @@ class ModuleForm extends Component {
       moduleName: "",
       moduleList: JSON.parse(localStorage.getItem("moduleList")) || [],
       grade: "A",
-      error: null,
+      error: "",
     };
   }
 
@@ -21,6 +21,13 @@ class ModuleForm extends Component {
 
     console.log("handleSubmit");
 
+    if (moduleName === "") {
+      this.setState({
+        error: "Module Name cannot be empty",
+      });
+      event.preventDefault();
+      return;
+    }
     // Add logic for adding modules
     if (userAction === "Add") {
       const newModule = { moduleName, grade };
@@ -34,6 +41,7 @@ class ModuleForm extends Component {
           error: "Duplicate Module Name",
           moduleList: [...moduleList],
         });
+        event.preventDefault();
         return;
       } else {
         this.setState({ error: null });
@@ -197,20 +205,131 @@ class ModuleForm extends Component {
           </Button>
           {/* Display the module list */}
         </form>
-        {error && <div className="error-message">{error}</div>}
+        {error ? <div className="error-message">{error}</div> : <div></div>}
         <h2 className="module-list-title"> Module List</h2>
-        <div>
-          <ListGroup className="module-list-item">
-            {moduleList &&
-              moduleList.map((module, index) => (
-                <ListGroup.Item key={index}>{module.moduleName}</ListGroup.Item>
-              ))}
-            {moduleList &&
-              moduleList.map((module, index) => (
-                <ListGroup.Item key={index}>{module.grade}</ListGroup.Item>
-              ))}
-          </ListGroup>
-        </div>
+        <table>
+          <th className="module-list-name">
+            <td>
+              {" "}
+              Modules
+              <tr className="module-table-row-item">
+                <ListGroup>
+                  {moduleList &&
+                    moduleList.map((module, index) => (
+                      <ListGroup.Item key={index}>
+                        {module.moduleName}
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </tr>
+            </td>
+            <td>
+              {" "}
+              Grades
+              <tr>
+                <ListGroup>
+                  {moduleList &&
+                    moduleList.map((module, index) => (
+                      <ListGroup.Item key={index}>
+                        {module.grade}
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </tr>
+            </td>
+            <td>
+              {" "}
+              Action
+              <tr>
+                <ListGroup>
+                  {moduleList &&
+                    moduleList.map((module, index) => (
+                      <ListGroup.Item key={index}>
+                        <Button
+                          type="remove"
+                          className="remove-button"
+                          onClick={() => {
+                            this.setState(
+                              {
+                                userAction: "Delete",
+                                moduleName: module.moduleName,
+                              },
+                              () => {
+                                this.handleSubmit({
+                                  preventDefault: () => {
+                                    console.log("Prevent Default");
+                                  },
+                                });
+                              }
+                            );
+                          }}
+                        >
+                          {" "}
+                          Delete Module
+                        </Button>
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </tr>
+            </td>
+          </th>
+
+          {/*</th>
+          Modules
+          <tr className="module-table-row-item">
+            <ListGroup>
+              {moduleList &&
+                moduleList.map((module, index) => (
+                  <ListGroup.Item key={index}>
+                    {module.moduleName}
+                  </ListGroup.Item>
+                ))}
+            </ListGroup>
+          </tr>
+          <th className="module-list-grade">
+            Grades
+            <tr>
+              <ListGroup>
+                {moduleList &&
+                  moduleList.map((module, index) => (
+                    <ListGroup.Item key={index}>{module.grade}</ListGroup.Item>
+                  ))}
+              </ListGroup>
+            </tr>
+          </th>
+          <th>
+            Action
+            <ListGroup>
+              {moduleList &&
+                moduleList.map((module, index) => (
+                  <ListGroup.Item key={index}>
+                    <Button
+                      type="remove"
+                      className="remove-button"
+                      onClick={() => {
+                        this.setState(
+                          {
+                            userAction: "Delete",
+                            moduleName: module.moduleName,
+                          },
+                          () => {
+                            this.handleSubmit({
+                              preventDefault: () => {
+                                console.log("Prevent Default");
+                              },
+                            });
+                          }
+                        );
+                      }}
+                    >
+                      {" "}
+                      Delete Module
+                    </Button>
+                  </ListGroup.Item>
+                ))}
+            </ListGroup>
+          </th>*/}
+        </table>
         {/* Display the GPA */}
         <div className="gpa-result">
           <h2>GPA: {gpa.toFixed(2)}</h2>

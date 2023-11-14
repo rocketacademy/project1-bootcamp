@@ -2,3 +2,8 @@
   top: 0;
   position: sticky;
 }
+
+.app {
+  background-color: antiquewhite;
+  height: 100vh;
+}

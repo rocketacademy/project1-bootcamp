@@ -8,7 +8,7 @@ import ModuleForm from "./Components/ModuleForm/ModuleForm";
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="app">
         <Navbar />
         <ModuleForm />
       </div>
