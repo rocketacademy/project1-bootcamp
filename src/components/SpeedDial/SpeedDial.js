@@ -16,8 +16,8 @@ const pharmacist = (name, contact) => {
 };
 
 export const ContactPharmacy = () => {
-  const pcistOne = pharmacist("Hong Yun", "92315581");
-  const pcistTwo = pharmacist("Clara", "92315581");
+  const pcistOne = pharmacist("Hong Yun", "12345678");
+  const pcistTwo = pharmacist("Clara", "12345678");
 
   return (
     <SpeedDial
