@@ -16,7 +16,7 @@
   padding: 16px;
   border-radius: 12px;
   opacity: 80%;
-  font-size: 10px;
+  font-size: 30px;
 }
 
 .task-container {
@@ -89,4 +89,8 @@ form input[type="submit"] {
   border: 1px solid #ccc;
   padding: 8px;
   margin-bottom: 10px;
+}
+
+form textarea[type="text"] {
+  border-radius: 8px;
 }

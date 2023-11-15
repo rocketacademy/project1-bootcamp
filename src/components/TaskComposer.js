@@ -9,6 +9,7 @@ class TaskComposer extends React.Component {
     this.state = {
       title: "",
       task: "",
+      isFormVisible: false,
     };
   }
 
@@ -34,10 +35,42 @@ class TaskComposer extends React.Component {
     });
   };
 
+  // handleChange = (e) => {
+  //   const { name, value } = e.target;
+
+  //   if (name === "task") {
+  //     const textarea = document.getElementById("userInput");
+
+  //     textarea.addEventListener("keydown", function (event) {
+  //       if (event.key === "Enter") {
+  //         const userInput = textarea.value.trim()
+  //         const sentences = userInput.split('\n')
+  //       }
+  //     });
+  //     this.setState({
+  //       [name]: value,
+  //     });
+  //   }
+  // };
+
+  toggleFormVisibility = () => {
+    this.setState((prevState) => ({
+      isFormVisible: !prevState.isFormVisible,
+    }));
+  };
+
   render() {
+    const { isFormVisible } = this.state;
     return (
       <div className="task-composer content">
-        <form onSubmit={this.handleSubmit}>
+        <button id="showFormBtn" onClick={this.toggleFormVisibility}>
+          CLICK HERE TO ADD A TASK
+        </button>
+        <form
+          id="form"
+          onSubmit={this.handleSubmit}
+          style={{ display: isFormVisible ? "block" : "none" }}
+        >
           <br />
           <h4>Title</h4>
           <input
@@ -48,11 +81,22 @@ class TaskComposer extends React.Component {
           />
           <br />
           <h5>Task</h5>
-          <input
+          {/* <input
             name="task"
             type="text"
             value={this.state.task}
             onChange={this.handleChange}
+            style={{ height: "500px" }}
+          /> */}
+          <textarea
+            name="task"
+            type="text"
+            rows="4"
+            cols="20"
+            value={this.state.task}
+            onChange={this.handleChange}
+            style={{ height: "400px" }}
+            id="userInput"
           />
           <br />
           <button type="submit" className="button">

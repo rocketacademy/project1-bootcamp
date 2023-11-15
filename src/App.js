@@ -385,4 +385,6 @@ class App extends React.Component {
   }
 }
 
+// MAKE TASK INPUT FIELD BIGGER!
+// MAKE THE BUTTON TO
 export default App;
