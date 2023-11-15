@@ -10,6 +10,7 @@ export default class TaskListInReview extends React.Component {
       addTaskToDo,
       deleteTask,
       resetLocalStorage,
+      moveTaskInReview,
     } = this.props;
     return (
       <div className="task-in-review content">
@@ -27,9 +28,10 @@ export default class TaskListInReview extends React.Component {
               <Task
                 key={task.id}
                 {...task}
-                showButton={false}
+                showButtonInReview={true}
                 updateTask={updateTask} // Pass the updateTask function
                 deleteTask={deleteTask} // Pass the deleteTask function
+                moveTaskInReview={moveTaskInReview} // Pass the moveTaskInReview function
               />
             ))}
           </ul>

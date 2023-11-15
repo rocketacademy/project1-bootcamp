@@ -43,6 +43,10 @@ class Task extends React.Component {
     this.props.moveTaskInProgress(this.props.id);
   };
 
+  handleMoveTaskInReviewClick = () => {
+    this.props.moveTaskInReview(this.props.id);
+  };
+
   handleReflectedTaskClick = () => {
     this.props.reflectionToDo(this.props.id);
   };
@@ -53,6 +57,7 @@ class Task extends React.Component {
     const { showButton } = this.props;
     const { showButtonInProgress } = this.props;
     const { showButtonCompleted } = this.props;
+    const { showButtonInReview } = this.props;
 
     if (this.state.isEditing) {
       return (
@@ -68,7 +73,9 @@ class Task extends React.Component {
 
     return (
       <div className="content">
-        <h1>Title: {this.props.title}</h1>
+        <h1>
+          <strong>Title: {this.props.title}</strong>
+        </h1>
         <h2>Task: {this.props.task}</h2>
         {showButtonCompleted && <h3>TimeTaken: {this.props.timeTaken}</h3>}
         {showButtonCompleted && (
@@ -90,6 +97,11 @@ class Task extends React.Component {
           <button onClick={this.handleMoveTaskInProgressClick}>
             Move tasks to In Review
             <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        )}
+        {showButtonInReview && (
+          <button onClick={this.handleMoveTaskInReviewClick}>
+            Move tasks to Completed
           </button>
         )}
         {showButtonCompleted && (

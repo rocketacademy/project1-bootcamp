@@ -8,7 +8,7 @@ function Header() {
           className="header-link"
           href="https://github.com/ianthehamster/project1-bootcamp"
         >
-          Welcome to the Task Management App!
+          UNSC Task Management Platform
         </a>
       </nav>
     </div>

@@ -4,7 +4,7 @@ import TaskCompleter from "./TaskCompleter";
 
 export default class TaskListCompleted extends React.Component {
   render() {
-    const { tasksCompleted, resetLocalStorageCompleted, reflectionToDo } =
+    const { tasksCompleted, resetLocalStorage, reflectionToDo, deleteTask } =
       this.props;
 
     return (
@@ -14,7 +14,9 @@ export default class TaskListCompleted extends React.Component {
         </h1>
         <h2>{tasksCompleted.length}</h2>
         <div>
-          <button onClick={resetLocalStorageCompleted}>Reset to Default</button>
+          <button onClick={resetLocalStorage} className="adjustments">
+            Reset to Default
+          </button>
         </div>
         {tasksCompleted && tasksCompleted.length > 0 ? (
           <ul>
@@ -24,6 +26,7 @@ export default class TaskListCompleted extends React.Component {
                   key={task.id}
                   {...task}
                   showButtonCompleted={true}
+                  deleteTask={deleteTask}
                   reflectionToDo={reflectionToDo}
                 />
                 <TaskCompleter

@@ -1,8 +1,7 @@
 import React from "react";
-// import logo from "./logo.png";
+
 import "./App.css";
 import Header from "./components/Header";
-// import Todo from "./components/Todo";
 
 import TaskList from "./components/TaskList";
 import TaskListInProgress from "./components/TaskListInProgress";
@@ -283,7 +282,7 @@ class App extends React.Component {
 
   // Tasks Completed
   resetLocalStorageCompleted = () => {
-    localStorage.removeItem("tasksCompleted");
+    localStorage.clear();
     this.setState(
       {
         tasksCompleted: [
@@ -316,6 +315,35 @@ class App extends React.Component {
     }, this.updateLocalStorage);
   };
 
+  deleteTaskCompleted = (id) => {
+    this.setState(
+      (prevState) => ({
+        tasksCompleted: prevState.tasksCompleted.filter(
+          (task) => task.id !== id
+        ),
+      }),
+      this.updateLocalStorage
+    );
+  };
+
+  // Move task from In Review to Completed
+  moveTaskInReview = (id) => {
+    const taskToMove = this.state.tasksInReview.find((task) => task.id === id);
+    if (taskToMove) {
+      const newId = this.state.tasksCompleted.length + 1;
+      const updatedTask = { ...taskToMove, id: newId };
+      this.setState(
+        (prevState) => ({
+          tasksInReview: prevState.tasksInReview.filter(
+            (task) => task.id !== id
+          ),
+          tasksCompleted: [...prevState.tasksCompleted, updatedTask],
+        }),
+        this.updateLocalStorage
+      );
+    }
+  };
+
   render() {
     return (
       <div className="app-container">
@@ -342,10 +370,12 @@ class App extends React.Component {
             updateTask={this.updateTaskInReview}
             addTaskToDo={this.addTaskToDoInReview}
             deleteTask={this.deleteTaskInReview}
+            moveTaskInReview={this.moveTaskInReview}
             resetLocalStorage={this.resetLocalStorageInReview}
           />
           <TaskListCompleted
             tasksCompleted={this.state.tasksCompleted}
+            deleteTask={this.deleteTaskCompleted}
             reflectionToDo={this.reflectionToDo}
             resetLocalStorage={this.resetLocalStorageCompleted}
           />
