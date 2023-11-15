@@ -78,3 +78,15 @@ button {
 .adjustments {
   margin-bottom: 50px;
 }
+
+form input[type="text"],
+form input[type="email"],
+/* Add more selectors for other input types if needed */
+form input[type="submit"] {
+  border-radius: 8px; /* Adjust the value as needed */
+  /* Other styling properties */
+  /* For example: */
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 10px;
+}
