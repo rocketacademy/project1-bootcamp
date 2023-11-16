@@ -1,6 +1,7 @@
 import React from "react";
 import UserInput from "./UserInput";
 import Items from "./Items";
+import { Button } from "react-bootstrap";
 
 export default class ItemsList extends React.Component {
   constructor(props) {
@@ -19,6 +20,8 @@ export default class ItemsList extends React.Component {
   //1) adding items logic
   //this function is passed as props to UserInput
   addItem = (inputValue) => {
+    // const currentDate = new Date().toDateString();
+    // console.log(currentDate);
     let newItem = { name: " ", key: " ", isChecked: false };
     newItem.name = inputValue;
     newItem.key = Date.now();
@@ -45,7 +48,6 @@ export default class ItemsList extends React.Component {
       }
       return { ...item };
     });
-    // const itemsList = this.state.itemsList;
     this.setState({ itemsList: itemsList });
     localStorage.setItem("itemsList", JSON.stringify(itemsList));
   };
@@ -59,9 +61,13 @@ export default class ItemsList extends React.Component {
       }
       return { ...item };
     });
-
     this.setState({ itemsList: itemsList });
     localStorage.setItem("itemsList", JSON.stringify(itemsList));
+  };
+
+  deleteAllItems = () => {
+    localStorage.removeItem("itemsList");
+    this.setState({ itemsList: [] });
   };
   componentDidMount() {
     const itemsList = localStorage.getItem("itemsList");
@@ -71,19 +77,32 @@ export default class ItemsList extends React.Component {
       });
     }
   }
+
   render() {
     return (
       <div>
-        <div className="user-input-component">
+        <div>
           <UserInput addItem={this.addItem} />
         </div>
-        <div className="class-component">
+        <div>
           <Items
             itemsList={this.state.itemsList}
             checkItem={this.checkItem}
             updateItem={this.updateItem}
             deleteItem={this.deleteItem}
           />
+        </div>
+        <div className="text-center">
+          {this.state.itemsList.length > 1 && (
+            <Button
+              className="mt-3"
+              variant="btn btn-dark"
+              id="clear-all-button"
+              onClick={this.deleteAllItems}
+            >
+              Clear all
+            </Button>
+          )}
         </div>
       </div>
     );
