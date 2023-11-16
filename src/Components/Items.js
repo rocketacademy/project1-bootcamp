@@ -9,43 +9,42 @@ export default class Items extends React.Component {
   render() {
     const items = this.props.itemsList.map((item, key) => {
       return (
-        <div key={item.key}>
-          <Container>
-            <Form>
-              <Row className="align-items-center">
-                <Col xs={1}>
-                  <Form.Check
-                    className="input"
-                    type="checkbox"
-                    id={item.key}
-                    value={item.isChecked}
-                    onChange={() => this.props.checkItem(item.key)}
-                  />
-                </Col>
-                <Col xs={9}>
-                  <Form.Control
-                    className={
-                      item.isChecked ? "purchased-item-row" : "item-to-buy-row"
-                    }
-                    type="text"
-                    id={item.key}
-                    value={item.name}
-                    onChange={(event) =>
-                      this.props.updateItem(event.target.value, item.key)
-                    }
-                  />
-                </Col>
-                <Col xs={1} md={2}>
-                  <BsTrash3Fill
-                    className="icons"
-                    id="trashbin"
-                    onClick={() => this.props.deleteItem(key)}
-                  />
-                </Col>
-              </Row>
-            </Form>
-          </Container>
-        </div>
+        <Container key={item.key}>
+          <Form>
+            <Row className="align-items-center">
+              <Col xs={1}>
+                <Form.Check
+                  className="checkbox-input"
+                  type="checkbox"
+                  id={item.key}
+                  value={item.isChecked}
+                  checked={item.isChecked}
+                  onChange={() => this.props.checkItem(item.key)}
+                />
+              </Col>
+              <Col xs={9}>
+                <Form.Control
+                  className={
+                    item.isChecked ? "purchased-item-row" : "item-to-buy-row"
+                  }
+                  type="text"
+                  id={item.key}
+                  value={item.name}
+                  onChange={(event) =>
+                    this.props.updateItem(event.target.value, item.key)
+                  }
+                />
+              </Col>
+              <Col xs={1} md={2}>
+                <BsTrash3Fill
+                  className="icons"
+                  id="trashbin"
+                  onClick={() => this.props.deleteItem(key)}
+                />
+              </Col>
+            </Row>
+          </Form>
+        </Container>
       );
     });
 
