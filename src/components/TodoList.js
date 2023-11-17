@@ -37,13 +37,6 @@ function TodoList() {
 
   //
   const addTodo = (todo) => {
-    console.log(todo);
-    // if (!todo.text || /^|s*$/.test(todo.text)) {
-    //   return;
-    // }
-    let id = todos.length + 1;
-    todo.id = id;
-
     const newTodos = [todo, ...todos];
     console.log(newTodos);
     setTodos(newTodos);
@@ -83,9 +76,9 @@ function TodoList() {
 				withGlobalStyles
 				withNormalizeCSS>
       <div style={{textAlign: "center", padding: "18px", maxWidth: "800px", margin: "auto"}}>
-        <Center>
-          <Group>
-            <Title>What's the Plan for Today?</Title>
+        <div style={{display: "flex", justifyContent: "space-between"}}>
+          <span style={{color: colorScheme === "dark" ? "white" : "black", fontSize: 32, fontWeight: 600}}>What's the Plan for Today?</span>
+          <div style={{paddingTop: "8px"}}>
             <ActionIcon
               color={'blue'}
               onClick={() => toggleColorScheme()}
@@ -96,8 +89,8 @@ function TodoList() {
                 <MoonStars size={16} />
               )}
             </ActionIcon>
-          </Group>
-        </Center>
+          </div>
+        </div>
         <div style={{marginTop: "36px", marginBottom: "48px"}}>
           <TodoForm onSubmit={addTodo} colorScheme={colorScheme}/>
         </div>

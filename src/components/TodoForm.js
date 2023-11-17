@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+import { Modal, Center } from "@mantine/core";
 
 function TodoForm(props) {
-  const [input, setInput] = useState(props.edit ? props.edit.value : "");
-
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  });
+  const [input, setInput] = useState("");
+  const [update, setUpdate] = useState(props.edit ? props.edit.value : "");
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    if (props.editMode) setUpdate(e.target.value)
+    else setInput(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,37 +22,50 @@ function TodoForm(props) {
     setInput("");
   };
 
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    // makes the to do invisible.
+    setUpdate("");
+    props.setEditMode(false);
+
+    props.onSubmit({
+      id: props.edit.id,
+      text: update,
+    });
+  }
+
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
-      {props.edit?.id ? (
-        <>
-          <input
-            type="text"
-            placeholder="update your item "
-            value={input}
-            name="text"
-            className="todo-input edit"
-            onChange={handleChange}
-            ref={inputRef}
-          />
-          <button className="todo-button edit">update</button>
-        </>
-      ) : (
-        <>
-          <input
-            type="text"
-            placeholder="Add a todo"
-            value={input}
-            name="text"
-            className="todo-input"
-            onChange={handleChange}
-            ref={inputRef}
-            style={{ color: props.colorScheme === "dark" ? "white" : "black"}}
-          />
-          <button className="todo-button">Add todo</button>
-        </>
-      )}
-    </form>
+      <>
+        <Modal opened={props.editMode} title={'Update Task'} size={'lg'} onClose={() => props.setEditMode(false)} centered>
+          <Center>
+            <input
+              type="text"
+              placeholder="update your item "
+              value={update}
+              name="text"
+              className="todo-input edit"
+              onChange={handleChange}
+              style={{ color: props.colorScheme === "dark" ? "white" : "black"}}
+            />
+            <button className="todo-button edit" onClick={handleUpdate}>update</button>
+          </Center>
+        </Modal>
+        <form className="todo-form" onSubmit={handleSubmit}>
+          <div>
+            <input
+              type="text"
+              placeholder="Add a todo"
+              value={input}
+              name="text"
+              className="todo-input"
+              onChange={handleChange}
+              style={{ color: props.colorScheme === "dark" ? "white" : "black"}}
+            />
+            <button className="todo-button">Add todo</button>
+          </div>
+        </form>
+      </>
   );
 }
 

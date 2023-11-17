@@ -4,14 +4,14 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
+  const [editMode, setEditMode] = useState(false);
   const [edit, setEdit] = useState({
     id: null,
     value: "",
   });
 
-  const submateUpdate = (value) => {
-    console.log(updateTodo);
-    updateTodo(edit.id, value);
+  const submitUpdate = (value) => {
+    updateTodo(value.id, value);
 
     setEdit({
       id: null,
@@ -19,7 +19,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     });
   };
   if (edit.id) {
-    return <TodoForm edit={edit} onSubmit={submateUpdate} />;
+    return <TodoForm edit={edit} editMode={editMode} setEditMode={setEditMode} onSubmit={submitUpdate} />;
   }
   return todos.map((todo, index) => (
     <div
@@ -36,7 +36,10 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
         />
 
         <TiEdit
-          onClick={() => setEdit({ id: todo, value: todo.text })}
+          onClick={() => {
+            setEdit({ id: todo, value: todo.text })
+            setEditMode(true);
+          }}
           className="edit-icon"
         />
       </div>
