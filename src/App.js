@@ -8,11 +8,11 @@ import Stack from "react-bootstrap/Stack";
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <Container>
+      <div>
+        <Container className="App mt-5 col-11 col-md-6 col-lg-5  align-items-center">
           <Stack gap={2}>
-            <div className="header">Today's shopping list</div>
-            <div className="ItemsList">
+            <div className="header">My shopping list</div>
+            <div>
               <ItemsList />
             </div>
           </Stack>
