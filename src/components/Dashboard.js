@@ -1,65 +1,47 @@
 import React, { useState } from "react";
-import Greetings from "./Greetings";
+import Greetings from "./greetings/Greetings";
 import { Stack, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import Forms from "./Forms";
+
+import Forms from "./forms/Forms";
 
 const Dashboard = () => {
-  const [showCreateTripForm, setShowCreateTripForm] = useState(false);
-
-  const navigate = useNavigate();
+  const [isTripFormShown, setIsTripFormShown] = useState(false);
 
   const username = JSON.parse(localStorage.getItem("user"));
 
+  // get tripname and companions details
   const getTripData = JSON.parse(localStorage.getItem("tripDetails"));
 
   return (
     <>
       <Stack spacing={8}>
         <Greetings username={username} />
-        <Stack spacing={6}>
-          {!showCreateTripForm && !getTripData ? (
-            <>
+        {!isTripFormShown && !getTripData ? (
+          <>
+            <p>You have no ongoing activity. Add a trip to begin.</p>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <Button
                 onClick={() => {
-                  setShowCreateTripForm(true);
+                  setIsTripFormShown(true);
                 }}
-                variant="contained"
-                size="small"
                 style={{
-                  backgroundColor: "#c6ff00",
+                  backgroundColor: "#c6c09c",
                   color: "black",
                   fontWeight: "bold",
+                  width: "140px",
                 }}
                 disableRipple
               >
                 Add a Trip
               </Button>
-            </>
-          ) : (
-            <Forms />
-          )}
-          <Button
-            onClick={() => {
-              navigate("/past-trips");
-            }}
-            variant="contained"
-            size="small"
-            color="primary"
-            disableRipple
-          >
-            Browse Past Trips
-          </Button>
-        </Stack>
+            </div>
+          </>
+        ) : (
+          <Forms />
+        )}
       </Stack>
     </>
   );
 };
 
 export default Dashboard;
-
-// no tripname no transactions = add a trip and browse past trips buttons
-
-// once i click onto add a trip, createform appears and create a trip button appears
-//
-//
