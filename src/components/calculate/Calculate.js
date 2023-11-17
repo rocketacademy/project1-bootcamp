@@ -43,7 +43,7 @@ const Calculate = ({
     return allPrices;
   };
 
-  const convertToObj = (allNames, getPrices) => {
+  const convertArrToObj = (allNames, getPrices) => {
     let newObj = {};
 
     allNames.forEach((friend, amount) => {
@@ -54,7 +54,7 @@ const Calculate = ({
 
   let getPrices = getAllPrices(getTransactions, friends);
 
-  let getNewObj = convertToObj(friends, getPrices);
+  let getNewObj = convertArrToObj(friends, getPrices);
 
   const handleClick = () => {
     let message = "";
