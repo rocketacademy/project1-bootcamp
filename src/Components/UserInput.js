@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Container from "react-bootstrap/Container";
-
 export default class UserInput extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,7 @@ export default class UserInput extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="col-12 col-lg-11 text-center">
           <InputGroup id="main-input-field" className="mb-3 mt-4">
             <Form.Control
               placeholder="type in your item"
