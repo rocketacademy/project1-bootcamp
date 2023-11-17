@@ -18,9 +18,8 @@ body {
   background-color: #eddcd2;
   position: relative;
   width: 100vw;
-  height: 30vh;
+  height: 35vh;
   border-radius: 0px 0px 140px 140px;
-  border: 2px solid red;
 }
 
 .app-logo-wrapper {
@@ -51,13 +50,13 @@ body {
 }
 
 .form-wrapper {
-  height: 110vh;
+  height: 120vh;
   border-radius: 25px;
   background-color: #fff1e6;
   z-index: 1;
   position: absolute;
   width: 80vw;
-  top: 75%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   justify-content: center;
