@@ -5,13 +5,14 @@ body {
 
 body {
   margin: 0;
-  font-family: "Courier New", Courier, monospace, cursive;
+  font-family: "Comic Sans MS", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(18, 2, 2);
   height: 100vh;
-  background: url(https://i.pinimg.com/1200x/44/9a/c4/449ac4efb9d56353883a9a9d1f843c4c.jpg)
+  background: url(https://i.pinimg.com/736x/8e/d5/e3/8ed5e319555b7762ce632e3fe70115da.jpg)
     center/cover no-repeat;
+  background-attachment: fixed;
 }
 
 code {

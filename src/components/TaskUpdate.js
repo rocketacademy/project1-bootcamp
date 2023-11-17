@@ -48,11 +48,12 @@ class TaskUpdate extends React.Component {
           />
           <br />
           <h5>Task</h5>
-          <input
+          <textarea
             name="task"
             type="text"
             value={this.state.task}
             onChange={this.handleChange}
+            style={{ height: "400px" }}
           />
           <br />
           <input name="submit" type="submit" value="Update" />

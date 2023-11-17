@@ -10,15 +10,17 @@ export default class TaskListInReview extends React.Component {
       addTaskToDo,
       deleteTask,
       resetLocalStorage,
+      moveTaskInReview,
+      moveTaskInReviewBackToInProgress,
     } = this.props;
     return (
-      <div className="task-in-review">
+      <div className="task-in-review content">
         <h1>
           <strong>Tasks In Review</strong>
         </h1>
-        <h2>{tasksInReview.length}</h2>
+        <h2 className="header-2">Number of tasks: {tasksInReview.length}</h2>
         <div>
-          <button onClick={resetLocalStorage}>Reset Local Storage</button>
+          <button onClick={resetLocalStorage}>Reset Default</button>
         </div>
         <TaskComposer addTask={addTaskToDo} taskLength={tasksInReview.length} />
         {tasksInReview && tasksInReview.length > 0 ? (
@@ -27,9 +29,13 @@ export default class TaskListInReview extends React.Component {
               <Task
                 key={task.id}
                 {...task}
-                showButton={false}
+                showButtonInReview={true}
                 updateTask={updateTask} // Pass the updateTask function
                 deleteTask={deleteTask} // Pass the deleteTask function
+                moveTaskInReview={moveTaskInReview} // Pass the moveTaskInReview function
+                moveTaskInReviewBackToInProgress={
+                  moveTaskInReviewBackToInProgress
+                }
               />
             ))}
           </ul>
