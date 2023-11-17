@@ -4,14 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
 export default class Items extends React.Component {
   render() {
     const items = this.props.itemsList.map((item, key) => {
       return (
-        <Container key={item.key}>
+        <div key={item.key} id="list">
           <Form>
-            <Row className="align-items-center">
+            <Row className="align-items-center ms-1 me-1 ms-md-2 me-md-2 ms-lg-4 me-lg-4">
               <Col xs={1}>
                 <Form.Check
                   className="checkbox-input"
@@ -35,7 +34,7 @@ export default class Items extends React.Component {
                   }
                 />
               </Col>
-              <Col xs={1} md={2}>
+              <Col xs={1} lg={2}>
                 <BsTrash3Fill
                   className="icons"
                   id="trashbin"
@@ -44,7 +43,7 @@ export default class Items extends React.Component {
               </Col>
             </Row>
           </Form>
-        </Container>
+        </div>
       );
     });
 
