@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
-import { MantineProvider, ColorSchemeProvider,ColorScheme,} from "@mantine/core";
+import { ColorSchemeProvider, MantineProvider, ActionIcon, Group, Title, Center } from '@mantine/core'
+import { MoonStars, Sun } from 'tabler-icons-react';
 
-import { useColorScheme } from "@mantine/hooks";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
+import { useLocalStorage } from "@mantine/hooks";
 
 function TodoList() {
   const [todos, setTodos] = useState([
@@ -24,17 +24,16 @@ function TodoList() {
       isCompleted: false,
     },
   ]);
-const preferredColorScheme = useColorScheme();
-const [colorScheme, setColorScheme] = useLocalStorage({
 
-  const toggleColorScheme = value =>
-		setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
-
-	useHotkeys([['mod+J', () => toggleColorScheme()]]);
-  key: "mantine-color-scheme",
-  defaultValue: "light",
-  getInitialValueInEffect: true,
-});
+	const [colorScheme, setColorScheme] = useLocalStorage({
+		key: 'mantine-color-scheme',
+		defaultValue: 'dark',
+		getInitialValueInEffect: true,
+	});
+	const toggleColorScheme = () => {
+		setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+    console.log(colorScheme);
+  }
 
   //
   const addTodo = (todo) => {
@@ -78,16 +77,41 @@ const [colorScheme, setColorScheme] = useLocalStorage({
     setTodos(updatedTodos);
   };
   return (
-    <div>
-      <h1>What's the Plan for Today?</h1>
-      <TodoForm onSubmit={addTodo} />
-      <Todo
-        todos={todos}
-        completeTodo={completeTodo}
-        removeTodo={removeTodo}
-        updateTodo={updateTodos}
-      />
-    </div>
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <MantineProvider
+				theme={{ colorScheme, defaultRadius: 'md' }}
+				withGlobalStyles
+				withNormalizeCSS>
+      <div style={{textAlign: "center", padding: "18px", maxWidth: "800px", margin: "auto"}}>
+        <Center>
+          <Group>
+            <Title>What's the Plan for Today?</Title>
+            <ActionIcon
+              color={'blue'}
+              onClick={() => toggleColorScheme()}
+              size='lg'>
+              {colorScheme === 'dark' ? (
+                <Sun size={16} />
+              ) : (
+                <MoonStars size={16} />
+              )}
+            </ActionIcon>
+          </Group>
+        </Center>
+        <div style={{marginTop: "36px", marginBottom: "48px"}}>
+          <TodoForm onSubmit={addTodo} colorScheme={colorScheme}/>
+        </div>
+        <div style={{border: "1px solid", borderRadius: "6px", paddingTop: "24px", paddingBottom: "24px"}}>
+          <Todo
+            todos={todos}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+            updateTodo={updateTodos}
+          />
+        </div>
+      </div>
+      </MantineProvider>
+    </ColorSchemeProvider>
   );
 }
 

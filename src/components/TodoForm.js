@@ -49,6 +49,7 @@ function TodoForm(props) {
             className="todo-input"
             onChange={handleChange}
             ref={inputRef}
+            style={{ color: props.colorScheme === "dark" ? "white" : "black"}}
           />
           <button className="todo-button">Add todo</button>
         </>
