@@ -16,13 +16,16 @@ You may also see any lint errors in the console.
 
 # User Story
 
-As someone who hangs out mostly in groups, I want to create an app for users to create an outing with different friends. Users are able to enter input items, prices and payer for that trip before calculating the total amount split among them. This app requires the user to settle up first by restricting users to only one trip at a time.
+My app is ideal for those who engage in groups, preferably in short duration outings. These users seek to avoid the hassle of manually calculating how much is owed to one another after numerous transactions are made. The app enables users to retrieve the trip created as well as the friends included until the final amount is calculated, or in the event that the app is closed. The app will send the user to a fresh trip only until the outing is completed. The add and delete functionality allows users to calculate existing transactions before entering new ones.
 
 # How to use
 
-1. Create a trip by inputting trip name and companions
-2. Add the item, price and payer for each transaction
-3. Click on calculate to derive how much each person owes one another
+1. Get started on the app by entering a username.
+2. Create a trip by including the trip name and people involved in the trip.
+3. Add transactions by selecting the entering the item, price and payer from the drop down selection.
+4. Add and delete transactions whenever required.
+5. Click on calculate to derive how much each person owes one another.
+6. View the amount owed to one another, then hit the Home button to create a new trip.
 
 # Wireframe
 
