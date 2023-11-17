@@ -19,11 +19,11 @@ class App extends React.Component {
           title: "Reverse Engineer the Needler",
           task: "Coding a software to reverse engineer the Needler for Miranda Keyes",
         },
-        {
-          id: 1,
-          title: "Fixing bugs",
-          task: "Fixing coding bugs on the software for Machine Learning AI",
-        },
+        // {
+        //   id: 1,
+        //   title: "Fixing bugs",
+        //   task: "Fixing coding bugs on the software for Machine Learning AI",
+        // },
       ],
       tasksInProgress: [
         {
@@ -47,11 +47,11 @@ class App extends React.Component {
           timeTaken: "",
           keyTakeaways: "",
         },
-        {
-          id: 1,
-          title: "Fixed software",
-          task: "Fixing coding bugs on the software for Machine Learning AI",
-        },
+        // {
+        //   id: 1,
+        //   title: "Fixed software",
+        //   task: "Fixing coding bugs on the software for Machine Learning AI",
+        // },
       ],
     };
   }
@@ -68,11 +68,58 @@ class App extends React.Component {
     if (taskToMove) {
       const newId = this.state.tasksInProgress.length + 1;
       const updatedTask = { ...taskToMove, id: newId };
+      /**
+       * const updatedTask = { ...taskToMove, id: newId };
+       * { ...taskToMove }: ... spread operator creates a shallow copy of the taskToMove object and spreads them into a new object
+       * id: newId modifies the id property of the shallow copy and assignes the value of `newId` to the `id` property of the copied object
+       */
 
       this.setState(
         (prevState) => ({
           // Wrap the arrow function in () to represent object literal and not function block!
           tasks: prevState.tasks.filter((task) => task.id !== id),
+          tasksInProgress: [...prevState.tasksInProgress, updatedTask],
+        }),
+        this.updateLocalStorage
+      );
+    }
+  };
+
+  // Transfer tasks from Tasks In Progress to Open Tasks
+  moveTaskInProgressBacktoOpen = (id) => {
+    const taskToMove = this.state.tasksInProgress.find(
+      (task) => task.id === id
+    ); // finds task matching the id passed into the argument using find() method
+
+    if (taskToMove) {
+      const newId = this.state.tasks.length + 1;
+      const updatedTask = { ...taskToMove, id: newId };
+
+      this.setState(
+        (prevState) => ({
+          tasksInProgress: prevState.tasksInProgress.filter(
+            (task) => task.id !== id
+          ),
+          tasks: [...prevState.tasks, updatedTask],
+        }),
+        this.updateLocalStorage
+      );
+    }
+  };
+
+  // Transfer tasks from In Review back to In Progress
+  moveTaskInReviewBackToInProgress = (id) => {
+    const taskToMove = this.state.tasksInReview.find((task) => task.id === id);
+
+    if (taskToMove) {
+      const newId = this.state.tasksInProgress.length + 1;
+      const updatedTask = { ...taskToMove, id: newId };
+
+      this.setState(
+        (prevState) => ({
+          tasksInReview: prevState.tasksInReview.filter(
+            (task) => task.id !== id
+          ),
           tasksInProgress: [...prevState.tasksInProgress, updatedTask],
         }),
         this.updateLocalStorage
@@ -157,11 +204,6 @@ class App extends React.Component {
             title: "Reverse Engineer the Needler",
             task: "Coding a software to reverse engineer the Needler for Miranda Keyes",
           },
-          {
-            id: 1,
-            title: "Fixing bugs",
-            task: "Fixing coding bugs on the software for Machine Learning AI",
-          },
         ],
       },
       this.updateLocalStorage
@@ -169,15 +211,20 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    /** USED WHEN BROWSER IS REFRESHED OR REVISITED -> PERSISTENCE OF TASKS ACROSS SESSIONS
+     * componentDidMount() is used to retrieve data from 'localStorage' when the component, App.js, is mounted for the first time or refreshed in the browser
+     */
     const savedTasks = localStorage.getItem("tasks");
     const savedTasksInProgress = localStorage.getItem("tasksInProgress");
     const savedTasksInReview = localStorage.getItem("tasksInReview");
+    const savedTasksCompleted = localStorage.getItem("tasksCompleted");
 
     if (savedTasks) {
       this.setState({
         tasks: JSON.parse(savedTasks),
         tasksInProgress: JSON.parse(savedTasksInProgress) || [],
         tasksInReview: JSON.parse(savedTasksInReview),
+        tasksCompleted: JSON.parse(savedTasksCompleted),
       });
     }
   }
@@ -364,6 +411,7 @@ class App extends React.Component {
             deleteTask={this.deleteTaskInProgress}
             resetLocalStorage={this.resetLocalStorageInProgress}
             moveTaskInProgress={this.moveTaskInProgress}
+            moveTaskInProgressBacktoOpen={this.moveTaskInProgressBacktoOpen}
           />
           <TaskListInReview
             tasksInReview={this.state.tasksInReview}
@@ -372,6 +420,9 @@ class App extends React.Component {
             deleteTask={this.deleteTaskInReview}
             moveTaskInReview={this.moveTaskInReview}
             resetLocalStorage={this.resetLocalStorageInReview}
+            moveTaskInReviewBackToInProgress={
+              this.moveTaskInReviewBackToInProgress
+            }
           />
           <TaskListCompleted
             tasksCompleted={this.state.tasksCompleted}

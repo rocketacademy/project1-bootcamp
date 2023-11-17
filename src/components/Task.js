@@ -4,7 +4,7 @@ import {
   faTrash,
   faEdit,
   faArrowRight,
-  faCheck,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
 import TaskUpdate from "./TaskUpdate";
@@ -43,6 +43,14 @@ class Task extends React.Component {
     this.props.moveTaskInProgress(this.props.id);
   };
 
+  handleMoveTaskInProgressBackToOpen = () => {
+    this.props.moveTaskInProgressBacktoOpen(this.props.id);
+  };
+
+  handleMoveTaskInReviewBackToInProgress = () => {
+    this.props.moveTaskInReviewBackToInProgress(this.props.id);
+  };
+
   handleMoveTaskInReviewClick = () => {
     this.props.moveTaskInReview(this.props.id);
   };
@@ -59,7 +67,7 @@ class Task extends React.Component {
     const { showButtonCompleted } = this.props;
     const { showButtonInReview } = this.props;
 
-    if (this.state.isEditing) {
+    if (this.state.isEditing && !showButtonCompleted) {
       return (
         <TaskUpdate
           id={this.props.id}
@@ -81,9 +89,11 @@ class Task extends React.Component {
         {showButtonCompleted && (
           <h3>Key Takeaways: {this.props.keyTakeaways}</h3>
         )}
-        <button onClick={this.handleUpdateClick} className="buttons">
-          <FontAwesomeIcon icon={faEdit} />
-        </button>
+        {!showButtonCompleted && (
+          <button onClick={this.handleUpdateClick} className="buttons">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        )}
         <button onClick={this.handleDeleteClick} className="buttons">
           <FontAwesomeIcon icon={faTrash} />
         </button>
@@ -99,16 +109,29 @@ class Task extends React.Component {
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
         )}
+        {showButtonInProgress && (
+          <button onClick={this.handleMoveTaskInProgressBackToOpen}>
+            Move tasks to Open
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        )}
         {showButtonInReview && (
           <button onClick={this.handleMoveTaskInReviewClick}>
             Move tasks to Completed
+            <FontAwesomeIcon icon={faArrowRight} />
           </button>
         )}
-        {showButtonCompleted && (
+        {showButtonInReview && (
+          <button onClick={this.handleMoveTaskInReviewBackToInProgress}>
+            Move tasks to In Progress
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        )}
+        {/* {showButtonCompleted && (
           <button onClick={this.handleReflectedTaskClick}>
             <FontAwesomeIcon icon={faCheck} />
           </button>
-        )}
+        )} */}
       </div>
     );
   }

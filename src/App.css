@@ -7,7 +7,8 @@
 
 .task-list,
 .task-in-progress,
-.task-in-review {
+.task-in-review,
+.task-completed {
   flex: 1; /* Equal distribution of space */
   box-sizing: border-box; /* Include padding and border in the width calculation */
   width: calc(33.33% - 40px); /* 33.33% width with 20px margin on each side */
@@ -16,7 +17,7 @@
   padding: 16px;
   border-radius: 12px;
   opacity: 80%;
-  font-size: 30px;
+  font-size: 27px;
 }
 
 .task-container {
@@ -24,15 +25,23 @@
   flex: 1; /* This allows the task components to take up the available space */
 }
 
+.header-2 {
+  margin: 20px;
+}
+
 .task-list {
   background: #e97e7e;
 }
 
 .task-in-progress {
-  background: rgb(244, 244, 162);
+  background: cyan;
 }
 
 .task-in-review {
+  background: rgb(244, 244, 162);
+}
+
+.task-completed {
   background: rgb(146, 246, 153);
 }
 

@@ -18,15 +18,12 @@ class TaskCompleter extends React.Component {
 
     const index = tasksCompleted.findIndex((task) => task.id === id); // loops through the array of objects and returns the index of the matching task
 
-    console.log(index);
-
     if (index !== -1) {
       reflectionToDo(index, timeTaken, keyTakeaways);
       tasksCompleted[index].timeTaken = timeTaken;
       tasksCompleted[index].keyTakeaways = keyTakeaways;
 
       // Log the updated task
-      console.log(tasksCompleted[index]);
     }
 
     // Resets the state of TaskComposer after

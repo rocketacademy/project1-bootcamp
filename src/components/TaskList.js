@@ -18,7 +18,7 @@ export default class TaskList extends React.Component {
         <h1>
           <strong>Open Tasks</strong>
         </h1>
-        <h2>{tasks.length}</h2>
+        <h2 className="header-2">Number of tasks: {tasks.length}</h2>
         <div>
           <button onClick={resetLocalStorage}>Reset to Default</button>
         </div>

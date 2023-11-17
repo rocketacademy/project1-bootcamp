@@ -8,11 +8,11 @@ export default class TaskListCompleted extends React.Component {
       this.props;
 
     return (
-      <div className="task-list content">
+      <div className="task-completed content">
         <h1>
           <strong>Completed Tasks</strong>
         </h1>
-        <h2>{tasksCompleted.length}</h2>
+        <h2 className="header-2">Number of tasks: {tasksCompleted.length}</h2>
         <div>
           <button onClick={resetLocalStorage} className="adjustments">
             Reset to Default

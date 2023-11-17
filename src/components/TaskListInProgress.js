@@ -11,13 +11,14 @@ export default class TaskListInProgress extends React.Component {
       deleteTask,
       resetLocalStorage,
       moveTaskInProgress,
+      moveTaskInProgressBacktoOpen,
     } = this.props;
     return (
       <div className="task-in-progress content">
         <h1>
           <strong>Tasks In Progress</strong>
         </h1>
-        <h2>{tasksInProgress.length}</h2>
+        <h2 className="header-2">Number of tasks: {tasksInProgress.length}</h2>
         <div>
           <button onClick={resetLocalStorage}>Reset Default</button>
         </div>
@@ -36,6 +37,7 @@ export default class TaskListInProgress extends React.Component {
                 updateTask={updateTask} // Pass the updateTask function
                 deleteTask={deleteTask} // Pass the deleteTask function
                 moveTaskInProgress={moveTaskInProgress}
+                moveTaskInProgressBacktoOpen={moveTaskInProgressBacktoOpen}
               />
             ))}
           </ul>
