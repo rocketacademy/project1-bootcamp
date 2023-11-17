@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, TextField, Stack, InputAdornment } from "@mui/material";
+
 import { AccountCircle } from "@mui/icons-material";
 import EastIcon from "@mui/icons-material/East";
 
@@ -9,39 +10,28 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (username === "") {
+    if (!username) {
       return;
     }
     setUsername(username);
+
     // store username in local storage
     localStorage.setItem("user", JSON.stringify(username));
-
     navigate("/dashboard");
   };
 
   return (
     <>
       <Stack spacing={3}>
-        <p
-          style={{
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "28px",
-            letterSpacing: "4px",
-          }}
-        >
-          Hey there,
-        </p>
+        <h3>Welcome back,</h3>
         <Stack direction="row" spacing={2}>
           <TextField
-            placeholder="Your name goes here"
+            id="name-field"
+            variant="standard"
+            placeholder="Name"
             value={username}
             onChange={(event) => {
               setUsername(event.target.value);
-            }}
-            style={{
-              backgroundColor: "white",
-              fontStyle: "italic",
             }}
             InputProps={{
               startAdornment: (
@@ -50,11 +40,10 @@ const Home = () => {
                 </InputAdornment>
               ),
             }}
-          ></TextField>
+          />
           <Button
-            size="small"
             onClick={handleClick}
-            style={{ backgroundColor: "#ffc400", color: "black" }}
+            style={{ backgroundColor: "#ec407a", color: "white" }}
             disableRipple
           >
             <EastIcon />
