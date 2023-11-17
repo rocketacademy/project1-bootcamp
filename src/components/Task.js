@@ -85,7 +85,7 @@ class Task extends React.Component {
           <strong>Title: {this.props.title}</strong>
         </h1>
         <h2>Task: {this.props.task}</h2>
-        {showButtonCompleted && <h3>TimeTaken: {this.props.timeTaken}</h3>}
+        {showButtonCompleted && <h3>Time Taken: {this.props.timeTaken}</h3>}
         {showButtonCompleted && (
           <h3>Key Takeaways: {this.props.keyTakeaways}</h3>
         )}
