@@ -4,27 +4,64 @@
 }
 
 body {
-  background-color: #004d40;
-  color: white;
-  font-family: "Garamond";
+  background-color: #fff1e6;
+  color: black;
+  font-family: "Georgia";
 }
 
-.container {
-  width: 100%;
+.app-container {
+  min-width: 100vw;
+  min-height: 140vh;
+}
+
+.app-header {
+  background-color: #eddcd2;
+  position: relative;
+  width: 100vw;
+  height: 30vh;
+  border-radius: 0px 0px 140px 140px;
+  border: 2px solid red;
+}
+
+.app-logo-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  border: 5px solid red;
+  height: 25vh;
+}
+
+.left-leaf {
+  width: 20px;
+  height: 30px;
+
+  border-radius: 0 100px;
+  background-color: #e79796;
+  transform: rotate(-15deg);
+  border: 2px solid black;
+}
+
+.right-leaf {
+  width: 20px;
+  height: 30px;
+
+  border-radius: 100px 0px;
+  background-color: #3a0ca3;
+  transform: rotate(15deg);
+  border: 2px solid black;
 }
 
 .form-wrapper {
-  min-height: 80vh;
-  min-width: 40vw;
-  box-sizing: border-box;
-  padding: 25px;
-  display: flex;
+  height: 110vh;
+  border-radius: 25px;
+  background-color: #fff1e6;
+  z-index: 1;
+  position: absolute;
+  width: 80vw;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
-  border: 2px solid blue;
+  display: flex;
+  padding: 20px;
 }
