@@ -16,7 +16,7 @@ You may also see any lint errors in the console.
 
 # User Story
 
-My app is ideal for those who engage in groups, preferably in short duration outings. These users seek to avoid the hassle of manually calculating how much is owed to one another after numerous transactions are made. The app enables users to retrieve the trip created as well as the friends included until the final amount is calculated, or in the event that the app is closed. The app will send the user to a fresh trip only until the outing is completed. The add and delete functionality allows users to calculate existing transactions before entering new ones.
+This bill-splitting app is handy for those who engage in pairs or in groups and are seeking to remove the hassle of dividing costs fairly with other contributors to the activity. This app is convenient when we dine out with friends, purchase gifts, or even sharing household expenditures like utilities, house maintenances, chores, fuels with housemates. This can help avoid unnecessary disagreements when the bill splitting feature simplifies the process of dividing costs equally. Each activity created is only meant for that specific activity and contributors. Users will have to re-enter all activity details after splitting.
 
 # How to use
 
