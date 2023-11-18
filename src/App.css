@@ -4,63 +4,27 @@
 }
 
 body {
-  background-color: #fff1e6;
+  background-color: #e6cdb5;
   color: black;
   font-family: "Georgia";
 }
 
-.app-container {
-  min-width: 100vw;
-  min-height: 140vh;
-}
-
-.app-header {
-  background-color: #eddcd2;
-  position: relative;
-  width: 100vw;
-  height: 35vh;
-  border-radius: 0px 0px 140px 140px;
-}
-
-.app-logo-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 25vh;
-}
-
 .left-leaf {
-  width: 20px;
-  height: 30px;
+  width: 40px;
+  height: 50px;
 
   border-radius: 0 100px;
-  background-color: #e79796;
+  background-color: #fb8c00;
   transform: rotate(-15deg);
   border: 2px solid black;
 }
 
 .right-leaf {
-  width: 20px;
-  height: 30px;
+  width: 40px;
+  height: 50px;
 
   border-radius: 100px 0px;
-  background-color: #3a0ca3;
+  background-color: #ffff00;
   transform: rotate(15deg);
   border: 2px solid black;
-}
-
-.form-wrapper {
-  height: 120vh;
-  border-radius: 25px;
-  background-color: #fff1e6;
-  z-index: 1;
-  position: absolute;
-  width: 80vw;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding: 20px;
 }
