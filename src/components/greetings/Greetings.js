@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Stack } from "@mui/material";
-
-import "./Greetings.css";
+import { Stack, Box } from "@mui/material";
 
 const Greetings = ({ username }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -28,13 +26,25 @@ const Greetings = ({ username }) => {
 
   return (
     <>
-      <Stack spacing={4} className="greetings">
-        <p
-          style={{ fontSize: "15px" }}
-        >{`${currentDate.toDateString()}, ${currentTime}`}</p>
+      <Box
+        sx={{
+          height: "10vh",
+          margin: "auto",
+          borderRadius: "20px",
+          border: "2px solid blue",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "20px",
+          bgcolor: "#dbcbbe",
+        }}
+      >
+        <Stack spacing={4}>
+          <p>{`${currentDate.toDateString()}, ${currentTime}`}</p>
 
-        <h2>{greetMessage}</h2>
-      </Stack>
+          <h2>{greetMessage}</h2>
+        </Stack>
+      </Box>
     </>
   );
 };
