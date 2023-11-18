@@ -87,7 +87,9 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
       maxSyrup = convertToSyrup(drug.strength, maxDose);
     }
 
-    const duplicateDrug = dose.find((drug) => drug.drug === selectedDrug[i]);
+    const duplicateDrug = dose.find(
+      (drug) => drug.drug.toLowerCase() === selectedDrug[i]
+    );
     !duplicateDrug &&
       dose.push({
         drug: drug.drugName.charAt(0).toUpperCase() + drug.drugName.slice(1),
