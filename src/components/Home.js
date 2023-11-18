@@ -22,8 +22,8 @@ const Home = () => {
 
   return (
     <>
-      <Stack spacing={3}>
-        <h3>Welcome back,</h3>
+      <Stack spacing={6}>
+        <h2>Hello, welcome back!</h2>
         <Stack direction="row" spacing={2}>
           <TextField
             id="name-field"
