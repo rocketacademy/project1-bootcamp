@@ -8,7 +8,7 @@ export default class Items extends React.Component {
   render() {
     const items = this.props.itemsList.map((item, key) => {
       return (
-        <div key={item.key} id="list">
+        <div key={item.key}>
           <Form>
             <Row className="align-items-center ms-1 me-1 ms-md-2 me-md-2 ms-lg-4 me-lg-4">
               <Col xs={1}>

@@ -64,7 +64,7 @@ export default class ItemsList extends React.Component {
     this.setState({ itemsList: itemsList });
     localStorage.setItem("itemsList", JSON.stringify(itemsList));
   };
-
+  //5) logic to clear all items
   deleteAllItems = () => {
     localStorage.removeItem("itemsList");
     this.setState({ itemsList: [] });
