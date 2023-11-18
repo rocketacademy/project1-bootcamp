@@ -43,7 +43,8 @@
 }
 
 .about {
-  padding: inherit 3%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .curr-menu {
