@@ -93,7 +93,7 @@ export default class ItemsList extends React.Component {
           />
         </div>
         <div className="text-center">
-          {this.state.itemsList.length > 1 && (
+          {this.state.itemsList.length > 0 && (
             <Button
               className="mt-3"
               variant="btn btn-dark"
