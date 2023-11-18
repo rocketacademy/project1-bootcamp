@@ -16,8 +16,8 @@ class App extends React.Component {
       tasks: [
         {
           id: 0,
-          title: "Reverse Engineer the Needler",
-          task: "Coding a software to reverse engineer the Needler for Miranda Keyes",
+          title: "Reverse Engineer the Type-33 Needler",
+          task: "Coding a software to reverse engineer the Needler for Sacred Promissory",
         },
         // {
         //   id: 1,
@@ -27,25 +27,25 @@ class App extends React.Component {
       ],
       tasksInProgress: [
         {
-          id: 0,
-          title: "React Website - ORION Project",
-          task: "Coding a frontend website for Doctor Halsey",
+          // id: 0,
+          // title: "React Website - ORION Project",
+          // task: "Coding a frontend website for Doctor Halsey",
         },
       ],
       tasksInReview: [
-        {
-          id: 0,
-          title: "Project Fireteam Osiris",
-          task: "Implementing a MongoDB Database for Spartan Locke",
-        },
+        // {
+        //   id: 0,
+        //   title: "Project Fireteam Osiris",
+        //   task: "Implementing a MongoDB Database for Spartan Locke",
+        // },
       ],
       tasksCompleted: [
         {
-          id: 0,
-          title: "Improved M-41 SPNKER with upgrades to tracking",
-          task: "Added tracking to lock on to targets with greater distance and speed of the payload",
-          timeTaken: "",
-          keyTakeaways: "",
+          // id: 0,
+          // title: "Improved M-41 SPNKER with upgrades to tracking",
+          // task: "Added tracking to lock on to targets with greater distance and speed of the payload",
+          // timeTaken: "",
+          // keyTakeaways: "",
         },
         // {
         //   id: 1,
@@ -201,8 +201,8 @@ class App extends React.Component {
         tasks: [
           {
             id: 0,
-            title: "Reverse Engineer the Needler",
-            task: "Coding a software to reverse engineer the Needler for Miranda Keyes",
+            title: "Reverse Engineer the Type-33 Needler",
+            task: "Coding a software to reverse engineer the Needler for Sacred Promissory",
           },
         ],
       },
@@ -269,11 +269,11 @@ class App extends React.Component {
     this.setState(
       {
         tasksInProgress: [
-          {
-            id: 0,
-            title: "React Website - ORION Project",
-            task: "Coding a frontend website for Doctor Halsey",
-          },
+          // {
+          //   id: 0,
+          //   title: "React Website - ORION Project",
+          //   task: "Coding a frontend website for Doctor Halsey",
+          // },
         ],
       },
       this.updateLocalStorage
@@ -316,11 +316,11 @@ class App extends React.Component {
     this.setState(
       {
         tasksInReview: [
-          {
-            id: 0,
-            title: "Project Fireteam Osiris",
-            task: "Implementing a MongoDB Database for Spartan Locke",
-          },
+          // {
+          //   id: 0,
+          //   title: "Project Fireteam Osiris",
+          //   task: "Implementing a MongoDB Database for Spartan Locke",
+          // },
         ],
       },
       this.updateLocalStorage
@@ -333,12 +333,12 @@ class App extends React.Component {
     this.setState(
       {
         tasksCompleted: [
-          {
-            id: 0,
-            title: "Improved M-41 SPNKER with upgrades to tracking",
-            tasksCompleted:
-              "Added tracking to lock on to targets with greater distance and speed of the payload",
-          },
+          // {
+          //   id: 0,
+          //   title: "Improved M-41 SPNKER with upgrades to tracking",
+          //   tasksCompleted:
+          //     "Added tracking to lock on to targets with greater distance and speed of the payload",
+          // },
         ],
       },
       this.updateLocalStorage

@@ -20,7 +20,7 @@ export default class TaskListInReview extends React.Component {
         </h1>
         <h2 className="header-2">Number of tasks: {tasksInReview.length}</h2>
         <div>
-          <button onClick={resetLocalStorage}>Reset Default</button>
+          <button onClick={resetLocalStorage}>Clear Tasks</button>
         </div>
         <TaskComposer addTask={addTaskToDo} taskLength={tasksInReview.length} />
         {tasksInReview && tasksInReview.length > 0 ? (

@@ -20,7 +20,7 @@ export default class TaskListInProgress extends React.Component {
         </h1>
         <h2 className="header-2">Number of tasks: {tasksInProgress.length}</h2>
         <div>
-          <button onClick={resetLocalStorage}>Reset Default</button>
+          <button onClick={resetLocalStorage}>Clear Tasks</button>
         </div>
         <TaskComposer
           addTask={addTaskToDo}

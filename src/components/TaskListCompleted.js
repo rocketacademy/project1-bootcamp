@@ -15,7 +15,7 @@ export default class TaskListCompleted extends React.Component {
         <h2 className="header-2">Number of tasks: {tasksCompleted.length}</h2>
         <div>
           <button onClick={resetLocalStorage} className="adjustments">
-            Reset to Default
+            Clear Tasks
           </button>
         </div>
         {tasksCompleted && tasksCompleted.length > 0 ? (
