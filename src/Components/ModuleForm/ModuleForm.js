@@ -73,6 +73,16 @@ class ModuleForm extends Component {
         }
       });
 
+      if (updatedModuleList.length === moduleList.length) {
+        console.log("No module found");
+        this.setState({
+          error: "No module found",
+          moduleList: [...moduleList],
+        });
+        event.preventDefault();
+        return;
+      }
+
       this.setState(
         {
           moduleList: updatedModuleList,
@@ -94,6 +104,17 @@ class ModuleForm extends Component {
       const updatedModuleList = moduleList.filter(
         (module) => module.moduleName !== newModule.moduleName
       );
+
+      if (updatedModuleList.length === moduleList.length) {
+        console.log("No module found");
+        this.setState({
+          error: "No module found",
+          moduleList: [...moduleList],
+        });
+        event.preventDefault();
+        return;
+      }
+
       this.setState(
         {
           moduleList: [...updatedModuleList],
