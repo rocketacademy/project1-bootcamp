@@ -4,69 +4,71 @@ import { TextField, Stack, Button } from "@mui/material";
 
 const title = { fontSize: "13px", fontWeight: "bold" };
 
-const CreateForm = ({ setTripDetails, setIsTransactionFormShown }) => {
-  const [tripname, setTripname] = useState("");
-  const [friends, setFriends] = useState("");
-  const [items, setItems] = useState([]); //items refer to an array of friends
+const CreateForm = ({ setActivityDetails, setIsTransactionFormShown }) => {
+  const [activity, setActivity] = useState("");
+  const [contributors, setcontributors] = useState("");
+  const [items, setItems] = useState([]); //items refer to an array of contributors
 
-  const addFriends = (event) => {
+  const addcontributors = (event) => {
     event.preventDefault();
-    if (!friends) {
+    if (!contributors) {
       return;
     }
-    setItems([...items, friends]);
-    setFriends("");
+    setItems([...items, contributors]);
+    setcontributors("");
   };
 
-  const deleteFriends = (itemIndex) => {
+  const deletecontributors = (itemIndex) => {
     const newItem = items.filter((_, index) => index !== itemIndex);
     setItems(newItem);
   };
 
   const handleSubmit = () => {
-    if (!tripname || !items) {
+    if (!activity || !items) {
       return;
     }
 
-    let tripDetails = {
-      tripname: tripname,
+    let activityDetails = {
+      activity: activity,
       items: items,
     };
 
-    setTripDetails(tripDetails);
+    setActivityDetails(activityDetails);
     setIsTransactionFormShown(true);
-    localStorage.setItem("tripDetails", JSON.stringify(tripDetails));
+    localStorage.setItem("activityDetails", JSON.stringify(activityDetails));
   };
 
   return (
     <>
       <Stack spacing={4}>
         <Stack spacing={1}>
-          <p style={title}>Name of Trip</p>
+          <p style={title}>Activity</p>
           <TextField
-            id="tripname-field"
+            id="activity-field"
             variant="outlined"
-            onChange={(event) => setTripname(event.target.value)}
-            value={tripname}
+            onChange={(event) => setActivity(event.target.value)}
+            value={activity}
+            style={{ border: "1px solid black" }}
           />
         </Stack>
 
         <Stack spacing={1}>
-          <p style={title}>Friends</p>
+          <p style={title}>Contributors</p>
 
           <Stack direction="row" spacing={2}>
             <TextField
-              id="friends-field"
+              id="contributors-field"
               variant="outlined"
-              onChange={(event) => setFriends(event.target.value)}
-              value={friends}
+              onChange={(event) => setcontributors(event.target.value)}
+              value={contributors}
+              style={{ border: "1px solid black" }}
             />
             <Button
               size="small"
-              onClick={addFriends}
+              onClick={addcontributors}
               style={{
-                backgroundColor: "#ffab91",
-                color: "black",
+                backgroundColor: "#693237",
+                color: "white",
                 fontSize: "22px",
                 fontWeight: "bold",
               }}
@@ -86,20 +88,20 @@ const CreateForm = ({ setTripDetails, setIsTransactionFormShown }) => {
               maxHeight: "15vh",
             }}
           >
-            <List list={items} deleteItems={deleteFriends} />
+            <List list={items} deleteItems={deletecontributors} />
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button
               onClick={handleSubmit}
               style={{
-                backgroundColor: "#c6c09c",
-                color: "black",
+                backgroundColor: "#693237",
+                color: "white",
                 fontWeight: "bold",
                 width: "200px",
               }}
               disableRipple
             >
-              Create a Trip
+              Create an Activity
             </Button>
           </div>
         </Stack>
