@@ -1,17 +1,16 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import Navbar from "./Components/NavBar/Navbar";
+import ModuleForm from "./Components/ModuleForm/ModuleForm";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+      <div className="app">
+        <Navbar />
+        <ModuleForm />
       </div>
     );
   }

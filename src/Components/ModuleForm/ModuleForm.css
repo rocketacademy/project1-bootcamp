@@ -1,0 +1,128 @@
+.button-enabled {
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1%;
+  height: 2%;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+/*USE FE LOGIC TO DISABLE BUTTON*/
+.button-disabled {
+  background-color: #ef4444;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: not-allowed;
+}
+
+.module-form {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  padding: 3% 3% 2% 2%;
+  width: 100%;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .module-form {
+    flex-direction: column;
+  }
+}
+
+.module-list-title {
+  width: 100%;
+  align-items: left;
+}
+/* Thead */
+/* TO FIX ALL OF THE FOLLOWING*/
+
+table {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1% 1% 2% 2%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td {
+  height: 30px;
+  font-size: 14px;
+  vertical-align: center;
+}
+
+tr {
+  vertical-align: center;
+}
+
+.list-group {
+  width: 25vw;
+  align-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.list-group-item {
+  height: 6vh;
+  align-items: center;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 374px) {
+  table {
+    margin-left: 0;
+  }
+  td {
+    display: block;
+    height: 10vh;
+  }
+}
+
+.remove-button {
+  background-color: #ef4444;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* GPA */
+
+.gpa-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Module Form */
+
+.module-name {
+  margin-left: 5%;
+  padding: 1%;
+  height: 2%;
+  border-radius: 10px;
+}
+
+.action-selector {
+  height: 2%;
+  margin-left: 5%;
+  padding: 1%;
+  border-radius: 10px;
+}
+
+.grade-selector {
+  margin-left: 5%;
+  height: 2%;
+  padding: 1%;
+  border-radius: 10px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}
