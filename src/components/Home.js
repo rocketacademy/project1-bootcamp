@@ -27,8 +27,9 @@ const Home = () => {
         <Stack direction="row" spacing={2}>
           <TextField
             id="name-field"
-            variant="standard"
+            variant="outlined"
             placeholder="Name"
+            style={{ border: "2px solid black" }}
             value={username}
             onChange={(event) => {
               setUsername(event.target.value);
