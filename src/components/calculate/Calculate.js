@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Button, Stack, Modal } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
@@ -109,8 +108,8 @@ const Calculate = ({
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Button
           style={{
-            backgroundColor: "#c6c09c",
-            color: "black",
+            backgroundColor: "#693237",
+            color: "white",
             fontWeight: "bold",
             width: "100px",
           }}
@@ -133,8 +132,8 @@ const Calculate = ({
           <Button
             onClick={restartFormCreation}
             style={{
-              backgroundColor: "#c6c09c",
-              color: "black",
+              backgroundColor: "#ec407a",
+              color: "white",
               fontWeight: "bold",
             }}
             disableRipple
