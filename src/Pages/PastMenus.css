@@ -1,0 +1,48 @@
+.past-menus {
+  height: 300px;
+}
+
+.past-menu-filler {
+  margin: 40px 0 100px;
+  font-size: large;
+}
+
+.past-menus-carousel {
+  background-color: #a6a6a6;
+}
+
+.past-menu-caption {
+  background-color: white;
+  color: black;
+  padding: 10px 40px;
+}
+
+.past-menu {
+  height: 500px;
+}
+
+.background {
+  background-color: #ffe8df;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.section-header {
+  padding: 10px 0;
+}
+
+.dessert-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 15% 40px;
+}
+
+.dessert-caption {
+  color: black;
+}

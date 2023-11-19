@@ -1,0 +1,38 @@
+.faq-item {
+  padding: 10px 20px;
+}
+.faq-item:hover {
+  text-decoration: underline;
+}
+
+.faq-placeholder {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.questions {
+  padding: 50px 0;
+}
+
+.faq-header {
+  margin-bottom: 2px;
+}
+
+.answers {
+  background-color: #a6a6a6;
+  color: white;
+  height: 100%;
+  padding: 0 5%;
+}
+
+.side-answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-topline {
+  margin-top: 15px;
+}

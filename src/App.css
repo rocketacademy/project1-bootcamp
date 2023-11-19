@@ -2,18 +2,76 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.collapsed,
+.navbar-toggler {
+  margin-right: 20px;
+}
+
+.dropdown-item {
+  text-align: center;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+}
+
+.welcome {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-text-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.welcome-msg {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 30px 50px;
+}
+
+.about {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.curr-menu {
+  min-height: 600px;
+}
+
+.car-item {
+  background-size: cover;
+  background-position: center;
+}
+
+.car-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 40px;
+}
+
+.date-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.date-col {
+  width: 50%;
+}
+
+.follow {
+  background-color: #a6a6a6;
+  padding: 30px 0;
+  margin-bottom: -10px;
 }

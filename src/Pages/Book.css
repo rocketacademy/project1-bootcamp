@@ -1,0 +1,23 @@
+div {
+  text-align: center;
+}
+
+.book-header {
+  font-weight: 400;
+}
+
+.book-link {
+  border-radius: 5%;
+}
+
+.cont {
+  text-align: center;
+}
+
+.book-container {
+  padding: 20px 0 50px;
+}
+
+.book-background {
+  color: white;
+}
