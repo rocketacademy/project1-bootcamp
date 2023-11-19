@@ -39,7 +39,7 @@ const AddTransactionsForm = ({
 
   const addItems = () => {
     let storage = [];
-    if (!description) {
+    if (!description || isNaN(Number(price))) {
       return;
     }
     setDetails([...details, changes]);
@@ -136,7 +136,7 @@ const AddTransactionsForm = ({
           <Button
             onClick={addItems}
             style={{
-              backgroundColor: "#ec407a",
+              backgroundColor: "#693237",
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
