@@ -22,10 +22,13 @@ let getTransactionData = () => {
   return [];
 };
 
-const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
+const AddTransactionsForm = ({
+  activityDetails,
+  setIsTransactionFormShown,
+}) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [payer, setPayer] = useState(tripDetails.items[0]);
+  const [payer, setPayer] = useState(activityDetails.items[0]);
   const [details, setDetails] = useState(getTransactionData);
 
   let changes = {
@@ -40,7 +43,7 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
       return;
     }
     setDetails([...details, changes]);
-    setPayer(tripDetails.items[0]);
+    setPayer(activityDetails.items[0]);
     setDescription("");
     setPrice("");
     storage.push(...details, changes);
@@ -52,10 +55,10 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
     setDetails(newDetails);
   };
 
-  const friends = [];
+  const contributors = [];
 
-  tripDetails.items.forEach((word) => {
-    return friends.push(word.charAt(0));
+  activityDetails.items.forEach((word) => {
+    return contributors.push(word.charAt(0));
   });
 
   return (
@@ -63,13 +66,13 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
       <Stack spacing={2}>
         <Stack direction="row" spacing={5}>
           <p style={{ fontSize: "20px", fontWeight: "bold" }}>
-            {tripDetails.tripname}
+            {activityDetails.activity}
           </p>
           <AvatarGroup max={4}>
-            {friends.map((friend, index) => (
+            {contributors.map((friend, index) => (
               <Avatar
                 style={{
-                  backgroundColor: "#ffb284",
+                  backgroundColor: "#f7ede2",
                   color: "black",
                   fontWeight: "bold",
                 }}
@@ -89,7 +92,7 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
                 onChange={(e) => setDescription(e.target.value)}
                 id="item-field"
                 variant="outlined"
-                style={{ width: "90px" }}
+                style={{ width: "90px", border: "1px solid black" }}
               />
             </Stack>
             <Stack spacing={1}>
@@ -99,7 +102,7 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
                 onChange={(e) => setPrice(e.target.value)}
                 id="price-field"
                 variant="outlined"
-                style={{ width: "90px" }}
+                style={{ width: "90px", border: "1px solid black" }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -117,11 +120,12 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
                 onChange={(e) => setPayer(e.target.value)}
                 style={{
                   backgroundColor: "#f7ede2",
+                  border: "1px solid black",
                   width: "100px",
                   padding: "10px",
                 }}
               >
-                {tripDetails.items.map((name, index) => (
+                {activityDetails.items.map((name, index) => (
                   <option key={index} value={name}>
                     {name}
                   </option>
@@ -132,8 +136,8 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
           <Button
             onClick={addItems}
             style={{
-              backgroundColor: "#ffab91",
-              color: "black",
+              backgroundColor: "#ec407a",
+              color: "white",
               fontSize: "22px",
               fontWeight: "bold",
             }}
@@ -144,7 +148,7 @@ const AddTransactionsForm = ({ tripDetails, setIsTransactionFormShown }) => {
         </Stack>
         <PriceDescriptionList details={details} deleteItems={deleteItems} />
         <Calculate
-          getTripData={tripDetails}
+          getTripData={activityDetails}
           getTransactions={details}
           setIsTransactionFormShown={setIsTransactionFormShown}
         />
