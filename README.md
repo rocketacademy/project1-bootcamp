@@ -16,16 +16,19 @@ You may also see any lint errors in the console.
 
 # User Story
 
-This bill-splitting app is handy for those who engage in pairs or in groups and are seeking to remove the hassle of dividing costs fairly with other contributors to the activity. This app is convenient when we dine out with friends, purchase gifts, or even sharing household expenditures like utilities, house maintenances, chores, fuels with housemates. This can help avoid unnecessary disagreements when the bill splitting feature simplifies the process of dividing costs equally. Each activity created is only meant for that specific activity and contributors. Users will have to re-enter all activity details after splitting.
+This bill-splitting app is handy for those seeking to remove the hassle of dividing costs fairly with other contributors to an activity. This app is convenient when we dine out with friends, purchase gifts, or even share household expenditures like utilities, home maintenances, and cleaning with housemates. This can help avoid unnecessary disagreements when the bill splitting feature simplifies the process of dividing costs equally. Each activity created is only meant for that specific activity and contributors. Users will have to re-enter the activity name and contributors for a new activity.
 
 # How to use
 
-1. Get started on the app by entering a username.
-2. Create a trip by including the trip name and people involved in the trip.
-3. Add transactions by selecting the entering the item, price and payer from the drop down selection.
-4. Add and delete transactions whenever required.
-5. Click on calculate to derive how much each person owes one another.
-6. View the amount owed to one another, then hit the Home button to create a new trip.
+1. Enter a username and click on the arrow button.
+2. Hit the Add Activity button to create a new activity.
+3. Enter activity name and contributors involved in the activity.
+4. Add and delete contributors whenever required. Then, click on Create an Activity button.
+5. Enter the item, price and payer from the drop down selection to record transactions.
+6. Add and delete transactions whenever required.
+7. Hit the Split button to derive how much each person owes one another.
+8. Hit the Home button to create a new activity.
+9. After an activity is created, transactions of the activity will be retained when browser session is closed.
 
 # Wireframe
 
