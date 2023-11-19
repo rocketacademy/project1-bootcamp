@@ -2,36 +2,42 @@ import React, { useState } from "react";
 import CreateForm from "./CreateForm";
 import AddTransactionsForm from "./AddTransactionsForm";
 
-const isTripDataEntered = () => {
-  const getTripData = JSON.parse(localStorage.getItem("tripDetails"));
-  if (getTripData) {
+const isActivityDataEntered = () => {
+  const getActivityData = JSON.parse(localStorage.getItem("activityDetails"));
+  if (getActivityData) {
     return true;
   }
   return false;
 };
 
 const Forms = () => {
-  const getTripData = JSON.parse(localStorage.getItem("tripDetails"));
+  const getActivityData = JSON.parse(localStorage.getItem("activityDetails"));
 
-  const [tripDetails, setTripDetails] = useState(
-    getTripData ? getTripData : { tripname: "", items: "" }
+  const [activityDetails, setActivityDetails] = useState(
+    getActivityData ? getActivityData : { activityName: "", items: "" }
   );
   const [isTransactionFormShown, setIsTransactionFormShown] = useState(
-    false || isTripDataEntered
+    isActivityDataEntered
   );
 
   return (
     <>
       {!isTransactionFormShown ? (
-        <CreateForm
-          setTripDetails={setTripDetails}
-          setIsTransactionFormShown={setIsTransactionFormShown}
-        />
+        <>
+          <CreateForm
+            setActivityDetails={setActivityDetails}
+            setIsTransactionFormShown={setIsTransactionFormShown}
+          />
+        </>
       ) : (
-        <AddTransactionsForm
-          tripDetails={tripDetails}
-          setIsTransactionFormShown={setIsTransactionFormShown}
-        />
+        <>
+          <div style={{ overflow: "auto", height: "50vh" }}>
+            <AddTransactionsForm
+              activityDetails={activityDetails}
+              setIsTransactionFormShown={setIsTransactionFormShown}
+            />
+          </div>
+        </>
       )}
     </>
   );
