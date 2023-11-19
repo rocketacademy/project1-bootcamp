@@ -2,7 +2,7 @@
 
 https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
 
-# Shopping list app
+# My shopping list app
 
 This is a shopping list app which allows users
 
@@ -15,6 +15,8 @@ This is a shopping list app which allows users
 ## Instructions:
 
 1. Add item: type the name of your item into the input field and click "Add item" button.
+   ![Alt text] (/Users/mz/Documents/bootcamp/m1/project1-bootcamp/initial-screen.png)
+
 2. Edit item: click the item you wish to edit and type in the new name.
 3. Cross item out: tick the checkbox next to the item.
 4. Delete item: click the trashbin icon next to the item.
@@ -23,7 +25,16 @@ This is a shopping list app which allows users
 All items are stored in the local storage, so when users refresh the page, they will still be able to see the items they added/eddited previously.
 However, upon clicking "Clear all" button, all items get erased from local storage. After the button has been clicked, if the user refreshes the page, the list will be empty.
 
-## Available Scripts
+## Requirements
+
+To install and launch the app, you will need NodeJS v16+
+
+## Built with
+
+1. React 18.0.1
+2. Bootstrap 5.3.2
+
+## Installation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
 
