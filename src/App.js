@@ -1,17 +1,22 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import ItemsList from "./Components/ItemsList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Container from "react-bootstrap/Container";
+import Stack from "react-bootstrap/Stack";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+      <div>
+        <Container className="App mt-5 col-11 col-md-6 col-lg-5  align-items-center">
+          <Stack gap={2}>
+            <div className="header">My shopping list</div>
+            <div>
+              <ItemsList />
+            </div>
+          </Stack>
+        </Container>
       </div>
     );
   }
