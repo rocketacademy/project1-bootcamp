@@ -14,7 +14,7 @@ const Forms = () => {
   const getActivityData = JSON.parse(localStorage.getItem("activityDetails"));
 
   const [activityDetails, setActivityDetails] = useState(
-    getActivityData ? getActivityData : { activityName: "", items: "" }
+    getActivityData ? getActivityData : { activity: "", items: "" }
   );
   const [isTransactionFormShown, setIsTransactionFormShown] = useState(
     isActivityDataEntered

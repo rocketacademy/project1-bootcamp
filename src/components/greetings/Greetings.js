@@ -28,15 +28,12 @@ const Greetings = ({ username }) => {
     <>
       <Box
         sx={{
-          height: "10vh",
+          height: "20vh",
           margin: "auto",
-          borderRadius: "20px",
-          border: "2px solid blue",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           padding: "20px",
-          bgcolor: "#dbcbbe",
         }}
       >
         <Stack spacing={4}>

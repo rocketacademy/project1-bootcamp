@@ -39,7 +39,7 @@ const AddTransactionsForm = ({
 
   const addItems = () => {
     let storage = [];
-    if (!description || isNaN(Number(price))) {
+    if (!description || isNaN(Number(price)) || !price) {
       return;
     }
     setDetails([...details, changes]);
