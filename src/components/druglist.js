@@ -34,14 +34,14 @@ export const DrugList = [
   },
   {
     drugName: "cetirizine",
-    minDoseMgPerKg: [0.5, 0.5, 0.5],
-    maxDoseMgPerKg: [0.5, 0.5, 0.5],
+    minDoseMgPerKg: [2.5, 2.5, 5],
+    maxDoseMgPerKg: [2.5, 2.5, 5],
     maxDailyDose: [2.5, 5, 10],
     strength: 1,
     freq: ["OD", "BD", "BD"],
     ageRange: [0.5, 1, 6],
     weightBasedDosing: false,
-    notes: "",
+    notes: "Can convert BD to OD if prefer OD",
   },
   {
     drugName: "amoxicillin",

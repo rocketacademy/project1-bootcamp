@@ -49,42 +49,56 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
   for (let i = 0; i < selectedDrug.length; i += 1) {
     const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]); //find drug in master drug list
     //if there are no age variations, no need to loop
-    if (drug.ageRange.length !== 1) {
-      for (let j = 0; j < drug.ageRange.length; j += 1) {
-        if (ageInput >= drug.ageRange[j]) {
-          freq = drug.freq[j];
-          minDose = determineMinDose(
-            weightInput,
-            drug.minDoseMgPerKg[j],
-            drug.maxDailyDose[j],
-            freq
-          );
-          maxDose = determineMaxDose(
-            weightInput,
-            drug.maxDoseMgPerKg[j],
-            drug.maxDailyDose[j],
-            freq
-          );
-          minSyrup = convertToSyrup(drug.strength, minDose);
-          maxSyrup = convertToSyrup(drug.strength, maxDose);
+    if (!drug.weightBasedDosing) {
+      if (drug.ageRange.length !== 1) {
+        for (let k = 0; k < drug.ageRange.length; k += 1) {
+          if (ageInput >= drug.ageRange[k]) {
+            freq = drug.freq[k];
+            minDose = drug.minDoseMgPerKg[k];
+            maxDose = drug.maxDoseMgPerKg[k];
+            minSyrup = convertToSyrup(drug.strength, minDose);
+            maxSyrup = convertToSyrup(drug.strength, maxDose);
+          }
         }
       }
     } else {
-      freq = drug.freq;
-      minDose = determineMinDose(
-        weightInput,
-        drug.minDoseMgPerKg,
-        drug.maxDailyDose,
-        freq
-      );
-      maxDose = determineMaxDose(
-        weightInput,
-        drug.maxDoseMgPerKg,
-        drug.maxDailyDose,
-        freq
-      );
-      minSyrup = convertToSyrup(drug.strength, minDose);
-      maxSyrup = convertToSyrup(drug.strength, maxDose);
+      if (drug.ageRange.length !== 1) {
+        for (let j = 0; j < drug.ageRange.length; j += 1) {
+          if (ageInput >= drug.ageRange[j]) {
+            freq = drug.freq[j];
+            minDose = determineMinDose(
+              weightInput,
+              drug.minDoseMgPerKg[j],
+              drug.maxDailyDose[j],
+              freq
+            );
+            maxDose = determineMaxDose(
+              weightInput,
+              drug.maxDoseMgPerKg[j],
+              drug.maxDailyDose[j],
+              freq
+            );
+            minSyrup = convertToSyrup(drug.strength, minDose);
+            maxSyrup = convertToSyrup(drug.strength, maxDose);
+          }
+        }
+      } else {
+        freq = drug.freq;
+        minDose = determineMinDose(
+          weightInput,
+          drug.minDoseMgPerKg,
+          drug.maxDailyDose,
+          freq
+        );
+        maxDose = determineMaxDose(
+          weightInput,
+          drug.maxDoseMgPerKg,
+          drug.maxDailyDose,
+          freq
+        );
+        minSyrup = convertToSyrup(drug.strength, minDose);
+        maxSyrup = convertToSyrup(drug.strength, maxDose);
+      }
     }
 
     const duplicateDrug = dose.find(
