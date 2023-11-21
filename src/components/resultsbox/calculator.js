@@ -60,6 +60,12 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
             maxSyrup = convertToSyrup(drug.strength, maxDose);
           }
         }
+      } else {
+        freq = drug.freq;
+        minDose = drug.minDoseMgPerKg;
+        maxDose = drug.maxDoseMgPerKg;
+        minSyrup = convertToSyrup(drug.strength, minDose);
+        maxSyrup = convertToSyrup(drug.strength, maxDose);
       }
     } else {
       if (drug.ageRange.length !== 1) {
