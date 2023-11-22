@@ -33,7 +33,7 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/bill-splitter" element={<Home />} />
             <Route path="dashboard" element={<Dashboard />} />
           </Routes>
         </Box>
