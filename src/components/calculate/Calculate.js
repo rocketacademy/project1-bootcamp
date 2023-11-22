@@ -74,7 +74,7 @@ const Calculate = ({
     let debt;
     let text = [];
     while (firstPayer < lastPayer) {
-      debt = Math.min(-sortPrices[firstPayer], sortPrices[lastPayer]);
+      debt = Math.max(sortPrices[firstPayer], sortPrices[lastPayer]);
       sortPrices[firstPayer] += debt;
       sortPrices[lastPayer] -= debt;
 
