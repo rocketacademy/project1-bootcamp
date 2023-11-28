@@ -10,10 +10,10 @@ import "./App.css";
 const App = () => {
   return (
     <>
-      <Container sx={{ minWidth: "100vw", minHeight: "100vh" }}>
+      <Container sx={{ minWidth: "95vw", minHeight: "70vh" }}>
         <Box
           sx={{
-            minHeight: "15vh",
+            minHeight: "30vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -24,17 +24,17 @@ const App = () => {
         </Box>
         <Box
           sx={{
-            minHeight: "80vh",
+            minHeight: "40vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: "30px",
-            bgcolor: "#daa06d",
+            padding: "5px 20px",
+            // bgcolor: "#daa06d",
           }}
         >
           <Routes>
-            <Route path="/bill-splitter" element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Box>
       </Container>
