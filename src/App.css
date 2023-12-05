@@ -1,19 +1,28 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  color: black;
+  font-family: "Georgia";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.left-leaf {
+  width: 40px;
+  height: 50px;
+  border-radius: 0 100px;
+  background-color: #ec407a;
+  transform: rotate(-15deg);
+  border: 2px solid black;
+}
+
+.right-leaf {
+  width: 40px;
+  height: 50px;
+  border-radius: 100px 0px;
+  background-color: #c18a54;
+  transform: rotate(15deg);
+  border: 2px solid black;
 }

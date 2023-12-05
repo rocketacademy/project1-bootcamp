@@ -1,20 +1,45 @@
 import React from "react";
-import logo from "./logo.png";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
+import Dashboard from "./components/pages/Dashboard";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+
 import "./App.css";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <>
+      <Container sx={{ minWidth: "95vw", minHeight: "70vh" }}>
+        <Box
+          sx={{
+            minHeight: "30vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div className="left-leaf"></div>
+          <div className="right-leaf"></div>
+        </Box>
+        <Box
+          sx={{
+            minHeight: "40vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "5px 20px",
+            // bgcolor: "#daa06d",
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </Box>
+      </Container>
+    </>
+  );
+};
 
 export default App;
