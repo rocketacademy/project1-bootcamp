@@ -2,34 +2,38 @@ import React from "react";
 import { DrugList } from "../druglist";
 import GridTable from "./gridtable";
 
-const determineMinDose = (weightInput, minDosePerKg, maxDailyDose, freq) => {
+const determineDoseRange = (
+  weightInput,
+  minDosePerKg,
+  maxDosePerKg,
+  maxDailyDose,
+  freq
+) => {
   const minDosePerDay =
     weightInput * minDosePerKg >= maxDailyDose
       ? maxDailyDose
       : weightInput * minDosePerKg;
-  const minDose = divideDoseByFreq(freq, minDosePerDay);
-  return minDose;
-};
 
-const determineMaxDose = (weightInput, maxDosePerKg, maxDailyDose, freq) => {
   const maxDosePerDay =
     weightInput * maxDosePerKg >= maxDailyDose
       ? maxDailyDose
       : weightInput * maxDosePerKg;
+  const minDose = divideDoseByFreq(freq, minDosePerDay);
   const maxDose = divideDoseByFreq(freq, maxDosePerDay);
-  return maxDose;
+  return { minDose, maxDose };
 };
 
 const divideDoseByFreq = (freq, dose) => {
-  let dividedDose = 0;
-  if (freq === "BD") {
-    dividedDose = (dose / 2).toFixed(2);
-  } else if (freq === "TDS") {
-    dividedDose = (dose / 3).toFixed(2);
-  } else if (freq === "QDS") {
-    dividedDose = (dose / 4).toFixed(2);
+  switch (freq) {
+    case "BD":
+      return (dose / 2).toFixed(2);
+    case "TDS":
+      return (dose / 3).toFixed(2);
+    case "QDS":
+      return (dose / 4).toFixed(2);
+    default:
+      return 0;
   }
-  return dividedDose;
 };
 
 const convertToSyrup = (strength, mg) => {
@@ -58,6 +62,7 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
             maxDose = drug.maxDoseMgPerKg[k];
             minSyrup = convertToSyrup(drug.strength, minDose);
             maxSyrup = convertToSyrup(drug.strength, maxDose);
+            break;
           } else {
             freq = "";
             minDose = 0;
@@ -80,18 +85,13 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
         for (let j = 0; j < drug.ageRange.length; j += 1) {
           if (ageInput >= drug.ageRange[j]) {
             freq = drug.freq[j];
-            minDose = determineMinDose(
+            ({ minDose, maxDose } = determineDoseRange(
               weightInput,
               drug.minDoseMgPerKg[j],
-              drug.maxDailyDose[j],
-              freq
-            );
-            maxDose = determineMaxDose(
-              weightInput,
               drug.maxDoseMgPerKg[j],
               drug.maxDailyDose[j],
               freq
-            );
+            ));
             minSyrup = convertToSyrup(drug.strength, minDose);
             maxSyrup = convertToSyrup(drug.strength, maxDose);
           } else {
@@ -105,18 +105,13 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
       } else {
         if (ageInput >= drug.ageRange) {
           freq = drug.freq;
-          minDose = determineMinDose(
+          ({ minDose, maxDose } = determineDoseRange(
             weightInput,
             drug.minDoseMgPerKg,
-            drug.maxDailyDose,
-            freq
-          );
-          maxDose = determineMaxDose(
-            weightInput,
             drug.maxDoseMgPerKg,
             drug.maxDailyDose,
             freq
-          );
+          ));
           minSyrup = convertToSyrup(drug.strength, minDose);
           maxSyrup = convertToSyrup(drug.strength, maxDose);
         } else {
@@ -145,6 +140,7 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
       });
   }
 
+  console.log(dose);
   return (
     <>
       <GridTable dose={dose} />

@@ -1,12 +1,10 @@
 import React from "react";
-// import "./App.css";
 import { Instructions, Title } from "./components/title/title";
 import { Demographic } from "./components/patient-demographics/patient-demo";
 import { Result } from "./components/resultsbox/result";
 import { DrugList } from "./components/druglist";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import { ContactPharmacy } from "./components/SpeedDial/SpeedDial";
 
 class App extends React.Component {
   constructor(props) {
@@ -78,9 +76,6 @@ class App extends React.Component {
               ageInput={this.state.ageInput}
               resetSearch={this.resetSearch}
             />
-          </Grid>
-          <Grid>
-            <ContactPharmacy />
           </Grid>
         </Grid>
       </Container>

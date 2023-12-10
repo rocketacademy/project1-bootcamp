@@ -15,9 +15,8 @@ class DrugSearch extends React.Component {
   }
 
   handleDrugSelect = (e, newValue) => {
-    const newDrugSearch = newValue.toLowerCase();
-    if (newDrugSearch) {
-      this.props.updateDrugSearch(newDrugSearch);
+    if (newValue) {
+      this.props.updateDrugSearch(newValue.toLowerCase());
       this.setState({ drugSearchValue: "" });
     }
   };

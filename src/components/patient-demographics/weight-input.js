@@ -8,11 +8,6 @@ class WeightInput extends React.Component {
     this.props.updateWeightInput(e.target.value);
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.updateWeightInput(e.target.value);
-  };
-
   render() {
     return (
       <div className="input-box">

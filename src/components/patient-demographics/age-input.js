@@ -8,11 +8,6 @@ class AgeInput extends React.Component {
     this.props.updateAgeInput(e.target.value);
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.updateAgeInput(e.target.value);
-  };
-
   render() {
     return (
       <>
