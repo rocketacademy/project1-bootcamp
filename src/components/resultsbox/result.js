@@ -1,6 +1,6 @@
 import React from "react";
-import DrugSearch from "./drug-search";
-import { DoseCalculator } from "./calculator";
+import DrugSearch from "./DrugSearch";
+import { DoseCalculator } from "./Calculator";
 import { Grid, Container } from "@mui/material";
 
 export const Result = ({

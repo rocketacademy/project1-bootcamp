@@ -1,4 +1,4 @@
-export const DrugList = [
+export const druglist = [
   {
     drugName: "paracetamol",
     minDoseMgPerKg: 40,

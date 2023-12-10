@@ -1,8 +1,8 @@
 import React from "react";
-import { Instructions, Title } from "./components/title/title";
-import { Demographic } from "./components/patient-demographics/patient-demo";
-import { Result } from "./components/resultsbox/result";
-import { DrugList } from "./components/druglist";
+import { Instructions, Title } from "./components/title/Title";
+import { Demographic } from "./components/patient-demographics/Demographic";
+import { Result } from "./components/resultsbox/Result";
+import { druglist } from "./druglist";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 
@@ -31,7 +31,7 @@ class App extends React.Component {
   };
 
   updateDrugSearch = (newDrugSearch) => {
-    const drug = DrugList.find((drug) => drug.drugName === newDrugSearch);
+    const drug = druglist.find((drug) => drug.drugName === newDrugSearch);
     this.setState({
       drugSearch: newDrugSearch,
       selectedDrug: drug

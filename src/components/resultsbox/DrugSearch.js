@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
-import { DrugList } from "../druglist";
+import { druglist } from "../../druglist";
 import { Button } from "@mui/material";
 
 class DrugSearch extends React.Component {
@@ -41,11 +41,13 @@ class DrugSearch extends React.Component {
             id="search-input"
             sx={{ width: "200px" }}
             disableClearable
-            options={DrugList.map(
-              (option) =>
-                option.drugName.charAt(0).toUpperCase() +
-                option.drugName.slice(1)
-            ).sort()}
+            options={druglist
+              .map(
+                (option) =>
+                  option.drugName.charAt(0).toUpperCase() +
+                  option.drugName.slice(1)
+              )
+              .sort()}
             onChange={this.handleDrugSelect}
             value={this.state.drugSearchValue}
             inputValue={this.state.drugSearchValue}

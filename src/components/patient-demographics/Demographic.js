@@ -1,6 +1,6 @@
 import React from "react";
-import AgeInput from "./age-input";
-import WeightInput from "./weight-input";
+import AgeInput from "./AgeInput";
+import WeightInput from "./WeightInput";
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 

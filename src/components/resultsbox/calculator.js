@@ -1,6 +1,6 @@
 import React from "react";
-import { DrugList } from "../druglist";
-import GridTable from "./gridtable";
+import { druglist } from "../../druglist";
+import GridTable from "./GridTable";
 
 const determineDoseRange = (
   weightInput,
@@ -51,7 +51,7 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
   let maxSyrup = 0;
 
   for (let i = 0; i < selectedDrug.length; i += 1) {
-    const drug = DrugList.find((drug) => drug.drugName === selectedDrug[i]); //find drug in master drug list
+    const drug = druglist.find((drug) => drug.drugName === selectedDrug[i]); //find drug in master drug list
     //if there are no age variations, no need to loop
     if (!drug.weightBasedDosing) {
       if (drug.ageRange.length !== 1) {
