@@ -24,14 +24,12 @@ class App extends React.Component {
     this.setState({
       ageInput: newAgeInput,
     });
-    console.log(`age: ${this.state.ageInput}`);
   };
 
   updateWeightInput = (newWeightInput) => {
     this.setState({
       weightInput: newWeightInput,
     });
-    console.log(`weight: ${this.state.weightInput}`);
   };
 
   updateDrugSearch = (newDrugSearch) => {
@@ -51,9 +49,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(`drug search: ${this.state.drugSearch}`);
-    console.log(`selected drug: ${this.state.selectedDrug}`);
-    console.log(`age: ${this.state.ageInput}`);
     return (
       <Container>
         <Grid spacing={4} justifyContent="space-between">

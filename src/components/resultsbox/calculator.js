@@ -143,7 +143,6 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
         freq: freq,
         notes: drug.notes,
       });
-    console.log(dose);
   }
 
   return (
