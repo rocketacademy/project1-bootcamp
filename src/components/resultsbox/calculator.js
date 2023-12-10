@@ -62,13 +62,6 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
             maxDose = drug.maxDoseMgPerKg[k];
             minSyrup = convertToSyrup(drug.strength, minDose);
             maxSyrup = convertToSyrup(drug.strength, maxDose);
-            break;
-          } else {
-            freq = "";
-            minDose = 0;
-            maxDose = 0;
-            minSyrup = 0;
-            maxSyrup = 0;
           }
         }
       } else {
@@ -94,12 +87,6 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
             ));
             minSyrup = convertToSyrup(drug.strength, minDose);
             maxSyrup = convertToSyrup(drug.strength, maxDose);
-          } else {
-            freq = "";
-            minDose = 0;
-            maxDose = 0;
-            minSyrup = 0;
-            maxSyrup = 0;
           }
         }
       } else {
@@ -114,12 +101,6 @@ export const DoseCalculator = ({ selectedDrug, weightInput, ageInput }) => {
           ));
           minSyrup = convertToSyrup(drug.strength, minDose);
           maxSyrup = convertToSyrup(drug.strength, maxDose);
-        } else {
-          freq = "";
-          minDose = 0;
-          maxDose = 0;
-          minSyrup = 0;
-          maxSyrup = 0;
         }
       }
     }
