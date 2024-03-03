@@ -1,15 +1,32 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# **Smashboard** : Project 1 Frontend App
 
-https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
+<h3>A multi-paged badmninton player statistics web application using React, TailwindCSS & shadcn/ui library.</h3>
 
-## Available Scripts
+## User Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
+1. **Landing** page that contains CTA button for users to begin navigating to the badminton category of choice.
+2. **About** page that provides a high level description of the website.
+3. **FAQ** page that answers a list of common questions about the platform.
 
-### `npm start`
+## Functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Button** to choose a badminton category of choice
+2. **Dashboard** to view a badminton player's profile
+3. **Player card** to view detailed information of a badminton player.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technical Specifications
+
+1. **React & React Router** to redirect users between the pages
+2. **TailwindCSS** to style the components
+3. **shadcn/ui** modern UI library to create beautiful modern components
+
+## How to run the application
+
+1. `git clone` to clone the repo locally
+2. Navigate to _/Smashboar_ folder
+3. `npm install` to install the required modules
+4. `npm run dev` to run the app in disabled-web-security mode
+
+## Wireframe
+
+Figma [Wireframe Link](https://www.figma.com/file/KMWWF8YEKLyiEwwc59I9ZA/SmashBoard?type=design&node-id=0%3A1&mode=design&t=u6cs6iAmJNe8oCWO-1>)
