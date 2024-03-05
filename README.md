@@ -22,14 +22,17 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- npm
+1. Clone repository
 ```sh
-Git clone
+git clone git@github.com:nordic-roast/books-gowhere.git
+```
 
-- npm
+2. Install dependencies
 ```sh
 npm i
+```
 
-- npm
+3. Start the webapp
 ```sh
-Npm start
+npm start
+```
