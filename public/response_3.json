@@ -1,0 +1,44 @@
+[
+    {
+        "setId": 4422306,
+        "totalRecords": 1,
+        "count": 1,
+        "hasMoreRecords": false,
+        "nextRecordsOffset": 1,
+        "items": [
+            {
+                "irn": 96719633,
+                "itemId": "B27509814C",
+                "brn": 200951148,
+                "callNumber": "005.437 COO",
+                "formattedCallNumber": "English 005.437 COO -[COM]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WRL",
+                    "name": "Woodlands Regional Library"
+                },
+                "language": "English",
+                "suffix": "-[COM]",
+                "price": 45.49,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2024-01-28"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2024-01-28T16:10:55"
+                },
+                "minAgeLimit": 0
+            }
+        ]
+    }
+]

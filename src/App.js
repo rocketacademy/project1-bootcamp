@@ -1,20 +1,22 @@
-import React from "react";
-import logo from "./logo.png";
-import "./App.css";
+import React from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from './pages/Homepage';
+import People from './pages/People';
+import Books from './pages/Books';
+import BookDetail from './pages/BookDetail';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/people" element={<People />} />
+        <Route path="/books" element={<Books />} />  
+        <Route path="/detail/:bookId" element={<BookDetail />} /> 
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
