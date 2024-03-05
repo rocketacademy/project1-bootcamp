@@ -1,15 +1,38 @@
-# Rocket Academy Coding Bootcamp: Project 1: Frontend App
+# BooksGoWhere  
 
-https://bc.rocketacademy.co/1-frontend/1.p-frontend-app
+BooksGoWhere is a React-based web application designed to help users discover and reserve books from a comprehensive UX library collection
 
-## Available Scripts
+## Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
+- **Search Functionality**: Users can search for books by titles and authors using a real-time search feature.
+- **Book Availability**: Displays the availability status of books across different locations.
+- **Reserve Books - Coming soon**: Allows users to reserve available books.
+- **Notification System - Coming soon**: Users can opt to be notified when books on loan become available.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js
+- Tailwind CSS
+- React Router for SPA routing
+- Axios for API requests
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+1. Clone repository
+```sh
+git clone git@github.com:nordic-roast/books-gowhere.git
+```
+
+2. Install dependencies
+```sh
+npm i
+```
+
+3. Start the webapp
+```sh
+npm start
+```

@@ -1,0 +1,110 @@
+[
+    {
+        "id": "1",
+        "title": "The Design of Everyday Things",
+        "author": "Don Norman",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442460745i/840.jpg",
+        "description": "This classic book explores the importance of intuitive design in everyday objects, and how poor design can lead to user errors.",
+        "isbn": "9780465050659",
+        "tags": "Industrial Design, Behavioural Psychology"
+    },
+    {
+        "id": "2",
+        "title": "Don't Make Me Think",
+        "author": "Steve Krug",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1384736553i/18197267.jpg",
+        "description": "A common sense approach to web usability, this book provides insights on how to create a user-friendly interface.",
+        "isbn": "9780321965516",
+        "tags": "Interaction Design, Web Design"
+    },
+    {
+        "id": "3",
+        "title": "About Face: The Essentials of Interaction Design",
+        "author": "Alan Cooper",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348112867i/289062.jpg",
+        "description": "This book is a comprehensive guide to creating effective interfaces, touching on new devices and mobile design.",
+        "isbn": "9781118766576",
+        "tags": "Web Design, Interaction Design"
+    },
+    {
+        "id": "4",
+        "title": "Lean UX: Applying Lean Principles to Improve User Experience",
+        "author": "Jeff Gothelf with Josh Seiden",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1381355830i/13436116.jpg",
+        "description": "Lean UX shows you how to make user experience design a team approach and streamline processes.",
+        "isbn": "9781449311650",
+        "tags": "Design Management"
+    },
+    {
+        "id": "4",
+        "title": "100 Things Every Designer Needs to Know About People",
+        "author": "Susan Weinschenk",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348700218i/10778139.jpg",
+        "description": "Combining real science and research with practical examples, this book delivers a guide on how to understand people's behavior.",
+        "isbn": "9780321767530",
+        "tags": "Web Design, Behavioural Psychology"
+    },
+    {
+        "id": "5",
+        "title": "Hooked: How to Build Habit-Forming Products",
+        "author": "Nir Eyal",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1407112405i/22668729.jpg",
+        "description": "This book provides a guide on building products that capture users' attention and create habits.",
+        "isbn": "9781591847786",
+        "tags": "Interaction Design, Behavioural Psychology"
+    },
+    {
+        "id": "6",
+        "title": "The Elements of User Experience: User-Centered Design for the Web and Beyond",
+        "author": "Jesse James Garrett",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1415587681i/8259361.jpg",
+        "description": "Jesse James Garrett shares an approach for creating a positive user experience from start to finish.",
+        "isbn": "9780321683687",
+        "tags": "User-Centered Design, Behavioural Psychology"
+    },
+    {
+        "id": "7",
+        "title": "User Experience Team of One",
+        "author": "Leah Buley",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1375797626i/18177290.jpg",
+        "description": "This book outlines approaches for doing great UX work with limited resources.",
+        "isbn": "9780321767530",
+        "tags": "Design Management"
+    },
+    {
+        "id": "8",
+        "title": "Information Architecture for the World Wide Web",
+        "author": "Louis Rosenfeld & Peter Morville",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328834902i/70132.jpg",
+        "description": "Designing large-scale web sites, this book introduces the principles of information architecture.",
+        "isbn": "9780321683687",
+        "tags": "Interaction Design, Behavioural Psychology"
+    },
+    {
+        "id": "9",
+        "title": "Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days",
+        "author": "Jake Knapp",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1457284924i/25814544.jpg",
+        "description": "From three partners at Google Ventures, a unique five-day process for solving tough problems.",
+        "isbn": "9781501121746",
+        "tags": "Design Management"
+    },
+    {
+        "id": "10",
+        "title": "Measuring the User Experience",
+        "author": "Thomas Tullis & William Albert",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348370094i/3041729.jpg",
+        "description": "This book provides the first single source of practical information to enable usability professionals and product developers to measure the usability of any product.",
+        "isbn": "9780321683687",
+        "tags": "Interaction Design, Behavioural Psychology"
+    },
+    {
+        "id": "11",
+        "title": "Designing with the Mind in Mind",
+        "author": "Jeff Johnson",
+        "thumbnail": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355822484i/8564020.jpg",
+        "description": "A guide to understanding the principles of human perception and how they influence user interface design.",
+        "isbn:": "9780124079144",
+        "tags": "User-Centered Design, Behavioural Psychology"
+    }
+]

@@ -1,0 +1,283 @@
+[
+    {
+        "setId": 4385476,
+        "totalRecords": 8,
+        "count": 8,
+        "hasMoreRecords": false,
+        "nextRecordsOffset": 8,
+        "items": [
+            {
+                "irn": 48732559,
+                "itemId": "B26573786K",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "BIPL",
+                    "name": "Bishan Public Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 26.87,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-12-29"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-12-29T21:01:12"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 63734653,
+                "itemId": "B26622115C",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "CMPL",
+                    "name": "Clementi Public Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 26.87,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-10-01"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-10-01T20:29:55"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 63734659,
+                "itemId": "B26622121K",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "SRPL",
+                    "name": "Serangoon Public Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 26.87,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-08-30"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-08-30T13:32:53"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 48732553,
+                "itemId": "B26573780E",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "TPPL",
+                    "name": "Toa Payoh Public Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 26.87,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-12-30"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-12-30T20:41:30"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 90029432,
+                "itemId": "B27077474E",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WDALLI",
+                    "name": "The LLiBrary (Lifelong Learning Institute)"
+                },
+                "courseCode": {
+                    "code": "W002",
+                    "clusterName": "Business & Finance"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 22.95,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2021-09-11"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2021-09-11T17:15:11"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 104532798,
+                "itemId": "B27624728E",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WDALLI",
+                    "name": "The LLiBrary (Lifelong Learning Institute)"
+                },
+                "courseCode": {
+                    "code": "W002",
+                    "clusterName": "Business & Finance"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 23.41,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2021-08-02"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2021-08-02T17:49:08"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 63734657,
+                "itemId": "B26622119G",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WRL",
+                    "name": "Woodlands Regional Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 26.87,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2022-07-01"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2022-07-01T16:40:55"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 48733550,
+                "itemId": "B26519319C",
+                "brn": 200144253,
+                "callNumber": "658.575 GOT",
+                "formattedCallNumber": "English 658.575 GOT -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WRL",
+                    "name": "Woodlands Regional Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 26.87,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-11-02"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-11-02T15:22:03"
+                },
+                "minAgeLimit": 0
+            }
+        ]
+    }
+]

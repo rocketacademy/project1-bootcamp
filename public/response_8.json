@@ -1,0 +1,44 @@
+[
+    {
+        "setId": 4422651,
+        "totalRecords": 1,
+        "count": 1,
+        "hasMoreRecords": false,
+        "nextRecordsOffset": 1,
+        "items": [
+            {
+                "irn": 269754743,
+                "itemId": "B33798561I",
+                "brn": 202473433,
+                "callNumber": "658.403 KNA",
+                "formattedCallNumber": "English 658.403 KNA -[BIZ]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "BIPL",
+                    "name": "Bishan Public Library"
+                },
+                "language": "English",
+                "suffix": "-[BIZ]",
+                "price": 27.17,
+                "status": {
+                    "code": "Out",
+                    "name": "On Loan",
+                    "setDate": "2024-02-24"
+                },
+                "transactionStatus": {
+                    "code": "C",
+                    "name": "On Loan",
+                    "date": "2024-03-16T23:59:59"
+                },
+                "minAgeLimit": 0
+            }
+        ]
+    }
+]

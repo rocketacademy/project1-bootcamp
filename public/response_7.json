@@ -1,0 +1,185 @@
+[
+    {
+        "setId": 4422550,
+        "totalRecords": 5,
+        "count": 5,
+        "hasMoreRecords": false,
+        "nextRecordsOffset": 5,
+        "items": [
+            {
+                "irn": 10857488,
+                "itemId": "B24329330D",
+                "brn": 14030635,
+                "callNumber": "745.4 WEI",
+                "formattedCallNumber": "English 745.4 WEI",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "RART",
+                    "name": "Reference Art"
+                },
+                "location": {
+                    "code": "08LKCRL",
+                    "name": "Lee Kong Chian Reference Library Level 8"
+                },
+                "language": "English",
+                "price": 38.99,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2011-06-30"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "For Reference Only",
+                    "date": "2011-06-30T00:00:00"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 79522867,
+                "itemId": "B26799047K",
+                "brn": 14030635,
+                "callNumber": "745.4 WEI",
+                "formattedCallNumber": "English 745.4 WEI -[ART]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "OCPL",
+                    "name": "library@orchard"
+                },
+                "courseCode": {
+                    "code": "N3005",
+                    "clusterName": "Product Design",
+                    "categoryName": "Industrial Design"
+                },
+                "language": "English",
+                "suffix": "-[ART]",
+                "price": 32.0,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-10-30"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-10-30T15:17:55"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 79522868,
+                "itemId": "B26799048A",
+                "brn": 14030635,
+                "callNumber": "745.4 WEI",
+                "formattedCallNumber": "English 745.4 WEI -[ART]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "OCPL",
+                    "name": "library@orchard"
+                },
+                "courseCode": {
+                    "code": "N3005",
+                    "clusterName": "Product Design",
+                    "categoryName": "Industrial Design"
+                },
+                "language": "English",
+                "suffix": "-[ART]",
+                "price": 32.0,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2024-01-27"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2024-01-27T15:02:22"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 11849485,
+                "itemId": "B24329346K",
+                "brn": 14030635,
+                "callNumber": "745.4 WEI",
+                "formattedCallNumber": "English 745.4 WEI -[ART]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WRL",
+                    "name": "Woodlands Regional Library"
+                },
+                "language": "English",
+                "suffix": "-[ART]",
+                "price": 38.99,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2024-02-26"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2024-02-26T16:05:52"
+                },
+                "minAgeLimit": 0
+            },
+            {
+                "irn": 10284623,
+                "itemId": "B26095021C",
+                "brn": 14030635,
+                "callNumber": "745.4 WEI",
+                "formattedCallNumber": "English 745.4 WEI -[ART]",
+                "media": {
+                    "code": "BOOK",
+                    "name": "Book"
+                },
+                "usageLevel": {
+                    "code": "ADULT",
+                    "name": "Adult"
+                },
+                "location": {
+                    "code": "WRL",
+                    "name": "Woodlands Regional Library"
+                },
+                "language": "English",
+                "suffix": "-[ART]",
+                "price": 39.59,
+                "status": {
+                    "code": "In",
+                    "name": "On Shelf",
+                    "setDate": "2023-05-12"
+                },
+                "transactionStatus": {
+                    "code": "S",
+                    "name": "Available",
+                    "date": "2023-05-12T19:50:01"
+                },
+                "minAgeLimit": 0
+            }
+        ]
+    }
+]
