@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/Button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+  data: TData[] | any;
 }
 
 export function DoublesDataTable<TData, TValue>({

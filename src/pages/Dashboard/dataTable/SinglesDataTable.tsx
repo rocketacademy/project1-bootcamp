@@ -72,10 +72,9 @@ export function SinglesDataTable<TData, TValue>({
                     variant={"secondary"}
                     onClick={() => {
                       console.log(row);
-                      const id = row.original?.member_id;
-                      console.log(id);
-                      console.log(row.original.player);
-                      navigate(id, { state: { playerData: row.original } });
+                      const id = row.original;
+                      const member = id.memberId;
+                      navigate(member, { state: { playerData: row.original } });
                     }}
                   >
                     View
